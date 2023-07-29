@@ -9,7 +9,9 @@
               <h4 class="text-center text-pink">Resend confirmation instructions</h4>
           </div>
             <%= render "devise/shared/links" %>
-            <%= bootstrap_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+            <%= bootstrap_form_for(resource, as: resource_name, 
+            url: confirmation_path(resource_name), data: { turbo: false }, html: { method: :post }) do |f| %>
+          
               <%= render "devise/shared/error_messages", resource: resource %>
 
               <div class="field">
@@ -17,7 +19,7 @@
                 value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
               </div>
 
-              <div class="actions">
+              <div class="d-grid gap-2 actions">
                 <%= f.submit "Resend confirmation instructions", class:"btn btn-info" %>
               </div>
             <% end %>

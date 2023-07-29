@@ -6,14 +6,15 @@
           </div>
           <h2>Resend unlock instructions</h2>
 
-          <%= bootstrap_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+          <%= bootstrap_form_for(resource, as: resource_name, 
+          url: unlock_path(resource_name), data: { turbo: false }, 
+          html: { method: :post }) do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
 
             <div class="field">
               <%= f.email_field :email, autofocus: true, autocomplete: "email", label: :email %>
             </div>
-
-            <div class="actions">
+            <div class="d-grid gap-2 actions">
               <%= f.submit "Resend unlock instructions" %>
             </div>
           <% end %>

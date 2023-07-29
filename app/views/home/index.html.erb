@@ -1,20 +1,28 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-<i class="bi-alarm"></i>
+<!-- Home image -->
+  <section>
+    <div class="container">
+        <div class="row">
+            <div class="col mt-5">
+                <h1 class="fs-2 fw-bold text-pink mt-5">Somos uma empresa de Imóveis</h1>
+                <p class="col-md-8 fs-5 text-primary-emphasis">
+                Em resumo, uma empresa de imóveis é uma organização que desempenha 
+                um papel crucial no mercado imobiliário, conectando compradores e 
+                vendedores ou locadores e inquilinos, facilitando a realização de 
+                negócios imobiliários com sucesso. 
+                </p>
+                <a href="#contactos">
+                    <button class="btn btn-pink btn-lg" type="button" id="#contactos">
+                        Entrar em contacto connosco
+                    </button>
+                </a>
+            </div>
 
-<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+            <div class="col">
+                <%= image_tag("home.png", alt: "adicionatec") %>
+            </div>
+        </div>  
+    </div>
+  </section>
+   <!-- And of Home image -->
 
-<div class="toast-container position-fixed bottom-0 end-0 p-3">
-  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header">
-  
-      <strong class="me-auto">Bootstrap</strong>
-      <small>11 mins ago</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      Hello, world! This is a toast message. 
-      
-    </div>
-  </div>
-</div>
+  <%= render 'layouts/filter' %>
