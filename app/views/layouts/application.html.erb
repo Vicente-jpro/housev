@@ -13,11 +13,14 @@
   </head>
 
   <body>
-
-     <p class="notice"><%= notice %></p>
-     <p class="alert"><%= alert %></p>
-
-    <%= yield %>
-
+    <main>
+      <% cache do %>
+        <%= render 'layouts/header' %>
+      <% end %>
+ 
+      <%= render 'layouts/message' if notice %>
+      <%= render 'layouts/alert' if notice %>
+      <%= yield %>
+    <main>
   </body>
 </html>

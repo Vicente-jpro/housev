@@ -1,0 +1,30 @@
+body{
+   font-family: 'Roboto', sans-serif;
+   
+}
+
+.text-pink{
+    color: #e91e63 !important;
+}
+
+.bg-pink, .btn-pink{
+    background-color: #e91e63 !important;
+}
+.btn-pink{
+    color: white !important;
+}
+
+
+.bg-green {
+    color: #004d40 !important;
+    background-color: #e0f2f1 !important;
+}
+
+.text-description{
+    font-size: 18px;
+    color: #424242 ;
+}
+
+.btn-pink:hover{
+    background-color: #ff4081  !important;
+}
