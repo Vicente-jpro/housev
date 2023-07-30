@@ -1,42 +1,79 @@
-<%= form_with(model: profile) do |form| %>
-  <% if profile.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
 
-      <ul>
-        <% profile.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+ <div class="container col-lg-6 my-4">
+    <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <div class="card-body">
+        <div class="card-title">
+            <div class="d-flex justify-content-center">
+
+                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" 
+                    role="img" aria-label="Placeholder: 140x140" 
+                    preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Upload an imagem</title>
+                    <rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" 
+                    fill="#777" dy=".3em">140x140</text>
+                </svg>
+
+                <!--
+                <img src="img/room1.jpg" class="rounded-circle" width="280" height="225"  alt="..."><br>
+                -->
+            </div>
+            <h4 class="text-center text-pink">Editar Perfil</h4>
+        </div>
+        <div class="row my-2">
+          <%= bootstrap_form_with(model: profile) do |form| %>
+            <% if profile.errors.any? %>
+              <div style="color: red">
+                <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+                <ul>
+                  <% profile.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div>
+              <%= form.text_field :name_profile, label: "Name"%>
+            </div>
+
+            <div>
+              <%= form.text_field :phone1, label: "Phone1"%>
+            </div>
+
+            <div>
+              <%= form.text_field :phone2, label: "Phone2" %>
+            </div>
+
+            <div>
+              <%= form.text_field :profile_type, label: "Profile Type" %>
+            </div>
+
+            <div>
+              <%= form.text_field :user_id, value: current_user.id if user_signed_in? %>
+            </div>
+
+            
+            <div class="mb-3 d-grid gap-2">
+              <%= form.submit class: "btn btn-info" %>
+            </div>
+          <% end %>
+
+        <div class="mb-3">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Província</option>
+                <option value="1">Luanda</option>
+                <option value="2">Benguela</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Municipio / Cidade</option>
+                <option value="1">Belas</option>
+                <option value="2">Rangel</option>
+            </select>
+        </div>
+
+        </div>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :name_profile, style: "display: block" %>
-    <%= form.text_field :name_profile %>
   </div>
-
-  <div>
-    <%= form.label :phone1, style: "display: block" %>
-    <%= form.text_field :phone1 %>
-  </div>
-
-  <div>
-    <%= form.label :phone2, style: "display: block" %>
-    <%= form.text_field :phone2 %>
-  </div>
-
-  <div>
-    <%= form.label :profile_type, style: "display: block" %>
-    <%= form.text_field :profile_type %>
-  </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>

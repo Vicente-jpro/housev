@@ -3,7 +3,7 @@
     <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
         <div class="card-body">
           <div class="card-title">
-              <h4 class="text-center text-pink">CEdit <%= resource_name.to_s.humanize %></h4>
+              <h4 class="text-center text-pink">Edit <%= resource_name.to_s.humanize %></h4>
           </div>
             <%= bootstrap_form_for(resource, as: resource_name, 
             url: registration_path(resource_name), data: { turbo: false }, html: { method: :put }) do |f| %>
@@ -39,12 +39,14 @@
                 <%= f.submit "Update", class: "btn btn-info" %>
               </div>
             <% end %>
+            <div class="d-grid gap-2 ">
+   
+              <%= button_to "Cancel my account", registration_path(resource_name), 
+                data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, 
+                method: :delete, class:"btn btn-light" %>
+            </div>
 
-            <h3>Cancel my account</h3>
-
-            <div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-            <%= link_to "Back", :back %>
+            <%= link_to "Back", :back, class:"link-info" %>
 
         </div>
     </div>
