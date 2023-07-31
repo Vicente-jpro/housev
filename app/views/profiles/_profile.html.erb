@@ -3,18 +3,7 @@
         <div class="card-body">
           <div class="card-title">
               <div class="d-flex justify-content-center">
-
-                  <svg class="bd-placeholder-img rounded-circle" width="140" height="140" 
-                      role="img" aria-label="Placeholder: 140x140" 
-                      preserveAspectRatio="xMidYMid slice" focusable="false">
-                      <title>Upload an imagem</title>
-                      <rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" 
-                      fill="#777" dy=".3em">140x140</text>
-                  </svg>
-
-                  <!--
-                  <img src="img/room1.jpg" class="rounded-circle" width="280" height="225"  alt="..."><br>
-                  -->
+                 <%= render "image", image_profile: profile.image %>
               </div>
               <h4 class="text-center text-pink">Editar Perfil</h4>
           </div>
@@ -27,7 +16,7 @@
               <strong>Endereço:</strong> descricão do da morada,Municipio, Provincia
           </div>
           <div class="mb-3 d-grid gap-2">
-              <%= link_to "Editar", edit_profile_path(@profile), class: "btn btn-info" %> 
+              <%= link_to "Editar", edit_profile_path(profile), class: "btn btn-info" %> 
           </div>
         </div>
     </div>
