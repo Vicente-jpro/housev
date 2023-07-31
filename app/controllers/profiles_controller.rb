@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
-  before_action :set_profile_by_user_id, only: [ :new ]
+  before_action :set_profile_by_user_id, only: [ :new, :update ]
 
   # GET /profiles or /profiles.json
   def index
@@ -46,6 +46,8 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1 or /profiles/1.json
   def update
     
+   debugger
+
     respond_to do |format|
       if @profile.update(profile_params)
         debugger
