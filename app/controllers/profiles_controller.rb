@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /profiles or /profiles.json
   def index
@@ -22,7 +23,7 @@ class ProfilesController < ApplicationController
   # POST /profiles or /profiles.json
   def create
     @profile = Profile.new(profile_params)
-
+    
     respond_to do |format|
       if @profile.save
         format.html { redirect_to profile_url(@profile), notice: "Profile was successfully created." }
