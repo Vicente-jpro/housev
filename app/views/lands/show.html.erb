@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @land %>
+
+<div>
+  <%= link_to "Edit this land", edit_land_path(@land) %> |
+  <%= link_to "Back to lands", lands_path %>
+
+  <%= button_to "Destroy this land", @land, method: :delete %>
+</div>

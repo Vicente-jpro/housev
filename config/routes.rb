@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :lands
   resources :profiles
   root "home#index"
   

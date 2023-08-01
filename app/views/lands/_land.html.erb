@@ -1,0 +1,32 @@
+<div id="<%= dom_id land %>">
+  <p>
+    <strong>Title land:</strong>
+    <%= land.title_land %>
+  </p>
+
+  <p>
+    <strong>Photo:</strong>
+    <%= link_to land.photo.filename, land.photo if land.photo.attached? %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= land.description %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= land.price %>
+  </p>
+
+  <p>
+    <strong>Dimention:</strong>
+    <%= land.dimention_id %>
+  </p>
+
+  <p>
+    <strong>Address:</strong>
+    <%= land.address_id %>
+  </p>
+
+</div>

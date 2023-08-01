@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Lands</h1>
+
+<div id="lands">
+  <% @lands.each do |land| %>
+    <%= render land %>
+    <p>
+      <%= link_to "Show this land", land %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New land", new_land_path %>
