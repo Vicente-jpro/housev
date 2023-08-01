@@ -1,5 +1,9 @@
 class Land < ApplicationRecord
   belongs_to :dimention
+  accepts_nested_attributes_for :dimention
+
   belongs_to :address
-  has_many_attached :photo
+  accepts_nested_attributes_for :address
+
+  has_many_attached :photos
 end

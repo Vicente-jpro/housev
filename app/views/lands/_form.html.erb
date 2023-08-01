@@ -22,7 +22,7 @@
 
             <div>
               <%= form.text_field :title_land, label: "Titulo" %>
-              <%= form.file_field :photo %>  
+              <%= form.file_field :photos, multiple: true %>  
               <%= form.text_field :description, label: :description %>
              
               <%= form.collection_select :province_id, Province.order(:province_name), :id, :province_name, { label: "Provincia"}  %>
@@ -31,11 +31,16 @@
                 <%= address_form.collection_select :city_id, City.order(:city_name), :id, :city_name, { label: "Municipio/Cidade"}  %>
                 <%= address_form.text_field :street, label: :street%>
               <% end %> 
-
-              <%= form.fields_for :dimention do |dimention_form| %>
-                <%= dimention_form.number_field :width_d, label: "Width"%>
-                <%= dimention_form.number_field :height_d, label: "Height"%>
-              <% end %> 
+              <div class="row">
+                <%= form.fields_for :dimention do |dimention_form| %>
+                  <div class="col">
+                    <%= dimention_form.number_field :width_d, label: "Width"%>
+                  </div>
+                  <div class="col">
+                    <%= dimention_form.number_field :height_d, label: "Height"%>
+                  </div>
+                <% end %> 
+              </div>
 
               <%= form.number_field :price %>
               <%= form.hidden_field :user_id, readonly: true , value: current_user.id if user_signed_in?%>

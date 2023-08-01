@@ -6,7 +6,8 @@
 
   <p>
     <strong>Photo:</strong>
-    <%= link_to land.photo.filename, land.photo if land.photo.attached? %>
+    <%= image_tag(land.photos) if land.photos.attached? %>
+    <%= link_to land.photos.filename, land.photos if land.photos.attached? %>
   </p>
 
   <p>

@@ -1,5 +1,6 @@
 class LandsController < ApplicationController
   before_action :set_land, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [ :show, :index]
 
   # GET /lands or /lands.json
   def index
@@ -13,6 +14,8 @@ class LandsController < ApplicationController
   # GET /lands/new
   def new
     @land = Land.new
+    @land.build_address
+    @land.build_dimention
   end
 
   # GET /lands/1/edit
@@ -22,7 +25,7 @@ class LandsController < ApplicationController
   # POST /lands or /lands.json
   def create
     @land = Land.new(land_params)
-
+    debugger
     respond_to do |format|
       if @land.save
         format.html { redirect_to land_url(@land), notice: "Land was successfully created." }
@@ -65,6 +68,14 @@ class LandsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def land_params
-      params.require(:land).permit(:title_land, :photo, :description, :price, :dimention_id, :address_id)
+      params.require(:land).permit(
+        :title_land, 
+        :photos, 
+        :description, 
+        :price, 
+        :dimention_id, 
+        address_attributes: [:id, :street, :city_id, :_destroy],
+        dimention_attributes: [:id, :width_d, :height_d, :_destroy ]
+      )
     end
 end
