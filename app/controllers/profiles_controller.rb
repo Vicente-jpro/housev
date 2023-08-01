@@ -14,6 +14,7 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/new
   def new
+#
    if @profile.any?
       respond_to do |format| 
         format.html { redirect_to profile_url(@profile.first) }
@@ -45,12 +46,8 @@ class ProfilesController < ApplicationController
 
   # PATCH/PUT /profiles/1 or /profiles/1.json
   def update
-    
-   debugger
-
     respond_to do |format|
       if @profile.update(profile_params)
-        debugger
         format.html { redirect_to profile_url(@profile), notice: "Profile was successfully updated." }
         format.json { render :show, status: :ok, location: @profile }
       else
@@ -87,9 +84,10 @@ class ProfilesController < ApplicationController
         :phone1, 
         :phone2, 
         :profile_type, 
-        :user_id, 
+        :user_id,
         :image,
-        :address_attributes: [:id, :street, :city]  )
+        address_attributes: [:id, :street, :city_id, :_destroy] 
+      )
     end
 
 end

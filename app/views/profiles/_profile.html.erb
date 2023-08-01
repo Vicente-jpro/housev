@@ -5,15 +5,18 @@
               <div class="d-flex justify-content-center">
                  <%= render "image", image_profile: profile.image %>
               </div>
-              <h4 class="text-center text-pink">Editar Perfil</h4>
+              <h4 class="text-center text-pink"><%= profile.name_profile %></h4>
           </div>
           <div class="text-center my-2">
               <br>
-              <%= profile.name_profile %> <br>
+              
              <strong>Email:</strong>  <%= profile.user.email %> <br>
               <strong>Tipo de subscrição:</strong> <%= profile.profile_type %> <br>
               <strong>Telemovel:</strong> <%= profile.phone1 %>, <%= profile.phone2 %><br>
-              <strong>Endereço:</strong> descricão do da morada,Municipio, Provincia
+              <strong>Endereço:</strong> 
+                <%= profile.address.street %>, 
+                <%= profile.address.city.city_name %>,  
+                <%= profile.address.city.province.province_name %>
           </div>
           <div class="mb-3 d-grid gap-2">
               <%= link_to "Editar", edit_profile_path(profile), class: "btn btn-info" %> 

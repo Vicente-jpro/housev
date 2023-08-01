@@ -29,3 +29,23 @@ Address.find_or_create_by!(street: "Rangel rua 17", city: City.all.sample)
 Address.find_or_create_by!(street: "Talalice", city: City.all.sample)
 Address.find_or_create_by!(street: "Mutamba", city: City.all.sample)
 puts "Fim do cadastro das cidades."
+
+puts "Cadastrando as perfis...."
+Profile.find_or_create_by!(
+    name_profile: "Vicente Simão", 
+    phone1: "944889722",
+    phone2: "995922549",
+    profile_type: "Client",
+    address: Address.all.sample,
+    user: User.first
+)
+Profile.find_or_create_by!(
+    name_profile: "Vicente Simão", 
+    phone1: "944889722",
+    phone2: "995922549",
+    profile_type: "Client",
+    address: Address.all.sample,
+    user: User.first
+)
+puts "Fim do cadastro de perfis."
+
