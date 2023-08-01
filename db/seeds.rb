@@ -14,7 +14,6 @@ Province.find_or_create_by!(province_name: "Uila")
 Province.find_or_create_by!(province_name: "Kuanza Sul")
 puts "Fim do cadastro de provincias."
 
-
 puts "Cadastrando municipios/cidade..."
 City.find_or_create_by!(city_name: "Belas", province: Province.first)
 City.find_or_create_by!(city_name: "Rangel", province: Province.first)
@@ -35,7 +34,7 @@ Profile.find_or_create_by!(
     name_profile: "Vicente Simão", 
     phone1: "944889722",
     phone2: "995922549",
-    profile_type: "Client",
+    profile_type: "CLIENTE",
     address: Address.all.sample,
     user: User.first
 )
@@ -43,9 +42,30 @@ Profile.find_or_create_by!(
     name_profile: "Vicente Simão", 
     phone1: "944889722",
     phone2: "995922549",
-    profile_type: "Client",
+    profile_type: "CLIENTE",
     address: Address.all.sample,
     user: User.first
 )
 puts "Fim do cadastro de perfis."
 
+puts "Cadastrando as Dimention..."
+Dimention.find_or_create_by!(
+    width_d: 100, 
+    height_d: 100
+)
+
+Dimention.find_or_create_by!(
+    width_d: 50, 
+    height_d: 50
+)
+puts "Fim do cadastro de Dimention."
+
+puts "Cadastrando as land..."
+Land.find_or_create_by!(
+    title_land: "Terreno no Bita Tanke", 
+    description: "Esse é um terreno grande bem localizado.",
+    price: "5000",
+    dimention: Dimention.all.sample,
+    address: Address.all.sample
+)
+puts "Fim do cadastro de land."
