@@ -7,6 +7,7 @@ class Profile < ApplicationRecord
     attachable.variant :thumb, resize_to_limit: [140, 140]
   end
 
+  enum profile_type: {Adiministrador: "ADMINISTRADOR", cliente: "CLIENTE"}
   scope :find_by_user_id, ->(user_id) { where(user_id: user_id) }
   
 
