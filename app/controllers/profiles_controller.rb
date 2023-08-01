@@ -14,7 +14,7 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/new
   def new
-
+#
    if @profile.any?
       respond_to do |format| 
         format.html { redirect_to profile_url(@profile.first) }
