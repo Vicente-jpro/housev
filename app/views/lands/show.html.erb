@@ -1,0 +1,116 @@
+  <div class="album py-5" id="lands">
+    <div class="container-fluid">
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-pink ms-1" type="button">
+          <i class="bi bi-camera-fill"></i>
+          Ver todoas mais fotos
+        </button>
+        <button class="btn btn-pink ms-1" type="button">
+          <i class="bi bi-heart-fill"></i>
+          Guardar como favorito
+        </button>
+      </div>
+        <div class="row my-1">
+            <% if @land.images.attached? %>
+              <div class="col-sm-6 bg-light">
+                  <%= image_tag(@land.images.first, 
+                  class: "bd-placeholder-img card-img-top", width:"100%", height:"390")%>
+              </div>
+              <div class="col">
+                <div class="row">
+                    <%= render "images_show", images: @land.images %>
+                </div>
+              </div>
+            <% end %>
+        </div>
+
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="d-grid gap-2">
+      <%= link_to "Editar", edit_land_path(@land), class:"btn btn-info" %> 
+      <%= button_to "Eliminar", @land, method: :delete, class:"btn btn-danger d-grid gap-2" %>
+    </div>
+
+    <br>
+    <p>
+      <strong class="fs-4 text-pink">
+        <%= @land.address.street %>, 
+        <%= @land.address.city.city_name %>,  
+        <%= @land.address.city.province.province_name %>
+        <i class="bi bi-geo-alt-fill fs-4"></i>
+      </strong>
+    </p>
+    
+    <h1 class="fs-3">
+        <%= @land.title_land %>
+    </h1>
+    <p class="fs-3 text-pink">
+       <%= @land.price %> Kz  <span class="fs-5">/mês</span>
+    </p>
+   
+    
+   <div class="fs-3">
+
+    <div class="d-inline">
+      Largura: <%= @land.dimention.height_d %> m², 
+      Comprimento: <%= @land.dimention.width_d %> m²
+    </div>
+   
+   </div>
+
+    <div class="row">
+      <div class="col-sm-8">
+        
+        <hr class="text-pink"> <br>
+        <strong class="text-pink">Descrição: </strong>
+        <p class="text-description">
+          <%= @land.description %>
+        </p>
+
+        <br>
+        <hr class="text-pink">
+
+      </div>
+      <!-- reservation-->
+      <div class="col d-flex justify-content-center">
+        <div class="card fixed" style="width: 18rem; height: 450px ;">
+          <div class="card-body">
+            <h5 class="card-title text-pink text-center">proprietário</h5>
+            <p class="card-text text-center text-description">
+              Nome do proprietário
+            </p>
+            <h6 class="card-subtitle mb-2 text-body-secondary text-center">Card subtitle</h6>
+            <p class="card-text text-center text-description">
+              Breve introdução da empresa ou do proprietário
+              <br>
+              telemovel, email
+            </p>
+            <form action="">
+              <div class="mb-3">
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Seu nome">
+              </div>
+              <div class="mb-3">
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+              </div>
+              <div class="mb-3">
+                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Sua mensagem" rows="3"></textarea>
+              </div>
+              <div class="d-grid gap-2">
+                <button class="btn btn-pink" type="button">Enviar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      
+      </div>
+      <!-- End reservation-->
+    </div>
+  </div>
+
+
+
+
+
+
