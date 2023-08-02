@@ -27,7 +27,8 @@
             <div>
               <%= form.text_field :name_profile, label: "Name"%>
               <%= form.file_field :image %>  
-
+              <%= form.select :genders, Profile.genders, {label: :gender} %>
+            
               <%= form.select :profile_types, Profile.profile_types, {label: "Tipo do perfil"} %>
               <%= form.telephone_field :phone1, label: "Phone1"%>
               <%= form.telephone_field :phone2, label: "Phone2" %>
