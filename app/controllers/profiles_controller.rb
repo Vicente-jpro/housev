@@ -3,6 +3,8 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_profile_by_user_id, only: [ :new, :update ]
 
+  include ProfilesConcerns
+
   # GET /profiles or /profiles.json
   def index
     @profiles = Profile.all
@@ -32,9 +34,13 @@ class ProfilesController < ApplicationController
   # POST /profiles or /profiles.json
   def create
     @profile = Profile.new(profile_params)
-    
+    @profile.gender = gender_to_integer(params) 
+    @profile.user_id = current_user.id
+
+
     respond_to do |format|
       if @profile.save
+        @profile.user_id = current_user.id
         format.html { redirect_to profile_url(@profile), notice: "Profile was successfully created." }
         format.json { render :show, status: :created, location: @profile }
       else
@@ -48,6 +54,7 @@ class ProfilesController < ApplicationController
   def update
     respond_to do |format|
       if @profile.update(profile_params)
+
         format.html { redirect_to profile_url(@profile), notice: "Profile was successfully updated." }
         format.json { render :show, status: :ok, location: @profile }
       else
@@ -72,7 +79,7 @@ class ProfilesController < ApplicationController
     def set_profile
       @profile = Profile.find(params[:id])
     end
-
+    
     def set_profile_by_user_id 
       @profile ||= Profile.find_by_user_id(current_user.id)
       @profile
@@ -84,7 +91,6 @@ class ProfilesController < ApplicationController
         :phone1, 
         :phone2, 
         :profile_type, 
-        :user_id,
         :gender,
         :image,
         address_attributes: [:id, :street, :city_id, :_destroy] 

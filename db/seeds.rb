@@ -35,7 +35,7 @@ Profile.find_or_create_by!(
     phone1: "944889722",
     phone2: "995922549",
     profile_type: "CLIENTE",
-    gender: 0,
+    gender: "MASCULINE",
     address: Address.all.sample,
     user: User.first
 )
