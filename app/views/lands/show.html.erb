@@ -36,23 +36,26 @@
     <br>
     <p>
       <strong class="fs-4 text-pink">
-        Localização do Terreno
+        <%= @land.address.street %>, 
+        <%= @land.address.city.city_name %>,  
+        <%= @land.address.city.province.province_name %>
         <i class="bi bi-geo-alt-fill fs-4"></i>
       </strong>
     </p>
     
     <h1 class="fs-3">
-       Titulo
+        <%= @land.title_land %>
     </h1>
     <p class="fs-3 text-pink">
-      R$ 300  <span class="fs-5">/mês</span>
+       <%= @land.price %> Kz  <span class="fs-5">/mês</span>
     </p>
    
     
    <div class="fs-3">
 
     <div class="d-inline">
-      Largura: 3000 m², Comprimento: 4000 m²
+      Largura: <%= @land.dimention.height_d %> m², 
+      Comprimento: <%= @land.dimention.width_d %> m²
     </div>
    
    </div>
@@ -63,12 +66,7 @@
         <hr class="text-pink"> <br>
         <strong class="text-pink">Descrição: </strong>
         <p class="text-description">
-          Fresco e elegante apartamento triplex de 3 andares na praia na aldeia tropical de 
-          Umdloti. De dia, contemple o deslumbrante mar azul, dê alguns passos para fora e 
-          mergulhe na piscina, ou aventure-se pela estrada até uma grande praia para banhos 
-          de sol e piscinas rochosas salva-vidas 5 minutos à direita ou 15 minutos à esquerda. 
-          À noite, você pode caminhar até os restaurantes locais ao lado da praia ou fazer um 
-          braai/churrasco sob as estrelas com os grilos cantando e as ondas batendo na costa.
+          <%= @land.description %>
         </p>
 
         <br>
@@ -79,7 +77,10 @@
       <div class="col d-flex justify-content-center">
         <div class="card fixed" style="width: 18rem; height: 450px ;">
           <div class="card-body">
-            <h5 class="card-title text-pink text-center">Nome do proprietário</h5>
+            <h5 class="card-title text-pink text-center">proprietário</h5>
+            <p class="card-text text-center text-description">
+              Nome do proprietário
+            </p>
             <h6 class="card-subtitle mb-2 text-body-secondary text-center">Card subtitle</h6>
             <p class="card-text text-center text-description">
               Breve introdução da empresa ou do proprietário
