@@ -1,11 +1,13 @@
 class LandsController < ApplicationController
   before_action :set_land, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [ :show, :index]
+  include LandsConcerns
 
   # GET /lands or /lands.json
   def index
     @lands = Land.all
     @page = "index"
+    hello
   end
 
   # GET /lands/1 or /lands/1.json
@@ -26,7 +28,6 @@ class LandsController < ApplicationController
   # POST /lands or /lands.json
   def create
     @land = Land.new(land_params)
-    debugger
     respond_to do |format|
       if @land.save
         format.html { redirect_to land_url(@land), notice: "Land was successfully created." }
@@ -40,6 +41,10 @@ class LandsController < ApplicationController
 
   # PATCH/PUT /lands/1 or /lands/1.json
   def update
+
+    if !is_image_uploaded?(params[:land][:images]) 
+      params[:land][:images] << set_land.images
+    end
     respond_to do |format|
       if @land.update(land_params)
         format.html { redirect_to land_url(@land), notice: "Land was successfully updated." }
@@ -67,6 +72,7 @@ class LandsController < ApplicationController
       @land = Land.find(params[:id])
     end
 
+    
     # Only allow a list of trusted parameters through.
     def land_params
       params.require(:land).permit(
