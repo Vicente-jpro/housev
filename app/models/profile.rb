@@ -8,6 +8,8 @@ class Profile < ApplicationRecord
   end
 
   enum profile_type: {Adiministrador: "ADMINISTRADOR", cliente: "CLIENTE"}
+  enum gender: { Masculino: 0, Feminino: 1 }
+  
   scope :find_by_user_id, ->(user_id) { where(user_id: user_id) }
   
 end

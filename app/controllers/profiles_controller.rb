@@ -85,6 +85,7 @@ class ProfilesController < ApplicationController
         :phone2, 
         :profile_type, 
         :user_id,
+        :gender,
         :image,
         address_attributes: [:id, :street, :city_id, :_destroy] 
       )
