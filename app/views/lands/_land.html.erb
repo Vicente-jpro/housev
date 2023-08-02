@@ -7,13 +7,8 @@
   <p>
     <strong>Photo:</strong>
 
-    <%= land.images.size %>
-    <% if land.images.attached? %>
-      <% land.images.each do |image| %>
-        <%= image_tag(image) %>
-        <%= link_to image.filename, image  %>
-      <% end %>
-    <% end %>
+    <%= render "images", images: land.images %>
+
   </p>
 
 
