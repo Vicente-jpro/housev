@@ -6,9 +6,16 @@
 
   <p>
     <strong>Photo:</strong>
-    <%= image_tag(land.photos) if land.photos.attached? %>
-    <%= link_to land.photos.filename, land.photos if land.photos.attached? %>
+
+    <%= land.images.size %>
+    <% if land.images.attached? %>
+      <% land.images.each do |image| %>
+        <%= image_tag(image) %>
+        <%= link_to image.filename, image  %>
+      <% end %>
+    <% end %>
   </p>
+
 
   <p>
     <strong>Description:</strong>

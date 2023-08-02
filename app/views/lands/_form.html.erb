@@ -22,7 +22,7 @@
 
             <div>
               <%= form.text_field :title_land, label: "Titulo" %>
-              <%= form.file_field :photos, multiple: true %>  
+              <%= form.file_field :images, multiple: true %>  
               <%= form.text_field :description, label: :description %>
              
               <%= form.collection_select :province_id, Province.order(:province_name), :id, :province_name, { label: "Provincia"}  %>

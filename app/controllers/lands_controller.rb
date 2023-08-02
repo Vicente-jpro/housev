@@ -70,12 +70,12 @@ class LandsController < ApplicationController
     def land_params
       params.require(:land).permit(
         :title_land, 
-        :photos, 
         :description, 
         :price, 
         :dimention_id, 
         address_attributes: [:id, :street, :city_id, :_destroy],
-        dimention_attributes: [:id, :width_d, :height_d, :_destroy ]
+        dimention_attributes: [:id, :width_d, :height_d, :_destroy ],
+        images: []
       )
     end
 end
