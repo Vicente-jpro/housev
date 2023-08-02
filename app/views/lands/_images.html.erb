@@ -1,8 +1,0 @@
-
-<%= images.size %>
-<% if images.attached? %>
-    <% images.each do |image| %>
-    <%= image_tag(image) %>
-    <%= link_to image.filename, image  %>
-    <% end %>
-<% end %>

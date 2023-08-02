@@ -1,14 +1,10 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Lands</h1>
-
-<div id="lands">
-  <% @lands.each do |land| %>
-    <%= render land %>
-    <p>
-      <%= link_to "Show this land", land %>
-    </p>
-  <% end %>
+<div class="album py-5">
+  <div class="container-fluid">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3" id="lands">
+      <% @lands.each do |land| %>
+        <%= render land %>
+      <% end %>
+    </div>
+  </div>
 </div>
-
 <%= link_to "New land", new_land_path %>
