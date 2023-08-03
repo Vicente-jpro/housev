@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Profile lands</h1>
+
+<div id="profile_lands">
+  <% @profile_lands.each do |profile_land| %>
+    <%= render profile_land %>
+    <p>
+      <%= link_to "Show this profile land", profile_land %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New profile land", new_profile_land_path %>
