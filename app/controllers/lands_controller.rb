@@ -7,7 +7,6 @@ class LandsController < ApplicationController
   def index
     @lands = Land.all
     @page = "index"
-    hello
   end
 
   # GET /lands/1 or /lands/1.json
