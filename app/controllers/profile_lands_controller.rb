@@ -3,17 +3,12 @@ class ProfileLandsController < ApplicationController
   before_action :authenticate_user!
   # GET /profile_lands or /profile_lands.json
   def index
-    profile = Profile.find_by_user_id(current_user)
-    @lands = Land.find_all_lands_by_profile(profile)
+    @profile_land = ProfileLand.find_all_lands_by_user(current_user)
+    @page = "index"
   end
 
   # GET /profile_lands/1 or /profile_lands/1.json
   def show
-  end
-
-  # GET /profile_lands/new
-  def new
-    @profile_land = ProfileLand.new
   end
 
   # GET /profile_lands/1/edit

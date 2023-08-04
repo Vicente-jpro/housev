@@ -62,6 +62,8 @@ group :development, :test do
   gem "database_cleaner-active_record"
   gem 'rails-controller-testing'
   gem 'letter_opener', '~> 1.8', '>= 1.8.1'
+  gem 'rails_db', '~> 2.4', '>= 2.4.2'
+
 end
 
 group :development do
