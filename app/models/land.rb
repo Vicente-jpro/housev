@@ -10,19 +10,17 @@ class Land < ApplicationRecord
 
   has_many_attached :images
 
+  def self.find_lands_by_user(user)
+    Land.joins(:profiles)
+        .where("profiles.user_id = #{user.id}")
+  end
 
-  # SELECT * FROM profile_lands 
+  # SELECT * FROM lands
+  # JOIN profile_lands
+  # ON profile_lands.land_id = lands.id;
   # JOIN profiles
   # ON profiles.id = profile_lands.profile_id
-  # JOIN lands
-  # ON lands.id = profile_lands.land_id
-  # WHERE profile_lands.profile_id =  id_profile
-
-
-  # SELECT * FROM lands  
-  # JOIN profile_lands
-  # ON profile_lands.id = profile_lands.land_id
-  # WHERE profile_lands.profile_id =  id_profile
+  # where profiles.user_id = 1
 
 
 end

@@ -17,9 +17,4 @@ class Profile < ApplicationRecord
     cliente: "CLIENTE"
   }
   
-  def self.find_by_user_id(user) 
-    Profile.joins(:user).where(user_id: user.id)
-  end
-  
-  
 end
