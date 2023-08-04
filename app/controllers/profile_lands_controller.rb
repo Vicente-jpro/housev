@@ -1,9 +1,10 @@
 class ProfileLandsController < ApplicationController
   before_action :set_profile_land, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!
   # GET /profile_lands or /profile_lands.json
   def index
-    @profile_lands = ProfileLand.all
+    profile = Profile.find_by_user_id(current_user)
+    @lands = Land.find_all_lands_by_profile(profile)
   end
 
   # GET /profile_lands/1 or /profile_lands/1.json

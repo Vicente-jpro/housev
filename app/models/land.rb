@@ -9,4 +9,11 @@ class Land < ApplicationRecord
   has_many :profiles, through: :profile_lands
 
   has_many_attached :images
+
+  def self.find_all_lands_by_profile(profile)
+    Land.joins(:profile_lands)
+        .where("profile_lands.profile_id = #{profile.profile_id}")
+  end
+
 end
+

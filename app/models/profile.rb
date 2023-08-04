@@ -10,15 +10,16 @@ class Profile < ApplicationRecord
     attachable.variant :thumb, resize_to_limit: [140, 140]
   end
   
-  
+  enum gender: { Masculino: "MASCULINE", Feminino: "FEMININE" }
   enum profile_type: {
     Super_administrador: "SUPER_ADMINISTRADOR", 
     Adiministrador: "ADMINISTRADOR", 
     cliente: "CLIENTE"
   }
-
-  enum gender: { Masculino: "MASCULINE", Feminino: "FEMININE" }
   
-  scope :find_by_user_id, ->(user_id) { where(user_id: user_id) }
+  def self.find_by_user_id(user) 
+    Profile.joins(:user).where(user_id: user.id)
+  end
+  
   
 end
