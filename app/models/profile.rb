@@ -17,4 +17,8 @@ class Profile < ApplicationRecord
     cliente: "CLIENTE"
   }
   
+  def self.find_by_user(user) 
+    Profile.find_by(user_id: user.id)
+  end
+  
 end

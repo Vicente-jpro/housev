@@ -1,9 +1,11 @@
+Index PAG
 <div class="album py-5">
   <div class="container-fluid">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3" id="profile_lands">
 
-      <% @profile_lands.each do |profile_land| %>
-        <%= render "lands/land", land: profile_land.land %> 
+      <% @lands.each do |profile_land| %>
+        <%= render "lands/land", land: profile_land %> 
+        <% debugger %>
       <% end %>
 
     </div>

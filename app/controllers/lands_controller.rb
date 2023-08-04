@@ -2,6 +2,8 @@ class LandsController < ApplicationController
   before_action :set_land, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [ :show, :index]
   include LandsConcerns
+  include ProfileLandsConcerns
+
 
   # GET /lands or /lands.json
   def index
@@ -29,6 +31,9 @@ class LandsController < ApplicationController
     @land = Land.new(land_params)
     respond_to do |format|
       if @land.save
+
+        profile = Profile.find_by_user(current_user)
+        create_profile_land(profile, @land)
         format.html { redirect_to land_url(@land), notice: "Land was successfully created." }
         format.json { render :show, status: :created, location: @land }
       else
