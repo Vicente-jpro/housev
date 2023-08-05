@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_02_213149) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_03_180708) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -74,6 +74,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_02_213149) do
     t.index ["dimention_id"], name: "index_lands_on_dimention_id"
   end
 
+  create_table "profile_lands", force: :cascade do |t|
+    t.integer "profile_id", null: false
+    t.integer "land_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["land_id"], name: "index_profile_lands_on_land_id"
+    t.index ["profile_id"], name: "index_profile_lands_on_profile_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string "name_profile"
     t.string "phone1"
@@ -112,6 +121,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_02_213149) do
   add_foreign_key "cities", "provinces"
   add_foreign_key "lands", "addresses"
   add_foreign_key "lands", "dimentions"
+  add_foreign_key "profile_lands", "lands"
+  add_foreign_key "profile_lands", "profiles"
   add_foreign_key "profiles", "addresses"
   add_foreign_key "profiles", "users"
 end

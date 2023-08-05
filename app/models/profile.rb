@@ -3,14 +3,22 @@ class Profile < ApplicationRecord
   belongs_to :address
   accepts_nested_attributes_for :address
 
+  has_many :profile_lands
+  has_many :lands, through: :profile_lands, dependent: :destroy
+
   has_one_attached :image do |attachable|
     attachable.variant :thumb, resize_to_limit: [140, 140]
   end
   
-  
-  enum profile_type: {Adiministrador: "ADMINISTRADOR", cliente: "CLIENTE"}
   enum gender: { Masculino: "MASCULINE", Feminino: "FEMININE" }
+  enum profile_type: {
+    Super_administrador: "SUPER_ADMINISTRADOR", 
+    Adiministrador: "ADMINISTRADOR", 
+    cliente: "CLIENTE"
+  }
   
-  scope :find_by_user_id, ->(user_id) { where(user_id: user_id) }
+  def self.find_by_user(user) 
+    Profile.find_by(user_id: user.id)
+  end
   
 end

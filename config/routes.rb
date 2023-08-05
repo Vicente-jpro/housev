@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :profile_lands, only: [:index]
   resources :lands
   resources :profiles
   root "home#index"

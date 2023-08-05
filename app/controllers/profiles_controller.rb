@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
 
   # GET /profiles or /profiles.json
   def index
-    @profiles = Profile.all
+    @profiles = Profile.includes(:user, :address)
   end
 
   # GET /profiles/1 or /profiles/1.json
@@ -16,14 +16,15 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/new
   def new
-#
-   if @profile.any?
+
+   if !@profile.nil?
       respond_to do |format| 
-        format.html { redirect_to profile_url(@profile.first) }
+        format.html { redirect_to profile_url(@profile) }
         format.json { render :show, status: :created, location: @profile}
       end
    else
       @profile = Profile.new
+      @profile.build_address
    end
   end
 
@@ -34,13 +35,10 @@ class ProfilesController < ApplicationController
   # POST /profiles or /profiles.json
   def create
     @profile = Profile.new(profile_params)
-    @profile.gender = gender_to_integer(params) 
     @profile.user_id = current_user.id
-
-
+    
     respond_to do |format|
       if @profile.save
-        @profile.user_id = current_user.id
         format.html { redirect_to profile_url(@profile), notice: "Profile was successfully created." }
         format.json { render :show, status: :created, location: @profile }
       else
