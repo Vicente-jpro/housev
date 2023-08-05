@@ -79,13 +79,13 @@
           <div class="card-body">
             <h5 class="card-title text-pink text-center">proprietário</h5>
             <p class="card-text text-center text-description">
-              Nome do proprietário
+              <%= @profile.name_profile %>
             </p>
-            <h6 class="card-subtitle mb-2 text-body-secondary text-center">Card subtitle</h6>
             <p class="card-text text-center text-description">
               Breve introdução da empresa ou do proprietário
               <br>
-              telemovel, email
+              <%= @profile.phone1 %>, <%= @profile.phone1 %>, 
+              <%= @profile.user.email %>
             </p>
             <form action="">
               <div class="mb-3">

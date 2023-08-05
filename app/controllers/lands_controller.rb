@@ -13,6 +13,9 @@ class LandsController < ApplicationController
 
   # GET /lands/1 or /lands/1.json
   def show
+    # Find profile by land
+    @profile = ProfileLand.find_land_by_land(@land).profile
+    @profile
   end
 
   # GET /lands/new
