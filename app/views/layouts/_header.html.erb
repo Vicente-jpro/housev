@@ -49,7 +49,7 @@
         </div>
       </div>
       <!-- Lands -->
-        <ul class="nav justify-content-center">
+        <ul class="nav justify-content-start">
           <li class="nav-item">
             <%= link_to "Novo terreno", new_land_path, class: "nav-link px-2 text-pink fs-5" %>
           </li>
@@ -62,5 +62,18 @@
         </ul>
         <!-- End Lands --->
 
+        <!-- Houses -->
+        <ul class="nav justify-content-start">
+          <li class="nav-item">
+            <%= link_to "Novo imovel", new_land_path, class: "nav-link px-2 text-pink fs-5" %>
+          </li>
+          <li class="nav-item">
+              <%= link_to "Visualizar imoveis", lands_path, class: "nav-link px-2 text-pink fs-5" %>
+          </li>
+          <li class="nav-item">
+              <%= link_to "Meus imoveis postados", profile_lands_path, class: "nav-link px-2 text-pink fs-5" %>
+          </li>
+        </ul>
+        <!-- end houses-->
     </div>
 </header>
