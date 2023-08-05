@@ -62,11 +62,17 @@ class LandsController < ApplicationController
 
   # DELETE /lands/1 or /lands/1.json
   def destroy
-    @land.destroy
-
+    is_creator = ProfileLand.is_creator_land?(current_user, @land)
     respond_to do |format|
-      format.html { redirect_to lands_url, notice: "Land was successfully destroyed." }
-      format.json { head :no_content }
+      if is_creator
+        @land.destroy
+          format.html { redirect_to lands_url(@land), status: :unprocessable_entity, notice: "Land was successfully destroyed." }
+          format.json { head :no_content }
+      else
+        format.html { redirect_to lands_url,  notice: "This land belongs to another user." }
+        format.json { head :no_content }
+      end
+    
     end
   end
 
