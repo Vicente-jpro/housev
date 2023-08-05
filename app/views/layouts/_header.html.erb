@@ -10,9 +10,9 @@
           <li><a href="#" class="nav-link px-2 text-pink fs-5">Imoveis</a></li>
           <li><a href="#" class="nav-link px-2 text-pink fs-5">Arrendar</a></li>
           <li><a href="#" class="nav-link px-2 text-pink fs-5">Comprar</a></li>
-          <li> <%= link_to "Terrenos", lands_path, class: "nav-link px-2 text-pink fs-5" %></li>
-          <li><a href="#" class="nav-link px-2 text-pink fs-5">Sobre nós</a></li>
-          <li><a href="#" class="nav-link px-2 text-pink fs-5">Anúnciar imovel</a></li>
+          <li> <%= link_to "Terrenos", lands_path, class: "nav-link px-2 text-pink fs-5" %> </li>
+  
+
         </ul>
 
         <%= link_to "Criar conta", new_user_registration_path, class: "btn btn-pink ms-1" if !user_signed_in?%> 
@@ -48,5 +48,19 @@
           </ul>
         </div>
       </div>
+      <!-- Lands -->
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <%= link_to "Novo terreno", new_land_path, class: "nav-link px-2 text-pink fs-5" %>
+          </li>
+          <li class="nav-item">
+              <%= link_to "Visualizar terrenos", lands_path, class: "nav-link px-2 text-pink fs-5" %>
+          </li>
+          <li class="nav-item">
+              <%= link_to "Meus terrenos postados", profile_lands_path, class: "nav-link px-2 text-pink fs-5" %>
+          </li>
+        </ul>
+        <!-- End Lands --->
+
     </div>
 </header>
