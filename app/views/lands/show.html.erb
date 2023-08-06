@@ -72,7 +72,19 @@
         <br>
         <hr class="text-pink">
 
+      <!-- Lands -->
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3" id="lands">
+        <% @profile.lands.each do |land| %>
+          <%= render land %>
+        <% end %>
       </div>
+
+      <!-- End lands -->
+
+      </div>
+      
+  
       <!-- reservation-->
       <div class="col d-flex justify-content-center">
         <div class="card fixed" style="width: 18rem; height: 450px ;">

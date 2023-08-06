@@ -16,7 +16,7 @@ class ProfileLand < ApplicationRecord
   end
 
   def self.find_land_by_land(land)
-    ProfileLand.includes(:profile).find_by(land_id: land.id)
+    ProfileLand.includes(:profile, :land).find_by(land_id: land.id)
   end
   
 end
