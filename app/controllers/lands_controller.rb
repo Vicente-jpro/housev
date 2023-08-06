@@ -1,7 +1,7 @@
 class LandsController < ApplicationController
   before_action :set_land, only: %i[ show edit update destroy show_images]
   before_action :authenticate_user!, except: [ :show, :index]
-
+  before_action :get_profile, only: [ :create ]
   
   include LandsConcerns
   include ProfileLandsConcerns
@@ -39,11 +39,14 @@ class LandsController < ApplicationController
   # POST /lands or /lands.json
   def create
     @land = Land.new(land_params)
+    
     respond_to do |format|
-      if @land.save
-
-        profile = Profile.find_by_user(current_user)
-        create_profile_land(profile, @land)
+      if @profile.nil?
+        format.html { redirect_to new_profile_path, notice: "You must to create a profile after create a land." }
+        format.json { render json: ["You must to create a profile after create a land."], status: :unprocessable_entity }
+      elsif @land.save
+        debugger
+        create_profile_land(@profile, @land)
         format.html { redirect_to land_url(@land), notice: "Land was successfully created." }
         format.json { render :show, status: :created, location: @land }
       else
@@ -91,7 +94,11 @@ class LandsController < ApplicationController
     def set_land
       @land = Land.find(params[:id])
     end
-    
+
+    def get_profile
+      @profile = Profile.find_by_user(current_user)
+    end
+
     # Only allow a list of trusted parameters through.
     def land_params
       params.require(:land).permit(
