@@ -3,7 +3,7 @@ class ProfileLandsController < ApplicationController
   # GET /profile_lands or /profile_lands.json
   def index
     @lands = Land.find_lands_by_user(current_user)
-    @page = "index"
+   # @page = "index"
   end
 
   private

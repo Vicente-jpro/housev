@@ -8,11 +8,14 @@ class LandsController < ApplicationController
   # GET /lands or /lands.json
   def index
     @lands = Land.all
-    @page = "index"
+    #@page = "index"
   end
 
   # GET /lands/1 or /lands/1.json
   def show
+    @profile = ProfileLand.find_land_by_land(@land).profile
+    @profile
+
   end
 
   # GET /lands/new

@@ -1,30 +1,33 @@
 
-<% if is_index_page?(@page)%>
-  <div class="col" id="<%= dom_id land %>">
-    <div class="card border-light shadow-sm mb-5 bg-body-tertiary rounded">
-     
-     <%= link_to land do %>
-        <% if land.images.attached? %>
-          <%= render "images_index", images: land.images %>
-        <% end %>
-     <% end %>
 
-      <div class="card-body">
-        <p class="card-text">
+  <%= link_to land, class: "link-offset-2 link-underline link-underline-opacity-0" do %>
+      
+    <div class="col" id="<%= dom_id land %>">
+      <div class="card border-light shadow-sm mb-5 bg-body-tertiary rounded">
+      
 
-          <%= link_to land, class: "link-offset-2 link-underline link-underline-opacity-0" do %>
-            <strong class="text-pink"><%= land.title_land %></strong> <br>
+          <% if land.images.attached? %>
+            <%= render "images_index", images: land.images %>
           <% end %>
-     
-          <p class="text-description">
-              <%= land.description %>
-          </p>
-            <span class="bg-green px-3">Venda</span> <br>
-            <%= land.price %>
-        </p>
+      
 
+        <div class="card-body">
+          <p class="card-text">
+
+              <strong class="text-pink"><%= land.title_land %></strong> <br>
+        
+      
+            <p class="text-description">
+            
+                <%= land.description %>
+            </p>
+              <span class="bg-green px-3">Venda</span> <br>
+              <%= land.price %>
+          </p>
+
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+
 

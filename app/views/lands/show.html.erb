@@ -72,20 +72,30 @@
         <br>
         <hr class="text-pink">
 
+      <!-- Lands -->
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3" id="lands">
+        <% @profile.lands.each do |land| %>
+          <%= render land %>
+        <% end %>
       </div>
+      <!-- End lands -->
+
+      </div>
+      
+  
       <!-- reservation-->
       <div class="col d-flex justify-content-center">
         <div class="card fixed" style="width: 18rem; height: 450px ;">
           <div class="card-body">
             <h5 class="card-title text-pink text-center">proprietário</h5>
             <p class="card-text text-center text-description">
-              Nome do proprietário
+              <%= @profile.name_profile %>
             </p>
-            <h6 class="card-subtitle mb-2 text-body-secondary text-center">Card subtitle</h6>
             <p class="card-text text-center text-description">
               Breve introdução da empresa ou do proprietário
               <br>
-              telemovel, email
+              <%= @profile.phone1 %>, <%= @profile.phone1 %>, 
+              <%= @profile.user.email %>
             </p>
             <form action="">
               <div class="mb-3">
