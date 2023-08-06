@@ -8,7 +8,7 @@ class LandsController < ApplicationController
   # GET /lands or /lands.json
   def index
     @lands = Land.all
-    @page = "index"
+    #@page = "index"
   end
 
   # GET /lands/1 or /lands/1.json
