@@ -1,6 +1,8 @@
 class LandsController < ApplicationController
-  before_action :set_land, only: %i[ show edit update destroy ]
+  before_action :set_land, only: %i[ show edit update destroy show_images]
   before_action :authenticate_user!, except: [ :show, :index]
+
+  
   include LandsConcerns
   include ProfileLandsConcerns
 
@@ -15,7 +17,12 @@ class LandsController < ApplicationController
   def show
     @profile = ProfileLand.find_land_by_land(@land).profile
     @profile
-
+  end
+  
+  # GET	/lands/:id/show_images
+  def show_images
+    @profile = ProfileLand.find_land_by_land(@land).profile
+    @profile
   end
 
   # GET /lands/new
@@ -84,7 +91,6 @@ class LandsController < ApplicationController
     def set_land
       @land = Land.find(params[:id])
     end
-
     
     # Only allow a list of trusted parameters through.
     def land_params
