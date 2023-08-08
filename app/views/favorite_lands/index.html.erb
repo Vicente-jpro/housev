@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Favorite lands</h1>
+
+<div id="favorite_lands">
+  <% @favorite_lands.each do |favorite_land| %>
+    <%= render favorite_land %>
+    <p>
+      <%= link_to "Show this favorite land", favorite_land %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New favorite land", new_favorite_land_path %>

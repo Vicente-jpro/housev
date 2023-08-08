@@ -1,11 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-
+# First create at least 2 users after run this seed
 
 puts "Cadastrando as provincias..."
 Province.find_or_create_by!(province_name: "Luanda")
@@ -29,31 +22,54 @@ Address.find_or_create_by!(street: "Talalice", city: City.all.sample)
 Address.find_or_create_by!(street: "Mutamba", city: City.all.sample)
 puts "Fim do cadastro das cidades."
 
+puts "Cadastrando usuarios...."
+user = User.new
+user.email = 'vicenteviii@gmail.com'
+user.password = '12345678'
+user.password_confirmation = '12345678'
+user.save!
+
+user = User.new
+user.email = 'vicenteviii@outlook.com'
+#user.encrypted_password = 'vicente0301'
+user.password = '12345678'
+user.password_confirmation = '12345678'
+user.save!
+puts "Fim do cadastro de usuários."
+
 puts "Cadastrando as perfis...."
 Profile.find_or_create_by!(
     name_profile: "Vicente Simão", 
     phone1: "944889722",
-    phone2: "995922549",
+    phone2: "666666666",
     profile_type: "CLIENTE",
     gender: "MASCULINE",
     address: Address.all.sample,
     user: User.first
 )
+Profile.find_or_create_by!(
+    name_profile: "Vicente Simão", 
+    phone1: "942222222",
+    phone2: "994444444",
+    profile_type: "CLIENTE",
+    gender: "MASCULINE",
+    address: Address.all.sample,
+    user: User.last
+)
 puts "Fim do cadastro de perfis."
 
+
 puts "Cadastrando as Dimention..."
+2.times do 
 Dimention.find_or_create_by!(
     width_d: 100, 
     height_d: 100
 )
-
-Dimention.find_or_create_by!(
-    width_d: 50, 
-    height_d: 50
-)
+end
 puts "Fim do cadastro de Dimention."
 
 puts "Cadastrando as land..."
+5.times do
 Land.find_or_create_by!(
     title_land: "Terreno no Bita Tanke", 
     description: "Esse é um terreno grande bem localizado.",
@@ -61,4 +77,34 @@ Land.find_or_create_by!(
     dimention: Dimention.all.sample,
     address: Address.all.sample
 )
+end
 puts "Fim do cadastro de land."
+
+
+puts "Cadastrando favorite land..."
+4.times do 
+FavoriteLand.find_or_create_by!(
+    land: Land.last,
+    profile: Profile.last
+)
+FavoriteLand.find_or_create_by!(
+    land: Land.first,
+    profile: Profile.first
+)
+end
+puts "Fim do cadastro de favorite_land."
+
+
+puts "Cadastrando profile_land..."
+4.times do 
+ProfileLand.find_or_create_by!(
+    land: Land.last,
+    profile: Profile.first
+)
+ProfileLand.find_or_create_by!(
+    land: Land.first,
+    profile: Profile.last
+)
+end
+puts "Fim do cadastro de profile_land."
+

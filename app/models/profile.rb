@@ -5,6 +5,10 @@ class Profile < ApplicationRecord
 
   has_many :profile_lands
   has_many :lands, through: :profile_lands, dependent: :destroy
+  has_many :favorite_land, dependent: :destroy
+
+  validates_presence_of :name_profile, :profile_type, :gender
+  validates :phone1, :phone2, presence: true, uniqueness: true
 
   has_one_attached :image do |attachable|
     attachable.variant :thumb, resize_to_limit: [140, 140]

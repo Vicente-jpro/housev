@@ -1,6 +1,6 @@
 class LandsController < ApplicationController
   before_action :set_land, only: %i[ show edit update destroy show_images]
-  before_action :authenticate_user!, except: [ :show, :index]
+  before_action :authenticate_user!, except: [ :show, :index, :show_images]
   before_action :get_profile, only: [ :create ]
   
   include LandsConcerns
@@ -45,7 +45,6 @@ class LandsController < ApplicationController
         format.html { redirect_to new_profile_path, notice: "You must to create a profile after create a land." }
         format.json { render json: ["You must to create a profile after create a land."], status: :unprocessable_entity }
       elsif @land.save
-        debugger
         create_profile_land(@profile, @land)
         format.html { redirect_to land_url(@land), notice: "Land was successfully created." }
         format.json { render :show, status: :created, location: @land }
