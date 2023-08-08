@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  resources :favorite_lands
+  resources :favorite_lands, except: [:update, :new]
   resources :profile_lands, only: [:index]
   resources :profiles
   resources :lands 
 
   get '/lands/:id/show_images', controller: 'lands', action: :show_images, as: :land_show_images
-  
   root "home#index"
 
   devise_for :users

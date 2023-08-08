@@ -22,9 +22,22 @@ Address.find_or_create_by!(street: "Talalice", city: City.all.sample)
 Address.find_or_create_by!(street: "Mutamba", city: City.all.sample)
 puts "Fim do cadastro das cidades."
 
+puts "Cadastrando usuarios...."
+user = User.new
+user.email = 'vicenteviii@gmail.com'
+user.password = '12345678'
+user.password_confirmation = '12345678'
+user.save!
+
+user = User.new
+user.email = 'vicenteviii@outlook.com'
+#user.encrypted_password = 'vicente0301'
+user.password = '12345678'
+user.password_confirmation = '12345678'
+user.save!
+puts "Fim do cadastro de usuários."
 
 puts "Cadastrando as perfis...."
-2.times do 
 Profile.find_or_create_by!(
     name_profile: "Vicente Simão", 
     phone1: "944889722",
@@ -34,7 +47,15 @@ Profile.find_or_create_by!(
     address: Address.all.sample,
     user: User.first
 )
-end
+Profile.find_or_create_by!(
+    name_profile: "Vicente Simão", 
+    phone1: "944889722",
+    phone2: "995922549",
+    profile_type: "CLIENTE",
+    gender: "MASCULINE",
+    address: Address.all.sample,
+    user: User.last
+)
 puts "Fim do cadastro de perfis."
 
 
@@ -67,6 +88,15 @@ FavoriteLand.find_or_create_by!(
     profile: Profile.all.sample
 )
 end
-puts "Fim do cadastro de favorite land."
+puts "Fim do cadastro de favorite_land."
 
+
+puts "Cadastrando profile_land..."
+3.times do 
+ProfileLand.find_or_create_by!(
+    land: Land.all.sample,
+    profile: Profile.all.sample
+)
+end
+puts "Fim do cadastro de profile_land."
 

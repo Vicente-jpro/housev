@@ -8,11 +8,10 @@
            Ver todoas mais fotos
         <% end %>
 
-        <button class="btn btn-pink ms-1" type="button">
-          <i class="bi bi-heart-fill"></i>
-          Guardar como favorito
-        </button>
-      </div>
+        <%= render "favorite_lands/form", 
+        favorite_land: favorite_land_built(@profile, @land) %>
+    
+       </div>
         <div class="row my-1">
             <% if @land.images.attached? %>
               <div class="col-sm-6">
