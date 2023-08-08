@@ -1,11 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-
+# First create at least 2 users after run this seed
 
 puts "Cadastrando as provincias..."
 Province.find_or_create_by!(province_name: "Luanda")
@@ -38,6 +31,19 @@ Profile.find_or_create_by!(
     gender: "MASCULINE",
     address: Address.all.sample,
     user: User.first
+)
+puts "Fim do cadastro de perfis."
+
+
+puts "Cadastrando as perfis...."
+Profile.find_or_create_by!(
+    name_profile: "Vicente Simão", 
+    phone1: "944889722",
+    phone2: "995922549",
+    profile_type: "CLIENTE",
+    gender: "MASCULINE",
+    address: Address.all.sample,
+    user: User.last
 )
 puts "Fim do cadastro de perfis."
 
