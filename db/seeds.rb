@@ -22,7 +22,9 @@ Address.find_or_create_by!(street: "Talalice", city: City.all.sample)
 Address.find_or_create_by!(street: "Mutamba", city: City.all.sample)
 puts "Fim do cadastro das cidades."
 
+
 puts "Cadastrando as perfis...."
+2.times do 
 Profile.find_or_create_by!(
     name_profile: "Vicente Simão", 
     phone1: "944889722",
@@ -32,34 +34,21 @@ Profile.find_or_create_by!(
     address: Address.all.sample,
     user: User.first
 )
+end
 puts "Fim do cadastro de perfis."
 
-
-puts "Cadastrando as perfis...."
-Profile.find_or_create_by!(
-    name_profile: "Vicente Simão", 
-    phone1: "944889722",
-    phone2: "995922549",
-    profile_type: "CLIENTE",
-    gender: "MASCULINE",
-    address: Address.all.sample,
-    user: User.last
-)
-puts "Fim do cadastro de perfis."
 
 puts "Cadastrando as Dimention..."
+2.times do 
 Dimention.find_or_create_by!(
     width_d: 100, 
     height_d: 100
 )
-
-Dimention.find_or_create_by!(
-    width_d: 50, 
-    height_d: 50
-)
+end
 puts "Fim do cadastro de Dimention."
 
 puts "Cadastrando as land..."
+5.times do
 Land.find_or_create_by!(
     title_land: "Terreno no Bita Tanke", 
     description: "Esse é um terreno grande bem localizado.",
@@ -67,14 +56,17 @@ Land.find_or_create_by!(
     dimention: Dimention.all.sample,
     address: Address.all.sample
 )
+end
 puts "Fim do cadastro de land."
 
 
 puts "Cadastrando favorite land..."
+3.times do 
 FavoriteLand.find_or_create_by!(
     land: Land.all.sample,
     profile: Profile.all.sample
 )
+end
 puts "Fim do cadastro de favorite land."
 
 
