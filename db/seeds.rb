@@ -41,7 +41,7 @@ puts "Cadastrando as perfis...."
 Profile.find_or_create_by!(
     name_profile: "Vicente Simão", 
     phone1: "944889722",
-    phone2: "995922549",
+    phone2: "666666666",
     profile_type: "CLIENTE",
     gender: "MASCULINE",
     address: Address.all.sample,
@@ -49,8 +49,8 @@ Profile.find_or_create_by!(
 )
 Profile.find_or_create_by!(
     name_profile: "Vicente Simão", 
-    phone1: "944889722",
-    phone2: "995922549",
+    phone1: "942222222",
+    phone2: "994444444",
     profile_type: "CLIENTE",
     gender: "MASCULINE",
     address: Address.all.sample,
@@ -82,20 +82,28 @@ puts "Fim do cadastro de land."
 
 
 puts "Cadastrando favorite land..."
-3.times do 
+4.times do 
 FavoriteLand.find_or_create_by!(
-    land: Land.all.sample,
-    profile: Profile.all.sample
+    land: Land.last,
+    profile: Profile.last
+)
+FavoriteLand.find_or_create_by!(
+    land: Land.first,
+    profile: Profile.first
 )
 end
 puts "Fim do cadastro de favorite_land."
 
 
 puts "Cadastrando profile_land..."
-3.times do 
+4.times do 
 ProfileLand.find_or_create_by!(
-    land: Land.all.sample,
-    profile: Profile.all.sample
+    land: Land.last,
+    profile: Profile.first
+)
+ProfileLand.find_or_create_by!(
+    land: Land.first,
+    profile: Profile.last
 )
 end
 puts "Fim do cadastro de profile_land."

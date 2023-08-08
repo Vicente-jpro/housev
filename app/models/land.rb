@@ -10,7 +10,7 @@ class Land < ApplicationRecord
   has_many :favorite_land, dependent: :destroy
 
   has_many_attached :images
-  validate_presence_of :title_land, :description, :price
+  validates_presence_of :title_land, :description, :price
 
   def self.find_lands_by_user(user)
     Land.joins(:profiles)
