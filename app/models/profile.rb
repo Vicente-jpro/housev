@@ -5,6 +5,7 @@ class Profile < ApplicationRecord
 
   has_many :profile_lands
   has_many :lands, through: :profile_lands, dependent: :destroy
+  has_many :favorite_land, dependent: :destroy
 
   has_one_attached :image do |attachable|
     attachable.variant :thumb, resize_to_limit: [140, 140]

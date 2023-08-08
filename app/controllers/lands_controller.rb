@@ -1,6 +1,6 @@
 class LandsController < ApplicationController
   before_action :set_land, only: %i[ show edit update destroy show_images]
-  before_action :authenticate_user!, except: [ :show, :index]
+  before_action :authenticate_user!, except: [ :show, :index, :show_images]
   before_action :get_profile, only: [ :create ]
   
   include LandsConcerns

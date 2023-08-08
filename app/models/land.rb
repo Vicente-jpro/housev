@@ -7,6 +7,7 @@ class Land < ApplicationRecord
 
   has_many :profile_lands, dependent: :destroy
   has_many :profiles, through: :profile_lands
+  has_many :favorite_land, dependent: :destroy
 
   has_many_attached :images
 
@@ -14,14 +15,6 @@ class Land < ApplicationRecord
     Land.joins(:profiles)
         .where("profiles.user_id = #{user.id}")
   end
-
-  # SELECT * FROM lands
-  # JOIN profile_lands
-  # ON profile_lands.land_id = lands.id;
-  # JOIN profiles
-  # ON profiles.id = profile_lands.profile_id
-  # where profiles.user_id = 1
-
 
 end
 

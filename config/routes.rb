@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :favorite_lands
   resources :profile_lands, only: [:index]
   resources :profiles
   resources :lands 

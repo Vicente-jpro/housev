@@ -62,3 +62,13 @@ Land.find_or_create_by!(
     address: Address.all.sample
 )
 puts "Fim do cadastro de land."
+
+
+puts "Cadastrando favorite land..."
+FavoriteLand.find_or_create_by!(
+    land: Land.all.sample,
+    profile: Profile.all.sample
+)
+puts "Fim do cadastro de favorite land."
+
+
