@@ -4,7 +4,7 @@ FactoryBot.define do
     province
 
     #Own attribute
-    city_name { "kilamba" }
+    city_name { "Kilamba" }
     
   end
 end

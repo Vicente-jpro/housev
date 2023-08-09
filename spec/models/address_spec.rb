@@ -14,23 +14,28 @@ RSpec.describe Address, type: :model do
     end
 
     it 'has a province' do 
-      except(address.city.province.province_name).to eq('Luanda')
+      expect(address.city.province.province_name).to eq('Luanda')
     end
 
     it 'has a city' do 
       expect(address.city.city_name).to eq('Kilamba')
     end
 
-    before :context do 
-      @address = Address.new 
+    before :context do  
+      @province = Province.new 
+      @city = City.new 
+      @city.province = @province
+
+      @address = Address.new
+      @address.city = @city
     end
 
     it 'does not have an address' do
-      except(@address.nil).to eq(true)
+      expect(@address.nil?).to eq(false)
     end
 
     it 'does not have a street' do 
-      except(@address.street).to eq(nil)
+      expect(@address.street).to eq(nil)
     end
 
     it 'does not have a province' do 
@@ -38,9 +43,9 @@ RSpec.describe Address, type: :model do
     end
 
     it 'does not have a city' do 
-      except(@address.city.city_name).to eq(nil)
+      expect(@address.city.city_name).to eq(nil)
     end
-    
+
   end
 
 end
