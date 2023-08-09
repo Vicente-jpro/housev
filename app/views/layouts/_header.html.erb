@@ -7,10 +7,10 @@
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="#" class="nav-link px-2 text-pink fs-5">Inicio</a></li>
-          <li><a href="#" class="nav-link px-2 text-pink fs-5">Imoveis</a></li>
+          <li><a href="#" class="nav-link px-2 text-pink fs-5 house">Imoveis</a></li>
           <li><a href="#" class="nav-link px-2 text-pink fs-5">Arrendar</a></li>
-          <li><a href="#" class="nav-link px-2 text-pink fs-5">Comprar</a></li>
-          <li> <%= link_to "Terrenos", lands_path, class: "nav-link px-2 text-pink fs-5" %> </li>
+          <li><a href="#" class="nav-link px-2 text-pink fs-5 ">Comprar</a></li>
+          <li> <%= link_to "Terrenos", lands_path, class: "nav-link px-2 text-pink fs-5 land" %> </li>
   
 
         </ul>
@@ -49,7 +49,7 @@
         </div>
       </div>
       <!-- Lands -->
-        <ul class="nav justify-content-start">
+        <ul class="nav justify-content-start land" id="sub-menu-land">
           <li class="nav-item">
             <%= link_to "Novo terreno", new_land_path, class: "nav-link px-2 text-pink fs-5" %>
           </li>
@@ -63,7 +63,7 @@
         <!-- End Lands --->
 
         <!-- Houses -->
-        <ul class="nav justify-content-start">
+        <ul class="nav justify-content-start house" id="sub-menu-house">
           <li class="nav-item">
             <%= link_to "Novo imovel", new_land_path, class: "nav-link px-2 text-pink fs-5" %>
           </li>

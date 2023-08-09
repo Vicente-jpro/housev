@@ -17,7 +17,7 @@
       <% cache do %>
         <%= render 'layouts/header' %>
       <% end %>
-
+      
       <%= render 'layouts/message' if notice %>
       <%= render 'layouts/alert' if notice %> 
       <%= yield %>
