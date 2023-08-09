@@ -1,9 +1,17 @@
 module FavoriteLandsHelper
 
-    def favorite_land_built(profile, land)
-        favorite_land = FavoriteLand.new 
-        favorite_land.profile_id = profile.id 
-        favorite_land.land_id = land.id 
-        favorite_land
+    def favorite_land_built(land)
+        profile = Profile.find_by_user(current_user)
+        perfil_exist = !profile.nil?
+
+        if perfil_exist and user_signed_in?
+          favorite_land = FavoriteLand.new 
+          favorite_land.profile_id = profile.id
+          favorite_land.land_id = land.id 
+          return favorite_land
+        else
+           redirect_to new_profile_path
+        end
+        
     end
 end

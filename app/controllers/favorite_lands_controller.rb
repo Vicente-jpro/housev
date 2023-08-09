@@ -1,9 +1,10 @@
 class FavoriteLandsController < ApplicationController
   before_action :set_favorite_land, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /favorite_lands or /favorite_lands.json
   def index
-    @favorite_lands = FavoriteLand.all
+    @favorite_lands = FavoriteLand.find_all_by_user(current_user)
   end
 
   # GET /favorite_lands/1 or /favorite_lands/1.json
