@@ -15,7 +15,15 @@ class Land < ApplicationRecord
   def self.find_lands_by_user(user)
     Land.joins(:profiles)
         .where("profiles.user_id = #{user.id}")
+        .order(id: :desc)
   end
+
+  def self.find_all_by_id_land_where_id_greater_than(land_id)
+    Land.joins(:profiles)
+        .where("id <= #{land_id}")
+        .order(id: :desc)
+  end
+
 
 end
 
