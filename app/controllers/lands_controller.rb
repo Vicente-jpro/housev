@@ -1,5 +1,5 @@
 class LandsController < ApplicationController
-  before_action :set_land, only: %i[ show edit update destroy show_images]
+  before_action :set_land, only: %i[ show edit update destroy]
   before_action :authenticate_user!, except: [ :show, :index, :show_images]
   before_action :get_profile, only: [ :create ]
   
@@ -9,8 +9,7 @@ class LandsController < ApplicationController
 
   # GET /lands or /lands.json
   def index
-    @lands = Land.all
-    #@page = "index"
+    @lands = Land.order(id: :desc)
   end
 
   # GET /lands/1 or /lands/1.json
@@ -19,8 +18,9 @@ class LandsController < ApplicationController
     @profile
   end
   
-  # GET	/lands/:id/show_images
+  # GET	/lands/:land_id/show_images
   def show_images
+    @land = Land.find(params[:land_id])
     @profile = ProfileLand.find_land_by_land(@land).profile
     @profile
   end

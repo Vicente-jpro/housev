@@ -1,14 +1,16 @@
 <div class="album py-5" id="lands">
     <div class="container-fluid">
       <div class="d-flex justify-content-end">
-        <button class="btn btn-pink ms-1" type="button">
+
+        <%= link_to land_show_images_path(@land), 
+        class:"btn btn-pink ms-1" do %>
           <i class="bi bi-camera-fill"></i>
-          Ver todoas mais fotos
-        </button>
-        <button class="btn btn-pink ms-1" type="button">
-          <i class="bi bi-heart-fill"></i>
-          Guardar como favorito
-        </button>
+           Ver todoas mais fotos
+        <% end %>
+
+        <%= render "favorite_lands/form", 
+        favorite_land: favorite_land_built(@land) %>
+    
       </div>
         <div class="row my-1">
             <% if @land.images.attached? %>
