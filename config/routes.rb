@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :favorite_lands, except: [:update, :new]
+  resources :favorite_lands, only: [:index, :create, :destroy]
   resources :profile_lands, only: [:index]
   resources :profiles
   resources :lands 
