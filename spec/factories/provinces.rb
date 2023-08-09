@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :province do
-    province_name { "MyString" }
+    province_name { "Luanda" }
   end
 end
