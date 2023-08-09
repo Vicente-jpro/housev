@@ -7,10 +7,10 @@
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="#" class="nav-link px-2 text-pink fs-5">Inicio</a></li>
-          <li><a href="#" class="nav-link px-2 text-pink fs-5">Imoveis</a></li>
+          <li><a href="#" class="nav-link px-2 text-pink fs-5 house">Imoveis</a></li>
           <li><a href="#" class="nav-link px-2 text-pink fs-5">Arrendar</a></li>
-          <li><a href="#" class="nav-link px-2 text-pink fs-5">Comprar</a></li>
-          <li> <%= link_to "Terrenos", lands_path, class: "nav-link px-2 text-pink fs-5" %> </li>
+          <li><a href="#" class="nav-link px-2 text-pink fs-5 ">Comprar</a></li>
+          <li> <%= link_to "Terrenos", lands_path, class: "nav-link px-2 text-pink fs-5 land" %> </li>
   
 
         </ul>
@@ -32,16 +32,18 @@
             <li> 
               <%= link_to "Segurança", edit_user_registration_path, 
               class: "dropdown-item"%> 
+              <%= link_to "Terrenos favoritos", favorite_lands_path, 
+              class: "dropdown-item"%> 
             </li>
             <li> 
               <%= link_to "Sair", destroy_user_session_path,  method: :delete, 
-                class: "dropdown-item" if user_signed_in? %> 
+                class: "dropdown-item" %> 
             </li>
           <% end %>
 
           <% if !user_signed_in? %>
             
-            <li> <%= link_to "Entrar", user_session_path, class: "dropdown-item" if !user_signed_in? %> </li>
+            <li> <%= link_to "Entrar", user_session_path, class: "dropdown-item" %> </li>
          
           <% end %>
             
@@ -49,7 +51,7 @@
         </div>
       </div>
       <!-- Lands -->
-        <ul class="nav justify-content-start">
+        <ul class="nav justify-content-start land" id="sub-menu-land">
           <li class="nav-item">
             <%= link_to "Novo terreno", new_land_path, class: "nav-link px-2 text-pink fs-5" %>
           </li>
@@ -63,7 +65,7 @@
         <!-- End Lands --->
 
         <!-- Houses -->
-        <ul class="nav justify-content-start">
+        <ul class="nav justify-content-start house" id="sub-menu-house">
           <li class="nav-item">
             <%= link_to "Novo imovel", new_land_path, class: "nav-link px-2 text-pink fs-5" %>
           </li>

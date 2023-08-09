@@ -1,12 +1,24 @@
-<div id="<%= dom_id favorite_land %>">
-  <p>
-    <strong>Profile:</strong>
-    <%= favorite_land.profile_id %>
-  </p>
+<%= link_to favorite_land.land, class: "link-offset-2 link-underline link-underline-opacity-0" do %>
+    
+  <div class="col" id="<%= dom_id favorite_land%>">
+    <div class="card border-light shadow-sm mb-5 bg-body-tertiary rounded">
+    
+      <% if favorite_land.land.images.attached? %>
+        <%= render "images_index", images: favorite_land.land.images %>
+      <% end %>
+  
+      <div class="card-body">
+        <p class="card-text">
 
-  <p>
-    <strong>Land:</strong>
-    <%= favorite_land.land_id %>
-  </p>
-
-</div>
+            <strong class="text-pink"><%= favorite_land.land.title_land %></strong> <br>
+      
+          <p class="text-description">
+              <%= favorite_land.land.description %>
+          </p>
+            <span class="bg-green px-3">Venda</span> <br>
+            <%= favorite_land.land.price %>
+        </p>
+      </div>
+    </div>
+  </div>
+<% end %>
