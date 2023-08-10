@@ -2,12 +2,20 @@ require 'rails_helper'
 
 RSpec.describe Address, type: :model do
   
-  describe "model" do 
+  describe "Address" do 
+    subject { 
+      described_class.new(street: "Bloco K", 
+                          city: {
+                            city_name: "Kilamba",
+                            province: {
+                              name_province: "Luanda"
+                            }
+                          }
+      )  
+    }
+
     let(:address) { create(:address) }
     
-    it 'do not has a nill address' do
-      expect(address.nil?).to eq(false) 
-    end 
 
     it 'has a street' do 
       expect(address.street).to  eq("Bloco K")  
@@ -45,7 +53,31 @@ RSpec.describe Address, type: :model do
     it 'does not have a city' do 
       expect(@address.city.city_name).to eq(nil)
     end
-
   end
+
+
+  describe "Validations" do
+    before :context do 
+      @address = Address.new 
+    end
+
+    let(:address) { create(:address) }
+    it 'has invalide address' do  
+      expect { Address.create! }.to raise_error(ActiveRecord::RecordInvalid)
+    end
+
+    it 'has invalide street' do       
+      @address.city = address.city
+      @address.city.province = address.city.province
+      expect { @address.save! }.to raise_error(ActiveRecord::RecordInvalid) 
+    end
+
+    it 'has invalide city' do 
+      @address.street = address.street
+      @address.city = nil
+      expect { @address.save! }.to raise_error(ActiveRecord::RecordInvalid)
+    end
+  end
+
 
 end
