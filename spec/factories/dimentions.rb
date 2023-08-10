@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :dimention do
-    with_d { 1 }
-    height_id { 1 }
+    with_d { 10 }
+    height_d { 10 }
   end
 end
