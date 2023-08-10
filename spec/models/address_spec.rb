@@ -2,19 +2,19 @@ require 'rails_helper'
 
 RSpec.describe Address, type: :model do
   
-  describe "Address" do 
+  describe "model" do 
     let(:address) { create(:address) }
-    
+
     it 'has a street' do 
-      expect(address.street).to  eq("Bloco K")  
+      expect(address.street).to  eq("Bloco K") 
     end
 
     it 'has a province' do 
-      expect(address.city.province.province_name).to eq('Luanda')
+      expect(address.city.province.province_name).to eq("Luanda")
     end
 
     it 'has a city' do 
-      expect(address.city.city_name).to eq('Kilamba')
+      expect(address.city.city_name).to eq("Kilamba")
     end
 
     before :context do  
@@ -44,7 +44,7 @@ RSpec.describe Address, type: :model do
   end
 
 
-  describe "Validations" do
+  describe "validations" do
     before :context do 
       @address = Address.new 
     end
@@ -65,7 +65,17 @@ RSpec.describe Address, type: :model do
       @address.city = nil
       expect { @address.save! }.to raise_error(ActiveRecord::RecordInvalid)
     end
+
+    
+
   end
 
+  describe "association" do 
+    it { should belong_to(:city) }
+
+    it { should have_one(:profile)}
+    
+    it { should have_one(:land)}
+  end
 
 end

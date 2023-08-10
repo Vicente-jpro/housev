@@ -63,7 +63,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'letter_opener', '~> 1.8', '>= 1.8.1'
   gem 'rails_db', '~> 2.4', '>= 2.4.2'
-
+  gem 'shoulda-matchers', '~> 5.0'
 end
 
 group :development do
