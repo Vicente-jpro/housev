@@ -3,5 +3,5 @@ class Address < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_one :land, dependent: :destroy
 
-  validates_presence_of :street
+  validates_presence_of :street, :city
 end

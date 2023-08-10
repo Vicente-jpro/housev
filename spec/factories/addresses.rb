@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :address do
     ## Associations 
-    city
+    association :city
 
     ## Own attributes
     street { "Bloco K" }
