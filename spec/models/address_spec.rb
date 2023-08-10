@@ -66,15 +66,14 @@ RSpec.describe Address, type: :model do
       expect { @address.save! }.to raise_error(ActiveRecord::RecordInvalid)
     end
 
-    
+    it { should validate_presence_of(:street) }
+    it { should validate_presence_of(:city) }
 
   end
 
   describe "association" do 
     it { should belong_to(:city) }
-
     it { should have_one(:profile)}
-    
     it { should have_one(:land)}
   end
 
