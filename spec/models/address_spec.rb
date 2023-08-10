@@ -3,20 +3,8 @@ require 'rails_helper'
 RSpec.describe Address, type: :model do
   
   describe "Address" do 
-    subject { 
-      described_class.new(street: "Bloco K", 
-                          city: {
-                            city_name: "Kilamba",
-                            province: {
-                              name_province: "Luanda"
-                            }
-                          }
-      )  
-    }
-
     let(:address) { create(:address) }
     
-
     it 'has a street' do 
       expect(address.street).to  eq("Bloco K")  
     end
