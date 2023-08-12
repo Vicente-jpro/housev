@@ -70,7 +70,7 @@ RSpec.describe Land, type: :model do
       @invalid_land = Land.new
       begin
         @invalid_land.save!
-      rescue => ActiveRecord::RecordInvalid
+      rescue => exception
         @invalid_land =  @invalid_land.errors.messages
       end
       
@@ -100,20 +100,20 @@ RSpec.describe Land, type: :model do
       expect(@invalid_land[:address][0]).to eq("must exist")
     end
 
-    it 'has invalide land description.' do 
-      expect(@invalid_land[:description][1]).to eq("can't be blank")
+    it 'has invalide land description.' do
+      expect(@invalid_land[:description][0]).to eq("can't be blank")
     end
     
     it 'has invalide land dimention.' do 
-      expect(@invalid_land[:dimention][2]).to eq("must exist")
+      expect(@invalid_land[:dimention][0]).to eq("must exist")
     end
     
     it 'has invalide land privece.' do 
-      expect(@invalid_land[:price][3]).to eq("can't be blank")
+      expect(@invalid_land[:price][0]).to eq("can't be blank")
     end
 
     it 'has invalide land privece.' do 
-      expect(@invalid_land[:title_land][4]).to eq("can't be blank")
+      expect(@invalid_land[:title_land][0]).to eq("can't be blank")
     end
 
   let(:address) { create(:address) }
