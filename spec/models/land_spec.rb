@@ -35,11 +35,7 @@ RSpec.describe Land, type: :model do
     end
 
     it 'has an address.' do 
-      expect(land.address.nil?).to eq(true)
-    end
-
-    it 'has an address.' do 
-      expect(land.address.nil?).to eq(true)
+      expect(land.address.nil?).to eq(false)
     end
 
 
@@ -49,7 +45,7 @@ RSpec.describe Land, type: :model do
 
 
     it 'has an address city.' do 
-      expect(land.address.city.nil?).to eq(true)
+      expect(land.address.city.nil?).to eq(false)
     end
 
 
@@ -59,9 +55,8 @@ RSpec.describe Land, type: :model do
 
 
     it 'has an address province.' do 
-      expect(land.address.city.province.nil?).to eq(true)
+      expect(land.address.city.province.nil?).to eq(false)
     end
-
 
     it 'has an address province_name.' do 
       expect(land.address.city.province.province_name).to eq("Luanda")
@@ -88,7 +83,12 @@ RSpec.describe Land, type: :model do
 
     it 'has invalide land.' do 
       @land = Land.new
-      expect(@land.save!).to raise_error(ActiveRecord::RecordInvalid)
+      begin
+        @land.save!
+      rescue => ActiveRecord::RecordInvalid
+        expect(@land.errors.messages).to eq(false)
+      end
+      
     end
 
     it 'has invalide land with address.' do 
