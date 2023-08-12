@@ -108,41 +108,28 @@ RSpec.describe Land, type: :model do
       expect(@invalid_land[:dimention][0]).to eq("must exist")
     end
     
-    it 'has invalide land privece.' do 
+    it 'has invalide land price.' do 
       expect(@invalid_land[:price][0]).to eq("can't be blank")
     end
 
-    it 'has invalide land privece.' do 
+    it 'has invalide land title_land.' do 
       expect(@invalid_land[:title_land][0]).to eq("can't be blank")
     end
 
-  let(:address) { create(:address) }
-  it 'has invalide address' do  
-    expect { Address.create! }.to raise_error(ActiveRecord::RecordInvalid)
-  end
-
-  it 'has invalide street' do       
-    @address.city = address.city
-    @address.city.province = address.city.province
-    expect { @address.save! }.to raise_error(ActiveRecord::RecordInvalid) 
-  end
-
-  it 'has invalide city' do 
-    @address.street = address.street
-    @address.city = nil
-    expect { @address.save! }.to raise_error(ActiveRecord::RecordInvalid)
-  end
-
-  it { should validate_presence_of(:street) }
-  it { should validate_presence_of(:city) }
+    it { should validate_presence_of(:title_land) }
+    it { should validate_presence_of(:description) }
+    it { should validate_presence_of(:price) }
 
   end
-
 
   describe "association" do 
-    it { should belong_to(:city) }
-    it { should have_one(:profile)}
-    it { should have_one(:land)}
+    it { should belong_to(:dimention) }
+    it { should belong_to(:address) }
+    it { should have_many(:profile_lands)}
+    it { should have_many(:profiles)}
+    it { should have_many(:profile_lands)}
+    it { should have_many(:favorite_land)} 
+    it { should have_many_attached(:images)}
   end
 
 end
