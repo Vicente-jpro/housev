@@ -33,13 +33,14 @@ RSpec.describe Dimention, type: :model do
 
         begin
           @dimention.save!
-        rescue => ActiveRecord::RecordInvalid
+        rescue => exception
           expect(@dimention.errors.messages[:width_d][0]).to eq("must be greater than 5")
           expect(@dimention.errors.messages[:height_d][0]).to eq("must be greater than 5")
         end
      end
 
   end
+
 
   describe "association" do 
     it { should have_one(:land) }

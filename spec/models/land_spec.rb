@@ -66,45 +66,55 @@ RSpec.describe Land, type: :model do
 
   describe "validation" do 
     before :context do 
+
+      @invalid_land = Land.new
+      begin
+        @invalid_land.save!
+      rescue => ActiveRecord::RecordInvalid
+        @invalid_land =  @invalid_land.errors.messages
+      end
+      
+
       @dimention = Dimention.new
       @dimention.width_d = 10
       @dimention.height_d = 10
 
+      @city = City.new 
+      @city.city_name = "Bloco K"
+      
       @address = Address.new 
       @address.street = "Bloco K"
-      @address.city.city_name = "Kilamba"
-      @address.city.province = "Luanda"
+      @address.city = @city
+      
+      @province = Province.new 
+      @province.province_name = "Luanda"
+      @address.city.province = @province
 
       @land = Land.new
       @land.address = @address
       @land.dimention = @dimention
-
-    end
-
-    it 'has invalide land.' do 
-      @land = Land.new
-      begin
-        @land.save!
-      rescue => ActiveRecord::RecordInvalid
-        expect(@land.errors.messages).to eq(false)
-      end
       
     end
 
-    it 'has invalide land with address.' do 
-      expect(@land.address.save!).to raise_error(ActiveRecord::RecordInvalid)
-    end
-    
-    it 'has invalide land with_d.' do 
-      @dimention.width_d = nil 
-      expect(@land.dimention.save!).to raise_error(ActiveRecord::RecordInvalid)
-    end
-    
-    it 'has invalide land height_d.' do 
-      @dimention.height_d = nil
-      expect(@land.dimention.save!).to raise_error(ActiveRecord::RecordInvalid)
+    it 'has invalid land address.' do 
+      expect(@invalid_land[:address][0]).to eq("must exist")
     end
 
+    it 'has invalide land description.' do 
+      expect(@invalid_land[:description][1]).to eq("can't be blank")
+    end
+    
+    it 'has invalide land dimention.' do 
+      expect(@invalid_land[:dimention][2]).to eq("must exist")
+    end
+    
+    it 'has invalide land privece.' do 
+      expect(@invalid_land[:price][3]).to eq("can't be blank")
+    end
+
+    it 'has invalide land privece.' do 
+      expect(@invalid_land[:title_land][4]).to eq("can't be blank")
+    end
 
   let(:address) { create(:address) }
   it 'has invalide address' do  
