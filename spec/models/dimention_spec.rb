@@ -8,8 +8,8 @@ RSpec.describe Dimention, type: :model do
       expect(dimention.nil?).to eq(false) 
     end
 
-    it 'has dimention  with_d.' do 
-      expect(dimention.with_d).to eq(10)
+    it 'has dimention  width_d.' do 
+      expect(dimention.width_d).to eq(10)
     end
 
     it 'has dimention height_d.' do 
@@ -22,20 +22,22 @@ RSpec.describe Dimention, type: :model do
     before :context do 
       @dimention = Dimention.new
     end
-
-    it 'has invalide dimention.' do 
-      expect(@dimention.save!).to raise_error(ActiveRecord::RecordInvalid)
+    
+    it 'has invalide dimention width_d and height_d.' do 
+      expect(@dimention.save).to eq(false)
     end
 
-    it 'has invalide with_d.' do 
-      @dimention.width_d = nil 
-      expect(@dimention.save!).to raise_error(ActiveRecord::RecordInvalid)
-    end
+    it 'has invalide width_d.' do 
+      @dimention.width_d = 0
+      @dimention.height_d = 0
 
-    it 'has invalide height_d.' do 
-      @dimention.height_d = nil
-      expect(@dimention.save!).to raise_error(ActiveRecord::RecordInvalid)
-    end
+        begin
+          @dimention.save!
+        rescue => ActiveRecord::RecordInvalid
+          expect(@dimention.errors.messages[:width_d][0]).to eq("must be greater than 5")
+          expect(@dimention.errors.messages[:height_d][0]).to eq("must be greater than 5")
+        end
+     end
 
   end
 
