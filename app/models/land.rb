@@ -18,12 +18,5 @@ class Land < ApplicationRecord
         .order(id: :desc)
   end
 
-  def self.find_all_by_id_land_where_id_greater_than(land_id)
-    Land.joins(:profiles)
-        .where("id <= #{land_id}")
-        .order(id: :desc)
-  end
-
-
 end
 

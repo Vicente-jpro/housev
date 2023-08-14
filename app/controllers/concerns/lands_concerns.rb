@@ -5,4 +5,9 @@ module LandsConcerns
       array_image != [""]
     end
 
+    def is_land_creator?(user)
+      land = Land.find_lands_by_user(user)
+      !land.nil?
+    end
+
 end

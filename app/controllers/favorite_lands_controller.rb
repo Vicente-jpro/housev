@@ -1,6 +1,7 @@
 class FavoriteLandsController < ApplicationController
   before_action :set_favorite_land, only: %i[ destroy ]
   before_action :authenticate_user!
+  include LandsConcerns
 
   # GET /favorite_lands or /favorite_lands.json
   def index
@@ -14,9 +15,12 @@ class FavoriteLandsController < ApplicationController
     favorite.land_id = @favorite_land[:land_id]
     
     respond_to do |format|
-      if !FavoriteLand.exist?(favorite)
-        format.html { redirect_to lands_url(favorite.land_id), 
-              notice: "This land is already created successfully." }
+      if is_land_creator?(current_user)
+        format.html { redirect_to lands_url, 
+          alert: "You are the land creator. It's impossible mark as favorite." }
+      elsif !FavoriteLand.exist?(favorite)
+        format.html { redirect_to lands_url, 
+              alert: "This land is already added as a favorite." }
       elsif @favorite_land.save
         format.html { redirect_to lands_url, notice: "Favorite land was successfully created." }
         format.json { render :show, status: :created, location: @favorite_land }
