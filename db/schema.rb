@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_08_112738) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_15_114912) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -71,6 +71,34 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_08_112738) do
     t.index ["profile_id"], name: "index_favorite_lands_on_profile_id"
   end
 
+  create_table "houses", force: :cascade do |t|
+    t.integer "room"
+    t.integer "title"
+    t.integer "living_room"
+    t.integer "bath_room"
+    t.integer "yeard"
+    t.integer "kitchen"
+    t.integer "balcony"
+    t.string "condition"
+    t.string "type_negotiation"
+    t.integer "price"
+    t.integer "garage"
+    t.integer "pool"
+    t.string "discription"
+    t.string "tipology"
+    t.string "next_by"
+    t.boolean "furnished"
+    t.string "property_type"
+    t.integer "location_id", null: false
+    t.integer "address_id", null: false
+    t.integer "dimention_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_houses_on_address_id"
+    t.index ["dimention_id"], name: "index_houses_on_dimention_id"
+    t.index ["location_id"], name: "index_houses_on_location_id"
+  end
+
   create_table "lands", force: :cascade do |t|
     t.string "title_land"
     t.string "description"
@@ -81,6 +109,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_08_112738) do
     t.datetime "updated_at", null: false
     t.index ["address_id"], name: "index_lands_on_address_id"
     t.index ["dimention_id"], name: "index_lands_on_dimention_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.integer "longitude"
+    t.integer "latitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "profile_lands", force: :cascade do |t|
@@ -130,6 +165,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_08_112738) do
   add_foreign_key "cities", "provinces"
   add_foreign_key "favorite_lands", "lands"
   add_foreign_key "favorite_lands", "profiles"
+  add_foreign_key "houses", "addresses"
+  add_foreign_key "houses", "dimentions"
+  add_foreign_key "houses", "locations"
   add_foreign_key "lands", "addresses"
   add_foreign_key "lands", "dimentions"
   add_foreign_key "profile_lands", "lands"
