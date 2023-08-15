@@ -13,6 +13,9 @@ class HousesController < ApplicationController
   # GET /houses/new
   def new
     @house = House.new
+    @house.build_address
+    @house.build_location 
+    @house.build_dimention
   end
 
   # GET /houses/1/edit
@@ -65,6 +68,26 @@ class HousesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def house_params
-      params.require(:house).permit(:room, :title, :living_room, :bath_room, :yeard, :kitchen, :balcony, :condition, :type_negotiation, :price, :garage, :pool, :discription, :tipology, :next_by, :furnished, :property_type, :location_id, :address_id, :dimention_id)
+      params.require(:house).permit(
+        :room, 
+        :title, 
+        :living_room, 
+        :bath_room, 
+        :yeard, 
+        :kitchen, 
+        :balcony, 
+        :condition, 
+        :type_negotiation, 
+        :price, 
+        :garage, 
+        :pool, 
+        :discription, 
+        :tipology, 
+        :next_by, 
+        :furnished, 
+        :property_type, 
+        :location_id, 
+        :address_id, 
+        :dimention_id)
     end
 end
