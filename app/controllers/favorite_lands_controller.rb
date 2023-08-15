@@ -1,6 +1,8 @@
 class FavoriteLandsController < ApplicationController
   before_action :set_favorite_land, only: %i[ destroy ]
   before_action :authenticate_user!
+  rescue_from ActiveRecord::RecordNotFound, with: [:invalid_land, :invalid_favorite_land] 
+
   include LandsConcerns
 
   # GET /favorite_lands or /favorite_lands.json
@@ -45,6 +47,16 @@ class FavoriteLandsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_favorite_land
       @favorite_land = FavoriteLand.find(params[:id])
+    end
+
+    def invalid_favorite_land 
+      logger.error "Attempt to access invalid favorite_land #{params[:id]}"
+      redirect_to lands_url, alert: "Invalid favorite land."
+    end
+
+    def invalid_land 
+      logger.error "Attempt to access invalid land #{params[:land_id]}"
+      redirect_to lands_url, alert: "Invalid land."
     end
 
     # Only allow a list of trusted parameters through.
