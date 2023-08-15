@@ -13,9 +13,12 @@ module EnumsConcerns
         Primary_school: 'PRIMARY_SCHOOL',Secondary_school: 'SECUNDARY_SCHOOL', 
         High_school: 'HIGH_SCHOOL', Playground: 'PLAYGROUND', Leisure_park: 'LEISURE_PARK', 
         Gymnasium: 'GYMANASIUM', Football_stadium:'FOOTBALL_STADIUM', Main_Road: 'MAIN_ROAD', 
-        Train_or_metrol_station: 'TRAIN_OR_METROL_STATION', Airport:'AIRPORT' 
-        }
+        Train_or_metrol_station: 'TRAIN_OR_METROL_STATION', Airport:'AIRPORT', 
+        Militar_station: 'MILITAR_STATION', Police_office: 'POLICE_OFFICE', Others: 'OTHERS'
+    }
 
-    <%= form.label :property_type, style: "display: block" %>
-    <%= form.text_field :property_type %>
+    enum property_type: { Country_house: 'COUNTRY_HOUSE', Apartamento: 'APARTAMENTO', 
+        Store:'STORE', Office: 'OFFICE', Enterprise: 'ENTERPRISE', Hotel: 'HOTEL', Room: 'ROOM',
+        Shop_store: 'SHOP_STORE', Restaurant: 'RESTAURANT', Farm: 'FARM', Others: 'OTHERS'
+    }
 end
