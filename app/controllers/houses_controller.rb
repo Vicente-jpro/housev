@@ -87,7 +87,9 @@ class HousesController < ApplicationController
         :furnished, 
         :property_type, 
         :location_id, 
-        :address_id, 
-        :dimention_id)
+        address_attributes: [:id, :street, :city_id, :_destroy],
+        dimention_attributes: [:id, :width_d, :height_d, :_destroy ],
+        latitude_attributes: [:id, :latitude, :longitude, :_destroy ],
+        images:[])
     end
 end
