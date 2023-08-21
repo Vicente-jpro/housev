@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_15_114912) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_21_173130) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -118,6 +118,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_114912) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "profile_houses", force: :cascade do |t|
+    t.integer "profile_id", null: false
+    t.integer "house_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["house_id"], name: "index_profile_houses_on_house_id"
+    t.index ["profile_id"], name: "index_profile_houses_on_profile_id"
+  end
+
   create_table "profile_lands", force: :cascade do |t|
     t.integer "profile_id", null: false
     t.integer "land_id", null: false
@@ -170,6 +179,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_114912) do
   add_foreign_key "houses", "locations"
   add_foreign_key "lands", "addresses"
   add_foreign_key "lands", "dimentions"
+  add_foreign_key "profile_houses", "houses"
+  add_foreign_key "profile_houses", "profiles"
   add_foreign_key "profile_lands", "lands"
   add_foreign_key "profile_lands", "profiles"
   add_foreign_key "profiles", "addresses"

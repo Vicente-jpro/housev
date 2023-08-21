@@ -1,6 +1,7 @@
 class HousesController < ApplicationController
   before_action :set_house, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [ :show, :index, :show_images]
+  before_action :get_profile, only: [ :create ]
 
   # GET /houses or /houses.json
   def index
@@ -35,10 +36,8 @@ class HousesController < ApplicationController
   # POST /houses or /houses.json
   def create
     @house = House.new(house_params)
-    debugger
     respond_to do |format|
       if @house.save
-        debugger
         format.html { redirect_to house_url(@house), notice: "House was successfully created." }
         format.json { render :show, status: :created, location: @house }
       else
@@ -78,6 +77,10 @@ class HousesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_house
       @house = House.find(params[:id])
+    end
+
+    def get_profile
+      @profile = Profile.find_by_user(current_user)
     end
 
     # Only allow a list of trusted parameters through.
