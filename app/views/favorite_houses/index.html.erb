@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Favorite houses</h1>
+
+<div id="favorite_houses">
+  <% @favorite_houses.each do |favorite_house| %>
+    <%= render favorite_house %>
+    <p>
+      <%= link_to "Show this favorite house", favorite_house %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New favorite house", new_favorite_house_path %>

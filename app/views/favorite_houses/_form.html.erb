@@ -1,0 +1,27 @@
+<%= form_with(model: favorite_house) do |form| %>
+  <% if favorite_house.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(favorite_house.errors.count, "error") %> prohibited this favorite_house from being saved:</h2>
+
+      <ul>
+        <% favorite_house.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :profile_id, style: "display: block" %>
+    <%= form.text_field :profile_id %>
+  </div>
+
+  <div>
+    <%= form.label :house_id, style: "display: block" %>
+    <%= form.text_field :house_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
