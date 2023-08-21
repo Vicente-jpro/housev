@@ -10,14 +10,14 @@ class HousesController < ApplicationController
 
   # GET /houses/1 or /houses/1.json
   def show
-    @profile = ProfileLand.find_land_by_land(@land).profile
+    @profile = ProfileHouse.find_house_by_house(@house).profile
     @profile
   end
   
   # GET	/lands/:house_id/show_images
   def show_images
     @house = House.find(params[:house_id])
-    @profile = ProfileLand.find_land_by_land(@land).profile
+    @profile = ProfileHouse.find_house_by_house(@house).profile
     @profile
   end
 
@@ -98,7 +98,7 @@ class HousesController < ApplicationController
         :price, 
         :garage, 
         :pool, 
-        :discription, 
+        :description, 
         :tipology, 
         :next_by, 
         :furnished, 

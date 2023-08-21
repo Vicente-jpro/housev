@@ -108,3 +108,88 @@ ProfileLand.find_or_create_by!(
 end
 puts "Fim do cadastro de profile_land."
 
+puts "Cadastrando as Location..."
+4.times do
+Location.find_or_create_by!(
+    longitude: 770000, 
+    latitude: 770000
+)
+end
+puts "Fim do cadastro de Location."
+
+
+puts "Cadastrando a house."
+House.find_or_create_by!(
+room: 2, 
+title: 'Casa luxuosa a venda', 
+living_room: 1, 
+bath_room: 2, 
+yeard: 1, 
+kitchen: 3, 
+balcony: 3, 
+condition: 'NEW', 
+type_negotiation: 'RENT_MONTHLY', 
+price: 68000, 
+garage: 1, 
+pool: 2, 
+description: 'Casa bem localizada em condições prontra para morar', 
+tipology: 'T5', 
+next_by: 'PRIMARY_SCHOOL', 
+furnished: true, 
+property_type: 'APARTAMENTO', 
+address: Address.first,
+dimention: Dimention.first,
+location: Location.first
+)
+
+House.find_or_create_by!(
+    room: 2, 
+    title: 'Casa Feia bem feia', 
+    living_room: 1, 
+    bath_room: 2, 
+    yeard: 1, 
+    kitchen: 3, 
+    balcony: 3, 
+    condition: 'RENOVATED', 
+    type_negotiation: 'RENT_MONTHLY', 
+    price: 98000, 
+    garage: 1, 
+    pool: 2, 
+    description: 'Casa bem localizada em condições prontra para morar', 
+    tipology: 'T2', 
+    next_by: 'GYMANASIUM', 
+    furnished: true, 
+    property_type: 'ENTERPRISE', 
+    address: Address.last,
+    dimention: Dimention.last,
+    location: Location.last
+)
+puts "Fim do cadastro de house."
+
+
+puts "Cadastrando profile_house..."
+4.times do 
+ProfileHouse.find_or_create_by!(
+    house: House.last,
+    profile: Profile.first
+)
+ProfileHouse.find_or_create_by!(
+    house: House.first,
+    profile: Profile.last
+)
+end
+puts "Fim do cadastro de profile_house."
+
+
+puts "Cadastrando favorite house..."
+4.times do 
+FavoriteHouse.find_or_create_by!(
+    house: House.last,
+    profile: Profile.first
+)
+FavoriteHouse.find_or_create_by!(
+    house: House.first,
+    profile: Profile.last
+)
+end
+puts "Fim do cadastro de favorite_house."

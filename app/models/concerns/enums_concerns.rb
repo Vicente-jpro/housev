@@ -1,7 +1,7 @@
 module EnumsConcerns
     extend ActiveSupport::Concern
     included do 
-        enum condition: { New: 'New', Renovated: 'RENOVATED', Unfinished:'UNFINISHED', Used: 'USED'}
+        enum condition: { New: 'NEW', Renovated: 'RENOVATED', Unfinished:'UNFINISHED', Used: 'USED'}
         enum type_negotiation: {
             Rent_Monthly: 'RENT_MONTHLY', Rent_daily: 'RENT_DAILY', Rent_Shared: 'rent shared'
         }

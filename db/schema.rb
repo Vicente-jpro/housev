@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_21_173130) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_21_181049) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -62,6 +62,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_173130) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "favorite_houses", force: :cascade do |t|
+    t.integer "profile_id", null: false
+    t.integer "house_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["house_id"], name: "index_favorite_houses_on_house_id"
+    t.index ["profile_id"], name: "index_favorite_houses_on_profile_id"
+  end
+
   create_table "favorite_lands", force: :cascade do |t|
     t.integer "profile_id", null: false
     t.integer "land_id", null: false
@@ -84,7 +93,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_173130) do
     t.integer "price"
     t.integer "garage"
     t.integer "pool"
-    t.string "discription"
+    t.string "description"
     t.string "tipology"
     t.string "next_by"
     t.boolean "furnished"
@@ -172,6 +181,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_173130) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "cities"
   add_foreign_key "cities", "provinces"
+  add_foreign_key "favorite_houses", "houses"
+  add_foreign_key "favorite_houses", "profiles"
   add_foreign_key "favorite_lands", "lands"
   add_foreign_key "favorite_lands", "profiles"
   add_foreign_key "houses", "addresses"

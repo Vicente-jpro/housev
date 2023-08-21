@@ -13,14 +13,14 @@
     
        </div>
         <div class="row my-1">
-            <% if @land.images.attached? %>
+            <% if @house.house_images.attached? %>
               <div class="col-sm-6">
-                  <%= image_tag(@house.image_houses.first, 
+                  <%= image_tag(@house.house_images.first, 
                   class: "bd-placeholder-img card-img-top", width:"100%", height:"390")%>
               </div>
               <div class="col">
                 <div class="row">
-                    <%= render "images_show", images: @house.image_houses %>
+                    <%= render "images_show", images: @house.house_images %>
                 </div>
               </div>
             <% end %>
@@ -46,7 +46,7 @@
     </p>
     
     <h1 class="fs-3">
-        <%= @house.title_land %>
+        <%= @house.title %>
     </h1>
     <p class="fs-3 text-pink">
        <%= @house.price %> Kz  <span class="fs-5">/mês</span>
@@ -68,7 +68,7 @@
         <hr class="text-pink"> <br>
         <strong class="text-pink">Descrição: </strong>
         <p class="text-description">
-          <%= @house.description %>
+          <%= @house.discription %>
         </p>
 
         <br>
