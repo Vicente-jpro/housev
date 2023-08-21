@@ -30,8 +30,8 @@
               <%= form.select :gender, Profile.genders, {label: :gender}%>
 
               <%= form.select :profile_type, Profile.profile_types, {label: "Tipo do perfil"} %>
-              <%= form.telephone_field :phone1, label: "Phone1"%>
-              <%= form.telephone_field :phone2, label: "Phone2" %>
+              <%= form.telephone_field :phone1, label: :phone1 %>
+              <%= form.telephone_field :phone2, label: :phone2 %>
               <%= form.collection_select :province_id, Province.order(:province_name), :id, :province_name, { label: "Provincia"}  %>
                 
               <%= form.fields_for :address do |address_form| %>

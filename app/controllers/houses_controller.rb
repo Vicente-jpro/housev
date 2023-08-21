@@ -1,5 +1,6 @@
 class HousesController < ApplicationController
   before_action :set_house, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [ :show, :index, :show_images]
 
   # GET /houses or /houses.json
   def index
@@ -25,12 +26,16 @@ class HousesController < ApplicationController
   # POST /houses or /houses.json
   def create
     @house = House.new(house_params)
-
+    debugger
     respond_to do |format|
       if @house.save
+        debugger
         format.html { redirect_to house_url(@house), notice: "House was successfully created." }
         format.json { render :show, status: :created, location: @house }
       else
+        @house.build_address
+        @house.build_location 
+        @house.build_dimention
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @house.errors, status: :unprocessable_entity }
       end
@@ -86,10 +91,9 @@ class HousesController < ApplicationController
         :next_by, 
         :furnished, 
         :property_type, 
-        :location_id, 
         address_attributes: [:id, :street, :city_id, :_destroy],
         dimention_attributes: [:id, :width_d, :height_d, :_destroy ],
-        latitude_attributes: [:id, :latitude, :longitude, :_destroy ],
-        images:[])
+        location_attributes: [:id, :latitude, :longitude, :_destroy ],
+        house_images:[])
     end
 end

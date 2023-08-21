@@ -7,12 +7,10 @@
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li> <%= link_to "Inicio", root_path, class: "nav-link px-2 text-pink fs-5" %> </li>
-          <li><a href="#" class="nav-link px-2 text-pink fs-5 house">Imoveis</a></li>
+          <li><%= link_to "Imoveis", houses_path, class: "nav-link px-2 text-pink fs-5 house"%></li>
           <li><a href="#" class="nav-link px-2 text-pink fs-5">Arrendar</a></li>
           <li><a href="#" class="nav-link px-2 text-pink fs-5 ">Comprar</a></li>
           <li> <%= link_to "Terrenos", lands_path, class: "nav-link px-2 text-pink fs-5 land" %> </li>
-  
-
         </ul>
 
         <%= link_to "Criar conta", new_user_registration_path, class: "btn btn-pink ms-1" if !user_signed_in?%> 
@@ -67,13 +65,13 @@
         <!-- Houses -->
         <ul class="nav justify-content-start house" id="sub-menu-house">
           <li class="nav-item">
-            <%= link_to "Novo imovel", new_land_path, class: "nav-link px-2 text-pink fs-5" %>
+            <%= link_to "Novo imovel", new_house_path, class: "nav-link px-2 text-pink fs-5" %>
           </li>
           <li class="nav-item">
-              <%= link_to "Visualizar imoveis", lands_path, class: "nav-link px-2 text-pink fs-5" %>
+              <%= link_to "Visualizar imoveis", houses_path, class: "nav-link px-2 text-pink fs-5" %>
           </li>
           <li class="nav-item">
-              <%= link_to "Meus imoveis postados", profile_lands_path, class: "nav-link px-2 text-pink fs-5" %>
+              <%= link_to "Meus imoveis postados", houses_path, class: "nav-link px-2 text-pink fs-5" %>
           </li>
         </ul>
         <!-- end houses-->

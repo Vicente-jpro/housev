@@ -20,8 +20,8 @@
             <% end %>
               
               
-              <%= form.number_field :title, label: :title %>
-              <%= form.file_field :images, multiple: true %> 
+              <%= form.text_field :title, label: :title %>
+              <%= form.file_field :house_images, multiple: true %> 
               
               <div class="row">
                 <div class="col"> 
@@ -30,9 +30,11 @@
                 <div class="col"> 
                   <%= form.select :tipology, House.tipologies, {label: :tipology}%>        
                 </div>
+                <div class="col"> 
+                    <%= form.select :type_negotiation, House.type_negotiations, {label: :type_negotiation} %>      
+                </div>
               </div>
              
-              <%= form.select :type_negotiation, House.type_negotiations, {label: :type_negotiation} %>
              
               <div class="row">
                 <div class="col">
@@ -90,10 +92,10 @@
                 <p class="text-center">Geografic Location</p>
                 <%= form.fields_for :location do |location_form| %>
                   <div class="col">
-                    <%= location_form.number_field :latitude, label: "Width"%>
+                    <%= location_form.number_field :latitude, label: :latitude%>
                   </div>
                   <div class="col">
-                    <%= location_form.number_field :longitude, label: "Height"%>
+                    <%= location_form.number_field :longitude, label: :longitude %>
                   </div>
                 <% end %> 
               </div>
