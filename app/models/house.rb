@@ -11,6 +11,10 @@ class House < ApplicationRecord
   accepts_nested_attributes_for :address
 
   has_many_attached :house_images
+  
+  has_many :profile_houses, dependent: :destroy
+  has_many :profiles, through: :profile_houses
+  has_many :favorite_houses, dependent: :destroy
 
   validates_presence_of :address, :dimention, :price
 

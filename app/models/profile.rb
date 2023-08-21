@@ -7,6 +7,10 @@ class Profile < ApplicationRecord
   has_many :lands, through: :profile_lands, dependent: :destroy
   has_many :favorite_land, dependent: :destroy
 
+  has_many :profile_houses
+  has_many :houses, through: :profile_houses, dependent: :destroy
+  has_many :favorite_house, dependent: :destroy
+
   validates_presence_of :name_profile, :profile_type, :gender
   validates :phone1, :phone2, presence: true, uniqueness: true
 
