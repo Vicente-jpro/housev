@@ -69,7 +69,7 @@ end
 puts "Fim do cadastro de Dimention."
 
 puts "Cadastrando as land..."
-5.times do
+3.times do
 Land.find_or_create_by!(
     title_land: "Terreno no Bita Tanke", 
     description: "Esse é um terreno grande bem localizado.",
@@ -96,7 +96,6 @@ puts "Fim do cadastro de favorite_land."
 
 
 puts "Cadastrando profile_land..."
-4.times do 
 ProfileLand.find_or_create_by!(
     land: Land.last,
     profile: Profile.first
@@ -105,7 +104,6 @@ ProfileLand.find_or_create_by!(
     land: Land.first,
     profile: Profile.last
 )
-end
 puts "Fim do cadastro de profile_land."
 
 puts "Cadastrando as Location..."
@@ -167,8 +165,7 @@ House.find_or_create_by!(
 puts "Fim do cadastro de house."
 
 
-puts "Cadastrando profile_house..."
-4.times do 
+puts "Cadastrando profile_house..." 
 ProfileHouse.find_or_create_by!(
     house: House.last,
     profile: Profile.first
@@ -177,19 +174,16 @@ ProfileHouse.find_or_create_by!(
     house: House.first,
     profile: Profile.last
 )
-end
 puts "Fim do cadastro de profile_house."
 
 
-puts "Cadastrando favorite house..."
-4.times do 
+puts "Cadastrando favorite house..." 
 FavoriteHouse.find_or_create_by!(
-    house: House.last,
+    house: House.first,
     profile: Profile.first
 )
 FavoriteHouse.find_or_create_by!(
-    house: House.first,
+    house: House.last,
     profile: Profile.last
 )
-end
 puts "Fim do cadastro de favorite_house."

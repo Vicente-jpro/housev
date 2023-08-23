@@ -11,17 +11,19 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :profile_id, style: "display: block" %>
-    <%= form.text_field :profile_id %>
-  </div>
+     <% if user_signed_in? %>
+      <%= form.hidden_field :profile_id, value: favorite_house.profile_id%>
+      <%= form.hidden_field :house_id, value: favorite_house.house_id %>
+    
+      <%= form.submit class:"btn btn-pink ms-1" do %>
+        <i class="bi bi-heart-fill"></i>
+            Guardar como favorito
+      <% end %>
+    <% else %>
+      <%= link_to user_session_path, class: "btn btn-pink ms-1" do %>
+        <i class="bi bi-heart-fill"></i>
+        Guardar como favorito
+      <% end %> 
+    <% end %>
 
-  <div>
-    <%= form.label :house_id, style: "display: block" %>
-    <%= form.text_field :house_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
 <% end %>
