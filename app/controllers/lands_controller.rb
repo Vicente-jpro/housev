@@ -5,6 +5,7 @@ class LandsController < ApplicationController
   
   include LandsConcerns
   include ProfileLandsConcerns
+  include ImageConcerns
 
 
   # GET /lands or /lands.json

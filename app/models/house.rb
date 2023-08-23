@@ -18,5 +18,10 @@ class House < ApplicationRecord
 
   validates_presence_of :address, :dimention, :price
 
+  def self.find_houses_by_user(user)
+    House.joins(:profiles)
+        .where("profiles.user_id = #{user.id}")
+        .order(id: :desc)
+  end
   
 end

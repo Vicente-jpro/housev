@@ -3,6 +3,10 @@ class HousesController < ApplicationController
   before_action :authenticate_user!, except: [ :show, :index, :show_images]
   before_action :get_profile, only: [ :create ]
 
+  include ImageConcerns
+  include HousesConcerns
+  include ProfileHousesConcerns
+
   # GET /houses or /houses.json
   def index
     @houses = House.all
