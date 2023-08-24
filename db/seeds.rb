@@ -24,16 +24,15 @@ puts "Fim do cadastro das cidades."
 
 puts "Cadastrando usuarios...."
 user = User.new
-user.email = 'vicenteviii@gmail.com'
-user.password = '12345678'
-user.password_confirmation = '12345678'
+user.email = "vicenteviii@gmail.com"
+user.password = "12345678"
+user.password_confirmation = "12345678"
 user.save!
 
 user = User.new
-user.email = 'vicenteviii@outlook.com'
-#user.encrypted_password = 'vicente0301'
-user.password = '12345678'
-user.password_confirmation = '12345678'
+user.email = "vicenteviii@outlook.com"
+user.password = "12345678"
+user.password_confirmation = "12345678"
 user.save!
 puts "Fim do cadastro de usuários."
 
