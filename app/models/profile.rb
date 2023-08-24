@@ -1,7 +1,7 @@
 class Profile < ApplicationRecord
   belongs_to :user
   belongs_to :address
-  accepts_nested_attributes_for :address
+  accepts_nested_attributes_for :address, allow_destroy: true
 
   has_many :profile_lands
   has_many :lands, through: :profile_lands, dependent: :destroy
