@@ -22,7 +22,7 @@
             <div>
               <%= form.text_field :title_land, label: "Titulo" %>
               <%= form.file_field :images, multiple: true %>  
-              <%= form.text_field :description, label: :description %>
+              <%= form.text_area :description, label: :description, size: "70x5" %>
              
               <%= form.collection_select :province_id, Province.order(:province_name), :id, :province_name, { label: "Provincia"}  %>
                 
@@ -42,7 +42,6 @@
               </div>
 
               <%= form.number_field :price %>
-              <%= form.hidden_field :user_id, readonly: true , value: current_user.id if user_signed_in?%>
             </div>
 
             <div class="mb-3 d-grid gap-2">

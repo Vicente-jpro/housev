@@ -2,7 +2,7 @@ class CreateHouses < ActiveRecord::Migration[7.0]
   def change
     create_table :houses do |t|
       t.integer :room
-      t.integer :title
+      t.string :title
       t.integer :living_room
       t.integer :bath_room
       t.integer :yeard
@@ -13,7 +13,7 @@ class CreateHouses < ActiveRecord::Migration[7.0]
       t.integer :price
       t.integer :garage
       t.integer :pool
-      t.string :discription
+      t.string :description
       t.string :tipology
       t.string :next_by
       t.boolean :furnished

@@ -1,14 +1,9 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Houses</h1>
-
-<div id="houses">
-  <% @houses.each do |house| %>
-    <%= render house %>
-    <p>
-      <%= link_to "Show this house", house %>
-    </p>
-  <% end %>
+<div class="album py-5">
+  <div class="container-fluid">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3" id="houses">
+      <% @houses.each do |house| %>
+        <%= render house %>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-<%= link_to "New house", new_house_path %>

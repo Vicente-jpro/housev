@@ -1,18 +1,19 @@
-<%= form_with(model: favorite_land) do |form| %>
-  <% if favorite_land.errors.any? %>
+<%= form_with(model: favorite_house) do |form| %>
+  <% if favorite_house.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(favorite_land.errors.count, "error") %> prohibited this favorite_land from being saved:</h2>
+      <h2><%= pluralize(favorite_house.errors.count, "error") %> prohibited this favorite_house from being saved:</h2>
 
       <ul>
-        <% favorite_land.errors.each do |error| %>
+        <% favorite_house.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
-    <% if user_signed_in? %>
-      <%= form.hidden_field :profile_id, value: favorite_land.profile_id%>
-      <%= form.hidden_field :land_id, value: favorite_land.land_id %>
+
+     <% if user_signed_in? %>
+      <%= form.hidden_field :profile_id, value: favorite_house.profile_id%>
+      <%= form.hidden_field :house_id, value: favorite_house.house_id %>
     
       <%= form.submit class:"btn btn-pink ms-1" do %>
         <i class="bi bi-heart-fill"></i>

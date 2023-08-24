@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :houses
+  resources :favorite_houses
+
   root "home#index"
 
   devise_for :users
@@ -10,8 +11,12 @@ Rails.application.routes.draw do
   resources :favorite_lands, only: [:index, :create, :destroy]
   resources :profile_lands, only: [:index]
   resources :profiles
+  
   resources :lands do 
     get 'show_images'
+  end
+  resources :houses do
+    get 'show_images' 
   end
 
 end

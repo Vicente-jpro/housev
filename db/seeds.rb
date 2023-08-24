@@ -24,16 +24,15 @@ puts "Fim do cadastro das cidades."
 
 puts "Cadastrando usuarios...."
 user = User.new
-user.email = 'vicenteviii@gmail.com'
-user.password = '12345678'
-user.password_confirmation = '12345678'
+user.email = "vicenteviii@gmail.com"
+user.password = "12345678"
+user.password_confirmation = "12345678"
 user.save!
 
 user = User.new
-user.email = 'vicenteviii@outlook.com'
-#user.encrypted_password = 'vicente0301'
-user.password = '12345678'
-user.password_confirmation = '12345678'
+user.email = "vicenteviii@outlook.com"
+user.password = "12345678"
+user.password_confirmation = "12345678"
 user.save!
 puts "Fim do cadastro de usuários."
 
@@ -69,7 +68,7 @@ end
 puts "Fim do cadastro de Dimention."
 
 puts "Cadastrando as land..."
-5.times do
+3.times do
 Land.find_or_create_by!(
     title_land: "Terreno no Bita Tanke", 
     description: "Esse é um terreno grande bem localizado.",
@@ -96,7 +95,6 @@ puts "Fim do cadastro de favorite_land."
 
 
 puts "Cadastrando profile_land..."
-4.times do 
 ProfileLand.find_or_create_by!(
     land: Land.last,
     profile: Profile.first
@@ -105,6 +103,86 @@ ProfileLand.find_or_create_by!(
     land: Land.first,
     profile: Profile.last
 )
-end
 puts "Fim do cadastro de profile_land."
 
+puts "Cadastrando as Location..."
+4.times do
+Location.find_or_create_by!(
+    longitude: 770000, 
+    latitude: 770000
+)
+end
+puts "Fim do cadastro de Location."
+
+
+puts "Cadastrando a house."
+House.find_or_create_by!(
+room: 2, 
+title: "Casa luxuosa a venda", 
+living_room: 1, 
+bath_room: 2, 
+yeard: 1, 
+kitchen: 3, 
+balcony: 3, 
+condition: "NEW", 
+type_negotiation: "RENT_MONTHLY", 
+price: 68000, 
+garage: 1, 
+pool: 2, 
+description: "Casa bem localizada em condições prontra para morar", 
+tipology: "T5", 
+next_by: "PRIMARY_SCHOOL", 
+furnished: true, 
+property_type: "APARTAMENTO", 
+address: Address.first,
+dimention: Dimention.first,
+location: Location.first
+)
+
+House.find_or_create_by!(
+    room: 2, 
+    title: "Casa Feia bem feia", 
+    living_room: 1, 
+    bath_room: 2, 
+    yeard: 1, 
+    kitchen: 3, 
+    balcony: 3, 
+    condition: "RENOVATED", 
+    type_negotiation: "RENT_MONTHLY", 
+    price: 98000, 
+    garage: 1, 
+    pool: 2, 
+    description: "Casa bem localizada em condições prontra para morar", 
+    tipology: "T2", 
+    next_by: "GYMANASIUM", 
+    furnished: true, 
+    property_type: "ENTERPRISE", 
+    address: Address.last,
+    dimention: Dimention.last,
+    location: Location.last
+)
+puts "Fim do cadastro de house."
+
+
+puts "Cadastrando profile_house..." 
+ProfileHouse.find_or_create_by!(
+    house: House.last,
+    profile: Profile.first
+)
+ProfileHouse.find_or_create_by!(
+    house: House.first,
+    profile: Profile.last
+)
+puts "Fim do cadastro de profile_house."
+
+
+puts "Cadastrando favorite house..." 
+FavoriteHouse.find_or_create_by!(
+    house: House.first,
+    profile: Profile.first
+)
+FavoriteHouse.find_or_create_by!(
+    house: House.last,
+    profile: Profile.last
+)
+puts "Fim do cadastro de favorite_house."
