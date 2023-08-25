@@ -2,7 +2,7 @@ class LandsController < ApplicationController
   before_action :set_land, only: %i[ show edit update destroy]
   before_action :authenticate_user!, except: [ :show, :index, :show_images]
   before_action :get_profile, only: [ :create ]
-  add_flash_types :info
+
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_land
 
   include LandsConcerns

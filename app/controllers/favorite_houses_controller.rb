@@ -1,5 +1,8 @@
 class FavoriteHousesController < ApplicationController
   before_action :set_favorite_house, only: %i[ show edit update destroy ]
+  
+  add_flash_types :info
+  include HousesConcerns
 
   # GET /favorite_houses or /favorite_houses.json
   def index

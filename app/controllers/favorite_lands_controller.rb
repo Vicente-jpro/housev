@@ -51,12 +51,12 @@ class FavoriteLandsController < ApplicationController
 
     def invalid_favorite_land 
       logger.error "Attempt to access invalid favorite_land #{params[:id]}"
-      redirect_to lands_url, alert: "Invalid favorite land."
+      redirect_to lands_url, info: "Invalid favorite land."
     end
 
     def invalid_land 
       logger.error "Attempt to access invalid land #{params[:land_id]}"
-      redirect_to lands_url, alert: "Invalid land."
+      redirect_to lands_url, info: "Invalid land."
     end
 
     # Only allow a list of trusted parameters through.
