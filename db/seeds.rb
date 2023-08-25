@@ -23,14 +23,14 @@ Address.find_or_create_by!(street: "Mutamba", city: City.all.sample)
 puts "Fim do cadastro das cidades."
 
 puts "Cadastrando usuarios...."
-user = User.new
-user.email = "vicenteviii@gmail.com"
+user = User.new 
+user.email = "vicenteviciii@gmail.com"
 user.password = "12345678"
 user.password_confirmation = "12345678"
 user.save!
 
 user = User.new
-user.email = "vicenteviii@outlook.com"
+user.email = "vicenteviciii@outlook.com"
 user.password = "12345678"
 user.password_confirmation = "12345678"
 user.save!
