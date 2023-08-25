@@ -108,13 +108,46 @@
                  <%= @house.pool %> <%= :pool %>  <br>
 
                  <i class="bi bi-check2-circle text-pink"></i>
-                 <%= @house.furnished %> <%= :balcony %>  <br>
+                 <%= :furnished %>: <%= @house.furnished %>  <br>
 
                   <i class="bi bi-check2-circle text-pink"></i> 
                  <%= @house.garage %> <%= :garage %> <br>
               </p>
             </div>
           </div>
+
+       <hr class="text-pink">
+               <div class="row">
+            <div class="col">
+              <p>
+                <strong class="text-pink"> Form of lease of the property </strong>
+              </p>
+              <p class="text-description">
+                <i class="bi bi-check2-circle text-pink"></i>
+                <%= @house.type_negotiation %>  <br>
+              </p>
+            </div>
+            <div class="col">
+             <p>
+                <strong class="text-pink"> This property is next by: </strong>
+              </p>
+              <p class="text-description">
+                  <i class="bi bi-check2-circle text-pink"></i> 
+                 <%= @house.next_by %> <br>
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                <strong class="text-pink"> Property type: </strong>
+              </p>
+              <p class="text-description">
+                  <i class="bi bi-check2-circle text-pink"></i> 
+                 <%= @house.property_type %> <br>
+              </p>
+            </div>
+          </div>
+
+ 
 
         <hr class="text-pink">
 
