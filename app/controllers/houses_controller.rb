@@ -59,6 +59,9 @@ class HousesController < ApplicationController
 
   # PATCH/PUT /houses/1 or /houses/1.json
   def update
+    if !is_image_uploaded?(params[:house][:house_images]) 
+      params[:house][:house_images] << set_house.house_images
+    end
     respond_to do |format|
       if @house.update(house_params)
         format.html { redirect_to house_url(@house), notice: "House was successfully updated." }
