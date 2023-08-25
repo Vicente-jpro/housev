@@ -21,7 +21,7 @@ class HousesController < ApplicationController
     @profile
   end
   
-  # GET	/lands/:house_id/show_images
+  # GET	/houses/:house_id/show_images
   def show_images
     @house = House.find(params[:house_id])
     @profile = ProfileHouse.find_house_by_house(@house).profile
