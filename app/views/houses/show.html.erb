@@ -46,7 +46,7 @@
     </p>
     
     <h1 class="fs-3">
-        <%= @house.title %>
+        <%= @house.title %>, <%= @house.tipology %>
     </h1>
     <p class="fs-3 text-pink">
        <%= @house.price %> Kz  <span class="fs-5">/mês</span>
@@ -72,6 +72,50 @@
         </p>
 
         <br>
+        <hr class="text-pink">
+          <p>
+           <strong class="text-pink">Compartimento da casa: <%= @house.tipology %> </strong>
+         </p>
+         <div class="row">
+            <div class="col">
+              <p class="text-description">
+                
+                <i class="bi bi-check2-circle text-pink"></i> 
+                 <%= @house.living_room %> <%= :living_room %>  <br>
+
+                 <i class="bi bi-check2-circle text-pink"></i>
+                 <%= @house.bath_room %> <%= :bath_room %>  <br>
+
+                  <i class="bi bi-check2-circle text-pink"></i> 
+                 <%= @house.room %> <%= :room %> <br>
+              </p>
+            </div>
+            <div class="col">
+              <p class="text-description">
+                <i class="bi bi-check2-circle text-pink"></i> 
+                 <%= @house.kitchen %> <%= :kitchen %>  <br>
+
+                 <i class="bi bi-check2-circle text-pink"></i>
+                 <%= @house.balcony %> <%= :balcony %>  <br>
+
+                  <i class="bi bi-check2-circle text-pink"></i> 
+                 <%= @house.garage %> <%= :garage %> <br>
+              </p>
+            </div>
+            <div class="col">
+              <p class="text-description">
+                 <i class="bi bi-check2-circle text-pink"></i>
+                 <%= @house.pool %> <%= :pool %>  <br>
+
+                 <i class="bi bi-check2-circle text-pink"></i>
+                 <%= @house.furnished %> <%= :balcony %>  <br>
+
+                  <i class="bi bi-check2-circle text-pink"></i> 
+                 <%= @house.garage %> <%= :garage %> <br>
+              </p>
+            </div>
+          </div>
+
         <hr class="text-pink">
 
       <!-- houses -->
