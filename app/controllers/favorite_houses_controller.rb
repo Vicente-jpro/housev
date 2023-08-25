@@ -1,50 +1,32 @@
 class FavoriteHousesController < ApplicationController
   before_action :set_favorite_house, only: %i[ show edit update destroy ]
-  
-  add_flash_types :info
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_favorite_house
+
   include HousesConcerns
 
-  # GET /favorite_houses or /favorite_houses.json
-  def index
-    @favorite_houses = FavoriteHouse.all
-  end
-
-  # GET /favorite_houses/1 or /favorite_houses/1.json
-  def show
-  end
-
-  # GET /favorite_houses/new
-  def new
-    @favorite_house = FavoriteHouse.new
-  end
-
-  # GET /favorite_houses/1/edit
-  def edit
+   # GET /favorite_houses or /favorite_houses.json
+   def index
+    @favorite_houses = FavoriteHouse.find_all_by_user(current_user)
   end
 
   # POST /favorite_houses or /favorite_houses.json
   def create
     @favorite_house = FavoriteHouse.new(favorite_house_params)
-
+    favorite = FavoriteHouse.new 
+    favorite.house_id = @favorite_house[:house_id]
+    
     respond_to do |format|
-      if @favorite_house.save
-        format.html { redirect_to favorite_house_url(@favorite_house), notice: "Favorite house was successfully created." }
+      if is_land_creator?(current_user)
+        format.html { redirect_to houses_url, 
+          alert: "You are the house creator. It's impossible mark as favorite." }
+      elsif !FavoriteLand.exist?(favorite)
+        format.html { redirect_to houses_url, 
+              alert: "This house is already added as a favorite." }
+      elsif @favorite_house.save
+        format.html { redirect_to houses_url, notice: "Favorite house was successfully created." }
         format.json { render :show, status: :created, location: @favorite_house }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @favorite_house.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /favorite_houses/1 or /favorite_houses/1.json
-  def update
-    respond_to do |format|
-      if @favorite_house.update(favorite_house_params)
-        format.html { redirect_to favorite_house_url(@favorite_house), notice: "Favorite house was successfully updated." }
-        format.json { render :show, status: :ok, location: @favorite_house }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @favorite_house.errors, status: :unprocessable_entity }
       end
     end
@@ -59,6 +41,17 @@ class FavoriteHousesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_favorite_land
+      @favorite_house = FavoriteLand.find(params[:id])
+    end
+
+    def invalid_land 
+      logger.error "Attempt to access invalid land #{params[:id]}"
+      redirect_to houses_url, info: "Invalid land."
+    end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,7 +1,7 @@
 class FavoriteLandsController < ApplicationController
   before_action :set_favorite_land, only: %i[ destroy ]
   before_action :authenticate_user!
-  rescue_from ActiveRecord::RecordNotFound, with: [:invalid_land, :invalid_favorite_land] 
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_land 
 
   include LandsConcerns
 
@@ -49,13 +49,8 @@ class FavoriteLandsController < ApplicationController
       @favorite_land = FavoriteLand.find(params[:id])
     end
 
-    def invalid_favorite_land 
-      logger.error "Attempt to access invalid favorite_land #{params[:id]}"
-      redirect_to lands_url, info: "Invalid favorite land."
-    end
-
     def invalid_land 
-      logger.error "Attempt to access invalid land #{params[:land_id]}"
+      logger.error "Attempt to access invalid land #{params[:id]}"
       redirect_to lands_url, info: "Invalid land."
     end
 

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :favorite_houses
+  
 
   root "home#index"
 
@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :favorite_lands, only: [:index, :create, :destroy]
+  resources :favorite_houses, only: [:index, :create, :destroy]
   resources :profile_lands, only: [:index]
   resources :profiles
   
