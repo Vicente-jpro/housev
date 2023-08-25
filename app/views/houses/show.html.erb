@@ -30,10 +30,12 @@
   </div>
 
   <div class="container">
-    <div class="d-grid gap-2">
-      <%= link_to "Editar", edit_house_path(@house), class:"btn btn-info" %> 
-      <%= button_to "Eliminar", @house, method: :delete, class:"btn btn-danger  my-1 col-sm-12" %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="d-grid gap-2">
+        <%= link_to "Editar", edit_house_path(@house), class:"btn btn-info" %> 
+        <%= button_to "Eliminar", @house, method: :delete, class:"btn btn-danger  my-1 col-sm-12" %>
+      </div>
+    <% end %>
 
     <br>
     <p>

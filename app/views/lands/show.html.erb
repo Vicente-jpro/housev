@@ -30,11 +30,12 @@
   </div>
 
   <div class="container">
+  <% if user_signed_in? %>
     <div class="d-grid gap-2">
       <%= link_to "Editar", edit_land_path(@land), class:"btn btn-info" %> 
       <%= button_to "Eliminar", @land, method: :delete, class:"btn btn-danger  my-1 col-sm-12" %>
     </div>
-
+  <% end %>
     <br>
     <p>
       <strong class="fs-4 text-pink">
