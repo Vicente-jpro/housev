@@ -2,6 +2,9 @@ class HousesController < ApplicationController
   before_action :set_house, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [ :show, :index, :show_images]
   before_action :get_profile, only: [ :create ]
+  add_flash_types :info
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_house
+
 
   include ImageConcerns
   include HousesConcerns
@@ -81,6 +84,11 @@ class HousesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_house
       @house = House.find(params[:id])
+    end
+
+    def invalid_house 
+      logger.error "Attemped to access invalid house #{params[:id]}"
+      redirect_to houses_url, info: "Invalid house."
     end
 
     def get_profile

@@ -2,7 +2,9 @@ class LandsController < ApplicationController
   before_action :set_land, only: %i[ show edit update destroy]
   before_action :authenticate_user!, except: [ :show, :index, :show_images]
   before_action :get_profile, only: [ :create ]
-  
+  add_flash_types :info
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_land
+
   include LandsConcerns
   include ProfileLandsConcerns
   include ImageConcerns
@@ -97,6 +99,11 @@ class LandsController < ApplicationController
 
     def get_profile
       @profile = Profile.find_by_user(current_user)
+    end
+
+    def invalid_land 
+      logger.error "Attemped to access invalid land #{params[:id]}"
+      redirect_to lands_url, info: "This land doesn't exit."
     end
 
     # Only allow a list of trusted parameters through.
