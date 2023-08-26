@@ -90,7 +90,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_181049) do
     t.integer "balcony"
     t.string "condition"
     t.string "type_negotiation"
-    t.integer "price"
+    t.decimal "price", precision: 8, scale: 2
     t.integer "garage"
     t.integer "pool"
     t.string "description"
@@ -111,7 +111,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_181049) do
   create_table "lands", force: :cascade do |t|
     t.string "title_land"
     t.string "description"
-    t.integer "price"
+    t.decimal "price", precision: 8, scale: 2
     t.integer "dimention_id", null: false
     t.integer "address_id", null: false
     t.datetime "created_at", null: false

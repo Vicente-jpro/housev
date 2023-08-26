@@ -10,7 +10,7 @@ class CreateHouses < ActiveRecord::Migration[7.0]
       t.integer :balcony
       t.string :condition
       t.string :type_negotiation
-      t.integer :price
+      t.decimal :price, precision: 8, scale: 2
       t.integer :garage
       t.integer :pool
       t.string :description
