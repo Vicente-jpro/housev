@@ -41,7 +41,7 @@ Profile.find_or_create_by!(
     name_profile: "Vicente Simão", 
     phone1: "944889722",
     phone2: "666666666",
-    profile_type: "CLIENTE",
+    profile_type: "SUPER_ADMINISTRADOR756",
     gender: "MASCULINE",
     address: Address.all.sample,
     user: User.first
