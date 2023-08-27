@@ -40,11 +40,15 @@ class LandsController < ApplicationController
 
   # POST /lands or /lands.json
   def create
+
     @land = Land.new(land_params)
     
     respond_to do |format|
       if @profile.nil?
-        format.html { redirect_to new_profile_path, notice: "You must to create a profile after create a land." }
+        format.html { redirect_to new_profile_path, info: "You must to create a profile after create a land." }
+        format.json { render json: ["You must to create a profile after create a land."], status: :unprocessable_entity }
+      elsif @profile.cliente?
+        format.html { redirect_to new_profile_path, info: "You are a simple client. Change your profile to create a land." }
         format.json { render json: ["You must to create a profile after create a land."], status: :unprocessable_entity }
       elsif @land.save
         create_profile_land(@profile, @land)

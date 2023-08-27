@@ -18,10 +18,10 @@ class Profile < ApplicationRecord
     attachable.variant :thumb, resize_to_limit: [140, 140]
   end
   
-  enum gender: { Masculino: "MASCULINE", Feminino: "FEMININE" }
+  enum gender: { masculine: "MASCULINE", feminine: "FEMININE" }
   enum profile_type: {
-    Super_administrador: "SUPER_ADMINISTRADOR756", 
-    Adiministrador: "ADMINISTRADOR436", 
+    super_adminstrador: "SUPER_ADMINISTRADOR756", 
+    administrador: "ADMINISTRADOR436", 
     cliente: "CLIENTE"
   }
   

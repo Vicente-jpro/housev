@@ -44,7 +44,13 @@ class HousesController < ApplicationController
   def create
     @house = House.new(house_params)
     respond_to do |format|
-      if @house.save
+      if @profile.nil?
+        format.html { redirect_to new_profile_path, info: "You must to create a profile after create a house." }
+        format.json { render json: ["You must to create a profile after create a house."], status: :unprocessable_entity }
+      elsif @profile.cliente?
+        format.html { redirect_to new_profile_path, info: "You are a simple client. Change your profile to create a house." }
+        format.json { render json: ["You must to create a profile after create a house."], status: :unprocessable_entity }
+      elsif @house.save
         format.html { redirect_to house_url(@house), notice: "House was successfully created." }
         format.json { render :show, status: :created, location: @house }
       else
@@ -75,11 +81,17 @@ class HousesController < ApplicationController
 
   # DELETE /houses/1 or /houses/1.json
   def destroy
-    @house.destroy
-
+    is_creator = ProfileHouse.is_creator_or_admin_house?(current_user, @house)
+    
     respond_to do |format|
-      format.html { redirect_to houses_url, notice: "House was successfully destroyed." }
-      format.json { head :no_content }
+      if is_creator
+        @house.destroy
+        format.html { redirect_to houses_url, notice: "House was successfully destroyed." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to houses_url(@house), alert: "This house belongs to another user." }
+        format.json { render json: ["This house belongs to another user. Impossible delete"], status: :unprocessable_entity }
+      end
     end
   end
 
