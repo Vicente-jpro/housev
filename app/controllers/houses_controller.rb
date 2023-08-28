@@ -2,13 +2,14 @@ class HousesController < ApplicationController
   before_action :set_house, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [ :show, :index, :show_images]
   before_action :get_profile, only: [ :create ]
-  add_flash_types :info
-  rescue_from ActiveRecord::RecordNotFound, with: :invalid_house
+  before_action :is_creator?, only: [ :update, :destroy ]
 
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_house
 
   include ImageConcerns
   include HousesConcerns
   include ProfileHousesConcerns
+  include BelongsAnotherUserMessageConcerns
 
   # GET /houses or /houses.json
   def index
@@ -69,28 +70,30 @@ class HousesController < ApplicationController
       params[:house][:house_images] << set_house.house_images
     end
     respond_to do |format|
-      if @house.update(house_params)
-        format.html { redirect_to house_url(@house), notice: "House was successfully updated." }
-        format.json { render :show, status: :ok, location: @house }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @house.errors, status: :unprocessable_entity }
+      if @is_creator
+        if@house.update(house_params) 
+          format.html { redirect_to house_url(@house), notice: "House was successfully updated." }
+          format.json { render :show, status: :ok, location: @house }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @house.errors, status: :unprocessable_entity }
+        end
+      else  
+        belongs_another_user_message(format, @house, "House")
       end
     end
   end
 
   # DELETE /houses/1 or /houses/1.json
   def destroy
-    is_creator = ProfileHouse.is_creator_or_admin_house?(current_user, @house)
     
     respond_to do |format|
-      if is_creator
+      if @is_creator
         @house.destroy
         format.html { redirect_to houses_url, notice: "House was successfully destroyed." }
         format.json { head :no_content }
       else
-        format.html { redirect_to houses_url(@house), alert: "This house belongs to another user." }
-        format.json { render json: ["This house belongs to another user. Impossible delete"], status: :unprocessable_entity }
+        belongs_another_user_message(format, @house, "House")
       end
     end
   end
@@ -110,6 +113,9 @@ class HousesController < ApplicationController
       @profile = Profile.find_by_user(current_user)
     end
 
+    def is_creator?
+      @is_creator = ProfileHouse.is_creator_or_admin_house?(current_user, house)
+    end
     # Only allow a list of trusted parameters through.
     def house_params
       params.require(:house).permit(

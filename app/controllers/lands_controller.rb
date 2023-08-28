@@ -2,11 +2,13 @@ class LandsController < ApplicationController
   before_action :set_land, only: %i[ show edit update destroy]
   before_action :authenticate_user!, except: [ :show, :index, :show_images]
   before_action :get_profile, only: [ :create ]
+  before_action :is_creator?, only: [ :update, :destroy ]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_land
 
   include LandsConcerns
   include ProfileLandsConcerns
   include ImageConcerns
+  include BelongsAnotherUserMessageConcerns
 
 
   # GET /lands or /lands.json
@@ -63,31 +65,35 @@ class LandsController < ApplicationController
 
   # PATCH/PUT /lands/1 or /lands/1.json
   def update
-
     if !is_image_uploaded?(params[:land][:images]) 
       params[:land][:images] << set_land.images
     end
-    respond_to do |format|
-      if @land.update(land_params)
-        format.html { redirect_to land_url(@land), notice: "Land was successfully updated." }
-        format.json { render :show, status: :ok, location: @land }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @land.errors, status: :unprocessable_entity }
+    
+    if @is_creator
+      respond_to do |format|
+        if @land.update(land_params)
+          format.html { redirect_to land_url(@land), notice: "Land was successfully updated." }
+          format.json { render :show, status: :ok, location: @land }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @land.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      belongs_another_user_message(format, @land, "Land")
     end
+
   end
 
   # DELETE /lands/1 or /lands/1.json
   def destroy
-    is_creator = ProfileLand.is_creator_land?(current_user, @land)
     respond_to do |format|
-      if is_creator
+      if @is_creator
         @land.destroy
-          format.html { redirect_to lands_url(@land), status: :unprocessable_entity, notice: "Land was successfully destroyed." }
+          format.html { redirect_to lands_url, notice: "Land was successfully destroyed." }
           format.json { head :no_content }
       else
-        format.html { redirect_to lands_url,  notice: "This land belongs to another user." }
+        format.html { redirect_to land_url(@land),  info: "This land belongs to another user." }
         format.json { head :no_content }
       end
     
@@ -107,6 +113,10 @@ class LandsController < ApplicationController
     def invalid_land 
       logger.error "Attemped to access invalid land #{params[:id]}"
       redirect_to lands_url, info: "This land doesn't exit."
+    end
+
+    def is_creator?
+      @is_creator = ProfileLand.is_creator_or_admin_land?(current_user, @land)
     end
 
     # Only allow a list of trusted parameters through.
