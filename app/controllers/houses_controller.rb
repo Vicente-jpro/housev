@@ -18,8 +18,14 @@ class HousesController < ApplicationController
 
   # GET /houses/1 or /houses/1.json
   def show
-    @profile = ProfileHouse.find_house_by_house(@house).profile
-    @profile
+    begin
+      @profile = ProfileHouse.find_house_by_house(@house).profile
+      @profile
+    rescue => exception
+      #This house doesn't have a profile
+      @land.destroy
+      redirect_to land_url, info: "House destroyed because doesn't have a profile."
+    end
   end
   
   # GET	/houses/:house_id/show_images
@@ -114,7 +120,7 @@ class HousesController < ApplicationController
     end
 
     def is_creator?
-      @is_creator = ProfileHouse.is_creator_or_admin_house?(current_user, house)
+      @is_creator = ProfileHouse.is_creator_or_admin_house?(current_user, @house)
     end
     # Only allow a list of trusted parameters through.
     def house_params

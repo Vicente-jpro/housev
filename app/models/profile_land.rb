@@ -9,11 +9,13 @@ class ProfileLand < ApplicationRecord
   def self.is_creator_or_admin_land?(user, land)
     profile = Profile.find_by_user(user)
     profile_land = ProfileLand.find_by_land(land)
-    if !profile_land.nil?
-      return profile.id == profile_land.profile_id 
-    elsif profile.administrador? or profile.super_adminstrador?
+
+    if profile.administrador? or profile.super_adminstrador?
       return true
+    elsif !profile_land.nil?
+      return profile.id == profile_land.profile_id 
     end 
+    
     return false
   end
 
