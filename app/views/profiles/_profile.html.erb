@@ -11,7 +11,7 @@
               <br>
               
              <strong>Email:</strong>  <%= profile.user.email %> <br>
-              <strong>Tipo de subscrição:</strong> <%= profile.profile_type %> <br>
+              <strong>Tipo de subscrição:</strong> <%= remove_underscore( profile.profile_type )  %> <br>
               <strong>Telemovel:</strong> <%= profile.phone1 %>, <%= profile.phone2 %><br>
               <strong>Genero:</strong> <%= profile.gender %> <br>
               <strong>Endereço:</strong> 
