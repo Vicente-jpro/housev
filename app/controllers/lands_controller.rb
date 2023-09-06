@@ -53,7 +53,10 @@ class LandsController < ApplicationController
     @land = Land.new(land_params)
     
     respond_to do |format|
-      if @profile.nil?
+      if !@land.images.attached?
+        format.html { redirect_to new_house_path(@land), alert: "You must to upload an image before create a land." }
+        format.json { render :new, json: ["You must to upload an image before create a land."], status: :unprocessable_entity }
+      elsif @profile.nil?
         format.html { redirect_to new_profile_path, info: "You must to create a profile after create a land." }
         format.json { render json: ["You must to create a profile after create a land."], status: :unprocessable_entity }
       elsif @profile.cliente?

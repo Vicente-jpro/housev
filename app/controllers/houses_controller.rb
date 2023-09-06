@@ -23,8 +23,8 @@ class HousesController < ApplicationController
       @profile
     rescue => exception
       #This house doesn't have a profile
-      @land.destroy
-      redirect_to land_url, info: "House destroyed because doesn't have a profile."
+      @house.destroy
+      redirect_to house_url, info: "House destroyed because doesn't have a profile."
     end
   end
   
@@ -50,8 +50,12 @@ class HousesController < ApplicationController
   # POST /houses or /houses.json
   def create
     @house = House.new(house_params)
+
     respond_to do |format|
-      if @profile.nil?
+      if !@house.house_images.attached?
+        format.html { redirect_to new_house_path(@house), alert: "You must to upload an image before create a house." }
+        format.json { render :new, json: ["You must to upload an image before create a house."], status: :unprocessable_entity }
+      elsif @profile.nil?
         format.html { redirect_to new_profile_path, info: "You must to create a profile after create a house." }
         format.json { render json: ["You must to create a profile after create a house."], status: :unprocessable_entity }
       elsif @profile.cliente?
