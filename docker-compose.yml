@@ -19,16 +19,16 @@ services:
        - "6379:6379"
    
    sidekiq:
-    depends_on:
-      - 'db'
-      - 'redis'
-    build: .
-    command: bundle exec sidekiq
-    volumes:
-      - '.:/app'
-      - '/app/tmp' # don't mount tmp directory
-    environment:
-      - REDIS_URL_SIDEKIQ=redis://redis:6379/1
+     depends_on:
+       - 'db'
+       - 'redis'
+     build: .
+     command: bundle exec sidekiq
+     volumes:
+       - '.:/app'
+       - '/app/tmp' # don't mount tmp directory
+     environment:
+       - REDIS_URL_SIDEKIQ=redis://redis:6379/1
     
    web:
       build: .
