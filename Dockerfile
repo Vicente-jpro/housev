@@ -35,8 +35,8 @@ EXPOSE 3000
 
 # BUILD IMAGE
 # docker build -t my_app_name .
-# docker build -t bumbagora .
+# docker build -t house .
 
 # docker run -p 3000:3000 my_app_name
-# docker run -p 3000:3000 bumbagora
+# docker run -p 3000:3000 house
 # docker-compose up
