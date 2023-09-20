@@ -63,11 +63,41 @@ pt:
     show:
       description: Descrição
       house-compartment: Compartimento da casa
-      property-rental-method: Forma de arrendamento do imóvel
-      this-property-is-next-by: Esta propriedade fica ao lado
-      property-type: Tipo do imóvel
+      property:
+        type: Tipo do imóvel
+        rental-method: Forma de arrendamento do imóvel
+        is-next-by: Esta propriedade fica ao lado
 
-
-
-
-    
+  messages: 
+    confirm: 
+      destroy: Tem certeza que pretende eliminar esta publicação?
+    controller:
+      favorite:
+        house: 
+          success:
+            created: Favorite house was successfully created.
+            destroyed: "Favorite house was successfully destroyed."
+          info:
+            already-added: This house is already added as a favorite.
+            creator: You are the house creator. It's impossible mark as favorite.
+            invalid: Attempt to access invalid house.
+        land: 
+          success:
+            created: Favorite land was successfully created.
+            destroyed: "Favorite land was successfully destroyed."
+          info:
+            already-added: This land is already added as a favorite.
+            creator: You are the land creator. It's impossible mark as favorite.
+            invalid: Attempt to access invalid land.
+      
+      house:
+        success:
+          created: House was successfully created. 
+          updated: House was successfully updated.
+          destroy: House was successfully destroyed.
+        info: 
+          upload: You must to upload an image before create a house.
+          profile: You must to create a profile after create a house.
+          client: You are a simple client. Change your profile to create a house.
+          invalid: Attempt to access invalid house.
+        error:

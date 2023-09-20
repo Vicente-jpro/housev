@@ -49,8 +49,8 @@ class FavoriteHousesController < ApplicationController
     end
 
     def invalid_land 
-      logger.error "Attempt to access invalid land #{params[:id]}"
-      redirect_to houses_url, info: "Invalid land."
+      logger.error "Attempt to access invalid house #{params[:id]}"
+      redirect_to houses_url, info: "Invalid house."
     end
 
   private
