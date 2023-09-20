@@ -30,4 +30,35 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 pt:
-  hello: "Hello world from portuguese."
+  hello: Olá Vicente portuguese.
+  navbar:
+    home: Início
+    house: Imóveis
+    rent: Arrendar
+    buy: Comprar
+    profile: Perfil
+    security: Segurança
+    
+    favorite:
+      land: Favorite lands
+      house: Favorite houses
+
+    properties:
+      house:
+        new: Novo
+        view: Visualizar
+        my-posted-properties: Meus imóveis postados
+      land:
+        new: Novo
+        view: Visualizar
+        my-posted-properties: Meus imóveis postados
+
+  account:
+    sign-up: Criar conta
+    logout: Sair
+    login: Entrar
+    login-with: "Entrar com"
+    remember-me: Lembrar-me
+    forgot-password: Esqueceu sua palavra-passe?
+    did-not-receive-confirmation-instructions: Não recebeu instruções de confirmação?
+    did-not-receive-unlock-instructions: Não recebeu instruções de desbloqueio?
