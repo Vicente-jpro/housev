@@ -11,9 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_08_21_181049) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -44,7 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_181049) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street"
-    t.bigint "city_id", null: false
+    t.integer "city_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["city_id"], name: "index_addresses_on_city_id"
@@ -52,7 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_181049) do
 
   create_table "cities", force: :cascade do |t|
     t.string "city_name"
-    t.bigint "province_id", null: false
+    t.integer "province_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["province_id"], name: "index_cities_on_province_id"
@@ -66,8 +63,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_181049) do
   end
 
   create_table "favorite_houses", force: :cascade do |t|
-    t.bigint "profile_id", null: false
-    t.bigint "house_id", null: false
+    t.integer "profile_id", null: false
+    t.integer "house_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["house_id"], name: "index_favorite_houses_on_house_id"
@@ -75,8 +72,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_181049) do
   end
 
   create_table "favorite_lands", force: :cascade do |t|
-    t.bigint "profile_id", null: false
-    t.bigint "land_id", null: false
+    t.integer "profile_id", null: false
+    t.integer "land_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["land_id"], name: "index_favorite_lands_on_land_id"
@@ -101,9 +98,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_181049) do
     t.string "next_by"
     t.boolean "furnished"
     t.string "property_type"
-    t.bigint "location_id", null: false
-    t.bigint "address_id", null: false
-    t.bigint "dimention_id", null: false
+    t.integer "location_id", null: false
+    t.integer "address_id", null: false
+    t.integer "dimention_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address_id"], name: "index_houses_on_address_id"
@@ -115,8 +112,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_181049) do
     t.string "title_land"
     t.string "description"
     t.decimal "price", precision: 8, scale: 2
-    t.bigint "dimention_id", null: false
-    t.bigint "address_id", null: false
+    t.integer "dimention_id", null: false
+    t.integer "address_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address_id"], name: "index_lands_on_address_id"
@@ -131,8 +128,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_181049) do
   end
 
   create_table "profile_houses", force: :cascade do |t|
-    t.bigint "profile_id", null: false
-    t.bigint "house_id", null: false
+    t.integer "profile_id", null: false
+    t.integer "house_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["house_id"], name: "index_profile_houses_on_house_id"
@@ -140,8 +137,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_181049) do
   end
 
   create_table "profile_lands", force: :cascade do |t|
-    t.bigint "profile_id", null: false
-    t.bigint "land_id", null: false
+    t.integer "profile_id", null: false
+    t.integer "land_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["land_id"], name: "index_profile_lands_on_land_id"
@@ -153,10 +150,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_181049) do
     t.string "phone1"
     t.string "phone2"
     t.string "profile_type"
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "address_id", null: false
+    t.integer "address_id", null: false
     t.string "gender"
     t.index ["address_id"], name: "index_profiles_on_address_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
