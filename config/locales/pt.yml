@@ -1,57 +1,6 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   "true": "foo"
-#
-# To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
-
 pt:
   hello: Olá Vicente portuguese.
-  navbar:
-    home: Início
-    house: Imóveis
-    rent: Arrendar
-    buy: Comprar
-    profile: Perfil
-    security: Segurança
-    
-    favorite:
-      land: Favorite lands
-      house: Favorite houses
-
-    properties:
-      house:
-        new: Novo
-        view: Visualizar
-        my-posted-properties: Meus imóveis postados
-      land:
-        new: Novo
-        view: Visualizar
-        my-posted-properties: Meus imóveis postados
 
   account:
     sign-up: Criar conta
@@ -62,3 +11,63 @@ pt:
     forgot-password: Esqueceu sua palavra-passe?
     did-not-receive-confirmation-instructions: Não recebeu instruções de confirmação?
     did-not-receive-unlock-instructions: Não recebeu instruções de desbloqueio?
+
+  home:
+    company:
+      info:
+      name: Housev
+      contact-us: Entrar em contato conosco
+      description: Em resumo, uma empresa de imóveis é uma organização que desempenha um papel crucial no mercado imobiliário, conectando compradores e vendedores ou locadores e inquilinos, facilitando a realização de negócios imobiliários com sucesso.
+
+  favorite:
+    land: Favorite lands
+    house: Favorite houses
+
+  filter:
+    by: 
+      title: Pesquisar por titulo
+      room: Pesquisar por quartos
+      price: Pesquisar por preço
+
+    filter-by: Pesquisar por
+    search: Pesquisar
+    Search-using-advanced-filters: Pesquisar usando filtros avançados
+
+  navbar:
+    home: Início
+    house: Imóveis
+    rent: Arrendar
+    buy: Comprar
+    profile: Perfil
+    security: Segurança
+    properties:
+      house:
+        new: Novo
+        view: Visualizar
+        my-posted-properties: Meus imóveis postados
+      land:
+        new: Novo
+        view: Visualizar
+        my-posted-properties: Meus imóveis postados
+
+  links:
+    destroy: Eliminar
+    edit: Editar
+    save-as-favorite: Salvar como favorito
+    send: Enviar
+    update: Atualizar
+    view: Visualizar
+    view-all-photos: Visualizar todas as fotos
+
+  house: 
+    show:
+      description: Descrição
+      house-compartment: Compartimento da casa
+      property-rental-method: Forma de arrendamento do imóvel
+      this-property-is-next-by: Esta propriedade fica ao lado
+      property-type: Tipo do imóvel
+
+
+
+
+    
