@@ -4,19 +4,45 @@
 pt:
   activerecord:
     models:
-      addresses: Endereços
-      cities: Cidades 
-      dimentions: Dimensão
-      favorite_lands: Meus Terrenos favoritos
-      favorite_houses: Meus imóveis favoritos
-      house: Imóveis
-      lands: Terrenos
-      location: Localização
-      profiles: Perfis
-      provinces: Provincias
-      profile_lands: Meus terrenos
-      profile_houses: Meus imóveis
-      users: Usuários
+      addresses: 
+        one: Endereço
+        other: Endereços
+      cities:  
+        one: Cidade
+        other: Cidades
+      dimentions: 
+        one: Dimensão
+        other: Dimensões
+      favorite_lands: 
+        one: Meu Terreno favorito
+        other: Meus Terrenos favoritos
+      favorite_houses: 
+        one: Meu imóvei favoritos
+        other: Meus imóveis favoritos
+      house: 
+        one: Imóvel
+        other: Imóveis
+      lands: 
+        one: Terreno
+        other: Terrenos
+      location: 
+        one: Localização
+        other: Localizações
+      profiles: 
+        one: Perfil
+        other: Perfis
+      provinces: 
+        one: Provincy
+        other: Provincias
+      profile_lands: 
+        one: Meu terreno
+        other: Meus terrenos
+      profile_houses: 
+        one: Meu imóvel
+        other: Meus imóveis
+      users: 
+        one: Usuário
+        other: Usuários
     attributes:
       addresses:
         street: Rua/Bairro

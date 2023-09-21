@@ -6,19 +6,45 @@
 en:
   activerecord:
     models:
-      addresses: Addresses
-      cities: Cities 
-      dimentions: Dimentions
-      favorite_lands: My favorite lands
-      favorite_houses: My favorite properties
-      house: Properties
-      lands: Lands
-      location: Location
-      profiles: Profiles
-      provinces: Provinces
-      profile_lands: My lands
-      profile_houses: My properties
-      users: Users
+      addresses: 
+        one: Address
+        other: Addresses
+      cities:  
+        one: City
+        other: Cities
+      dimentions: 
+        one: Dimention
+        other: Dimentions
+      favorite_lands:
+        one: My favorite land
+        other: My favorite lands
+      favorite_houses: 
+        one: My favorite property
+        other: My favorite properties
+      house: 
+        one: Property
+        other: Properties
+      lands: 
+        one: Land
+        other: Lands
+      location: 
+        one: Location
+        other: Locations
+      profiles: 
+        one: Profile
+        other: Profiles
+      provinces: 
+        one: Province
+        other: Provinces
+      profile_lands: 
+        one: My land
+        other: My lands
+      profile_houses: 
+        one: My property
+        other: My properties
+      users: 
+        one: User
+        other: Users
     attributes:
       addresses:
         street: Street
