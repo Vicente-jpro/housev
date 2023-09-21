@@ -54,7 +54,8 @@ gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'bootstrap', '~> 5.3.0.alpha3'
 gem 'bootstrap_form', '~> 5.2', '>= 5.2.3'
 gem 'jquery-rails'
-
+gem 'rails-i18n', '~> 7.0.0'
+gem 'devise-i18n', '~> 1.11'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
