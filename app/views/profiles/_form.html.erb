@@ -25,7 +25,8 @@
             <% end %>
 
             <div>
-              <%= form.text_field :name_profile, label: "Name"%>
+              <%= form.text_field :name_profile, 
+              label: Profile.human_attribute_name("profiles.name_profile") %>
               <%= form.file_field :image %>  
               <%= form.select :gender, Profile.genders, {label: :gender}%>
 
