@@ -1,0 +1,52 @@
+# available at https://guides.rubyonrails.org/i18n.html.
+
+# available at https://guides.rubyonrails.org/i18n.html.
+# Translate enum in rails
+# https://stackoverflow.com/questions/22827270/rails-how-to-use-i18n-with-rails-4-enums
+en:
+  controllers:
+    favorite:
+      house:
+        success:
+          created: A casa favorita foi criada com sucesso.
+          destroyed: A casa favorita foi destruída com sucesso.
+        info:
+          already-added: Esta casa já está adicionada como favorita.
+          creator: Você é o criador da casa. É impossível marcar como favorito.
+          invalid: Tentativa de acesso à casa inválida.
+      land: 
+        error: Proibiu que esta terra fosse salva
+        success:
+          created: O terreno favorito foi criado com sucesso.
+          destroyed: A terra favorita foi destruída com sucesso.
+        info:
+          already-added: Este terreno já está adicionado como favorito.
+          creator: Você é o criador da terra. É impossível marcar como favorito.
+          invalid: Tentativa de acesso a terras inválidas.
+    house:
+      success:
+        created: A casa foi criada com sucesso. 
+        updated: A casa foi atualizada com sucesso.
+        destroy: A casa foi eliminada com sucesso.
+      info: 
+        upload: Você deve fazer upload de uma imagem antes de criar uma casa.
+        profile: Você deve criar um perfil após criar uma casa.
+        client: Você é um cliente simples. Mude seu perfil para criar uma casa.
+        invalid: Tentativa de acesso à casa inválida.
+        does-not-exist: Esta casa não tem saída.
+    land:
+      success:
+        created: O terreno foi criado com sucesso.
+        updated: O terreno foi atualizado com sucesso.
+        destroy: A terra foi destruída com sucesso.
+        destroy-land-with-no-profile: Terreno destruído porque não tem perfil.
+      info: 
+        upload: Você deve fazer upload de uma imagem antes de criar um terreno.
+        profile: Você deve criar um perfil após criar um terreno.
+        client: Você é um cliente simples. Mude seu perfil para criar um terreno.
+        invalid: Tentativa de acesso a terras inválidas.
+        does-not-exist: Esta terra não existe.
+    profile:
+        success:
+          created: O perfil foi atualizado com sucesso.
+          destroy: O perfil foi destruído com sucesso.

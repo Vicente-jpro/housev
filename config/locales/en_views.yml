@@ -74,6 +74,16 @@ en:
           create: Create house
           update: Update house 
           edit: Editing House
+      links: 
+         see-all-more-photos: See all more photos
+    profiles:
+      title: 
+        actions:
+          create: Create profile
+          update: Update edit profile 
+          edit: Editing profile
+      links: 
+         see-all-more-photos: See all more photos
     lands:
       title: 
         actions:
@@ -124,77 +134,4 @@ en:
       send: Send
       update: Update
       view: View
-      view-all-photos: View all photos
-
-    house: 
-      show:
-        description: Description
-        house-compartment: House compartment
-        property:
-          type: Type of property
-          rental-method: Property rental method
-          is-next-by: This property close to the
-
-    messages: 
-      confirm: 
-        destroy: 
-          post: Are you sure you want to delete this post?
-          acount: Are you sure you want to delete your account?
-      page:
-        house:
-          form:
-            error: prohibited this house from being saved
-        land:
-          form:
-            error: prohibited this land from being saved
-      controller:
-        favorite:
-          house:
-            success:
-              created: Favorite house was successfully created.
-              destroyed: "Favorite house was successfully destroyed."
-            info:
-              already-added: This house is already added as a favorite.
-              creator: You are the house creator. It's impossible mark as favorite.
-              invalid: Attempt to access invalid house.
-          land: 
-            error: prohibited this land from being saved
-            success:
-              created: Favorite land was successfully created.
-              destroyed: "Favorite land was successfully destroyed."
-            info:
-              already-added: This land is already added as a favorite.
-              creator: You are the land creator. It's impossible mark as favorite.
-              invalid: Attempt to access invalid land.
-        profile: 
-          error: prohibited this profile from being saved
-
-        house:
-          success:
-            created: House was successfully created. 
-            updated: House was successfully updated.
-            destroy: House was successfully destroyed.
-          info: 
-            upload: You must to upload an image before create a house.
-            profile: You must to create a profile after create a house.
-            client: You are a simple client. Change your profile to create a house.
-            invalid: Attempt to access invalid house.
-            does-not-exist: This house doesn't exit.
-
-        land:
-          success:
-            created: Land was successfully created. 
-            updated: Land was successfully updated.
-            destroy: Land was successfully destroyed.
-            destroy-land-with-no-profile: Land destroyed because doesn't have a profile.
-          info: 
-            upload: You must to upload an image before create a land.
-            profile: You must to create a profile after create a land.
-            client: You are a simple client. Change your profile to create a land.
-            invalid: Attempt to access invalid land.
-            does-not-exist: This land doesn't exit.
-
-      profile:
-        success:
-          created: Profile was successfully updated.
-          destroy: Profile was successfully destroyed.
+ 

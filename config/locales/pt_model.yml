@@ -1,0 +1,80 @@
+# available at https://guides.rubyonrails.org/i18n.html.
+# Translate enum in rails
+# https://stackoverflow.com/questions/22827270/rails-how-to-use-i18n-with-rails-4-enums
+pt:
+  activerecord:
+    models:
+      addresses: 
+        one: Endereço
+        other: Endereços
+      cities:  
+        one: Cidade
+        other: Cidades
+      dimentions: 
+        one: Dimensão
+        other: Dimensões
+      favorite_lands: 
+        one: Meu Terreno favorito
+        other: Meus Terrenos favoritos
+      favorite_houses: 
+        one: Meu imóvei favoritos
+        other: Meus imóveis favoritos
+      house: 
+        one: Imóvel
+        other: Imóveis
+      lands: 
+        one: Terreno
+        other: Terrenos
+      location: 
+        one: Localização
+        other: Localizações
+      profiles: 
+        one: Perfil
+        other: Perfis
+      provinces: 
+        one: Provincy
+        other: Provincias
+      profile_lands: 
+        one: Meu terreno
+        other: Meus terrenos
+      profile_houses: 
+        one: Meu imóvel
+        other: Meus imóveis
+      users: 
+        one: Usuário
+        other: Usuários
+    attributes:
+      addresses:
+        street: Rua/Bairro
+        city: Cidade/Munícipio
+      cities: 
+        city_name:
+        province: provincia
+        provincia_id: Id da provincia
+      dimentions:
+        width_d: Comprimento
+        height_d: largura
+      house: Imóveis
+      lands:
+        title_land: Título
+        description: Description
+        price: preço
+        dimention: Dimenção
+        dimention_id: Id da dimenção
+        address: Endereço 
+        address_id: Id do endereço
+      profiles:
+        name_profile: Nome do perfil
+        image: Imagem
+        address: Endereço 
+        address_id: Id do endereço
+        gender: Genero
+        phone1: Telefone 1
+        phone2: Telefone 2
+        profile_type: Tipo de perfil
+        user: Usuário
+        user_id: Id do usuário
+      provinces:
+        province_name: Nome da provincia
+
+  
