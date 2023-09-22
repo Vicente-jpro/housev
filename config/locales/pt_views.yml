@@ -20,11 +20,14 @@ pt:
       unlock-my-account: Desbloquear minha conta
       send-me-reset-password-instructions: Envie-me instruções de redefinição de senha
       resend-unlock-instructions: Reenviar instruções de desbloqueio
+      cancel-my-account: Cancelar minha conta
+      back: Voltar
     title:
       actions:
         resend-confirmation-instructions: Reenviar instruções de confirmação
         change-your-password: Mude sua senha
         characters-minimum: mínimo de caracteres
+        confirm: Are you sure?
         forgot-your-password: Esqueceu sua senha?
         sign-up: Inscrever-se
         logout: Sair
@@ -34,7 +37,9 @@ pt:
         edit: Editar conta
         update: Atualizar conta
         create: Criar uma conta
-      
+        currently-waiting-confirmation: Atualmente aguardando confirmação para
+        leave-blank-if-you-dont-want-to-change-it: deixe em branco se não quiser alterar
+        we-need-your-current-password-to-confirm-your-changes: precisamos da sua senha atual para confirmar suas alterações
   pages: 
     favorite:
       lands: 
@@ -80,36 +85,36 @@ pt:
 
     filter:
       by: 
-        title: Search by title
-        room: Search for rooms
-        price: Search by price
+        title: Pesquisar por título
+        room: Pesquisar por quartos
+        price: Pesquisar por preço
 
-      filter-by: Search for
-      search: Search
-      Search-using-advanced-filters: Search using advanced filters
+      filter-by: Pesquisar
+      search: Pesquisar
+      Search-using-advanced-filters: Pesquisar usando filtros avançados
 
     navbar:
-      home: Home
-      house: Properties
-      rent: Rend
-      buy: Buy
-      profile: Perfile
-      security: Security
+      home: Ínicio
+      house: Ímoveis
+      rent: Arrendar
+      buy: Comprar
+      profile: Perfil
+      security: Segurança
       properties:
         house:
-          new: New
-          view: View
-          my-posted-properties: My posted properties
+          new: Novo
+          view: Visualizar
+          my-posted-properties: Meus ímoveis postados
         land:
           new: New
           view: View
-          my-posted-properties: My posted properties
+          my-posted-properties: Meus terrenos postados
 
     links:
-      destroy: Destroy
-      edit: Edit
-      save-as-favorite: Save as favorite
-      send: Send
-      update: Update
-      view: View
+      destroy: Eliminar
+      edit: Editar
+      save-as-favorite: Salvar como favorito
+      send: Enviar
+      update: Atualizar
+      view: Visualizar
  

@@ -4,7 +4,7 @@
     <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
         <div class="card-body">
           <div class="card-title">
-              <h4 class="text-center text-pink">Log in</h4>
+              <h4 class="text-center text-pink"><%= t("devise.title.actions.sign-in") %></h4>
           </div>
             <%= bootstrap_form_for(resource, as: resource_name, data: { turbo: false }, 
             url: session_path(resource_name)) do |f| %>
@@ -18,12 +18,12 @@
 
               <% if devise_mapping.rememberable? %>
                 <div class="field">
-                  <%= f.check_box :remember_me, label: :remember_me%>
+                  <%= f.check_box :remember_me, label: t("devise.links.remember-me")%>
                 </div>
               <% end %>
 
                <div class="d-grid gap-2 actions">
-                <%= f.submit "Log in", class: "btn btn-info" %>
+                <%= f.submit t("devise.title.actions.sign-in"), class: "btn btn-info" %>
               </div>
             <% end %>
 

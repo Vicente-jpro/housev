@@ -22,11 +22,14 @@ en:
       unlock-my-account: Unlock my account
       send-me-reset-password-instructions: Send me reset password instructions
       resend-unlock-instructions: Resend unlock instructions
+      cancel-my-account: Cancel my account
+      back: Back
     title:
       actions:
         resend-confirmation-instructions: Resend confirmation instructions
         change-your-password: Change your password
         characters-minimum: characters minimum
+        confirm: Are you sure?
         forgot-your-password: Forgot your password?
         sign-up: Sign up
         logout: Log out
@@ -36,6 +39,8 @@ en:
         edit: Edit account 
         update: Update account
         create: Create account
+        currently-waiting-confirmation: Currently waiting confirmation for
+        leave-blank-if-you-dont-want-to-change-it: leave blank if you don't want to change it
       
   pages: 
     favorite:
