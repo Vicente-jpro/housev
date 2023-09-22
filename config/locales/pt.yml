@@ -86,7 +86,7 @@ pt:
     forgot-password: Esqueceu sua palavra-passe?
     did-not-receive-confirmation-instructions: Não recebeu instruções de confirmação?
     did-not-receive-unlock-instructions: Não recebeu instruções de desbloqueio?
-
+    Resend confirmation instructions: 
   home:
     company:
       info:

@@ -2,10 +2,9 @@
     <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
         <div class="card-body">
           <div class="card-title">
-              <h4 class="text-center text-pink">Criar anuncio de terreno</h4>
+              <h4 class="text-center text-pink">Resend unlock instructions</h4>
           </div>
-          <h2>Resend unlock instructions</h2>
-
+      
           <%= bootstrap_form_for(resource, as: resource_name, 
           url: unlock_path(resource_name), data: { turbo: false }, 
           html: { method: :post }) do |f| %>
