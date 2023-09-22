@@ -15,14 +15,17 @@
       <%= form.hidden_field :profile_id, value: favorite_house.profile_id%>
       <%= form.hidden_field :house_id, value: favorite_house.house_id %>
     
-      <%= form.submit class:"btn btn-pink ms-1" do %>
+      <%= form.submit t("links.save-as-favorite"), class:"btn btn-pink ms-1" do %>
         <i class="bi bi-heart-fill"></i>
-            Guardar como favorito
+      
+            
       <% end %>
     <% else %>
       <%= link_to user_session_path, class: "btn btn-pink ms-1" do %>
         <i class="bi bi-heart-fill"></i>
-        Guardar como favorito
+
+        <%= t("links.save-as-favorite")%>
+            
       <% end %> 
     <% end %>
 

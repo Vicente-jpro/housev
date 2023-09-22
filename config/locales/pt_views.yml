@@ -51,13 +51,14 @@ pt:
         links: 
           save-as-favorite: Salvar como favorito
         form: 
-          prohibited: Proibiu que esta casa favorita fosse salva
+          prohibited: Proibiu que esta ímovel favorita fosse salva
     houses:
       title: 
         actions:
           create: Criar ímovel
           update: Atualizar ímovel 
           edit: Editar ímovel
+          prohibited: Proibiu que este ímovel favorita fosse salva
       links: 
          see-all-more-photos: Ver mais fotos
     profiles:
@@ -74,6 +75,9 @@ pt:
           create: Criar terreno
           update: Atualizar terreno 
           edit: Editar terreno
+          prohibited: proibiu que este terreno fosse salva
+      links: 
+        see-all-more-photos: Ver mais fotos
     home:
       company:
         title: Somos uma empresa de Imóveis

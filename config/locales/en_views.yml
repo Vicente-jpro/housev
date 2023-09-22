@@ -53,13 +53,14 @@ en:
         links: 
           save-as-favorite: Save as favorite
         form: 
-          prohibited: prohibited this favorite house from being saved
+          prohibited: prohibited this favorite property from being saved
     houses:
       title: 
         actions:
-          create: Create house
-          update: Update house 
-          edit: Editing House
+          create: Create property
+          update: Update property 
+          edit: Editing property
+          prohibited: prohibited this property from being saved
       links: 
          see-all-more-photos: See all more photos
     profiles:
@@ -68,6 +69,7 @@ en:
           create: Create profile
           update: Update edit profile 
           edit: Editing profile
+          prohibited: prohibited this profile from being saved
       links: 
          see-all-more-photos: See all more photos
     lands:
@@ -76,6 +78,9 @@ en:
           create: Create land
           update: Update land 
           edit: Editing land
+          prohibited: prohibited this land from being saved
+      links: 
+        see-all-more-photos: Ver mais fotos
           
     home:
       company:

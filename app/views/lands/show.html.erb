@@ -5,7 +5,8 @@
         <%= link_to land_show_images_path(@land), 
         class:"btn btn-pink ms-1" do %>
           <i class="bi bi-camera-fill"></i>
-           Ver todoas mais fotos
+           <%= t("pages.lands.links.see-all-more-photos")%>
+            
         <% end %>
 
         <%= render "favorite_lands/form", 

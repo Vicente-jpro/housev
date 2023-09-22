@@ -2,14 +2,23 @@
     <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
         <div class="card-body">
         <div class="card-title">
-            <h4 class="text-center text-pink">Create house</h4>
+            <h4 class="text-center text-pink">
+
+              <%= t("pages.houses.title.actions.create")%>
+            
+            </h4>
         </div>
         <div class="row my-2">
                   
           <%= bootstrap_form_with(model: house) do |form| %>
             <% if house.errors.any? %>
               <div style="color: red">
-                <h2><%= pluralize(house.errors.count, "error") %> prohibited this house from being saved:</h2>
+                <h2>
+            
+                  <%= pluralize(house.errors.count, "error") %> 
+                  <%= t("pages.houses.title.actions.prohibited")%>
+            
+                </h2>
 
                 <ul>
                   <% house.errors.each do |error| %>
@@ -18,7 +27,6 @@
                 </ul>
               </div>
             <% end %>
-              
               
               <%= form.text_field :title, label: :title %>
               <%= form.file_field :house_images, multiple: true %> 
