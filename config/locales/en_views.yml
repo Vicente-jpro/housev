@@ -60,7 +60,9 @@ en:
           create: Create property
           update: Update property 
           edit: Editing property
-          prohibited: prohibited this property from being saved
+          form:
+            prohibited: prohibited this property from being saved
+            geografic-Location: Geografic Location
       links: 
          see-all-more-photos: See all more photos
     profiles:

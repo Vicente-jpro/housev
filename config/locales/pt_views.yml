@@ -52,6 +52,7 @@ pt:
           save-as-favorite: Salvar como favorito
         form: 
           prohibited: Proibiu que esta ímovel favorita fosse salva
+          geografic-Location: Localização geografica
     houses:
       title: 
         actions:

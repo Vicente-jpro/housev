@@ -32,7 +32,7 @@ pt:
         one: Perfil
         other: Perfis
       provinces: 
-        one: Provincy
+        one: Província
         other: Provincias
       profile_lands: 
         one: Meu terreno
@@ -48,7 +48,7 @@ pt:
         street: Rua/Bairro
         city: Cidade/Munícipio
       cities: 
-        city_name:
+        city_name: Cidade/Munícipio
         province: provincia
         provincia_id: Id da provincia
       dimentions:
@@ -60,21 +60,21 @@ pt:
         living_room: Sala de estar
         bath_room: Quarto de banho
         yard: Jardim
-        kitchen: Cosinha
-        balcony: Balcony
-        condition: Condition
-        type_negotiation: Type negotiation
-        price: Price
-        garage: Garage
-        pool: Pool
-        description: Description
-        tipology: Tipology
-        next_by: Next by
-        furnished: Furnished
-        property_type: Property type
-        location: Location
-        address: Address
-        dimention: Aimention
+        kitchen: Cozinha
+        balcony: Varanda
+        condition: Condições
+        type_negotiation: Tipo de negociação
+        price: Preço
+        garage: Garagem
+        pool: Piscina
+        description: Descrição
+        tipology: Tipologia
+        next_by: Próximo de
+        furnished: Mobiliada
+        property_type: Tipo do ímovel
+        location: Localização
+        address: Endereço
+        dimention: Dimenção
       lands:
         title_land: Título
         description: Description
