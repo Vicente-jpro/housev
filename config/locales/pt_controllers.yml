@@ -3,7 +3,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 # Translate enum in rails
 # https://stackoverflow.com/questions/22827270/rails-how-to-use-i18n-with-rails-4-enums
-en:
+pt:
   controllers:
     favorite:
       house:

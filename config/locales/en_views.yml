@@ -22,39 +22,20 @@ en:
       unlock-my-account: Unlock my account
       send-me-reset-password-instructions: Send me reset password instructions
       resend-unlock-instructions: Resend unlock instructions
-    title-actions:
-      resend-confirmation-instructions: Resend confirmation instructions
-      change-your-password: Change your password
-      characters-minimum: characters minimum
-      forgot-your-password: Forgot your password?
-      sign-up: Sign up
-      logout: Log out
-      sign-in: Sign in
-      sign-in-with: Sign in with
-      resend-unlock-instructions: Resend unlock instructions
-    mailer:
-      confirmation_instructions: 
-        confirm-your-account-email: You can confirm your account email through the link below 
-      email-changed:
-        email-is-being-changed-to: We're contacting you to notify you that your email is being changed to
-        email-has-being-changed-to: We're contacting you to notify you that your email has been changed to
-      password-change:
-        password-has-been-changed: We're contacting you to notify you that your password has been changed.
-      reset-password-instructions:
-        link-to-change-your-password: Someone has requested a link to change your password. You can do this through the link below.
-        change-my-password: Change my password If you didn't request this, please ignore this email.
-        password-wont-change: Your password won't change until you access the link above and create a new one.
-      unlock-instructions: 
-        account-has-been-locked: Your account has been locked due to an excessive number of unsuccessful sign in attempts.
-        unlock-your-account: Click the link below to unlock your account
-      registration: 
-        currently-waiting-confirmation: Currently waiting confirmation for
-        leave-blank-if-you-do-not-want-to-change: leave blank if you don't want to change it
-      title:
-        actions:
-          edit: Edit account 
-          update: Update account
-          create: Create account
+    title:
+      actions:
+        resend-confirmation-instructions: Resend confirmation instructions
+        change-your-password: Change your password
+        characters-minimum: characters minimum
+        forgot-your-password: Forgot your password?
+        sign-up: Sign up
+        logout: Log out
+        sign-in: Sign in
+        sign-in-with: Sign in with
+        resend-unlock-instructions: Resend unlock instructions
+        edit: Edit account 
+        update: Update account
+        create: Create account
       
   pages: 
     favorite:
@@ -93,13 +74,11 @@ en:
           
     home:
       company:
-        info:
+        title: We are a Real Estate company
         name: Housev
         contact-us: Contact us
-        description: In short, a real estate company is an organization that plays a crucial role in the real estate market, connecting buyers and sellers or landlords and tenants, facilitating successful real estate transactions.
-
+        description: Housev, we are a real estate company that plays a crucial role in the real estate market, connecting buyers and sellers or landlords and tenants, facilitating successful real estate deals.
     
-
     filter:
       by: 
         title: Search by title
