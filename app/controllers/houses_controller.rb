@@ -133,7 +133,7 @@ class HousesController < ApplicationController
         :title, 
         :living_room, 
         :bath_room, 
-        :yeard, 
+        :yard, 
         :kitchen, 
         :balcony, 
         :condition, 

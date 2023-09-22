@@ -56,7 +56,27 @@ en:
       dimentions:
         width_d: width
         height_d: height
-      house: Properties
+      house:
+        room: Room
+        title: Title
+        living_room: Living room
+        bath_room: Bath room
+        yard: Yard
+        kitchen: Kitchen
+        balcony: Balcony
+        condition: Condition
+        type_negotiation: Type negotiation
+        price: Price
+        garage: Garage
+        pool: Pool
+        description: Description
+        tipology: Tipology
+        next_by: Next by
+        furnished: Furnished
+        property_type: Property type
+        location: Location
+        address: Address
+        dimention: Aimention
       lands:
         title_land: Title
         description: Description
