@@ -4,61 +4,62 @@
 pt:
   activerecord:
     models:
-      addresses: 
+      address: 
         one: Endereço
         other: Endereços
-      cities:  
-        one: Cidade
+      city:  
+        one: Cidade/Munícipio
         other: Cidades
-      dimentions: 
+      dimention: 
         one: Dimensão
         other: Dimensões
-      favorite_lands: 
+      favorite_land: 
         one: Meu Terreno favorito
         other: Meus Terrenos favoritos
-      favorite_houses: 
+      favorite_house: 
         one: Meu imóvei favoritos
         other: Meus imóveis favoritos
       house: 
         one: Imóvel
         other: Imóveis
-      lands: 
+      land: 
         one: Terreno
         other: Terrenos
       location: 
         one: Localização
         other: Localizações
-      profiles: 
+      profile: 
         one: Perfil
         other: Perfis
-      provinces: 
+      province: 
         one: Província
         other: Provincias
-      profile_lands: 
+      profile_land: 
         one: Meu terreno
         other: Meus terrenos
-      profile_houses: 
+      profile_house: 
         one: Meu imóvel
         other: Meus imóveis
-      users: 
+      user: 
         one: Usuário
         other: Usuários
     attributes:
-      addresses:
-        street: Rua/Bairro
+      address:
+        street: Endereço (rua, bairro, apartamento)
         city: Cidade/Munícipio
-      cities: 
+      city: 
         city_name: Cidade/Munícipio
-        province: provincia
+        province: província
         provincia_id: Id da provincia
-      dimentions:
+      dimention:
         width_d: Comprimento
         height_d: largura
       house: 
         room: Quarto
         title: Titulo 
         living_room: Sala de estar
-        bath_room: Quarto de banho
+        images: Images 
+        bath_room: Q de banho
         yard: Jardim
         kitchen: Cozinha
         balcony: Varanda
@@ -73,20 +74,17 @@ pt:
         furnished: Mobiliada
         property_type: Tipo do ímovel
         location: Localização
-        address: 
-          province: Província
-          city: Municipio/Bairro
-          street: "Endereço(rua, apartamento)"
         dimention: Dimenção
-      lands:
+      land:
         title_land: Título
-        description: Description
+        description: Descrição
+        images: Imagens 
         price: preço
         dimention: Dimenção
         dimention_id: Id da dimenção
         address: Endereço 
         address_id: Id do endereço
-      profiles:
+      profile:
         name_profile: Nome do perfil
         image: Imagem
         address: Endereço 

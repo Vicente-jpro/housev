@@ -3,13 +3,19 @@
     <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
         <div class="card-body">
         <div class="card-title">
-            <h4 class="text-center text-pink">Create Land Propriety</h4>
+            <h4 class="text-center text-pink">
+
+              <%= t("pages.lands.title.actions.create")%>
+
+            </h4>
         </div>
         <div class="row my-2">
          <%= bootstrap_form_with(model: land) do |form| %>
           <% if land.errors.any? %>
             <div style="color: red">
-              <h2><%= pluralize(land.errors.count, "error") %> prohibited this land from being saved:</h2>
+              <h2><%= pluralize(land.errors.count, "error") %>
+                  <%= t("pages.lands.title.actions.prohibited")%>
+              </h2>
 
               <ul>
                 <% land.errors.each do |error| %>
@@ -20,28 +26,35 @@
           <% end %>
 
             <div>
-              <%= form.text_field :title_land, label: "Titulo" %>
+              <%= form.text_field :title_land, label: Land.human_attribute_name(:title_land) %>
               <%= form.file_field :images, multiple: true %>  
-              <%= form.text_area :description, label: :description, size: "70x5" %>
-             
-              <%= form.collection_select :province_id, Province.order(:province_name), :id, :province_name, { label: "Provincia"}  %>
+         
+              <%= form.collection_select :province_id, Province.order(:province_name), :id, :province_name, 
+              { label: Province.model_name.human(count: 1) }  %> 
                 
               <%= form.fields_for :address do |address_form| %>
-                <%= address_form.collection_select :city_id, City.order(:city_name), :id, :city_name, { label: "Municipio/Cidade"}  %>
-                <%= address_form.text_field :street, label: :street%>
+                <%= address_form.collection_select :city_id, City.order(:city_name), :id, :city_name, 
+                { label: City.model_name.human(count: 1)}  %>
+                <%= address_form.text_field :street, label: Address.human_attribute_name(:street) %>
               <% end %> 
               <div class="row">
+                <p class="text-center"> <%= Dimention.model_name.human(count: 1)  %> </p>
                 <%= form.fields_for :dimention do |dimention_form| %>
                   <div class="col">
-                    <%= dimention_form.number_field :width_d, label: "Width"%>
+                    <%= dimention_form.number_field :width_d, 
+                    label: Dimention.human_attribute_name(:width_d) %>
                   </div>
                   <div class="col">
-                    <%= dimention_form.number_field :height_d, label: "Height"%>
+                    <%= dimention_form.number_field :height_d, 
+                    label: Dimention.human_attribute_name(:height_d) %>
                   </div>
                 <% end %> 
               </div>
 
+
               <%= form.number_field :price %>
+              <%= form.text_area :description, label: Land.human_attribute_name(:description), size: "70x5" %>
+        
             </div>
 
             <div class="mb-3 d-grid gap-2">

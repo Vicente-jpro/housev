@@ -6,58 +6,59 @@
 en:
   activerecord:
     models:
-      addresses: 
+      address: 
         one: Address
         other: Addresses
-      cities:  
+      city:  
         one: City
         other: Cities
-      dimentions: 
+      dimention: 
         one: Dimention
         other: Dimentions
-      favorite_lands:
+      favorite_land:
         one: My favorite land
         other: My favorite lands
-      favorite_houses: 
+      favorite_house: 
         one: My favorite property
         other: My favorite properties
       house: 
         one: Property
         other: Properties
-      lands: 
+      land: 
         one: Land
         other: Lands
       location: 
         one: Location
         other: Locations
-      profiles: 
+      profile: 
         one: Profile
         other: Profiles
-      provinces: 
+      province: 
         one: Province
         other: Provinces
-      profile_lands: 
+      profile_land: 
         one: My land
         other: My lands
-      profile_houses: 
+      profile_house: 
         one: My property
         other: My properties
       users: 
         one: User
         other: Users
     attributes:
-      addresses:
-        street: Street
+      address:
+        street: Address(street, apartament)
         city: City/Town
-      cities: 
+      city: 
         city_name: City name
         province: Province
         provincia_id: Id province
-      dimentions:
+      dimention:
         width_d: width
         height_d: height
       house:
         room: Room
+        images: Images 
         title: Title
         living_room: Living room
         bath_room: Bath room
@@ -77,17 +78,17 @@ en:
         location: Location
         address: 
           province: Province
-          city: City
+          city: City/Town
           street: Address(street, apartament)
-      lands:
+      land:
         title_land: Title
         description: Description
+        images: Images 
         price: price
         dimention: Dimentions
         dimention_id: Id dimention
-        address: Address 
         address_id: Id Address
-      profiles:
+      profile:
         name_profile: Profile name
         image: Image
         address: Address 
@@ -98,6 +99,6 @@ en:
         profile_type: Profile type
         user: Users
         user_id: Id users
-      provinces:
+      province:
         province_name: province
  
