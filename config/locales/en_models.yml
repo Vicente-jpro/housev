@@ -75,8 +75,10 @@ en:
         furnished: Furnished
         property_type: Property type
         location: Location
-        address: Address
-        dimention: Dimention
+        address: 
+          province: Province
+          city: City
+          street: Address(street, apartament)
       lands:
         title_land: Title
         description: Description

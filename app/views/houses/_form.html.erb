@@ -83,23 +83,23 @@
                 label: House.human_attribute_name(:property_type)} %>
 
               <%= form.collection_select :province_id, Province.order(:province_name), :id, :province_name, 
-              { label: Province.model_name.human(count: 1) }  %>
+              { label: t("activerecord.attributes.house.address.province") }  %> 
                 
               <%= form.fields_for :address do |address_form| %>
                 <%= address_form.collection_select :city_id, City.order(:city_name), :id, :city_name, 
-                { label: Address.human_attribute_name(:city)}  %>
-                <%= address_form.text_field :street, label: Address.human_attribute_name(:street)%>
+                { label: t("activerecord.attributes.house.address.city") }  %>
+                <%= address_form.text_field :street, label: t("activerecord.attributes.house.address.city") %>
               <% end %> 
               <div class="row">
                 <p class="text-center"> <%= Dimention.model_name.human(count: 1)  %> </p>
                 <%= form.fields_for :dimention do |dimention_form| %>
                   <div class="col">
                     <%= dimention_form.number_field :width_d, 
-                    label: Dimention.human_attribute_name(:width_d)%>
+                    label: t("activerecord.attributes.dimentions.width_d") %>
                   </div>
                   <div class="col">
                     <%= dimention_form.number_field :height_d, 
-                    label: Dimention.human_attribute_name(:height_d)%>
+                    label: t("activerecord.attributes.dimentions.height_d") %>
                   </div>
                 <% end %> 
               </div>

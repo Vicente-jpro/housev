@@ -73,7 +73,10 @@ pt:
         furnished: Mobiliada
         property_type: Tipo do ímovel
         location: Localização
-        address: Endereço
+        address: 
+          province: Província
+          city: Municipio/Bairro
+          street: "Endereço(rua, apartamento)"
         dimention: Dimenção
       lands:
         title_land: Título
