@@ -70,7 +70,7 @@ pt:
         pool: Piscina
         description: Descrição
         tipology: Tipologia
-        next_by: Próximo de
+        next_by: "Está próximo de(a):"
         furnished: Mobiliada
         property_type: Tipo do ímovel
         location: Localização

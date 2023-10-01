@@ -6,6 +6,8 @@
 en:
   welcome: Welcome
   hello: Hello
+  publisher: Publisher
+  compartiment: "Property compartiments:"
   devise:
     links:
       sign-up: Sign up
@@ -106,8 +108,10 @@ en:
       house: Properties
       rent: Rend
       buy: Buy
+      land: Lands
       profile: Perfile
       security: Security
+      favorite-lands: Favorite land
       properties:
         house:
           new: New
@@ -117,7 +121,7 @@ en:
           new: New
           view: View
           my-posted-properties: My posted properties
-
+          
   links:
     destroy: Delete
     edit: Edit

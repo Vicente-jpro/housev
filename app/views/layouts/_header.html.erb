@@ -17,11 +17,11 @@
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li> <%= link_to "Inicio", root_path, class: "nav-link px-2 text-pink fs-5" %> </li>
-          <li><%= link_to "Imoveis", houses_path, class: "nav-link px-2 text-pink fs-5 house"%></li>
-          <li><a href="#" class="nav-link px-2 text-pink fs-5">Arrendar</a></li>
-          <li><a href="#" class="nav-link px-2 text-pink fs-5 ">Comprar</a></li>
-          <li> <%= link_to "Terrenos", lands_path, class: "nav-link px-2 text-pink fs-5 land" %> </li>
+          <li> <%= link_to t("navbar.home"), root_path, class: "nav-link px-2 text-pink fs-5" %> </li>
+          <li><%= link_to t("navbar.house"), houses_path, class: "nav-link px-2 text-pink fs-5 house"%></li>
+          <li><a href="#" class="nav-link px-2 text-pink fs-5"><%= t("navbar.rent") %></a></li>
+          <li><a href="#" class="nav-link px-2 text-pink fs-5 "><%= t("navbar.buy") %></a></li>
+          <li> <%= link_to t("navbar.land"), lands_path, class: "nav-link px-2 text-pink fs-5 land" %> </li>
         </ul>
 
         <%= link_to "Criar conta", new_user_registration_path, class: "btn btn-pink ms-1" if !user_signed_in?%> 
@@ -38,22 +38,22 @@
             <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle ms-2"></a>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
           <% if user_signed_in? %>
-             <li> <%= link_to "Perfil", new_profile_path, class: "dropdown-item"%> </li>
+             <li> <%= link_to t("navbar.profile"), new_profile_path, class: "dropdown-item"%> </li>
             <li> 
-              <%= link_to "Segurança", edit_user_registration_path, 
+              <%= link_to t("navbar.security"), edit_user_registration_path, 
               class: "dropdown-item"%> 
-              <%= link_to "Terrenos favoritos", favorite_lands_path, 
+              <%= link_to t("navbar.favorite-lands"), favorite_lands_path, 
               class: "dropdown-item"%> 
             </li>
             <li> 
-              <%= link_to "Sair", destroy_user_session_path,  method: :delete, 
+              <%= link_to t("devise.links.logout"), destroy_user_session_path,  method: :delete, 
                 class: "dropdown-item" %> 
             </li>
           <% end %>
       
           <% if !user_signed_in? %>
             
-            <li> <%= link_to "Entrar", user_session_path, class: "dropdown-item" %> </li>
+            <li> <%= link_to t("devise.links.sign-in"), user_session_path, class: "dropdown-item" %> </li>
          
           <% end %>
 
@@ -64,13 +64,13 @@
       <!-- Lands -->
         <ul class="nav justify-content-start land" id="sub-menu-land">
           <li class="nav-item">
-            <%= link_to "Novo terreno", new_land_path, class: "nav-link px-2 text-pink fs-5" %>
+            <%= link_to t("navbar.properties.land.new"), new_land_path, class: "nav-link px-2 text-pink fs-5" %>
           </li>
           <li class="nav-item">
-              <%= link_to "Visualizar terrenos", lands_path, class: "nav-link px-2 text-pink fs-5" %>
+              <%= link_to t("navbar.properties.land.view"), lands_path, class: "nav-link px-2 text-pink fs-5" %>
           </li>
           <li class="nav-item">
-              <%= link_to "Meus terrenos postados", profile_lands_path, class: "nav-link px-2 text-pink fs-5" %>
+              <%= link_to t("navbar.properties.land.my-posted-properties"), profile_lands_path, class: "nav-link px-2 text-pink fs-5" %>
           </li>
         </ul>
         <!-- End Lands --->
@@ -78,13 +78,13 @@
         <!-- Houses -->
         <ul class="nav justify-content-start house" id="sub-menu-house">
           <li class="nav-item">
-            <%= link_to "Novo imovel", new_house_path, class: "nav-link px-2 text-pink fs-5" %>
+            <%= link_to t("navbar.properties.house.new"), new_house_path, class: "nav-link px-2 text-pink fs-5" %>
           </li>
           <li class="nav-item">
-              <%= link_to "Visualizar imoveis", houses_path, class: "nav-link px-2 text-pink fs-5" %>
+              <%= link_to t("navbar.properties.house.view"), houses_path, class: "nav-link px-2 text-pink fs-5" %>
           </li>
           <li class="nav-item">
-              <%= link_to "Meus imoveis postados", houses_path, class: "nav-link px-2 text-pink fs-5" %>
+              <%= link_to t("navbar.properties.house.my-posted-properties"), houses_path, class: "nav-link px-2 text-pink fs-5" %>
           </li>
         </ul>
         <!-- end houses-->

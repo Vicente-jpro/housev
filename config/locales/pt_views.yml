@@ -4,6 +4,8 @@
 # Translate enum in rails
 # https://stackoverflow.com/questions/22827270/rails-how-to-use-i18n-with-rails-4-enums
 pt:
+  publisher: Proprietário
+  compartiment: "Compartimentos da casa:"
   devise:
     links:
       sign-up: Inscrever-se
@@ -102,8 +104,10 @@ pt:
     house: Ímoveis
     rent: Arrendar
     buy: Comprar
+    land: Terrenos
     profile: Perfil
     security: Segurança
+    favorite-lands: Terrenos favoritos
     properties:
       house:
         new: Novo
