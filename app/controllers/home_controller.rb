@@ -4,8 +4,4 @@ class HomeController < ApplicationController
   def index
   end
 
-  def language  
-    redirect_to home_index_url 
-  end
-  
 end

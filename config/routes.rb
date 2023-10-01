@@ -4,11 +4,7 @@ Rails.application.routes.draw do
   resources :favorite_houses, only: [:index, :create, :destroy]
   resources :profile_lands, only: [:index]
   resources :profiles
-  resources :home do
-    collection do 
-    get 'language'
-    end
-  end
+
 
   devise_for :users
   devise_scope :user do

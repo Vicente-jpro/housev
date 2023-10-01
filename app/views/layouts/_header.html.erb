@@ -1,4 +1,15 @@
-  <header class="p-3 border-bottom">
+  <header class="p-3">
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link" href="#">vicente.simao.rails@gmail.com</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">facebook</a>
+      </li>
+      <li class="nav-item">
+        <%= render 'layouts/switch_locale' %>
+      </li>
+    </ul>
     <div class="container-fluid">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
@@ -15,7 +26,8 @@
 
         <%= link_to "Criar conta", new_user_registration_path, class: "btn btn-pink ms-1" if !user_signed_in?%> 
            <%= link_to "Entrar", user_session_path, class: "btn btn-info ms-1" if !user_signed_in?%> 
-         
+
+        
         <div class="dropdown text-end">
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="text-pink">
@@ -45,11 +57,8 @@
          
           <% end %>
 
-            <li>
-             <%= render 'layouts/switch_locale' %>
-            </li>
-
           </ul>
+    
         </div>
       </div>
       <!-- Lands -->
