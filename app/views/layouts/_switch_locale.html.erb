@@ -1,0 +1,9 @@
+
+
+<!--
+<%= form_with url: "/home/switch_locale", method: :get do |form| %>
+  <%= form.hidden_field :language, value: "#{I18n.locale}" %>
+  <%= form.submit "#{I18n.locale}" %>
+<% end %>
+-->
+<%= link_to "#{((I18n.locale).to_s == "pt") ? "en": "pt" }", "?locale=#{ I18n.locale }"  %>

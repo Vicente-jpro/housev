@@ -2,16 +2,18 @@ class ApplicationController < ActionController::Base
     add_flash_types :info
     around_action :switch_locale
 
-    def switch_locale(&action)
-    locale = ""
-    if params[:locale] == "pt"
-        locale = "pt"
-    elsif params[:locale] == "en"
-        locale = "en"
-    elsif locale == ""
-        locale = params[:locale] || I18n.default_locale
+    def default_url_options
+        { locale: I18n.locale }
     end
-    debugger
+
+    def switch_locale(&action)
+    locale = params[:locale] || I18n.default_locale
+    if params[:locale] == "pt"
+        locale = "en"
+    elsif params[:locale] == "en"
+        locale = "pt" 
+    end
+    
     I18n.with_locale(locale, &action)
     end
 
