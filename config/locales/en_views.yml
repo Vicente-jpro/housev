@@ -118,11 +118,11 @@ en:
           view: View
           my-posted-properties: My posted properties
 
-    links:
-      destroy: Destroy
-      edit: Edit
-      save-as-favorite: Save as favorite
-      send: Send
-      update: Update
-      view: View
+  links:
+    destroy: Delete
+    edit: Edit
+    save-as-favorite: Save as favorite
+    send: Send
+    update: Update
+    view: View
  

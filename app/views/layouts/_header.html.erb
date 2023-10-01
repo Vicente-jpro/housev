@@ -38,13 +38,17 @@
                 class: "dropdown-item" %> 
             </li>
           <% end %>
-
+      
           <% if !user_signed_in? %>
             
             <li> <%= link_to "Entrar", user_session_path, class: "dropdown-item" %> </li>
          
           <% end %>
-            
+
+            <li>
+             <%= render 'layouts/switch_locale' %>
+            </li>
+
           </ul>
         </div>
       </div>
