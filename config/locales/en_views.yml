@@ -10,10 +10,11 @@ en:
   compartiment: "Property compartiments:"
   devise:
     links:
-      sign-up: Sign up
+      sign:
+        up: Sign up
+        in: Sign in
+        in-with: Sign in with
       logout: Log out
-      sign-in: Sign in
-      sign-in-with: Sign in with
       remember-me: Remember me
       forgot-password: Forgot your password? 
       did-not-receive-confirmation-instructions: Didn't receive confirmation instructions?

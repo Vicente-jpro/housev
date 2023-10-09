@@ -8,10 +8,11 @@ pt:
   compartiment: "Compartimentos da casa:"
   devise:
     links:
-      sign-up: Inscrever-se
+      sign:
+        up: Inscrever-se
+        in: Entrar
+        in-with: Entrar com
       logout: Sair
-      sign-in: Entrar
-      sign-in-with: Entrar com
       remember-me: Lembre-me
       forgot-password: Esqueceu sua senha?
       did-not-receive-confirmation-instructions: Não recebeu instruções de confirmação?

@@ -24,8 +24,8 @@
           <li> <%= link_to t("navbar.land"), lands_path, class: "nav-link px-2 text-pink fs-5 land" %> </li>
         </ul>
 
-        <%= link_to "Criar conta", new_user_registration_path, class: "btn btn-pink ms-1" if !user_signed_in?%> 
-           <%= link_to "Entrar", user_session_path, class: "btn btn-info ms-1" if !user_signed_in?%> 
+        <%= link_to t("devise.links.sign.up"), new_user_registration_path, class: "btn btn-pink ms-1" if !user_signed_in?%> 
+           <%= link_to t("devise.links.sign.in"), user_session_path, class: "btn btn-info ms-1" if !user_signed_in?%> 
 
         
         <div class="dropdown text-end">
@@ -53,7 +53,7 @@
       
           <% if !user_signed_in? %>
             
-            <li> <%= link_to t("devise.links.sign-in"), user_session_path, class: "dropdown-item" %> </li>
+            <li> <%= link_to t("devise.links.sign.in"), user_session_path, class: "dropdown-item" %> </li>
          
           <% end %>
 
