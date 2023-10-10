@@ -1,0 +1,134 @@
+# available at https://guides.rubyonrails.org/i18n.html.
+
+# available at https://guides.rubyonrails.org/i18n.html.
+# Translate enum in rails
+# https://stackoverflow.com/questions/22827270/rails-how-to-use-i18n-with-rails-4-enums
+en:
+  welcome: Welcome
+  hello: Hello
+  publisher: Publisher
+  compartiment: "Property compartiments:"
+  telephones: Telephones
+  devise:
+    links:
+      sign:
+        up: Sign up
+        in: Sign in
+        in-with: Sign in with
+      logout: Log out
+      remember-me: Remember me
+      forgot-password: Forgot your password? 
+      did-not-receive-confirmation-instructions: Didn't receive confirmation instructions?
+      did-not-receive-unlock-instructions: Didn't receive unlock instructions?
+      resend-confirmation-instructions: Resend confirmation instructions
+      confirm-my-account: Confirm my account
+      change-my-password: Change my password
+      unlock-my-account: Unlock my account
+      send-me-reset-password-instructions: Send me reset password instructions
+      resend-unlock-instructions: Resend unlock instructions
+      cancel-my-account: Cancel my account
+      back: Back
+    title:
+      actions:
+        resend-confirmation-instructions: Resend confirmation instructions
+        change-your-password: Change your password
+        characters-minimum: characters minimum
+        confirm: Are you sure?
+        forgot-your-password: Forgot your password?
+        sign-up: Sign up
+        logout: Log out
+        sign-in: Sign in
+        sign-in-with: Sign in with
+        resend-unlock-instructions: Resend unlock instructions
+        edit: Edit account 
+        update: Update account
+        create: Create account
+        currently-waiting-confirmation: Currently waiting confirmation for
+        leave-blank-if-you-dont-want-to-change-it: leave blank if you don't want to change it
+      
+  pages: 
+    favorite:
+      lands: 
+        links: 
+          save-as-favorite: Save as favorite
+        form: 
+          prohibited: prohibited this favorite land from being saved
+      houses: 
+        links: 
+          save-as-favorite: Save as favorite
+        form: 
+          prohibited: prohibited this favorite property from being saved
+    houses:
+      title: 
+        actions:
+          create: Create property
+          update: Update property 
+          edit: Editing property
+          form:
+            prohibited: prohibited this property from being saved
+            geografic-Location: Geografic Location
+      links: 
+         see-all-more-photos: See all more photos
+    profiles:
+      title: 
+        actions:
+          create: Create profile
+          update: Update edit profile 
+          edit: Editing profile
+          prohibited: prohibited this profile from being saved
+      links: 
+         see-all-more-photos: See all more photos
+    lands:
+      title: 
+        actions:
+          create: Create land
+          update: Update land 
+          edit: Editing land
+          prohibited: prohibited this land from being saved
+      links: 
+        see-all-more-photos: Ver mais fotos
+          
+    home:
+      company:
+        title: We are a Real Estate company
+        name: Housev
+        contact-us: Contact us
+        description: Housev, we are a real estate company that plays a crucial role in the real estate market, connecting buyers and sellers or landlords and tenants, facilitating successful real estate deals.
+    
+    filter:
+      by: 
+        title: Search by title
+        room: Search for rooms
+        price: Search by price
+
+      filter-by: Search for
+      search: Search
+      Search-using-advanced-filters: Search using advanced filters
+
+    navbar:
+      home: Home
+      house: Properties
+      rent: Rend
+      buy: Buy
+      land: Lands
+      profile: Perfile
+      security: Security
+      favorite-lands: Favorite land
+      properties:
+        house:
+          new: New
+          view: View
+          my-posted-properties: My posted properties
+        land:
+          new: New
+          view: View
+          my-posted-properties: My posted properties
+          
+  links:
+    destroy: Delete
+    edit: Edit
+    save-as-favorite: Save as favorite
+    send: Send
+    update: Update
+    view: View
+ 

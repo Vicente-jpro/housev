@@ -2,7 +2,9 @@
     <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
         <div class="card-body">
           <div class="card-title">
-              <h4 class="text-center text-pink">Forgot your password?</h4>
+              <h4 class="text-center text-pink">
+                <%= t("devise.links.forgot-password")%>
+              </h4>
           </div>
         </div>
         <%= bootstrap_form_for(resource, as: resource_name, 
@@ -14,7 +16,7 @@
           </div>
 
            <div class="d-grid gap-2 actions">
-            <%= f.submit "Send me reset password instructions", class: "btn btn-info" %>
+            <%= f.submit t("devise.links.send-me-reset-password-instructions"), class: "btn btn-info" %>
           </div>
         <% end %>
 

@@ -5,7 +5,8 @@
         <%= link_to land_show_images_path(@land), 
         class:"btn btn-pink ms-1" do %>
           <i class="bi bi-camera-fill"></i>
-           Ver todoas mais fotos
+           <%= t("pages.lands.links.see-all-more-photos")%>
+            
         <% end %>
 
         <%= render "favorite_lands/form", 
@@ -32,8 +33,8 @@
   <div class="container">
   <% if user_signed_in? %>
     <div class="d-grid gap-2">
-      <%= link_to "Editar", edit_land_path(@land), class:"btn btn-info" %> 
-      <%= button_to "Eliminar", @land, method: :delete, class:"btn btn-danger  my-1 col-sm-12" %>
+      <%= link_to t("links.edit"), edit_land_path(@land), class:"btn btn-info" %> 
+      <%= button_to t("links.destroy"), @land, method: :delete, class:"btn btn-danger  my-1 col-sm-12" %>
     </div>
   <% end %>
     <br>

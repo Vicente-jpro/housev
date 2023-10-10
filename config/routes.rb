@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :profile_lands, only: [:index]
   resources :profiles
 
+
   devise_for :users
   devise_scope :user do
     post '/users/sign_out', to: 'devise/sessions#destroy'

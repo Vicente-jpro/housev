@@ -1,0 +1,52 @@
+# available at https://guides.rubyonrails.org/i18n.html.
+
+# available at https://guides.rubyonrails.org/i18n.html.
+# Translate enum in rails
+# https://stackoverflow.com/questions/22827270/rails-how-to-use-i18n-with-rails-4-enums
+en:
+  controllers:
+    favorite:
+      house:
+        success:
+          created: Favorite house was successfully created.
+          destroyed: "Favorite house was successfully destroyed."
+        info:
+          already-added: This house is already added as a favorite.
+          creator: You are the house creator. It's impossible mark as favorite.
+          invalid: Attempt to access invalid house.
+      land: 
+        error: prohibited this land from being saved
+        success:
+          created: Favorite land was successfully created.
+          destroyed: "Favorite land was successfully destroyed."
+        info:
+          already-added: This land is already added as a favorite.
+          creator: You are the land creator. It's impossible mark as favorite.
+          invalid: Attempt to access invalid land.
+    house:
+      success:
+        created: House was successfully created. 
+        updated: House was successfully updated.
+        destroy: House was successfully destroyed.
+      info: 
+        upload: You must to upload an image before create a house.
+        profile: You must to create a profile after create a house.
+        client: You are a simple client. Change your profile to create a house.
+        invalid: Attempt to access invalid house.
+        does-not-exist: This house doesn't exit.
+    land:
+      success:
+        created: Land was successfully created. 
+        updated: Land was successfully updated.
+        destroy: Land was successfully destroyed.
+        destroy-land-with-no-profile: Land destroyed because doesn't have a profile.
+      info: 
+        upload: You must to upload an image before create a land.
+        profile: You must to create a profile after create a land.
+        client: You are a simple client. Change your profile to create a land.
+        invalid: Attempt to access invalid land.
+        does-not-exist: This land doesn't exit.
+    profile:
+        success:
+          created: Profile was successfully updated.
+          destroy: Profile was successfully destroyed.

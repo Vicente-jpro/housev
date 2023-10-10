@@ -1,0 +1,104 @@
+# available at https://guides.rubyonrails.org/i18n.html.
+
+# available at https://guides.rubyonrails.org/i18n.html.
+# Translate enum in rails
+# https://stackoverflow.com/questions/22827270/rails-how-to-use-i18n-with-rails-4-enums
+en:
+  activerecord:
+    models:
+      address: 
+        one: Address
+        other: Addresses
+      city:  
+        one: City
+        other: Cities
+      dimention: 
+        one: Dimention
+        other: Dimentions
+      favorite_land:
+        one: My favorite land
+        other: My favorite lands
+      favorite_house: 
+        one: My favorite property
+        other: My favorite properties
+      house: 
+        one: Property
+        other: Properties
+      land: 
+        one: Land
+        other: Lands
+      location: 
+        one: Location
+        other: Locations
+      profile: 
+        one: Profile
+        other: Profiles
+      province: 
+        one: Province
+        other: Provinces
+      profile_land: 
+        one: My land
+        other: My lands
+      profile_house: 
+        one: My property
+        other: My properties
+      users: 
+        one: User
+        other: Users
+    attributes:
+      address:
+        street: Address(street, apartament)
+        city: City/Town
+      city: 
+        city_name: City name
+        province: Province
+        provincia_id: Id province
+      dimention:
+        width_d: width
+        height_d: height
+      house:
+        room: Room
+        images: Images 
+        title: Title
+        living_room: Living room
+        bath_room: Bath room
+        yard: Yard
+        kitchen: Kitchen
+        balcony: Balcony
+        condition: Condition
+        type_negotiation: Type negotiation
+        price: Price
+        garage: Garage
+        pool: Pool
+        description: Description
+        tipology: Tipology
+        next_by: Next by
+        furnished: Furnished
+        property_type: Property type
+        location: Location
+        address: 
+          province: Province
+          city: City/Town
+          street: Address(street, apartament)
+      land:
+        title_land: Title
+        description: Description
+        images: Images 
+        price: price
+        dimention: Dimentions
+        dimention_id: Id dimention
+        address_id: Id Address
+      profile:
+        name_profile: Profile name
+        image: Image
+        address: Address 
+        address_id: Id address
+        gender: Gender
+        phone1: Telephone 1
+        phone2: Telephone 2
+        profile_type: Profile type
+        user: Users
+        user_id: Id users
+      province:
+        province_name: province
+ 

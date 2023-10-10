@@ -2,14 +2,23 @@
     <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
         <div class="card-body">
         <div class="card-title">
-            <h4 class="text-center text-pink">Create house</h4>
+            <h4 class="text-center text-pink">
+
+              <%= t("pages.houses.title.actions.create")%>
+            
+            </h4>
         </div>
         <div class="row my-2">
                   
           <%= bootstrap_form_with(model: house) do |form| %>
             <% if house.errors.any? %>
               <div style="color: red">
-                <h2><%= pluralize(house.errors.count, "error") %> prohibited this house from being saved:</h2>
+                <h2>
+            
+                  <%= pluralize(house.errors.count, "error") %> 
+                  <%= t("pages.houses.title.actions.prohibited")%>
+            
+                </h2>
 
                 <ul>
                   <% house.errors.each do |error| %>
@@ -19,88 +28,99 @@
               </div>
             <% end %>
               
-              
-              <%= form.text_field :title, label: :title %>
+              <%= form.text_field :title, label: House.human_attribute_name(:title) %>
               <%= form.file_field :house_images, multiple: true %> 
               
               <div class="row">
                 <div class="col"> 
-                    <%= form.select :condition, House.conditions, {label: :condition} %>
+                    <%= form.select :condition, House.conditions, 
+                    {label: House.human_attribute_name(:condition)} %>
                 </div>
                 <div class="col"> 
-                  <%= form.select :tipology, House.tipologies, {label: :tipology}%>        
+                  <%= form.select :tipology, House.tipologies, 
+                  {label: House.human_attribute_name(:tipology)}%>        
                 </div>
                 <div class="col"> 
-                    <%= form.select :type_negotiation, House.type_negotiations, {label: :type_negotiation} %>      
+                    <%= form.select :type_negotiation, House.type_negotiations, 
+                    {label: House.human_attribute_name(:type_negotiation)} %>      
                 </div>
               </div>
              
              
               <div class="row">
                 <div class="col">
-                  <%= form.number_field :living_room, label: :living_room %> 
+                  <%= form.number_field :living_room, label: House.human_attribute_name(:living_room) %> 
                 </div>
                 <div class="col"> 
-                    <%= form.number_field :room, label: :room%>
+                    <%= form.number_field :room, label: House.human_attribute_name(:room)%>
                 </div>
                 <div class="col"> 
-                   <%= form.number_field :kitchen, label: :kitchen %>
+                   <%= form.number_field :kitchen, label: House.human_attribute_name(:kitchen) %>
                 </div>
                 <div class="col"> 
-                   <%= form.number_field :balcony, label: :balcony %> 
+                   <%= form.number_field :balcony, label: House.human_attribute_name(:balcony) %> 
                 </div>
               </div>
           
               <div class="row">
                 <div class="col">
-                   <%= form.number_field :bath_room, label: :bath_room %>
+                   <%= form.number_field :bath_room, label: House.human_attribute_name(:bath_room) %>
                 </div>
                 <div class="col">
-                  <%= form.number_field :yeard, label: :yeard %>
+                  <%= form.number_field :yard, label: House.human_attribute_name(:yard) %>
                 </div>
                 <div class="col">
-                   <%= form.number_field :garage, label: :garage %>
+                   <%= form.number_field :garage, label: House.human_attribute_name(:garage) %>
                 </div>
                 <div class="col">
-                    <%= form.number_field :pool, label: :pool %>
+                    <%= form.number_field :pool, label: House.human_attribute_name(:pool) %>
                 </div>
               </div>
-              <%= form.select :next_by, House.next_bies, {label: :next_by}%>
-              <%= form.check_box :furnished, label: :furnished %>
-              <%= form.select :property_type, House.property_types, {label: :property_type} %>
+              <%= form.select :next_by, House.next_bies, 
+              {label: House.human_attribute_name(:next_by)}%>
+              <%= form.check_box :furnished, label: House.human_attribute_name(:furnished) %>
+              <%= form.select :property_type, House.property_types, {
+                label: House.human_attribute_name(:property_type)} %>
 
-              <%= form.collection_select :province_id, Province.order(:province_name), :id, :province_name, { label: "Provincia"}  %>
+              <%= form.collection_select :province_id, Province.order(:province_name), :id, :province_name, 
+              { label: Province.model_name.human(count: 1) }  %> 
                 
               <%= form.fields_for :address do |address_form| %>
-                <%= address_form.collection_select :city_id, City.order(:city_name), :id, :city_name, { label: "Municipio/Cidade"}  %>
-                <%= address_form.text_field :street, label: :street%>
+                <%= address_form.collection_select :city_id, City.order(:city_name), :id, :city_name, 
+                { label: City.model_name.human(count: 1)}  %>
+                <%= address_form.text_field :street, label: Address.human_attribute_name(:street) %>
               <% end %> 
               <div class="row">
-                <p class="text-center">Dimention</p>
+                <p class="text-center"> <%= Dimention.model_name.human(count: 1)  %> </p>
                 <%= form.fields_for :dimention do |dimention_form| %>
                   <div class="col">
-                    <%= dimention_form.number_field :width_d, label: "Width"%>
+                    <%= dimention_form.number_field :width_d, 
+                    label: Dimention.human_attribute_name(:width_d) %>
                   </div>
                   <div class="col">
-                    <%= dimention_form.number_field :height_d, label: "Height"%>
+                    <%= dimention_form.number_field :height_d, 
+                    label: Dimention.human_attribute_name(:height_d) %>
                   </div>
                 <% end %> 
               </div>
 
               <div class="row">
-                <p class="text-center">Geografic Location</p>
+                <p class="text-center"><%= t("pages.favorite.houses.form.geografic-Location") %></p>
                 <%= form.fields_for :location do |location_form| %>
                   <div class="col">
-                    <%= location_form.number_field :latitude, label: :latitude%>
+                    <%= location_form.number_field :latitude, 
+                    label: Location.human_attribute_name(:latitude)%>
                   </div>
                   <div class="col">
-                    <%= location_form.number_field :longitude, label: :longitude %>
+                    <%= location_form.number_field :longitude, 
+                    label: Location.human_attribute_name(:longitude) %>
                   </div>
                 <% end %> 
               </div>
 
-              <%= form.number_field :price, label: :price %>
-              <%= form.text_area :description, label: :description, size: "70x5" %>
+              <%= form.number_field :price, label: House.human_attribute_name(:price) %>
+              <%= form.text_area :description, 
+              label: House.human_attribute_name(:description), size: "70x5" %>
             
             <div class="mb-3 d-grid gap-2">
               <%= form.submit class: "btn btn-info" %>

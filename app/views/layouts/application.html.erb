@@ -14,10 +14,9 @@
 
   <body>
     <main>
-      <% cache do %>
+      <% cache do %> 
         <%= render 'layouts/header' %>
       <% end %>
-      <%= t("hello") %>
         <%= render 'layouts/info' if info %>
         <%= render 'layouts/message' if notice %>
         <%= render 'layouts/alert' if alert %> 

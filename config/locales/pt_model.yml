@@ -1,0 +1,101 @@
+# available at https://guides.rubyonrails.org/i18n.html.
+# Translate enum in rails
+# https://stackoverflow.com/questions/22827270/rails-how-to-use-i18n-with-rails-4-enums
+pt:
+  activerecord:
+    models:
+      address: 
+        one: Endereço
+        other: Endereços
+      city:  
+        one: Cidade/Munícipio
+        other: Cidades
+      dimention: 
+        one: Dimensão
+        other: Dimensões
+      favorite_land: 
+        one: Meu Terreno favorito
+        other: Meus Terrenos favoritos
+      favorite_house: 
+        one: Meu imóvei favoritos
+        other: Meus imóveis favoritos
+      house: 
+        one: Imóvel
+        other: Imóveis
+      land: 
+        one: Terreno
+        other: Terrenos
+      location: 
+        one: Localização
+        other: Localizações
+      profile: 
+        one: Perfil
+        other: Perfis
+      province: 
+        one: Província
+        other: Provincias
+      profile_land: 
+        one: Meu terreno
+        other: Meus terrenos
+      profile_house: 
+        one: Meu imóvel
+        other: Meus imóveis
+      user: 
+        one: Usuário
+        other: Usuários
+    attributes:
+      address:
+        street: Endereço (rua, bairro, apartamento)
+        city: Cidade/Munícipio
+      city: 
+        city_name: Cidade/Munícipio
+        province: província
+        provincia_id: Id da provincia
+      dimention:
+        width_d: Comprimento
+        height_d: largura
+      house: 
+        room: Quarto
+        title: Titulo 
+        living_room: Sala de estar
+        images: Images 
+        bath_room: Q de banho
+        yard: Jardim
+        kitchen: Cozinha
+        balcony: Varanda
+        condition: Condições
+        type_negotiation: Tipo de negociação
+        price: Preço
+        garage: Garagem
+        pool: Piscina
+        description: Descrição
+        tipology: Tipologia
+        next_by: "Está próximo de(a):"
+        furnished: Mobiliada
+        property_type: Tipo do ímovel
+        location: Localização
+        dimention: Dimenção
+      land:
+        title_land: Título
+        description: Descrição
+        images: Imagens 
+        price: preço
+        dimention: Dimenção
+        dimention_id: Id da dimenção
+        address: Endereço 
+        address_id: Id do endereço
+      profile:
+        name_profile: Nome do perfil
+        image: Imagem
+        address: Endereço 
+        address_id: Id do endereço
+        gender: Genero
+        phone1: Telefone 1
+        phone2: Telefone 2
+        profile_type: Tipo de perfil
+        user: Usuário
+        user_id: Id do usuário
+      provinces:
+        province_name: Nome da provincia
+
+  

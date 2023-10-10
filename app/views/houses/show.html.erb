@@ -5,7 +5,9 @@
         <%= link_to house_show_images_path(@house), 
         class:"btn btn-pink ms-1" do %>
           <i class="bi bi-camera-fill"></i>
-           Ver todas as fotos
+
+            <%= t("pages.houses.links.see-all-more-photos")%>
+            
         <% end %>
 
         <%= render "favorite_houses/form", 
@@ -32,8 +34,9 @@
   <div class="container">
     <% if user_signed_in? %>
       <div class="d-grid gap-2">
-        <%= link_to "Editar", edit_house_path(@house), class:"btn btn-info" %> 
-        <%= button_to "Eliminar", @house, method: :delete, class:"btn btn-danger  my-1 col-sm-12" %>
+        <%= link_to t("links.edit") , edit_house_path(@house), class:"btn btn-info" %> 
+        <%= button_to t('links.destroy'), @house, method: :delete, 
+        class:"btn btn-danger  my-1 col-sm-12" %>
       </div>
     <% end %>
 
@@ -51,15 +54,15 @@
         <%= @house.title %>, <%= @house.tipology %>
     </h1>
     <p class="fs-3 text-pink">
-       <%= @house.price %> Kz  <span class="fs-5">/mês</span>
+       <%=  House.human_attribute_name(:price) %> <%= @house.price %> Kz  <span class="fs-5">/mês</span>
     </p>
    
     
    <div class="fs-3">
 
     <div class="d-inline">
-      Largura: <%= @house.dimention.height_d %> m², 
-      Comprimento: <%= @house.dimention.width_d %> m²
+      <%= Dimention.human_attribute_name(:width_d) %>: <%= @house.dimention.height_d %> m², 
+      <%= Dimention.human_attribute_name(:height_d)%>: <%= @house.dimention.width_d %> m²
     </div>
    
    </div>
@@ -68,7 +71,7 @@
       <div class="col-sm-8">
         
         <hr class="text-pink"> <br>
-        <strong class="text-pink">Descrição: </strong>
+        <strong class="text-pink"><%= House.human_attribute_name(:description) %></strong>
         <p class="text-description">
           <%= @house.description %>
         </p>
@@ -76,44 +79,49 @@
         <br>
         <hr class="text-pink">
           <p>
-           <strong class="text-pink">Compartimento da casa: <%= @house.tipology %> </strong>
+           <strong class="text-pink"> <%= t('compartiment')%> <%= @house.tipology %> </strong>
          </p>
          <div class="row">
             <div class="col">
               <p class="text-description">
                 
                 <i class="bi bi-check2-circle text-pink"></i> 
-                 <%= @house.living_room %> <%= :living_room %>  <br>
+                 <%= @house.living_room %> <%= House.human_attribute_name(:living_room) %>  <br>
 
                  <i class="bi bi-check2-circle text-pink"></i>
-                 <%= @house.bath_room %> <%= :bath_room %>  <br>
+                 <%= @house.bath_room %> <%= House.human_attribute_name(:bath_room) %>  <br>
 
                   <i class="bi bi-check2-circle text-pink"></i> 
-                 <%= @house.room %> <%= :room %> <br>
+                 <%= @house.room %> <%= House.human_attribute_name(:room) %> <br>
               </p>
             </div>
             <div class="col">
               <p class="text-description">
                 <i class="bi bi-check2-circle text-pink"></i> 
-                 <%= @house.kitchen %> <%= :kitchen %>  <br>
+                 <%= @house.kitchen %> <%= House.human_attribute_name(:kitchen) %>  <br>
 
                  <i class="bi bi-check2-circle text-pink"></i>
-                 <%= @house.balcony %> <%= :balcony %>  <br>
+                 <%= @house.balcony %> <%= House.human_attribute_name(:balcony) %>  <br>
 
                   <i class="bi bi-check2-circle text-pink"></i> 
-                 <%= @house.garage %> <%= :garage %> <br>
+                 <%= @house.garage %> <%= House.human_attribute_name(:garage) %> <br>
               </p>
             </div>
             <div class="col">
               <p class="text-description">
                  <i class="bi bi-check2-circle text-pink"></i>
-                 <%= @house.pool %> <%= :pool %>  <br>
+                 <%= @house.pool %> <%= House.human_attribute_name(:pool) %>  <br>
 
                  <i class="bi bi-check2-circle text-pink"></i>
-                 <%= :furnished %>: <%= @house.furnished %>  <br>
+                 <%= House.human_attribute_name(:furnished) %>: <%= @house.furnished %>  <br>
 
                   <i class="bi bi-check2-circle text-pink"></i> 
-                 <%= @house.garage %> <%= :garage %> <br>
+                 <%= @house.garage %> <%=  :garage %> <br>
+
+
+                  <i class="bi bi-check2-circle text-pink"></i> 
+                 <%= @house.yard %> <%= House.human_attribute_name(:yard) %> <br>
+                 
               </p>
             </div>
           </div>
@@ -122,7 +130,7 @@
                <div class="row">
             <div class="col">
               <p>
-                <strong class="text-pink"> Form of lease of the property </strong>
+                <strong class="text-pink"> <%= House.human_attribute_name(:type_negotiation) %> </strong>
               </p>
               <p class="text-description">
                 <i class="bi bi-check2-circle text-pink"></i>
@@ -131,7 +139,7 @@
             </div>
             <div class="col">
              <p>
-                <strong class="text-pink"> This property is next by: </strong>
+                <strong class="text-pink"> <%= House.human_attribute_name(:next_by) %> </strong>
               </p>
               <p class="text-description">
                   <i class="bi bi-check2-circle text-pink"></i> 
@@ -140,15 +148,23 @@
             </div>
             <div class="col">
               <p>
-                <strong class="text-pink"> Property type: </strong>
+                <strong class="text-pink"> <%= House.human_attribute_name(:property_type) %> </strong>
               </p>
               <p class="text-description">
                   <i class="bi bi-check2-circle text-pink"></i> 
                  <%= @house.property_type %> <br>
               </p>
             </div>
+            <div class="col">
+              <p>
+                <strong class="text-pink"> <%= House.human_attribute_name(:condition)%> </strong>
+              </p>
+              <p class="text-description">
+                  <i class="bi bi-check2-circle text-pink"></i> 
+                 <%= @house.condition %> <br>
+              </p>
+            </div>
           </div>
-
  
 
         <hr class="text-pink">
@@ -168,7 +184,7 @@
       <div class="col d-flex justify-content-center">
         <div class="card fixed" style="width: 18rem; height: 450px ;">
           <div class="card-body">
-            <h5 class="card-title text-pink text-center">proprietário</h5>
+            <h5 class="card-title text-pink text-center"><%= t("publisher")%></h5>
             <p class="card-text text-center text-description">
               <%= @profile.name_profile %>
             </p>
@@ -189,7 +205,7 @@
                 <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Sua mensagem" rows="3"></textarea>
               </div>
               <div class="d-grid gap-2">
-                <button class="btn btn-pink" type="button">Enviar</button>
+                <button class="btn btn-pink" type="button"><%= t("links.send")%></button>
               </div>
             </form>
           </div>
@@ -199,5 +215,3 @@
       <!-- End reservation-->
     </div>
   </div>
-
-

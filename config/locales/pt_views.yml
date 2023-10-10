@@ -1,0 +1,130 @@
+# available at https://guides.rubyonrails.org/i18n.html.
+
+# available at https://guides.rubyonrails.org/i18n.html.
+# Translate enum in rails
+# https://stackoverflow.com/questions/22827270/rails-how-to-use-i18n-with-rails-4-enums
+pt:
+  publisher: Proprietário
+  compartiment: "Compartimentos da casa:"
+  telephones: Telemóveis
+  devise:
+    links:
+      sign:
+        up: Inscrever-se
+        in: Entrar
+        in-with: Entrar com
+      logout: Sair
+      remember-me: Lembre-me
+      forgot-password: Esqueceu sua senha?
+      did-not-receive-confirmation-instructions: Não recebeu instruções de confirmação?
+      did-not-receive-unlock-instructions: Não recebeu instruções de desbloqueio?
+      resend-confirmation-instructions: Reenviar instruções de confirmação
+      confirm-my-account: Confirmar minha conta
+      change-my-password: Mudar minha senha
+      unlock-my-account: Desbloquear minha conta
+      send-me-reset-password-instructions: Envie-me instruções de redefinição de senha
+      resend-unlock-instructions: Reenviar instruções de desbloqueio
+      cancel-my-account: Cancelar minha conta
+      back: Voltar
+    title:
+      actions:
+        resend-confirmation-instructions: Reenviar instruções de confirmação
+        change-your-password: Mude sua senha
+        characters-minimum: mínimo de caracteres
+        confirm: Are you sure?
+        forgot-your-password: Esqueceu sua senha?
+        sign-up: Inscrever-se
+        logout: Sair
+        sign-in: Entrar
+        sign-in-with: Entrar com
+        resend-unlock-instructions: Reenviar instruções de desbloqueio
+        edit: Editar conta
+        update: Atualizar conta
+        create: Criar uma conta
+        currently-waiting-confirmation: Atualmente aguardando confirmação para
+        leave-blank-if-you-dont-want-to-change-it: deixe em branco se não quiser alterar
+        we-need-your-current-password-to-confirm-your-changes: precisamos da sua senha atual para confirmar suas alterações
+  pages: 
+    favorite:
+      lands: 
+        links: 
+          save-as-favorite: Salvar como favorito
+        form: 
+          prohibited: Proibiu que esta terra favorita fosse salva
+      houses: 
+        links: 
+          save-as-favorite: Salvar como favorito
+        form: 
+          prohibited: Proibiu que esta ímovel favorita fosse salva
+          geografic-Location: Localização geografica
+    houses:
+      title: 
+        actions:
+          create: Criar ímovel
+          update: Atualizar ímovel 
+          edit: Editar ímovel
+          prohibited: Proibiu que este ímovel favorita fosse salva
+      links: 
+        see-all-more-photos: Ver mais fotos
+    profiles:
+      title: 
+        actions:
+          create: Criar perfil
+          update: Atualizar perfil 
+          edit: Editar perfil
+      links: 
+         see-all-more-photos: Ver mais fotos
+    lands:
+      title: 
+        actions:
+          create: Criar terreno
+          update: Atualizar terreno 
+          edit: Editar terreno
+          prohibited: proibiu que este terreno fosse salva
+      links: 
+        see-all-more-photos: Ver mais fotos
+    home:
+      company:
+        title: Somos uma empresa de Imóveis
+        name: Ímoveis
+        contact-us: Entrar em contacto
+        description: Housev, somos uma empresa de imóveis que desempenha um papel crucial no mercado imobiliário, conectando compradores e vendedores ou locadores e inquilinos, facilitando a realização de negócios imobiliários com sucesso.
+    
+
+  filter:
+    by: 
+      title: Pesquisar por título
+      room: Pesquisar por quartos
+      price: Pesquisar por preço
+
+    filter-by: Pesquisar
+    search: Pesquisar
+    Search-using-advanced-filters: Pesquisar usando filtros avançados
+
+  navbar:
+    home: Ínicio
+    house: Ímoveis
+    rent: Arrendar
+    buy: Comprar
+    land: Terrenos
+    profile: Perfil
+    security: Segurança
+    favorite-lands: Terrenos favoritos
+    properties:
+      house:
+        new: Novo
+        view: Visualizar
+        my-posted-properties: Meus ímoveis postados
+      land:
+        new: New
+        view: View
+        my-posted-properties: Meus terrenos postados
+
+  links:
+    destroy: Eliminar
+    edit: Editar
+    save-as-favorite: Salvar como favorito
+    send: Enviar
+    update: Atualizar
+    view: Visualizar
+ 

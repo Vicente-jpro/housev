@@ -85,7 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_181049) do
     t.string "title"
     t.integer "living_room"
     t.integer "bath_room"
-    t.integer "yeard"
+    t.integer "yard"
     t.integer "kitchen"
     t.integer "balcony"
     t.string "condition"
