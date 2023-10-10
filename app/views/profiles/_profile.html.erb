@@ -11,13 +11,13 @@
               <strong> <%= Profile.human_attribute_name(:gender) %>:</strong> <%= profile.gender %> <br>
               <strong>Email:</strong>  <%= profile.user.email %> <br>
               <strong><%= Profile.human_attribute_name(:profile_type) %>:</strong> <%= remove_underscore( profile.profile_type )  %> <br>
-               <strong><%= Address.model_name.human(count: 1) %></strong> 
+              <strong><%= Address.model_name.human(count: 1) %></strong> 
                 <%= profile.address.street %>, 
                 <%= profile.address.city.city_name %>,  
                 <%= profile.address.city.province.province_name %>
                 <br>
               <strong><%= t(:telephones) %>: </strong> <%= profile.phone1 %>, <%= profile.phone2 %>
-             
+  
           </div>
           <div class="mb-3 d-grid gap-2">
               <%= link_to t("links.edit"), edit_profile_path(profile), class: "btn btn-info" %> 
