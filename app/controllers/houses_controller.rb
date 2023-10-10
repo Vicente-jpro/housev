@@ -53,8 +53,8 @@ class HousesController < ApplicationController
 
     respond_to do |format|
       if !@house.house_images.attached?
-        format.html { redirect_to new_house_path(@house), alert: "You must to upload an image before create a house." }
-        format.json { render :new, json: ["You must to upload an image before create a house."], status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @house.errors, status: :unprocessable_entity }
       elsif @profile.nil?
         format.html { redirect_to new_profile_path, info: "You must to create a profile after create a house." }
         format.json { render json: ["You must to create a profile after create a house."], status: :unprocessable_entity }

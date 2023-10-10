@@ -16,7 +16,7 @@ class House < ApplicationRecord
   has_many :profiles, through: :profile_houses
   has_many :favorite_houses, dependent: :destroy
 
-  validates_presence_of :address, :dimention, :price, :title, :description
+  validates_presence_of :address, :dimention, :price, :title, :description, :house_images
 
   def self.find_houses_by_user(user)
     House.joins(:profiles)
