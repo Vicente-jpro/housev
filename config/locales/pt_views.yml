@@ -6,6 +6,7 @@
 pt:
   publisher: Proprietário
   compartiment: "Compartimentos da casa:"
+  telephones: Telemóveis
   devise:
     links:
       sign:

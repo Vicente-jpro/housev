@@ -8,6 +8,7 @@ en:
   hello: Hello
   publisher: Publisher
   compartiment: "Property compartiments:"
+  telephones: Telephones
   devise:
     links:
       sign:

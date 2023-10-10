@@ -26,19 +26,26 @@
 
             <div>
               <%= form.text_field :name_profile, 
-              label: Profile.human_attribute_name("profiles.name_profile") %>
-              <%= form.file_field :image %>  
+              label: Profile.human_attribute_name(:name_profile) %>
+              <%= form.file_field :image, label: Profile.human_attribute_name(:image) %>  
               <%= form.select :gender, Profile.genders, {label: :gender}%>
 
-              <%= form.select :profile_type, Profile.profile_types, {label: "Tipo do perfil"} %>
-              <%= form.telephone_field :phone1, label: :phone1 %>
-              <%= form.telephone_field :phone2, label: :phone2 %>
-              <%= form.collection_select :province_id, Province.order(:province_name), :id, :province_name, { label: "Provincia"}  %>
+              <%= form.select :profile_type, Profile.profile_types, 
+                {label: Profile.human_attribute_name(:profile_type)} %>
+              <%= form.telephone_field :phone1, label: Profile.human_attribute_name(:phone1) %>
+              <%= form.telephone_field :phone2, label: Profile.human_attribute_name(:phone2) %>
+          
+             <%= form.collection_select :province_id, Province.order(:province_name), :id, :province_name, 
+              { label: Province.model_name.human(count: 1) }  %> 
                 
               <%= form.fields_for :address do |address_form| %>
-                <%= address_form.collection_select :city_id, City.order(:city_name), :id, :city_name, { label: "Municipio/Cidade"}  %>
-                <%= address_form.text_field :street, label: :street%>
+                <%= address_form.collection_select :city_id, City.order(:city_name), :id, :city_name, 
+                { label: City.model_name.human(count: 1)}  %>
+                <%= address_form.text_field :street, label: Address.human_attribute_name(:street) %>
               <% end %> 
+              
+
+
       
             </div>
 
