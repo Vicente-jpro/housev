@@ -13,7 +13,7 @@ class LandsController < ApplicationController
 
   # GET /lands or /lands.json
   def index
-    @lands = Land.order(id: :desc)
+    @lands = Land.order(id: :desc).page(params[:page])
   end
 
   # GET /lands/1 or /lands/1.json

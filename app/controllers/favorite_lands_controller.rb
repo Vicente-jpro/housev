@@ -7,7 +7,7 @@ class FavoriteLandsController < ApplicationController
 
   # GET /favorite_lands or /favorite_lands.json
   def index
-    @favorite_lands = FavoriteLand.find_all_by_user(current_user)
+    @favorite_lands = FavoriteLand.find_all_by_user(current_user).page(params[:page])
   end
 
   # POST /favorite_lands or /favorite_lands.json

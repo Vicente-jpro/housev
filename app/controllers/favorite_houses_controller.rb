@@ -6,7 +6,7 @@ class FavoriteHousesController < ApplicationController
 
    # GET /favorite_houses or /favorite_houses.json
    def index
-    @favorite_houses = FavoriteHouse.find_all_by_user(current_user)
+    @favorite_houses = FavoriteHouse.find_all_by_user(current_user).page(params[:page])
   end
 
   # POST /favorite_houses or /favorite_houses.json
