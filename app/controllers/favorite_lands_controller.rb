@@ -15,11 +15,14 @@ class FavoriteLandsController < ApplicationController
     @favorite_land = FavoriteLand.new(favorite_land_params)
     favorite = FavoriteLand.new 
     favorite.land_id = @favorite_land[:land_id]
-    
+    land = Land.new 
+    land.id = favorite.land_id
     respond_to do |format|
-      if is_land_creator?(current_user)
+      if is_land_creator?(current_user, land)
+        debugger 
         format.html { redirect_to lands_url, 
           alert: "You are the land creator. It's impossible mark as favorite." }
+  
       elsif !FavoriteLand.exist?(favorite)
         format.html { redirect_to lands_url, 
               alert: "This land is already added as a favorite." }

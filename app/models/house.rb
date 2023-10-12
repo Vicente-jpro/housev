@@ -24,4 +24,10 @@ class House < ApplicationRecord
         .order(id: :desc)
   end
   
+  def self.find_house_by_user(user, house)
+    Land.joins(:profiles)
+        .where("profiles.user_id = #{user.id} and houses.id = #{house.id}")
+        .order(id: :desc)
+  end
+
 end

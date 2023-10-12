@@ -17,6 +17,12 @@ class Land < ApplicationRecord
         .where("profiles.user_id = #{user.id}")
         .order(id: :desc)
   end
+  
+  def self.find_land_by_user(user, land)
+    Land.joins(:profiles)
+        .where("profiles.user_id = #{user.id} and lands.id = #{land.id}")
+        .order(id: :desc)
+  end
 
 end
 
