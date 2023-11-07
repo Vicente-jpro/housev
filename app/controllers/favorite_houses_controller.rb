@@ -53,7 +53,6 @@ class FavoriteHousesController < ApplicationController
       redirect_to houses_url, info: "Invalid house."
     end
 
-  private
     # Use callbacks to share common setup or constraints between actions.
     def set_favorite_house
       @favorite_house = FavoriteHouse.find(params[:id])
