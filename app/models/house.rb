@@ -35,7 +35,7 @@ class House < ApplicationRecord
         .order(id: :desc)
   end
 
-  def sef.filter_by()
+  def self.filter_by()
     House.joins(:address)
          .joins(:dimention)
          .joins(:location)
