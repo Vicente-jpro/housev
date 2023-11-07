@@ -13,7 +13,7 @@ class HousesController < ApplicationController
 
   # GET /houses or /houses.json
   def index
-    @houses = House.all
+    @houses = House.order(id: :desc).page(params[:page])
   end
 
   # GET /houses/1 or /houses/1.json

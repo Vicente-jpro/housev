@@ -6,7 +6,7 @@ class FavoriteHousesController < ApplicationController
 
    # GET /favorite_houses or /favorite_houses.json
    def index
-    @favorite_houses = FavoriteHouse.find_all_by_user(current_user)
+    @favorite_houses = FavoriteHouse.find_all_by_user(current_user).page(params[:page])
   end
 
   # POST /favorite_houses or /favorite_houses.json
@@ -14,9 +14,11 @@ class FavoriteHousesController < ApplicationController
     @favorite_house = FavoriteHouse.new(favorite_house_params)
     favorite = FavoriteHouse.new 
     favorite.house_id = @favorite_house[:house_id]
+    house = House.new 
+    house.id = favorite.house_id
     
     respond_to do |format|
-      if is_land_creator?(current_user)
+      if is_land_creator?(current_user, house)
         format.html { redirect_to houses_url, 
           alert: "You are the house creator. It's impossible mark as favorite." }
       elsif !FavoriteLand.exist?(favorite)

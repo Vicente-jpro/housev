@@ -7,7 +7,7 @@ class FavoriteLandsController < ApplicationController
 
   # GET /favorite_lands or /favorite_lands.json
   def index
-    @favorite_lands = FavoriteLand.find_all_by_user(current_user)
+    @favorite_lands = FavoriteLand.find_all_by_user(current_user).page(params[:page])
   end
 
   # POST /favorite_lands or /favorite_lands.json
@@ -15,9 +15,11 @@ class FavoriteLandsController < ApplicationController
     @favorite_land = FavoriteLand.new(favorite_land_params)
     favorite = FavoriteLand.new 
     favorite.land_id = @favorite_land[:land_id]
-    
+    land = Land.new 
+    land.id = favorite.land_id
+
     respond_to do |format|
-      if is_land_creator?(current_user)
+      if is_land_creator?(current_user, land) 
         format.html { redirect_to lands_url, 
           alert: "You are the land creator. It's impossible mark as favorite." }
       elsif !FavoriteLand.exist?(favorite)

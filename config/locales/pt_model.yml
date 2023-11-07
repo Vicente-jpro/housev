@@ -55,6 +55,57 @@ pt:
         width_d: Comprimento
         height_d: largura
       house: 
+
+        conditions: 
+          new: Novo
+          renovated: Renovado
+          Unfinished: Inacabado 
+          used: Usado
+        type_negotiations:
+          rent_monthly: Arrendar mensalmente 
+          rent_daily: Arrendar diariamente
+          rent_shared: Renda compartilhada
+        tipologies:
+          t1: T1 
+          t2: T2 
+          t3: T3 
+          t4: T4
+          t5: T5
+          t6: T6 
+          t7: T7 
+          Tn: 'outros' 
+        next_by1:  
+          airport: Aeroporto 
+          church: Igreja
+          food_court:  Praça de alimentação 
+          football_stadium: Estádio de futebol 
+          leisure_park: Parque de lazer
+          militar_station: Estação militar  
+          main_road: Estrada principal
+          high_school: Ensino médio
+          gymnasium: Ginásio
+          police_office: Estação policial
+          playground: Parque infatil
+          primary_school: Escola primária 
+          supermarket: Super mercado 
+          secondary_school: Escola secundária 
+          trade_square: Praça comercial
+          train_or_metrol_station: Estação de trem ou metrô 
+          university: Universidade
+        property_types: 
+          apartamento: Apartamento
+          country_house: Casa de campo 
+          Enterprise: Empresa
+          hotel: Hotel 
+          farm: Fazenda
+          office: Escritório
+          store: Armazem 
+          room: Quarto
+          shop_store: Armazém de compras
+          Restaurant: Restaurante
+          others: Outros
+        
+      
         room: Quarto
         title: Titulo 
         living_room: Sala de estar

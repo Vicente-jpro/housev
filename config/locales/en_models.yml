@@ -57,6 +57,56 @@ en:
         width_d: width
         height_d: height
       house:
+
+        conditions: 
+          new: New
+          renovated: Renovated
+          Unfinished: Unfinished 
+          used: used 
+        type_negotiations:
+          rent_monthly: Rent monthly 
+          rent_daily: Rent daily 
+          rent_shared: 'Rent shared'
+        tipologies:
+          t1: T1 
+          t2: T2 
+          t3: T3 
+          t4: T4
+          t5: T5
+          t6: T6 
+          t7: T7 
+          Tn: 'OTHERS' 
+        next_by1:  
+          airport: Airport 
+          church: Church
+          food_court: Food court 
+          football_stadium: Football Stadium 
+          leisure_park: Leisure park 
+          militar_station: Militar station 
+          main_road: Main road 
+          high_school: High school
+          gymnasium: Gymnasium 
+          police_office: Police office 
+          playground: Playground
+          primary_school: Primary school 
+          supermarket: Supermarket 
+          secondary_school: Secondary school 
+          trade_square: Trade square 
+          train_or_metrol_station: Train or metrol station 
+          university: University
+        property_types: 
+          apartamento: Apartament 
+          country_house: Country house 
+          Enterprise: Enterprise 
+          hotel: Hotel 
+          farm: Farm 
+          office: Office
+          store: Store 
+          room: Room
+          shop_store: Shop store 
+          Restaurant: restaurant 
+          others: Others
+        
         room: Room
         images: Images 
         title: Title
@@ -101,4 +151,6 @@ en:
         user_id: Id users
       province:
         province_name: province
+
+
  

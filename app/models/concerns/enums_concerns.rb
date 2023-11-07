@@ -1,31 +1,27 @@
 module EnumsConcerns
     extend ActiveSupport::Concern
     included do 
-        enum condition: { New: 'NEW', Renovated: 'RENOVATED', Unfinished:'UNFINISHED', Used: 'USED'}
+        enum condition: { new: 10, renovated: 11, unfinished: 12, used: 13}
         enum type_negotiation: {
-            Rent_Monthly: 'RENT_MONTHLY', Rent_daily: 'RENT_DAILY', Rent_Shared: 'rent shared'
+            rent_monthly: 20, rent_daily: 21, rent_shared: 22
         }
 
         enum tipology: { 
-            T1:'T1', T2:'T2', T3:'T3', T4:'T4', 
-            T5:'T5', T6:'T6', T7:'T7', Tn: 'OTHERS' 
+            T1: 31, T2: 32, T3: 33, T4: 34, 
+            T5: 35, T6: 36, T7: 37, Tn: 39 
         }
 
         enum next_by: { 
-            Airport:'AIRPORT', 
-            Church: 'CHURCH', Food_court: 'FOOD_COURT', Football_stadium:'FOOTBALL_STADIUM', 
-            Leisure_park: 'LEISURE_PARK', Militar_station: 'MILITAR_STATION', 
-            Main_Road: 'MAIN_ROAD', High_school: 'HIGH_SCHOOL', Gymnasium: 'GYMANASIUM',
-            Police_office: 'POLICE_OFFICE', Playground: 'PLAYGROUND',
-            Primary_school: 'PRIMARY_SCHOOL', Supermarket: 'SUPERMARKET', 
-            Secondary_school: 'SECUNDARY_SCHOOL', Trade_square: 'TRADE_SQUARE', 
-            Train_or_metrol_station: 'TRAIN_OR_METROL_STATION', University: 'UNIVERSITY'
+            airport: 40, church: 41, food_court: 42, football_stadium: 43, 
+            leisure_park: 44, militar_station: 45, main_road: 46, high_school: 47, 
+            gymnasium: 48, police_office: 49, playground: 50, primary_school: 51, 
+            supermarket: 52, secondary_school: 53, trade_square: 54,
+            train_or_metrol_station: 55, university: 56
         }
 
-        enum property_type: { Apartamento: 'APARTAMENTO', Country_house: 'COUNTRY_HOUSE', 
-            Enterprise: 'ENTERPRISE', Hotel: 'HOTEL',  Farm: 'FARM',  Office: 'OFFICE',
-            Store:'STORE', Room: 'ROOM', Shop_store: 'SHOP_STORE', 
-            Restaurant: 'RESTAURANT', Others: 'OTHERS'
+        enum property_type: { apartamento: 60, country_house: 61, enterprise: 62, 
+            hotel: 63,  farm: 64, office: 65, store: 66, room: 67, 
+            shop_store: 68, restaurant: 69, others: 79
         }
     end
 end
