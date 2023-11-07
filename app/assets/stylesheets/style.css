@@ -8,12 +8,6 @@ body{
     color: #004d40 !important;
 
 }
-
-
-.card:hover, .card-img-top{
-    background-color: #fce4ec !important;
- }
-
  
 .card-link{
     text-decoration: none;
