@@ -69,14 +69,31 @@ puts "Fim do cadastro de Dimention."
 
 puts "Cadastrando as land..."
 3.times do
-Land.find_or_create_by!(
-    title_land: "Terreno no Bita Tanke", 
-    description: "Esse é um terreno grande bem localizado.",
-    price: "5000",
-    dimention: Dimention.all.sample,
-    address: Address.all.sample
-)
+    @land = Land.new 
+    @land.title_land = "Terreno no Bita Tanke" 
+    @land.description = "Esse é um terreno grande bem localizado."
+    @land.price = "5000"
+    @land.dimention = Dimention.all.sample
+    @land.address = Address.all.sample
+
+    @land.images.attach([
+
+        io: File.open(Rails.root.join('app', 'assets', 'images', 'room6.jpeg')), 
+        filename: 'room5.jpeg', 
+        content_type: 'image/jpeg' #,
+
+        # io: File.open(Rails.root.join('app', 'assets', 'images', 'room4.jpeg')), 
+        # filename: 'room4.jpeg', 
+        # content_type: 'image/jpeg', 
+
+        # io: File.open(Rails.root.join('app', 'assets', 'images', 'room3.jpeg')), 
+        # filename: 'room3.jpeg', 
+        # content_type: 'image/jpeg',
+    ]
+    )
+    @land.save
 end
+
 puts "Fim do cadastro de land."
 
 
@@ -116,51 +133,80 @@ puts "Fim do cadastro de Location."
 
 
 puts "Cadastrando a house."
-House.find_or_create_by!(
-room: 2, 
-title: "Casa luxuosa a venda", 
-living_room: 1, 
-bath_room: 2, 
-yard: 1, 
-kitchen: 3, 
-balcony: 3, 
-condition: 11, 
-type_negotiation: 21, 
-price: 68000, 
-garage: 1, 
-pool: 2, 
-description: "Casa bem localizada em condições prontra para morar", 
-tipology: 33, 
-next_by: 45, 
-furnished: true, 
-property_type: 65, 
-address: Address.first,
-dimention: Dimention.first,
-location: Location.first
-)
 
-House.find_or_create_by!(
-    room: 2, 
-    title: "Casa Feia bem feia", 
-    living_room: 1, 
-    bath_room: 2, 
-    yeard: 1, 
-    kitchen: 3, 
-    balcony: 3, 
-    condition: 13, 
-    type_negotiation: 21, 
-    price: 98000, 
-    garage: 1, 
-    pool: 2, 
-    description: "Casa bem localizada em condições prontra para morar", 
-    tipology: 34, 
-    next_by: 46, 
-    furnished: true, 
-    property_type: 50, 
-    address: Address.last,
-    dimention: Dimention.last,
-    location: Location.last
+
+@house = House.new
+@house.room = 2
+@house.title = "Casa luxuosa a venda" 
+@house.living_room = 1 
+@house.bath_room = 2
+@house.yard = 1
+@house.kitchen = 3 
+@house.balcony = 3 
+@house.condition = 11
+@house.type_negotiation = 21 
+@house.price = 68000
+@house.garage = 1
+@house.pool = 2 
+@house.description = "Casa bem localizada em condições prontra para morar", 
+@house.tipology = 33 
+@house.next_by = 45 
+@house.furnished = true 
+@house.property_type = 65
+@house.address = Address.first
+@house.dimention = Dimention.first
+@house.location = Location.first
+@house.house_images.attach([
+
+    # io: File.open(Rails.root.join('app', 'assets', 'images', 'room3.jpeg')), 
+    # filename: 'room3.jpeg', 
+    # content_type: 'image/jpeg',
+
+    # io: File.open(Rails.root.join('app', 'assets', 'images', 'room4.jpeg')), 
+    # filename: 'room4.jpeg', 
+    # content_type: 'image/jpeg', 
+
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'room5.jpeg')), 
+    filename: 'room5.jpeg']
 )
+@house.save
+
+@house = House.new
+@house.room = 2
+@house.title = "Casa Feia bem feia" 
+@house.living_room = 1
+@house.bath_room = 2
+@house.yard = 1 
+@house.kitchen = 3 
+@house.balcony = 3 
+@house.condition = 13 
+@house.type_negotiation = 21 
+@house.price = 98000 
+@house.garage = 1
+@house.pool = 2 
+@house.description = "Casa bem localizada em condições prontra para morar"
+@house.tipology = 34
+@house.next_by = 46 
+@house.furnished = true 
+@house.property_type = 60
+@house.address = Address.last
+@house.dimention = Dimention.last
+@house.location = Location.last
+@house.house_images.attach([
+
+    # io: File.open(Rails.root.join('app', 'assets', 'images', 'room1.jpg')), 
+    # filename: 'room1.jpg', 
+    # content_type: 'image/jpg',
+
+    # io: File.open(Rails.root.join('app', 'assets', 'images', 'room2.jpg')), 
+    # filename: 'room2.jpg', 
+    # content_type: 'image/jpg', 
+
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'room6.jpeg')), 
+    filename: 'room6.jpeg']
+)
+@house.save
+
 puts "Fim do cadastro de house."
 
 
