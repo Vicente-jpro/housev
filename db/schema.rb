@@ -88,16 +88,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_181049) do
     t.integer "yard"
     t.integer "kitchen"
     t.integer "balcony"
-    t.string "condition"
-    t.string "type_negotiation"
+    t.integer "condition"
+    t.integer "type_negotiation"
     t.decimal "price", precision: 8, scale: 2
     t.integer "garage"
     t.integer "pool"
     t.string "description"
-    t.string "tipology"
-    t.string "next_by"
+    t.integer "tipology"
+    t.integer "next_by"
     t.boolean "furnished"
-    t.string "property_type"
+    t.integer "property_type"
     t.integer "location_id", null: false
     t.integer "address_id", null: false
     t.integer "dimention_id", null: false

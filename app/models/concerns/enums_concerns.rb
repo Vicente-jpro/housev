@@ -1,7 +1,7 @@
 module EnumsConcerns
     extend ActiveSupport::Concern
     included do 
-        enum condition: { new: 10, renovated: 11, unfinished: 12, used: 13}
+        enum condition: { brand_new: 10, renovated: 11, unfinished: 12, used: 13}
         enum type_negotiation: {
             rent_monthly: 20, rent_daily: 21, rent_shared: 22
         }
@@ -20,8 +20,8 @@ module EnumsConcerns
         }
 
         enum property_type: { apartamento: 60, country_house: 61, enterprise: 62, 
-            hotel: 63,  farm: 64, office: 65, store: 66, room: 67, 
-            shop_store: 68, restaurant: 69, others: 79
+            hotel: 63,  farm: 64, office: 65, stock_store: 66, room: 67, 
+            shop_house: 68, restaurant: 69, others: 79
         }
     end
 end
