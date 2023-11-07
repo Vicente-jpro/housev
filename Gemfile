@@ -67,7 +67,7 @@ group :development, :test do
   gem "database_cleaner-active_record"
   gem 'rails-controller-testing'
   gem 'letter_opener', '~> 1.8', '>= 1.8.1'
-  gem 'rails_db', '~> 2.4', '>= 2.4.2'
+  gem 'rails_db', '~> 2.4', '>= 2.4.2' # -> Access via http://localhost:3000/rails/db
   gem 'shoulda-matchers', '~> 5.0'
 end
 
