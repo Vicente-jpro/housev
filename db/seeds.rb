@@ -156,9 +156,18 @@ puts "Cadastrando a house."
 @house.address = Address.first
 @house.dimention = Dimention.first
 @house.location = Location.first
-@house.house_images.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'room3.jpeg')
-    )
+@house.house_images.attach([
+
+    # io: File.open(Rails.root.join('app', 'assets', 'images', 'room1.jpg')), 
+    # filename: 'room1.jpg', 
+    # content_type: 'image/jpg',
+
+    # io: File.open(Rails.root.join('app', 'assets', 'images', 'room2.jpg')), 
+    # filename: 'room2.jpg', 
+    # content_type: 'image/jpg', 
+
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'room6.jpeg')), 
+    filename: 'room6.jpeg']
 )
 @house.save
 

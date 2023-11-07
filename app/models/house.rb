@@ -39,7 +39,7 @@ class House < ApplicationRecord
     House.joins(:address)
          .joins(:dimention)
          .joins(:location)
-         .where("houses.room = #{2}")
+         .where("houses.room = #{20}")
   end
 
 end
