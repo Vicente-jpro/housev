@@ -43,6 +43,10 @@ class HousesController < ApplicationController
     @house.build_dimention
   end
 
+  def search  
+    query = params[:query]
+    render json: query
+  end
   # GET /houses/1/edit
   def edit
   end

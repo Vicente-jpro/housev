@@ -14,8 +14,14 @@ Rails.application.routes.draw do
   resources :lands do 
     get 'show_images'
   end
+  
   resources :houses do
     get 'show_images' 
+    
+    collection do
+      get 'search'
+    end
+  
   end
 
   root "home#index"
