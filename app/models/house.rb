@@ -35,34 +35,29 @@ class House < ApplicationRecord
         .order(id: :desc)
   end
 
-  def self.filter_by()
+  def self.filter_by(house)
     House.joins(:address)
          .joins(:dimention)
          .joins(:location)
-         .where("houses.room = #{20}")
+         .where("houses.room = #{house.room}")
+         .or("houses.title LIKE '%#{house.title}%'")
+         .or("houses.living_room = #{house.living_room}")
+         .or("houses.yard = #{house.yard}")
+         .or("houses.kitchen = #{house.kitchen}")
+         .or("houses.balcony = #{house.balcony}")
+         .or("houses.condition = #{house.condition}")
+         .or("houses.type_negotiation = #{house.type_negotiation}")
+         .or("houses.price = #{house.price}")
+         .or("houses.garage = #{house.price}")
+         .or("houses.pool = #{house.pool}")
+         .or("houses.description LIKE '%#{house.description}%'")
+         .or("houses.tipology = #{house.tipology}%")
+         .or("houses.next_by = #{house.next_by}")
+         .or("houses.furnished = #{house.furnished}")
+         .or("houses.property_type = #{house.property_type}")
+         .or("houses.address_id = #{house.address_id}")
+         .or("houses.dimention_id = #{house.dimention_id}")
+         .or("houses.location_id = #{house.location}")
   end
 
 end
-
-# SELECT * FROM houses
-# 	JOIN addresses
-#     ON addresses.id = houses.address_id
-#     JOIN dimentions
-#     ON dimentions.id = houses.dimention_id
-#     JOIN locations
-#     ON locations.id = houses.location_id
-# 	WHERE houses.room = 20 or houses.title = "Casa luxuosa a venda" or  houses.living_room = 10
-#     or houses.bath_room = 20 or houses.yard = 10 or houses.kitchen = 30 or houses.balcony = 30 
-# 	or houses.condition = 110
-#   	or houses.type_negotiation = 201 
-# 	or houses.price = 68000
-#  	or houses.garage = 10
-# 	or houses.pool = 20
-# 	or houses.description = "Casa bem localizada em condições prontra para morar"
-# 	or houses.tipology = 330
-# 	or houses.next_by = 450 
-# 	or houses.furnished = true 
-# 	or houses.property_type = 650
-# 	or houses.address_id = 10
-# 	or houses.dimention_id = 10
-# 	or houses.location_id = 10
