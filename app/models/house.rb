@@ -1,11 +1,6 @@
 class House < ApplicationRecord
-  begin
     include EnumsConcerns
-  
-  rescue => exception
-    
-  end
-  
+  attr_accessor :province_code
   belongs_to :location
   accepts_nested_attributes_for :location
 
