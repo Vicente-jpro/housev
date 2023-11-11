@@ -1,6 +1,6 @@
    <!-- filters-->
    <section class="container">
-    <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+    <div class="card shadow-lg p-3 mb-5 bg-body-tertiary">
       <div class="card-body">
           <div class="card-title">
               <h4 class="text-center text-pink">Filtrar por</h4>
@@ -8,59 +8,43 @@
 
           </div>
    
-          <div class="row my-2">
-            <%= form_for @house, url: "/houses/search", method: :get do |form| %>
-            <div class="col">
-              <div class="mb-3">
-                <%= form.text_field :title, label: House.human_attribute_name(:title) %>      </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="mb-3">
+            
+            <%= bootstrap_form_tag url: "/houses/search", method: :get do |form| %>
+              <div class="row">
+                <div class="col">
+                    <%= form.text_field :title, label: House.human_attribute_name(:title) %>      
+                </div>
+              
+              <div class="col">
                 <%= form.number_field :room, label: House.human_attribute_name(:room)%>
               </div>
-           </div>
-          <div class="col">
-            <div class="mb-3">
-              <%= form.number_field :price, label: House.human_attribute_name(:price) %>
-            </div>
-          </div>
-            <div class="row">
-                <div class="col">
-                    <div class="mb-3">
-                      <%= form.select :condition, House.conditions, 
-                      {label: House.human_attribute_name(:condition)} %>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                      <%= form.select :tipology, House.tipologies, 
-                      {label: House.human_attribute_name(:tipology)}%>    
-                    </div>
-                </div>
-                <div class="col">
-                  <div class="mb-3">
-                    <%= form.check_box :furnished, label: House.human_attribute_name(:furnished)%>
-                  </div>
+              <div class="col">
+                <%= form.number_field :price, label: House.human_attribute_name(:price) %>
               </div>
             </div>
+
             <div class="row">
               <div class="col">
-                <div class="mb-3">  
-              <%= form.collection_select :province_code, Province.order(:province_name), :id, :province_name, 
-              { label: Province.model_name.human(count: 1) }  %> 
-                
-                </div>
+                <%= form.select :condition, House.conditions, 
+                          {label: House.human_attribute_name(:condition)} %>
               </div>
-              <div class="col">
-                <div class="mb-3">
-                 <%= form.fields_for :address do |address_form| %>
+               <div class="col">
+                  <%= form.select :tipology, House.tipologies, 
+                            {label: House.human_attribute_name(:tipology)}%>    
+              </div>
+               <div class="col">
+                <%= form.collection_select :province_code, Province.order(:province_name), :id, :province_name, 
+                  { label: Province.model_name.human(count: 1) }  %> 
+              </div>
+               <div class="col">
+                  <%= form.fields_for :address do |address_form| %>
                     <%= address_form.collection_select :city_id, City.order(:city_name), :id, :city_name, 
-                    { label: City.model_name.human(count: 1)}  %>
-                    <%= address_form.text_field :street, label: Address.human_attribute_name(:street) %>
+                            { label: City.model_name.human(count: 1)}  %>
                   <% end %> 
-                </div>
               </div>
+            </div>
+              
+             
               <div class="mb-3 d-grid gap-2">
                 <%= form.submit "Pesquisar", class: "btn btn-pink" %>
               </div>
@@ -69,8 +53,7 @@
               <div class="mb-3 d-grid gap-2">
                 <button class="btn btn-pink">Pesquisar por filtros avançados</button>
               </div>
-            </div>
-        </div>
+      
       </div>
     </div>
   </section>
