@@ -33,8 +33,26 @@ class House < ApplicationRecord
   # Book.where("title LIKE ?",
   #   Book.sanitize_sql_like(params[:title]) + "%")
   
-
   def self.search_by(house_params)
+    House.joins(:address)
+         .joins(:dimention)
+         .joins(:location)
+         .where(room: house_params[:room])
+         .or(House.where('LOWER(title) LIKE ?', "%#{house_params[:title].downcase if house_params[:title].present? }%"))
+         .or(House.where(living_room: house_params[:living_room]) )
+         .or(House.where(kitchen: house_params[:kitchen]))
+         .or(House.where(condition: house_params[:condition]))
+         .or(House.where(type_negotiation: house_params[:type_negotiation]))
+         .or(House.where(price: house_params[:price]))
+         .or(House.where(tipology: house_params[:tipology]))
+         .or(House.where(property_type: house_params[:property_type]))
+         .or(House.where(address_id: house_params[:address_id]))
+         .or(House.where(location_id: house_params[:location]))
+         .order(:title)
+  end
+
+
+  def self.search_advanced_by(house_params)
     House.joins(:address)
          .joins(:dimention)
          .joins(:location)

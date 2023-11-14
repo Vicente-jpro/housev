@@ -11,22 +11,29 @@
             
             <%= bootstrap_form_tag url: "/houses/search", method: :get do |form| %>
               <div class="row">
-                <div class="col">
+                <div class="col-sm-4">
                     <%= form.text_field :title, label: House.human_attribute_name(:title) %>      
                 </div>
               <div class="col">
                  <%= form.number_field :living_room, label: House.human_attribute_name(:living_room) %> 
               </div>
-             
               <div class="col">
                 <%= form.number_field :room, label: House.human_attribute_name(:room)%>
               </div>
               <div class="col">
                 <%= form.number_field :price, label: House.human_attribute_name(:price) %>
               </div>
+                <div class="col"> 
+                    <%= form.number_field :kitchen, label: House.human_attribute_name(:kitchen) %>    
+                </div>
             </div>
             
             <div class="row">
+              <div class="col"> 
+                  <%= form.select :type_negotiation, House.type_negotiations, 
+                {label: House.human_attribute_name(:type_negotiation)} %>  
+              </div>
+               
               <div class="col">
                 <%= form.select :condition, House.conditions, 
                           {label: House.human_attribute_name(:condition)} %>

@@ -45,7 +45,12 @@ class HousesController < ApplicationController
 
   def search  
     @houses = House.search_by(params)
-    debugger
+    if @houses.empty?
+      redirect_to houses_url, 
+        info: "Nenhum imóvel encontrado. Sugerimos estes ímóveis para você."
+    else
+      flash[:info] = "Resultado da busca."
+    end
   end
   # GET /houses/1/edit
   def edit
