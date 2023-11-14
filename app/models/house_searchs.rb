@@ -1,4 +1,4 @@
-require '../model/house.rb'
+
 class HouseSearchs 
     attr_accessor :room, :title, :living_room, :bath_room, :yard, :kitchen, :balcony,
     :condition, :type_negotiation, :price, :garage, :pool, :description, :tipology,
@@ -34,9 +34,3 @@ class HouseSearchs
         return @house    
     end
 end
-
-
-h = HouseSearchs.new 
-h.title = "Vicente Simão"
-h.city_code = 1
-puts h.to_house_model

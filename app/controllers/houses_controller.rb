@@ -44,9 +44,8 @@ class HousesController < ApplicationController
   end
 
   def search  
-    query = params[:query]
+    @houses = House.search_by(params)
     debugger
-    render json: query
   end
   # GET /houses/1/edit
   def edit
