@@ -158,16 +158,16 @@ puts "Cadastrando a house."
 @house.location = Location.first
 @house.house_images.attach([
 
-    # io: File.open(Rails.root.join('app', 'assets', 'images', 'room3.jpeg')), 
-    # filename: 'room3.jpeg', 
-    # content_type: 'image/jpeg',
+    # io: File.open(Rails.root.join('app', 'assets', 'images', 'room1.jpg')), 
+    # filename: 'room1.jpg', 
+    # content_type: 'image/jpg',
 
-    # io: File.open(Rails.root.join('app', 'assets', 'images', 'room4.jpeg')), 
-    # filename: 'room4.jpeg', 
-    # content_type: 'image/jpeg', 
+    # io: File.open(Rails.root.join('app', 'assets', 'images', 'room2.jpg')), 
+    # filename: 'room2.jpg', 
+    # content_type: 'image/jpg', 
 
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'room5.jpeg')), 
-    filename: 'room5.jpeg']
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'room6.jpeg')), 
+    filename: 'room6.jpeg']
 )
 @house.save
 

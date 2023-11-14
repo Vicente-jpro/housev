@@ -58,6 +58,7 @@ gem 'jquery-rails'
 gem 'kaminari', '~> 1.2', '>= 1.2.2'
 gem 'kaminari-bootstrap', '~> 3.0', '>= 3.0.1'
 gem 'rails-i18n', '~> 7.0.0'
+gem 'mini_magick', '~> 4.12'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -67,7 +68,7 @@ group :development, :test do
   gem "database_cleaner-active_record"
   gem 'rails-controller-testing'
   gem 'letter_opener', '~> 1.8', '>= 1.8.1'
-  gem 'rails_db', '~> 2.4', '>= 2.4.2'
+  gem 'rails_db', '~> 2.4', '>= 2.4.2' # -> Access via http://localhost:3000/rails/db
   gem 'shoulda-matchers', '~> 5.0'
 end
 

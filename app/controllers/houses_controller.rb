@@ -1,6 +1,6 @@
 class HousesController < ApplicationController
   before_action :set_house, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, except: [ :show, :index, :show_images]
+  before_action :authenticate_user!, except: [ :show, :index, :show_images, :search]
   before_action :get_profile, only: [ :create ]
   before_action :is_creator?, only: [ :update, :destroy ]
 
@@ -43,6 +43,15 @@ class HousesController < ApplicationController
     @house.build_dimention
   end
 
+  def search  
+    @houses = House.search_by(params)
+    if @houses.empty?
+      redirect_to houses_url, 
+        info: "Nenhum imóvel encontrado. Sugerimos estes ímóveis para você."
+    else
+      flash[:info] = "Resultado da busca."
+    end
+  end
   # GET /houses/1/edit
   def edit
   end
