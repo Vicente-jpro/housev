@@ -44,6 +44,7 @@ class House < ApplicationRecord
     House.joins(:address)
          .joins(:dimention)
          .joins(:location)
+         .joins("JOIN cities ON cities.id = addresses.city_id JOIN provinces ON provinces.id = cities.province_id")     
          .where(room: house_params[:room])
          .or(House.where('LOWER(title) LIKE ?', "%#{house_params[:title].downcase if house_params[:title].present? }%"))
          .or(House.where(living_room: house_params[:living_room]) )
@@ -63,6 +64,7 @@ class House < ApplicationRecord
     House.joins(:address)
          .joins(:dimention)
          .joins(:location)
+         .joins("JOIN cities ON cities.id = addresses.city_id JOIN provinces ON provinces.id = cities.province_id")     
          .where(room: house_params[:room])
          .or(House.where('LOWER(title) LIKE ?', "%#{house_params[:title].downcase if house_params[:title].present? }%"))
          .or(House.where(living_room: house_params[:living_room]) )
@@ -83,32 +85,5 @@ class House < ApplicationRecord
          .or(House.where(location_id: house_params[:location]))
          .order(:title)
   end
-
-  # def self.search_by(house)
-  #   House.joins(:address)
-  #        .joins(:dimention)
-  #        .joins(:location)
-  #        .where(room: house.room)
-  #        .or(House.where('LOWER(title) LIKE ?', "%#{house.title.downcase}%"))
-  #        .or(House.where(living_room: house.living_room) )
-  #        .or(House.where(yard: house.yard ))
-  #        .or(House.where(kitchen: house.kitchen))
-  #        .or(House.where(balcony: house.balcony))
-  #        .or(House.where(condition: house.condition))
-  #        .or(House.where(type_negotiation: house.type_negotiation))
-  #        .or(House.where(price: house.price))
-  #        .or(House.where(garage: house.garage))
-  #        .or(House.where(pool: house.pool))
-  #        .or(House.where('LOWER(description) LIKE ?', "%#{house.description.downcase}%"))
-  #        .or(House.where(tipology: house.tipology))
-  #        .or(House.where(next_by: house.next_by))
-  #        .or(House.where(furnished: house.furnished))
-  #        .or(House.where(property_type: house.property_type))
-  #        .or(House.where(address_id: house.address_id))
-  #        .or(House.where(dimention_id: house.dimention_id))
-  #        .or(House.where(location_id: house.location))
-  #        .order(:title)
-  # end
-
 
 end
