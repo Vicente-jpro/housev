@@ -67,7 +67,6 @@ class House < ApplicationRecord
          .or(House.where(price: house_params[:price]))
          .or(House.where(garage: house_params[:garage]))
          .or(House.where(pool: house_params[:pool]))
-         .or(House.where('LOWER(description) LIKE ?', "%#{house_params[:description].downcase if house_params[:description].present?}%"))
          .or(House.where(tipology: house_params[:tipology]))
          .or(House.where(next_by: house_params[:next_by]))
          .or(House.where(furnished: house_params[:furnished]))

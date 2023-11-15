@@ -12,7 +12,11 @@
         <div class="card-body">
           <p class="card-text">
 
-            <strong class="text-pink"><%= house.title %>, <%= house.tipology %></strong> <br>
+            <strong class="text-pink">
+              <%= house.title %>, 
+              <%= house.tipology %>
+              <%= house.address.city.province.province_name %>
+            </strong> <br>
         
             <p class="text-description">
               <%=  house.description %>

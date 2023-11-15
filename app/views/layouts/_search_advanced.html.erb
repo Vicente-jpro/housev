@@ -1,0 +1,103 @@
+ <div class="container my-4">
+    <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <div class="card-body">
+            <div class="card-title">
+                <h4 class="text-center text-pink">
+
+                <%= t("pages.houses.title.actions.create")%>
+                
+                </h4>
+            </div>
+                    
+           <%= bootstrap_form_tag url: "/houses/search_advanced", method: :get do |form| %>
+          
+              <div class="row">
+                <div class="col-sm-4">
+                    <%= form.text_field :title, label: House.human_attribute_name(:title) %>      
+                </div>
+              <div class="col">
+                 <%= form.number_field :living_room, label: House.human_attribute_name(:living_room) %> 
+              </div>
+              <div class="col">
+                <%= form.number_field :room, label: House.human_attribute_name(:room)%>
+              </div>
+              <div class="col">
+                <%= form.number_field :price, label: House.human_attribute_name(:price) %>
+              </div>
+                <div class="col"> 
+                    <%= form.number_field :kitchen, label: House.human_attribute_name(:kitchen) %>    
+                </div>
+            </div>
+            
+            <div class="row">
+              <div class="col"> 
+                  <%= form.select :type_negotiation, House.type_negotiations, 
+                {label: House.human_attribute_name(:type_negotiation)} %>  
+              </div>
+               
+              <div class="col">
+                <%= form.select :condition, House.conditions, 
+                          {label: House.human_attribute_name(:condition)} %>
+              </div>
+               <div class="col">
+                  <%= form.select :tipology, House.tipologies, 
+                            {label: House.human_attribute_name(:tipology)}%>    
+              </div>
+               <div class="col">
+                <%= form.collection_select :province_code, Province.order(:province_name), :id, :province_name, 
+                  { label: Province.model_name.human(count: 1) }  %> 
+              </div>
+               <div class="col">
+                  <%= form.fields_for :address do |address_form| %>
+                    <%= address_form.collection_select :city_id, City.order(:city_name), :id, :city_name, 
+                            { label: City.model_name.human(count: 1)}  %>
+                  <% end %> 
+              </div>
+            </div>
+              
+              <div class="row">
+                <div class="col">
+                   <%= form.number_field :bath_room, label: House.human_attribute_name(:bath_room) %>
+                </div>
+                <div class="col"> 
+                   <%= form.number_field :balcony, label: House.human_attribute_name(:balcony) %> 
+                </div>
+              
+                <div class="col">
+                  <%= form.number_field :yard, label: House.human_attribute_name(:yard) %>
+                </div>
+                <div class="col">
+                   <%= form.number_field :garage, label: House.human_attribute_name(:garage) %>
+                </div>
+                <div class="col">
+                    <%= form.number_field :pool, label: House.human_attribute_name(:pool) %>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                   <%= form.select :next_by, House.next_bies, 
+                    {label: House.human_attribute_name(:next_by)}%>
+                </div>
+                <div class="col">
+                    <%= form.select :property_type, House.property_types, {
+                        label: House.human_attribute_name(:property_type)} %>
+                </div>
+
+                <div class="col">
+                    <%= form.number_field :price, label: House.human_attribute_name(:price) %>
+                 </div>
+
+              </div>
+           
+                <%= form.check_box :furnished, label: House.human_attribute_name(:furnished) %>
+              
+            <div class="mb-3 d-grid gap-2">
+              <%= form.submit "Pesquisar", class: "btn btn-pink" %>
+            </div>
+          <% end %>
+
+        </div>
+    </div>
+  </div>
+

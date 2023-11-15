@@ -1,6 +1,7 @@
 class HousesController < ApplicationController
   before_action :set_house, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, except: [ :show, :index, :show_images, :search]
+  before_action :authenticate_user!, 
+    except: [ :show, :index, :show_images, :search, :search_advanced]
   before_action :get_profile, only: [ :create ]
   before_action :is_creator?, only: [ :update, :destroy ]
 
@@ -43,6 +44,18 @@ class HousesController < ApplicationController
     @house.build_dimention
   end
 
+  # GET /houses/search_advanced
+  def search_advanced 
+    @houses = House.search_by(params)
+    if @houses.empty?
+      redirect_to houses_url, 
+        info: "Nenhum imóvel encontrado. Sugerimos estes ímóveis para você."
+    else
+      flash[:info] = "Resultado da busca."
+    end
+  end
+  
+  # GET /houses/search
   def search  
     @houses = House.search_by(params)
     if @houses.empty?
@@ -52,6 +65,7 @@ class HousesController < ApplicationController
       flash[:info] = "Resultado da busca."
     end
   end
+
   # GET /houses/1/edit
   def edit
   end
@@ -155,6 +169,7 @@ class HousesController < ApplicationController
         :next_by, 
         :furnished, 
         :property_type, 
+        :province_code,
         address_attributes: [:id, :street, :city_id, :_destroy],
         dimention_attributes: [:id, :width_d, :height_d, :_destroy ],
         location_attributes: [:id, :latitude, :longitude, :_destroy ],
