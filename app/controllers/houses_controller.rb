@@ -14,7 +14,7 @@ class HousesController < ApplicationController
 
   # GET /houses or /houses.json
   def index
-    @houses = House.order(id: :desc).page(params[:page])
+    @houses = House.find_all.page(params[:page])
   end
 
   # GET /houses/1 or /houses/1.json
