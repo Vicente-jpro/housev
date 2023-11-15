@@ -1,6 +1,7 @@
 class House < ApplicationRecord
     include EnumsConcerns
-  attr_accessor :province_code
+  attr_accessor :province_code, :city_code
+  
   belongs_to :location
   accepts_nested_attributes_for :location
 
@@ -17,9 +18,14 @@ class House < ApplicationRecord
   has_many :favorite_houses, dependent: :destroy
 
   validates_presence_of :address, :dimention, :price, :title, :description, :house_images
-
+ 
+  JOIN_CITIES_AND_PROVINCES = "JOIN cities ON cities.id = addresses.city_id JOIN provinces ON provinces.id = cities.province_id"
+ 
   def self.find_houses_by_user(user)
-    House.joins(:profiles)
+    House.select("houses.*, cities.*, provinces.*")
+        .joins(:address)
+        .joins(JOIN_CITIES_AND_PROVINCES)         
+        .joins(:profiles)
         .where("profiles.user_id = #{user.id}")
         .order(id: :desc)
   end
@@ -27,24 +33,23 @@ class House < ApplicationRecord
   def self.find_all
     House.select("houses.*, cities.*, provinces.*")
     .joins(:address)
-    .joins("JOIN cities ON cities.id = addresses.city_id JOIN provinces ON provinces.id = cities.province_id")     
+    .joins(JOIN_CITIES_AND_PROVINCES)     
     .order(id: :desc)
   end
 
   def self.find_house_by_user(user, house)
-    House.joins(:profiles)
-        .where("profiles.user_id = #{user.id} and houses.id = #{house.id}")
-        .order(id: :desc)
+    House.select("houses.*, cities.*, provinces.*")
+         .joins(:profiles)
+         .where("profiles.user_id = #{user.id} and houses.id = #{house.id}")
+         .order(id: :desc)
   end
 
-  # Book.where("title LIKE ?",
-  #   Book.sanitize_sql_like(params[:title]) + "%")
-  
   def self.search_by(house_params)
-    House.joins(:address)
+    House.select("houses.*, cities.*, provinces.*")
+         .joins(:address)
          .joins(:dimention)
          .joins(:location)
-         .joins("JOIN cities ON cities.id = addresses.city_id JOIN provinces ON provinces.id = cities.province_id")     
+         .joins(JOIN_CITIES_AND_PROVINCES)     
          .where(room: house_params[:room])
          .or(House.where('LOWER(title) LIKE ?', "%#{house_params[:title].downcase if house_params[:title].present? }%"))
          .or(House.where(living_room: house_params[:living_room]) )
@@ -54,17 +59,19 @@ class House < ApplicationRecord
          .or(House.where(price: house_params[:price]))
          .or(House.where(tipology: house_params[:tipology]))
          .or(House.where(property_type: house_params[:property_type]))
-         .or(House.where(address_id: house_params[:address_id]))
+         .or(House.where("provinces.id = #{house_params[:province_code] if house_params[:province_code].present?}" ))
+         .or(House.where("cities.id = #{house_params[:city_code] if house_params[:city_code].present? }"))
          .or(House.where(location_id: house_params[:location]))
          .order(:title)
   end
 
 
   def self.search_advanced_by(house_params)
-    House.joins(:address)
+    House.select("houses.*, cities.*, provinces.*")
+         .joins(:address)
          .joins(:dimention)
          .joins(:location)
-         .joins("JOIN cities ON cities.id = addresses.city_id JOIN provinces ON provinces.id = cities.province_id")     
+         .joins(JOIN_CITIES_AND_PROVINCES)     
          .where(room: house_params[:room])
          .or(House.where('LOWER(title) LIKE ?', "%#{house_params[:title].downcase if house_params[:title].present? }%"))
          .or(House.where(living_room: house_params[:living_room]) )
@@ -80,7 +87,8 @@ class House < ApplicationRecord
          .or(House.where(next_by: house_params[:next_by]))
          .or(House.where(furnished: house_params[:furnished]))
          .or(House.where(property_type: house_params[:property_type]))
-         .or(House.where(address_id: house_params[:address_id]))
+         .or(House.where("provinces.id = #{house_params[:province_code] if house_params[:province_code].present?}" ))
+         .or(House.where("cities.id = #{house_params[:city_code] if house_params[:city_code].present? }"))
          .or(House.where(dimention_id: house_params[:dimention_id]))
          .or(House.where(location_id: house_params[:location]))
          .order(:title)
