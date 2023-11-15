@@ -25,7 +25,8 @@ class House < ApplicationRecord
   end
   
   def self.find_all
-    House.joins(:address)
+    House.select("houses.*, cities.*, provinces.*")
+    .joins(:address)
     .joins("JOIN cities ON cities.id = addresses.city_id JOIN provinces ON provinces.id = cities.province_id")     
     .order(id: :desc)
   end
