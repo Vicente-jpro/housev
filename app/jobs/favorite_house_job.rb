@@ -3,7 +3,6 @@ class FavoriteHouseJob < ApplicationJob
 
   def perform(*args)
     puts "############## Testin my job###########"
-    
     FavoriteHouseMailer.notify_house_owner.deliver_now
     
   end

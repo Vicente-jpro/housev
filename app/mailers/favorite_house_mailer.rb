@@ -3,7 +3,6 @@ class FavoriteHouseMailer < ApplicationMailer
     def notify_house_owner
      @user = User.new
      @user.email = "testa@gmail.com" 
-     debugger
      mail(to: "testa@gmail.com", subject: 'Welcome to My Awesome Site')
     end
 end
