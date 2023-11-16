@@ -3,6 +3,22 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+
+  config.action_mailer.default_url_options = {host: "www.bumbagora.com"}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+  :user_name => "vicente.simao@bumbagora.com",
+  :password => "c65e2b48dd6a2043e2c33f333a2f031a",
+  :domain => "www.bumbagora.com",
+  :address => 'smtp.ionos.com',
+  :port => 587,
+  :authentication => :plain,
+  :enable_starttls_auto => true
+}
+
+
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
