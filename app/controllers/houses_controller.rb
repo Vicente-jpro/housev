@@ -50,7 +50,7 @@ class HousesController < ApplicationController
   # GET /houses/search_advanced
   def search_advanced 
     @houses = House.search_advanced_by(params)
-   
+    
     if @houses.empty?
       redirect_to houses_url, 
         info: "Nenhum imóvel encontrado. Sugerimos estes ímóveis para você."
