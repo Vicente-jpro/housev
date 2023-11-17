@@ -39,9 +39,20 @@ class House < ApplicationRecord
 
   def self.find_house_by_user(user, house)
     House.select("houses.*, cities.*, provinces.*")
+         .joins(:address)
          .joins(:profiles)
+         .joins(JOIN_CITIES_AND_PROVINCES)  
          .where("profiles.user_id = #{user.id} and houses.id = #{house.id}")
          .order(id: :desc)
+  end
+
+  def self.find_by_id(id_house)
+    House.select("houses.*, cities.*, provinces.*")
+    .joins(:address)
+    .joins(JOIN_CITIES_AND_PROVINCES)  
+    .joins(:profiles)
+    .where("houses.id = #{id_house} ")
+    .take
   end
 
   def self.search_by(house_params)

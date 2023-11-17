@@ -6,7 +6,6 @@ class HomeController < ApplicationController
     @house.build_address
     @house.build_location 
     @house.build_dimention
-    FavoriteHouseJob.perform_later
   end
 
 end

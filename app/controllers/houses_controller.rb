@@ -135,7 +135,8 @@ class HousesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_house
-      @house = House.find(params[:id])
+      @house = House.find_by_id(params[:id])
+      debugger
     end
 
     def invalid_house 
