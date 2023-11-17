@@ -17,9 +17,28 @@ class ProfileHouse < ApplicationRecord
     return false
   end
 
-  def self.find_house_by_house(house)
-    ProfileHouse.includes(:profile, :house).find_by(house_id: house.id)
+  def self.find_houses_by_house(house)
+    ProfileHouse
+      .select("profiles.*, houses.*, addresses.*, cities.*, provinces.*, profile_houses.*")
+      .joins(:profile)
+      .joins(:house)
+      .joins("JOIN addresses ON addresses.id = houses.address_id JOIN cities ON cities.id = addresses.city_id JOIN provinces ON provinces.id = cities.province_id")
+      .where(house_id: house.id)
   end
+
+  # SELECT profiles.*, houses.*, addresses.*, cities.*, provinces.*, profile_houses.*
+	# FROM profile_houses
+	# join profiles
+  #   on profiles.id = profile_houses.profile_id
+  #   join houses
+  #   on houses.id = profile_houses.house_id
+  #   join addresses
+  #   on addresses.id = houses.address_id
+  #   join cities
+  #   on cities.id = addresses.city_id
+  #   join provinces
+  #   on provinces.id = cities.province_id
+  #   where profile_houses.house_id = 2;
 
 end
 
