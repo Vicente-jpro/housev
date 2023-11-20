@@ -17,6 +17,7 @@ class House < ApplicationRecord
   has_many :profiles, through: :profile_houses
   has_many :favorite_houses, dependent: :destroy
 
+
   validates_presence_of :address, :dimention, :price, :title, :description, :house_images
  
   JOIN_CITIES_AND_PROVINCES = "JOIN cities ON cities.id = addresses.city_id JOIN provinces ON provinces.id = cities.province_id"
@@ -36,9 +37,6 @@ class House < ApplicationRecord
           .where("profile_houses.profile_id = #{profile.id}")
   end
   
-  # SELECT * FROM houses
-	# join profile_houses
-  #   where profile_houses.profile_id = 1;
 
   def self.find_all
     House.includes(:address, :dimention, :location)

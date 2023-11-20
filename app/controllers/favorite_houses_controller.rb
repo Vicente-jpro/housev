@@ -19,7 +19,7 @@ class FavoriteHousesController < ApplicationController
     house.id = favorite.house_id
     
     respond_to do |format|
-      if is_land_creator?(current_user, house)
+      if is_house_creator?(current_user, house)
         format.html { redirect_to houses_url, 
           alert: "You are the house creator. It's impossible mark as favorite." }
       elsif !FavoriteLand.exist?(favorite)

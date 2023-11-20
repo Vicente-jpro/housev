@@ -6,9 +6,9 @@ class FavoriteLand < ApplicationRecord
 
 
   def self.find_all_by_user(user)
-    profile = Profile.find_by_user(user)
-    favorite_land = FavoriteLand.includes(:land, :profile).where(profile_id: profile.id)
-    favorite_land
+    FavoriteLand.joins(:land)
+                .joins(:profile)
+                .where("profiles.user_id = #{user.id}")
   end
 
   def self.find_by_land(profile_land)
@@ -19,5 +19,12 @@ class FavoriteLand < ApplicationRecord
     profile_land = FavoriteLand.find_by_land(profile_land)
     profile_land.nil?
   end
+
+  # SELECT * FROM favorite_houses
+	# JOIN profiles 
+  #   ON profiles.id = favorite_houses.profile_id
+  #   JOIN houses
+  #   ON houses.id = favorite_houses.house_id
+  #   where profiles.user_id = 1;
 
 end
