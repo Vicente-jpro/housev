@@ -51,8 +51,14 @@ class HousesController < ApplicationController
     house = House.new 
     house.id = params[:id]
     owner_house = User.find_user_by_house(house)
-    debugger
-    HouseMailer.publisher(params, owner_house).deliver_later
+    
+    HouseMailer.publisher(
+      params[:client_name], 
+      params[:client_email],  
+      params[:client_message], 
+      owner_house, 
+      house)
+           .deliver_later
   end
   # GET /houses/search_advanced
   def search_advanced 

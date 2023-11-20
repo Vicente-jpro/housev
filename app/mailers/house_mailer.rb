@@ -5,13 +5,13 @@ class HouseMailer < ApplicationMailer
   #
   #   en.house_mailer.publisher.subject
   #
-  def publisher(params, owner_house)
-    @client_name = params[:client_name] 
-    @client_email = params[:client_email] 
-    @client_message = params[:client_message]
+  def publisher(client_name, client_email, client_message, owner_house, house)
+    @client_name = client_name 
+    @client_email = client_email 
+    @client_message = client_message
    
     @owner_house = owner_house
-  
+    @url = "http://localhost:3000/houses/#{house.id}"
     mail(to: @owner_house.email, subject: "Tens um cliente intereçado pelo seu imóvel.")
   end
 end
