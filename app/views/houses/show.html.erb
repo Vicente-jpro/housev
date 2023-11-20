@@ -180,39 +180,7 @@
 
       </div>
       
-  
-      <!-- reservation-->
-      <div class="col d-flex justify-content-center">
-        <div class="card fixed" style="width: 18rem; height: 450px ;">
-          <div class="card-body">
-            <h5 class="card-title text-pink text-center"><%= t("publisher")%></h5>
-            <p class="card-text text-center text-description">
-              <%= @profile.name_profile %>
-            </p>
-            <p class="card-text text-center text-description">
-              Breve introdução da empresa ou do proprietário
-              <br>
-              <%= @profile.phone1 %>, <%= @profile.phone1 %>, 
-              <%= @profile.user.email %>
-            </p>
-            <form action="">
-              <div class="mb-3">
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Seu nome">
-              </div>
-              <div class="mb-3">
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-              </div>
-              <div class="mb-3">
-                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Sua mensagem" rows="3"></textarea>
-              </div>
-              <div class="d-grid gap-2">
-                <button class="btn btn-pink" type="button"><%= t("links.send")%></button>
-              </div>
-            </form>
-          </div>
-        </div>
-      
-      </div>
-      <!-- End reservation-->
+    <%= render "houses/publisher" %>
+
     </div>
   </div>

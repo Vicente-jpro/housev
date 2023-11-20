@@ -47,6 +47,9 @@ class HousesController < ApplicationController
     @house.build_dimention
   end
 
+  def publisher 
+    debugger
+  end
   # GET /houses/search_advanced
   def search_advanced 
     @houses = House.search_advanced_by(params)
@@ -174,6 +177,9 @@ class HousesController < ApplicationController
         :furnished, 
         :property_type, 
         :province_code,
+        :publisher_name, 
+        :publisher_email, 
+        :publisher_message,
         address_attributes: [:id, :street, :city_id, :_destroy],
         dimention_attributes: [:id, :width_d, :height_d, :_destroy ],
         location_attributes: [:id, :latitude, :longitude, :_destroy ],
