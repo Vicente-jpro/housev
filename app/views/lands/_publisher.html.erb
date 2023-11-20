@@ -13,11 +13,11 @@
               <%= @profile.user.email %>
             </p>
             
-            <%= bootstrap_form_tag url: "/houses/publisher", method: :get do |form| %>
+            <%= bootstrap_form_tag url: "/lands/publisher", method: :get do |form| %>
                 
                 <%= form.text_field :client_name, placeholder: "Seu nome" %>
                 <%= form.email_field :client_email, placeholder: "Ex: exemplo@dominio.com"%>
-                <%= form.hidden_field :id, value: @house.id %>
+                <%= form.hidden_field :id, value: @land.id %>
                 <%= form.text_area :client_message, value: "Olá #{@profile.name_profile if @profile.present?} estou inteçado com este imovel.",  size: "70x5"%>
                 <div class="d-grid gap-2">
                     <%= form.submit  t("links.send"), class: "btn btn-pink" %>
