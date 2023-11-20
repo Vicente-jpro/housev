@@ -5,9 +5,13 @@ class HouseMailer < ApplicationMailer
   #
   #   en.house_mailer.publisher.subject
   #
-  def publisher
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def publisher(params, owner_house)
+    @client_name = params[:client_name] 
+    @client_email = params[:client_email] 
+    @client_message = params[:client_message]
+   
+    @owner_house = owner_house
+  
+    mail(to: @owner_house.email, subject: "Tens um cliente intereçado pelo seu imóvel.")
   end
 end
