@@ -1,7 +1,10 @@
 class Land < ApplicationRecord
+  attr_accessor :province_code, :city_code, :client_name, :client_email, :client_message
+  
   belongs_to :dimention
   accepts_nested_attributes_for :dimention, allow_destroy: true
 
+  
   belongs_to :address
   accepts_nested_attributes_for :address, allow_destroy: true
 

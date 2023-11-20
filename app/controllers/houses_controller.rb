@@ -48,7 +48,17 @@ class HousesController < ApplicationController
   end
 
   def publisher 
-    debugger
+    house = House.new 
+    house.id = params[:id]
+    owner_house = User.find_user_by_house(house)
+    
+    HouseMailer.publisher(
+      params[:client_name], 
+      params[:client_email],  
+      params[:client_message], 
+      owner_house, 
+      house)
+           .deliver_later
   end
   # GET /houses/search_advanced
   def search_advanced 
@@ -177,9 +187,9 @@ class HousesController < ApplicationController
         :furnished, 
         :property_type, 
         :province_code,
-        :publisher_name, 
-        :publisher_email, 
-        :publisher_message,
+        :client_name, 
+        :client_email, 
+        :client_message,
         address_attributes: [:id, :street, :city_id, :_destroy],
         dimention_attributes: [:id, :width_d, :height_d, :_destroy ],
         location_attributes: [:id, :latitude, :longitude, :_destroy ],

@@ -17,6 +17,10 @@ Rails.application.routes.draw do
 
   resources :lands do 
     get 'show_images'
+
+    collection do 
+      get 'publisher'
+    end
   end
   
   resources :houses do
