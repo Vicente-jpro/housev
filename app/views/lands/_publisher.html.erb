@@ -1,0 +1,31 @@
+      <!-- reservation-->
+      <div class="col d-flex justify-content-center">
+        <div class="card fixed" style="width: 18rem; height: 620px ;">
+          <div class="card-body">
+            <h5 class="card-title text-pink text-center"><%= t("publisher")%></h5>
+            <p class="card-text text-center text-description">
+              <%= @profile.name_profile %>
+            </p>
+            <p class="card-text text-center text-description">
+              Breve introdução da empresa ou do proprietário
+              <br>
+              <%= @profile.phone1 %>, <%= @profile.phone1 %>, 
+              <%= @profile.user.email %>
+            </p>
+            
+            <%= bootstrap_form_tag url: "/houses/publisher", method: :get do |form| %>
+                
+                <%= form.text_field :client_name, placeholder: "Seu nome" %>
+                <%= form.email_field :client_email, placeholder: "Ex: exemplo@dominio.com"%>
+                <%= form.hidden_field :id, value: @house.id %>
+                <%= form.text_area :client_message, value: "Olá #{@profile.name_profile if @profile.present?} estou inteçado com este imovel.",  size: "70x5"%>
+                <div class="d-grid gap-2">
+                    <%= form.submit  t("links.send"), class: "btn btn-pink" %>
+                </div>
+            <% end %>
+
+          </div>
+        </div>
+      
+      </div>
+      <!-- End reservation-->

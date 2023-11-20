@@ -1,6 +1,6 @@
 class House < ApplicationRecord
-    include EnumsConcerns
-  attr_accessor :province_code, :city_code, :publisher_name, :publisher_email, :publisher_message
+  include EnumsConcerns
+  attr_accessor :province_code, :city_code, :client_name, :client_email, :client_message
   
   belongs_to :location
   accepts_nested_attributes_for :location

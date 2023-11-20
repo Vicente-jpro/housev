@@ -13,5 +13,12 @@ class User < ApplicationRecord
         .where("profile_houses.house_id = #{house.id}")
         .take
   end
+
+  def self.find_user_by_land(land)
+    User.joins(:profile)
+        .joins("join profile_lands on profile_lands.profile_id = profiles.id")
+        .where("profile_lands.land_id = #{land.id}")
+        .take
+  end
   
 end

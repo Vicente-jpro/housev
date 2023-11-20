@@ -43,6 +43,20 @@ class LandsController < ApplicationController
     @land.build_dimention
   end
 
+  def publisher 
+    land = Land.new 
+    land.id = params[:id]
+    owner_land = User.find_user_by_land(land)
+    
+    LandMailer.publisher(
+      params[:client_name], 
+      params[:client_email],  
+      params[:client_message], 
+      owner_land, 
+      house)
+           .deliver_later
+  end
+
   # GET /lands/1/edit
   def edit
   end
