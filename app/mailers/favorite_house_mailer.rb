@@ -4,7 +4,6 @@ class FavoriteHouseMailer < ApplicationMailer
         @owner_house = params[:owner_house]   
         @client = params[:client] 
         @url = params[:url]
-        ARTIGO = (@client.MASCULINE?) ? "O" : "A"
-     mail(to: @owner_house.email, subject: "#{ARTIGO} cliente #{@client.name_profile} gostou seu imovel.")
+     mail(to: @owner_house.email, subject: "Cliente #{@client.name_profile} gostou seu imovel.")
     end
 end

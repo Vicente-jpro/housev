@@ -11,11 +11,7 @@ class User < ApplicationRecord
     User.joins(:profile)
         .joins("join profile_houses on profile_houses.profile_id = profiles.id")
         .where("profile_houses.house_id = #{house.id}")
+        .take
   end
-  # SELECT * from users
-	# join profiles
-  #   on profiles.user_id = users.id
-  # 	join profile_houses 
-  #   on profile_houses.profile_id = profiles.id
-  #   where profile_houses.house_id = 2;
+  
 end

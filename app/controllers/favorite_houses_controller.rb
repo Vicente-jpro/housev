@@ -22,22 +22,24 @@ class FavoriteHousesController < ApplicationController
       if is_house_creator?(current_user, house)
         format.html { redirect_to houses_url, 
           alert: "You are the house creator. It's impossible mark as favorite." }
-      elsif !FavoriteLand.exist?(favorite)
+      elsif !FavoriteHouse.exist?(favorite)
         format.html { redirect_to houses_url, 
               alert: "This house is already added as a favorite." }
       elsif @favorite_house.save
+      
         format.html { redirect_to houses_url, notice: "Favorite house was successfully created." }
         format.json { render :show, status: :created, location: @favorite_house }
         
         @owner_house = User.find_user_by_house(house)
         @client = Profile.find_by_user(current_user)
-
+        
         FavoriteHouseMailer
           .with(
               owner_house:  @owner_house, 
               client: @client, 
               url: @url
-        ).deliver_leter
+        ).deliver_later
+        
         
       else
         format.html { render :new, status: :unprocessable_entity }

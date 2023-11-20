@@ -20,11 +20,4 @@ class FavoriteLand < ApplicationRecord
     profile_land.nil?
   end
 
-  # SELECT * FROM favorite_houses
-	# JOIN profiles 
-  #   ON profiles.id = favorite_houses.profile_id
-  #   JOIN houses
-  #   ON houses.id = favorite_houses.house_id
-  #   where profiles.user_id = 1;
-
 end
