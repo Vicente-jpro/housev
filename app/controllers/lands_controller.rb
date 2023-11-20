@@ -53,7 +53,7 @@ class LandsController < ApplicationController
       params[:client_email],  
       params[:client_message], 
       owner_land, 
-      house)
+      land)
            .deliver_later
   end
 
