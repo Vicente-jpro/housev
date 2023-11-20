@@ -34,11 +34,8 @@ class FavoriteHousesController < ApplicationController
         @client = Profile.find_by_user(current_user)
         
         FavoriteHouseMailer
-          .with(
-              owner_house:  @owner_house, 
-              client: @client, 
-              url: @url
-        ).deliver_later
+          .notify_house_owner(@owner_house, @client, @favorite_house)
+          .deliver_later
         
         
       else
