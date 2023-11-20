@@ -14,24 +14,24 @@ class HousesController < ApplicationController
 
   # GET /houses or /houses.json
   def index
-    @houses = House.find_all.page(params[:page])
+    @houses = House.includes(:address, :dimention, :location).page(params[:page])
   end
 
   # GET /houses/1 or /houses/1.json
   def show
-   # begin
-      @profile = Profile.find_by_house(@house)
-      user = User.new 
-   
-      user.id = @profile.user_id
-      @houses = House.find_houses_by_user(user)
-
-    #   debugger
-    # rescue => exception
-    #   #This house doesn't have a profile
-    #   @house.destroy
-    #   redirect_to house_url, info: "House destroyed because doesn't have a profile."
-    # end
+    #  begin
+     
+        @profile = Profile.find_by_house(@house)
+        user = User.new 
+    
+        user.id = @profile.user_id
+        @houses = House.find_houses_by_user(user)
+      # debugger
+    #  rescue => exception
+    #    #This house doesn't have a profile
+    #    @house.destroy
+    #    redirect_to house_url, info: "House destroyed because doesn't have a profile."
+    #  end
   end
   
   # GET	/houses/:house_id/show_images
@@ -138,7 +138,7 @@ class HousesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_house
-      @house = House.find_by_id(params[:id])
+      @house = House.find(params[:id])
     end
 
     def invalid_house 

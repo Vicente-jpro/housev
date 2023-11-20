@@ -41,10 +41,7 @@ class House < ApplicationRecord
   #   where profile_houses.profile_id = 1;
 
   def self.find_all
-    House.select("houses.*, cities.*, provinces.*")
-    .joins(:address)
-    .joins(JOIN_CITIES_AND_PROVINCES)     
-    .order(id: :desc)
+    House.includes(:address, :dimention, :location)
   end
 
   def self.find_house_by_user(user, house)
