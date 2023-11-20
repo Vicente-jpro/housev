@@ -1,5 +1,6 @@
 class FavoriteHousesController < ApplicationController
   before_action :set_favorite_house, only: %i[ show edit update destroy ]
+  before_action :set_house_url
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_favorite_house
 
   include HousesConcerns
@@ -18,15 +19,25 @@ class FavoriteHousesController < ApplicationController
     house.id = favorite.house_id
     
     respond_to do |format|
-      if is_land_creator?(current_user, house)
+      if is_house_creator?(current_user, house)
         format.html { redirect_to houses_url, 
           alert: "You are the house creator. It's impossible mark as favorite." }
-      elsif !FavoriteLand.exist?(favorite)
+      elsif !FavoriteHouse.exist?(favorite)
         format.html { redirect_to houses_url, 
               alert: "This house is already added as a favorite." }
       elsif @favorite_house.save
+      
         format.html { redirect_to houses_url, notice: "Favorite house was successfully created." }
         format.json { render :show, status: :created, location: @favorite_house }
+        
+        @owner_house = User.find_user_by_house(house)
+        @client = Profile.find_by_user(current_user)
+        
+        FavoriteHouseMailer
+          .notify_house_owner(@owner_house, @client, @favorite_house)
+          .deliver_later
+        
+        
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @favorite_house.errors, status: :unprocessable_entity }
@@ -48,6 +59,10 @@ class FavoriteHousesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_favorite_land
       @favorite_house = FavoriteLand.find(params[:id])
+    end
+
+    def set_house_url
+      @url = request 
     end
 
     def invalid_land 

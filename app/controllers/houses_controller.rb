@@ -14,26 +14,29 @@ class HousesController < ApplicationController
 
   # GET /houses or /houses.json
   def index
-    @houses = House.find_all.page(params[:page])
+    @houses = House.includes(:address, :dimention, :location).page(params[:page])
   end
 
   # GET /houses/1 or /houses/1.json
   def show
-    begin
-      @profile = ProfileHouse.find_house_by_house(@house).profile
-      @profile
-    rescue => exception
-      #This house doesn't have a profile
-      @house.destroy
-      redirect_to house_url, info: "House destroyed because doesn't have a profile."
-    end
+    #  begin
+     
+        @profile = Profile.find_by_house(@house)
+        user = User.new 
+    
+        user.id = @profile.user_id
+        @houses = House.find_houses_by_user(user)
+      # debugger
+    #  rescue => exception
+    #    #This house doesn't have a profile
+    #    @house.destroy
+    #    redirect_to house_url, info: "House destroyed because doesn't have a profile."
+    #  end
   end
   
   # GET	/houses/:house_id/show_images
   def show_images
     @house = House.find(params[:house_id])
-    @profile = ProfileHouse.find_house_by_house(@house).profile
-    @profile
   end
 
   # GET /houses/new
@@ -47,7 +50,7 @@ class HousesController < ApplicationController
   # GET /houses/search_advanced
   def search_advanced 
     @houses = House.search_advanced_by(params)
-   
+    
     if @houses.empty?
       redirect_to houses_url, 
         info: "Nenhum imóvel encontrado. Sugerimos estes ímóveis para você."

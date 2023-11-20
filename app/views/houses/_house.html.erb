@@ -15,13 +15,13 @@
             <strong class="text-pink">
               <%= house.title %>, 
               <%= house.tipology %>
-              <%= house.province_name %>
+              <%= house.address.city.province.province_name %>
             </strong> <br>
         
             <p class="text-description">
               <%=  house.description %>
             </p>
-              <span class="bg-green px-3">Venda</span> <br>
+              <span class="bg-green px-3"> <%= house.type_negotiation %></span> <br>
               <%= house.price %>
           </p>
 

@@ -17,6 +17,7 @@ class House < ApplicationRecord
   has_many :profiles, through: :profile_houses
   has_many :favorite_houses, dependent: :destroy
 
+
   validates_presence_of :address, :dimention, :price, :title, :description, :house_images
  
   JOIN_CITIES_AND_PROVINCES = "JOIN cities ON cities.id = addresses.city_id JOIN provinces ON provinces.id = cities.province_id"
@@ -30,18 +31,33 @@ class House < ApplicationRecord
         .order(id: :desc)
   end
   
+  def self.find_by_profile(profile)
+     House.select("houses.*, cities.*, provinces.*")
+          .joins(:profile_houses)
+          .where("profile_houses.profile_id = #{profile.id}")
+  end
+  
+
   def self.find_all
-    House.select("houses.*, cities.*, provinces.*")
-    .joins(:address)
-    .joins(JOIN_CITIES_AND_PROVINCES)     
-    .order(id: :desc)
+    House.includes(:address, :dimention, :location)
   end
 
   def self.find_house_by_user(user, house)
     House.select("houses.*, cities.*, provinces.*")
+         .joins(:address)
          .joins(:profiles)
+         .joins(JOIN_CITIES_AND_PROVINCES)  
          .where("profiles.user_id = #{user.id} and houses.id = #{house.id}")
          .order(id: :desc)
+  end
+
+  def self.find_by_id(id_house)
+    House.select("houses.*, cities.*, provinces.*")
+    .joins(:address)
+    .joins(JOIN_CITIES_AND_PROVINCES)  
+    .joins(:profiles)
+    .where("houses.id = #{id_house} ")
+    .take
   end
 
   def self.search_by(house_params)

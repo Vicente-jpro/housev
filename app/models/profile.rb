@@ -28,5 +28,11 @@ class Profile < ApplicationRecord
   def self.find_by_user(user) 
     Profile.find_by(user_id: user.id)
   end
+
+  def self.find_by_house(house)
+    Profile.joins(:profile_houses)
+           .where("profile_houses.house_id = #{house.id}")
+           .take
+  end
   
 end
