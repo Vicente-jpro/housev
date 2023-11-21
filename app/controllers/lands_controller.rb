@@ -13,7 +13,7 @@ class LandsController < ApplicationController
 
   # GET /lands or /lands.json
   def index
-    @lands = Land.order(id: :desc).page(params[:page])
+    @lands = Land.all.order(id: :desc).page(params[:page])
   end
 
   # GET /lands/1 or /lands/1.json
@@ -29,9 +29,11 @@ class LandsController < ApplicationController
     
   end
 
-  # GET /houses/search
+  # GET /lands/search
   def search  
+    
     @lands = Land.search_by(params)
+    debugger
     if @lands.empty?
       redirect_to lands_url, 
         info: "Nenhum terreno encontrado. Sugerimos estes ímóveis para você."
@@ -44,7 +46,6 @@ class LandsController < ApplicationController
   def show_images
     @land = Land.find(params[:land_id])
     @profile = ProfileLand.find_land_by_land(@land).profile
-    @profile
   end
 
   # GET /lands/new

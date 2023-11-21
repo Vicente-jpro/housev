@@ -31,7 +31,7 @@ class Land < ApplicationRecord
   end
 
   def self.search_by(house_params)
-    House.select("lands.*, cities.*, provinces.*")
+    Land.select("lands.*, cities.*, provinces.*")
          .joins(:address)
          .joins(:dimention)
          .joins(JOIN_CITIES_AND_PROVINCES)     
