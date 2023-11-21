@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   resources :profiles
 
 
-  devise_for :users
+  devise_for :users, controllers: {registrations: "registrations"}
+
   devise_scope :user do
     post '/users/sign_out', to: 'devise/sessions#destroy'
   end

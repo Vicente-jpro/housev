@@ -120,6 +120,10 @@ ProfileLand.find_or_create_by!(
     land: Land.first,
     profile: Profile.last
 )
+ProfileLand.find_or_create_by!(
+    land: Land.find(2),
+    profile: Profile.last
+)
 puts "Fim do cadastro de profile_land."
 
 puts "Cadastrando as Location..."
@@ -134,11 +138,9 @@ puts "Fim do cadastro de Location."
 
 puts "Cadastrando a house."
 
-
 @house = House.new
-@house.id = 1
 @house.room = 2
-@house.title = "Casa luxuosa a venda" 
+@house.title = "Casa luxuosa a venda vicenteviciii@gmail.com" 
 @house.living_room = 1 
 @house.bath_room = 2
 @house.yard = 1
@@ -173,9 +175,8 @@ puts "Cadastrando a house."
 @house.save
 
 @house = House.new
-@house.id = 2
 @house.room = 4
-@house.title = "Casa Feia bem feia" 
+@house.title = "Casa Feia bem feia vicenteviciii@outlook.com" 
 @house.living_room = 1
 @house.bath_room = 2
 @house.yard = 1 
@@ -208,6 +209,7 @@ puts "Cadastrando a house."
     filename: 'room6.jpeg']
 )
 @house.save
+
 
 puts "Fim do cadastro de house."
 

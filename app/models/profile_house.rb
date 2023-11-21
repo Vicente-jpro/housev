@@ -26,5 +26,21 @@ class ProfileHouse < ApplicationRecord
       .where(house_id: house.id)
   end
 
+  # SELECT *
+	#  FROM lands
+  #    JOIN addresses
+  #    ON addresses.id = lands.address_id
+  #    JOIN cities 
+  #    ON cities.id = addresses.city_id 
+  #    JOIN provinces 
+  #    ON provinces.id = cities.province_id
+  #    JOIN profile_lands
+  #    ON profile_lands.house_id = lands.id
+  #    JOIN profiles
+  #    ON profiles.id = profile_lands.profile_id
+  #    JOIN users
+  #    ON users.id = profiles.user_id
+  #    where users.id = 1;
+
 end
 

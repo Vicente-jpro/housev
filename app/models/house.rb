@@ -18,23 +18,24 @@ class House < ApplicationRecord
   has_many :favorite_houses, dependent: :destroy
 
 
-  validates_presence_of :address, :dimention, :price, :title, :description, 
-                        :house_images, :client_name, :client_email, :client_message
+
+  validates_presence_of :address, :dimention, :price, :title, :description, :house_images
  
   JOIN_CITIES_AND_PROVINCES = "JOIN cities ON cities.id = addresses.city_id JOIN provinces ON provinces.id = cities.province_id"
  
   def self.find_houses_by_user(user)
-    House.select("houses.*, cities.*, provinces.*")
-        .joins(:address)
-        .joins(JOIN_CITIES_AND_PROVINCES)         
+    House.joins(:address)
+        .joins(JOIN_CITIES_AND_PROVINCES)   
+        .joins("JOIN profile_houses ON profile_houses.house_id = houses.id") 
+        .joins("JOIN profiles ON profiles.id = profile_houses.profile_id")     
         .joins(:profiles)
-        .where("profiles.user_id = #{user.id}")
+        .joins("JOIN users ON users.id = profiles.user_id")
+        .where("users.id = #{user.id}")
         .order(id: :desc)
   end
-  
+
   def self.find_by_profile(profile)
-     House.select("houses.*, cities.*, provinces.*")
-          .joins(:profile_houses)
+     House.joins(:profile_houses)
           .where("profile_houses.profile_id = #{profile.id}")
   end
   
@@ -44,8 +45,7 @@ class House < ApplicationRecord
   end
 
   def self.find_house_by_user(user, house)
-    House.select("houses.*, cities.*, provinces.*")
-         .joins(:address)
+    House.joins(:address)
          .joins(:profiles)
          .joins(JOIN_CITIES_AND_PROVINCES)  
          .where("profiles.user_id = #{user.id} and houses.id = #{house.id}")
@@ -53,8 +53,7 @@ class House < ApplicationRecord
   end
 
   def self.find_by_id(id_house)
-    House.select("houses.*, cities.*, provinces.*")
-    .joins(:address)
+    House.joins(:address)
     .joins(JOIN_CITIES_AND_PROVINCES)  
     .joins(:profiles)
     .where("houses.id = #{id_house} ")
@@ -62,8 +61,7 @@ class House < ApplicationRecord
   end
 
   def self.search_by(house_params)
-    House.select("houses.*, cities.*, provinces.*")
-         .joins(:address)
+    House.joins(:address)
          .joins(:dimention)
          .joins(:location)
          .joins(JOIN_CITIES_AND_PROVINCES)     
@@ -84,8 +82,7 @@ class House < ApplicationRecord
 
 
   def self.search_advanced_by(house_params)
-    House.select("houses.*, cities.*, provinces.*")
-         .joins(:address)
+    House.joins(:address)
          .joins(:dimention)
          .joins(:location)
          .joins(JOIN_CITIES_AND_PROVINCES)     
