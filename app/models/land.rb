@@ -31,15 +31,14 @@ class Land < ApplicationRecord
   end
 
   def self.search_by(house_params)
-    Land.select("lands.*, cities.*, provinces.*")
-         .joins(:address)
-         .joins(:dimention)
-         .joins(JOIN_CITIES_AND_PROVINCES)     
-         .or(House.where('LOWER(title) LIKE ?', "%#{house_params[:title].downcase if house_params[:title].present? }%"))
-         .or(House.where("provinces.id = #{house_params[:province_code] if house_params[:province_code].present?}" ))
-         .or(House.where("cities.id = #{house_params[:city_code] if house_params[:city_code].present? }"))
-         .or(House.where(price: house_params[:price]))
-         .order(:title)
+    Land.joins(:address)
+        .joins(:dimention)
+        .joins(JOIN_CITIES_AND_PROVINCES)     
+        .or(House.where('LOWER(title) LIKE ?', "%#{house_params[:title].downcase if house_params[:title].present? }%"))
+        .or(House.where("provinces.id = #{house_params[:province_code] if house_params[:province_code].present?}" ))
+        .or(House.where("cities.id = #{house_params[:city_code] if house_params[:city_code].present? }"))
+        .or(House.where(price: house_params[:price]))
+        .order(:title)
   end
 
 end

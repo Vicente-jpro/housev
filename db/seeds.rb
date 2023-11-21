@@ -136,7 +136,7 @@ puts "Cadastrando a house."
 
 @house = House.new
 @house.room = 2
-@house.title = "Casa luxuosa a venda" 
+@house.title = "Casa luxuosa a venda vicenteviciii@gmail.com" 
 @house.living_room = 1 
 @house.bath_room = 2
 @house.yard = 1
@@ -172,7 +172,7 @@ puts "Cadastrando a house."
 
 @house = House.new
 @house.room = 4
-@house.title = "Casa Feia bem feia" 
+@house.title = "Casa Feia bem feia vicenteviciii@outlook.com" 
 @house.living_room = 1
 @house.bath_room = 2
 @house.yard = 1 
