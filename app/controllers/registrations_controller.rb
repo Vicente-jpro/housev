@@ -27,11 +27,9 @@ class RegistrationsController < Devise::RegistrationsController
   # DELETE /resource
    def destroy
      @houses = House.find_houses_by_user(current_user)
-     debugger
      @houses.destroy_all
 
      @lands = Land.find_lands_by_user(current_user)
-     debugger
      @lands.destroy_all
      super
    end
