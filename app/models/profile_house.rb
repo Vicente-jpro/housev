@@ -26,19 +26,5 @@ class ProfileHouse < ApplicationRecord
       .where(house_id: house.id)
   end
 
-  # SELECT profiles.*, houses.*, addresses.*, cities.*, provinces.*, profile_houses.*
-	# FROM profile_houses
-	# join profiles
-  #   on profiles.id = profile_houses.profile_id
-  #   join houses
-  #   on houses.id = profile_houses.house_id
-  #   join addresses
-  #   on addresses.id = houses.address_id
-  #   join cities
-  #   on cities.id = addresses.city_id
-  #   join provinces
-  #   on provinces.id = cities.province_id
-  #   where profile_houses.house_id = 2;
-
 end
 
