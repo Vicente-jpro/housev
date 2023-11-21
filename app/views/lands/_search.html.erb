@@ -1,0 +1,41 @@
+   <!-- filters-->
+   <section class="container">
+    <div class="card shadow-lg p-3 mb-5 bg-body-tertiary">
+      <div class="card-body">
+          <div class="card-title">
+              <h4 class="text-center text-pink">Filtrar por</h4>
+                <%= t("pages.houses.title.actions.create")%>
+
+          </div>
+            
+            <%= bootstrap_form_tag url: "/lands/search", method: :get do |form| %>
+             
+            <div class="row">
+              <div class="col"> 
+                <%= form.text_field :title_land, label: Land.human_attribute_name(:title_land) %>
+              </div>               
+               <div class="col">
+                <%= form.collection_select :province_code, Province.order(:province_name), :id, :province_name, 
+                  { label: Province.model_name.human(count: 1) }  %> 
+              </div>
+               <div class="col">
+                    <%= form.collection_select :city_code, City.order(:city_name), :id, :city_name, 
+                            { label: City.model_name.human(count: 1)}  %>
+              </div>
+
+               <div class="col">
+                  <%= form.number_field :price, label: Land.human_attribute_name(:price) %>
+              </div>
+
+            </div>            
+  
+            <div class="mb-3 d-grid gap-2">
+              <%= form.submit "Pesquisar", class: "btn btn-pink" %>
+            </div>
+              <% end %>
+            
+      
+      </div>
+    </div>
+  </section>
+  <!-- End filters-->

@@ -130,7 +130,7 @@ pt:
         title_land: Título
         description: Descrição
         images: Imagens 
-        price: preço
+        price: Preço
         dimention: Dimenção
         dimention_id: Id da dimenção
         address: Endereço 
