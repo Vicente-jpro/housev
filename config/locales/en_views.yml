@@ -75,7 +75,7 @@ en:
           create: Create profile
           update: Update edit profile 
           edit: Editing profile
-          prohibited: prohibited this profile from being saved
+          prohibited: Prohibited this profile from being saved
       links: 
          see-all-more-photos: See all more photos
     lands:
