@@ -34,22 +34,6 @@ class House < ApplicationRecord
         .order(id: :desc)
   end
 
-  # SELECT houses.*, cities.*, provinces.*, users.*
-	# FROM houses
-  #   JOIN addresses
-  #   ON addresses.id = houses.address_id
-  #   JOIN cities 
-  #   ON cities.id = addresses.city_id 
-  #   JOIN provinces 
-  #   ON provinces.id = cities.province_id
-  #   JOIN profile_houses
-  #   ON profile_houses.house_id = houses.id
-  #   JOIN profiles
-  #   ON profiles.id = profile_houses.profile_id
-  #   JOIN users
-  #   ON users.id = profiles.user_id
-  #   where users.id = 1;
-  
   def self.find_by_profile(profile)
      House.joins(:profile_houses)
           .where("profile_houses.profile_id = #{profile.id}")

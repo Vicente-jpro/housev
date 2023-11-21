@@ -120,6 +120,10 @@ ProfileLand.find_or_create_by!(
     land: Land.first,
     profile: Profile.last
 )
+ProfileLand.find_or_create_by!(
+    land: Land.find(2),
+    profile: Profile.last
+)
 puts "Fim do cadastro de profile_land."
 
 puts "Cadastrando as Location..."

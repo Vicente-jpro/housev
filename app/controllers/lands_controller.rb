@@ -18,15 +18,8 @@ class LandsController < ApplicationController
 
   # GET /lands/1 or /lands/1.json
   def show
-    begin
       @profile = ProfileLand.find_land_by_land(@land).profile
-      @profile
-    rescue => exception
-      #This land doesn't have a profile
-      @land.destroy
-      redirect_to land_url, info: "Land destroyed because doesn't have a profile."
-    end
-    
+
   end
 
   # GET /lands/search
