@@ -18,8 +18,8 @@ class House < ApplicationRecord
   has_many :favorite_houses, dependent: :destroy
 
 
-  validates_presence_of :address, :dimention, :price, :title, :description, 
-                        :house_images, :client_name, :client_email, :client_message
+
+  validates_presence_of :address, :dimention, :price, :title, :description, :house_images
  
   JOIN_CITIES_AND_PROVINCES = "JOIN cities ON cities.id = addresses.city_id JOIN provinces ON provinces.id = cities.province_id"
  

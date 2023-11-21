@@ -134,9 +134,7 @@ puts "Fim do cadastro de Location."
 
 puts "Cadastrando a house."
 
-
 @house = House.new
-@house.id = 1
 @house.room = 2
 @house.title = "Casa luxuosa a venda" 
 @house.living_room = 1 
@@ -173,7 +171,6 @@ puts "Cadastrando a house."
 @house.save
 
 @house = House.new
-@house.id = 2
 @house.room = 4
 @house.title = "Casa Feia bem feia" 
 @house.living_room = 1
@@ -208,6 +205,7 @@ puts "Cadastrando a house."
     filename: 'room6.jpeg']
 )
 @house.save
+
 
 puts "Fim do cadastro de house."
 
