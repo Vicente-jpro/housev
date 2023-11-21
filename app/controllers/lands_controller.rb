@@ -28,6 +28,17 @@ class LandsController < ApplicationController
     end
     
   end
+
+  # GET /houses/search
+  def search  
+    @lands = Land.search_by(params)
+    if @lands.empty?
+      redirect_to lands_url, 
+        info: "Nenhum terreno encontrado. Sugerimos estes ímóveis para você."
+    else
+      flash[:info] = "Resultado da busca."
+    end
+  end
   
   # GET	/lands/:land_id/show_images
   def show_images
@@ -149,6 +160,8 @@ class LandsController < ApplicationController
         :description, 
         :price, 
         :dimention_id, 
+        :province_code,
+        :city_code,
         address_attributes: [:id, :street, :city_id, :_destroy],
         dimention_attributes: [:id, :width_d, :height_d, :_destroy ],
         images: []

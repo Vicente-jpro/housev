@@ -187,6 +187,7 @@ class HousesController < ApplicationController
         :furnished, 
         :property_type, 
         :province_code,
+        :city_code,
         :client_name, 
         :client_email, 
         :client_message,

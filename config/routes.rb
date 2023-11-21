@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get 'show_images'
 
     collection do 
+      get 'search'
       get 'publisher'
     end
   end

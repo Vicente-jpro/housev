@@ -52,7 +52,7 @@
               </div>
 
 
-              <%= form.number_field :price %>
+              <%= form.number_field :price,  Land.human_attribute_name(:price)%>
               <%= form.text_area :description, label: Land.human_attribute_name(:description), size: "70x5" %>
         
             </div>
