@@ -1,12 +1,11 @@
-<p style="color: green"><%= notice %></p>
+<div class="album py-5">
+  <div class="container-fluid">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3" id="favorite_houses">
 
-<h1>Favorite houses</h1>
+      <% @favorite_houses.each do |favorite_house| %>
+         <%= render favorite_house %>
+      <% end %>
 
-<div id="favorite_houses">
-  <% @favorite_houses.each do |favorite_house| %>
-    <%= render favorite_house %>
-    <p>
-      <%= link_to "Show this favorite house", favorite_house %>
-    </p>
-  <% end %>
+    </div>
+  </div>
 </div>
