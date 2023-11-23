@@ -1,12 +1,31 @@
-<div id="<%= dom_id favorite_house %>">
-  <p>
-    <strong>Profile:</strong>
-    <%= favorite_house.profile_id %>
-  </p>
+  <%= link_to favorite_house.house, class: "link-offset-2 link-underline link-underline-opacity-0" do %>
+      
+    <div class="col" id="<%= dom_id favorite_house %>">
+      <div class="card border-light shadow-sm mb-5 bg-body-tertiary rounded">
+      
 
-  <p>
-    <strong>House:</strong>
-    <%= favorite_house.house_id %>
-  </p>
+          <% if favorite_house.house.house_images.attached? %>
+            <%= render "images_index", images: favorite_house.house.house_images %>
+          <% end %>
+      
 
-</div>
+        <div class="card-body">
+          <p class="card-text">
+
+            <strong class="text-pink">
+              <%= favorite_house.house.title %>, 
+              <%= favorite_house.house.tipology %>
+              <%= favorite_house.house.address.city.province.province_name %>
+            </strong> <br>
+        
+            <p class="text-description">
+              <%=  favorite_house.house.description %>
+            </p>
+              <span class="bg-green px-3"> <%= favorite_house.house.type_negotiation %></span> <br>
+              <%= favorite_house.house.price %>
+          </p>
+
+        </div>
+      </div>
+    </div>
+  <% end %>

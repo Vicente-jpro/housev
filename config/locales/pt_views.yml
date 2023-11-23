@@ -110,6 +110,7 @@ pt:
     profile: Perfil
     security: Segurança
     favorite-lands: Terrenos favoritos
+    favorite-houses: Ímoveis favoritos
     properties:
       house:
         new: Novo
