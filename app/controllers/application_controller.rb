@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    add_flash_types :info
+    add_flash_types :info, :error
     around_action :switch_locale
 
     def default_url_options
