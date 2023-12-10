@@ -26,7 +26,6 @@ class LandsController < ApplicationController
   def search  
     
     @lands = Land.search_by(params)
-    debugger
     if @lands.empty?
       redirect_to lands_url, 
         info: "Nenhum terreno encontrado. Sugerimos estes ímóveis para você."
@@ -68,13 +67,16 @@ class LandsController < ApplicationController
 
   # POST /lands or /lands.json
   def create
-
+    
     @land = Land.new(land_params)
     
     respond_to do |format|
       if !@land.images.attached?
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @land.errors, status: :unprocessable_entity }
+      elsif !is_valid_format?(@land.images)
+        format.html { redirect_to new_land_path(@land), alert: "Image format invalid. Select image with format .jpg, jpeg, png or gif." }
+        format.json { render json: ["Image format invalid. Select image with format .jpg, jpeg, png or gif."], status: :unprocessable_entity }
       elsif @profile.nil?
         format.html { redirect_to new_profile_path, info: "You must to create a profile after create a land." }
         format.json { render json: ["You must to create a profile after create a land."], status: :unprocessable_entity }

@@ -23,7 +23,9 @@
             </p>
               <span class="bg-green px-3"> <%= favorite_house.house.type_negotiation %></span> <br>
               <%= favorite_house.house.price %>
-          </p>
+           </p>
+            <%= button_to "remover from favorite", favorite_house,
+          method: :delete, class:"btn btn-pink my-1" %>
 
         </div>
       </div>
