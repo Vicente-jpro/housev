@@ -1,5 +1,6 @@
 # First create at least 2 users after run this seed
 
+
 puts "Cadastrando as provincias..."
 Province.find_or_create_by!(province_name: "Luanda")
 Province.find_or_create_by!(province_name: "Úige")
@@ -255,27 +256,24 @@ Plans.find_or_create_by!(
     description: "Can make only 1 post and upload 5 photo;
                   Free for 30 days then you pay;",
     activated: true,
-    first_time: false,
-    duration_day: 30
+    first_time: false
 )
 
-Plans.find_or_create_by!(
+Plan.find_or_create_by!(
     name_plans: "Basic",
     price: 5000,
     description: "Can make only 2 posts and upload 5 photos for each post;
     Notify user when a post is created;",
     activated: false,
-    first_time: false,
-    duration_day: 30
+    first_time: false
 )
 
-Plans.find_or_create_by!(
+Plan.find_or_create_by!(
     name_plans: "Normal",
     price: 8000,
     description: "Can make only 5 posts and upload 5 photos for each post;
     Notify user when a post is created",
     activated: false,
-    first_time: false,
-    duration_day: 30
+    first_time: false
 )
 puts "Fim do cadastro de planos."
