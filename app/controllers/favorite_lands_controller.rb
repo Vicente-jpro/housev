@@ -37,6 +37,11 @@ class FavoriteLandsController < ApplicationController
 
   # DELETE /favorite_lands/1 or /favorite_lands/1.json
   def destroy
+    
+    land = Land.new 
+    land.id =  @favorite_land.land_id
+    
+    @favorite_land = FavoriteLand.find_favorite_by_user_and_land(current_user, land)
     @favorite_land.destroy
 
     respond_to do |format|

@@ -20,4 +20,13 @@ class FavoriteLand < ApplicationRecord
     profile_land.nil?
   end
 
+  def self.find_favorite_by_user_and_land(user, land)
+    FavoriteLand.joins("JOIN lands ON lands.id = favorite_lands.land_id")
+        .joins("JOIN lands ON lands.id = favorite_lands.land_id") 
+        .joins("JOIN profiles ON profiles.id = favorite_lands.profile_id")
+        .joins("JOIN users ON users.id = profiles.user_id")
+        .where("users.id = #{user.id} and lands.id = #{land.id}")
+        .order(id: :desc).take
+  end
+
 end

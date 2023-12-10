@@ -18,7 +18,12 @@
             <span class="bg-green px-3">Venda</span> <br>
             <%= favorite_land.land.price %>
         </p>
+          <%= button_to "remover from favorite", favorite_land,
+          method: :delete, class:"btn btn-pink my-1" %>
+       
       </div>
+
+        
     </div>
   </div>
 <% end %>

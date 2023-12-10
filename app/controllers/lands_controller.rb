@@ -26,7 +26,6 @@ class LandsController < ApplicationController
   def search  
     
     @lands = Land.search_by(params)
-    debugger
     if @lands.empty?
       redirect_to lands_url, 
         info: "Nenhum terreno encontrado. Sugerimos estes ímóveis para você."
