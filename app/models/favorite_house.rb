@@ -23,4 +23,13 @@ class FavoriteHouse < ApplicationRecord
     profile_house.nil?
   end
 
+  def self.find_favorite_by_user_and_house(user, house)
+    FavoriteHouse.joins("JOIN houses ON houses.id = favorite_houses.house_id")
+        .joins("JOIN houses ON houses.id = favorite_houses.house_id") 
+        .joins("JOIN profiles ON profiles.id = favorite_houses.profile_id")
+        .joins("JOIN users ON users.id = profiles.user_id")
+        .where("users.id = #{user.id} and houses.id = #{house.id}")
+        .order(id: :desc).take
+  end
+
 end

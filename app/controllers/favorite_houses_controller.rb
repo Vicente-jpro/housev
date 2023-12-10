@@ -47,6 +47,11 @@ class FavoriteHousesController < ApplicationController
 
   # DELETE /favorite_houses/1 or /favorite_houses/1.json
   def destroy
+    house = House.new 
+    house.id =  @favorite_house.house_id
+    
+    @favorite_house = FavoriteHouse.find_favorite_by_user_and_house(current_user, house)
+    debugger
     @favorite_house.destroy
 
     respond_to do |format|
@@ -57,15 +62,15 @@ class FavoriteHousesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_favorite_land
-      @favorite_house = FavoriteLand.find(params[:id])
+    def set_favorite_house
+      @favorite_house = FavoriteHouse.find(params[:id])
     end
 
     def set_house_url
       @url = request 
     end
 
-    def invalid_land 
+    def invalid_house 
       logger.error "Attempt to access invalid house #{params[:id]}"
       redirect_to houses_url, info: "Invalid house."
     end

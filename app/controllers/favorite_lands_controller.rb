@@ -37,7 +37,6 @@ class FavoriteLandsController < ApplicationController
 
   # DELETE /favorite_lands/1 or /favorite_lands/1.json
   def destroy
-    
     land = Land.new 
     land.id =  @favorite_land.land_id
     
