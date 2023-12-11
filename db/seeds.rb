@@ -1,6 +1,5 @@
 # First create at least 2 users after run this seed
 
-
 puts "Cadastrando as provincias..."
 Province.find_or_create_by!(province_name: "Luanda")
 Province.find_or_create_by!(province_name: "Úige")

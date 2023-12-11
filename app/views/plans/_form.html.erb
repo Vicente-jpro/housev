@@ -1,4 +1,4 @@
-<%= form_with(model: plan) do |form| %>
+<%= bootstrap_form_with(model: plan) do |form| %>
   <% if plan.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
@@ -11,32 +11,13 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name_plans, style: "display: block" %>
     <%= form.text_field :name_plans %>
-  </div>
-
-  <div>
-    <%= form.label :price, style: "display: block" %>
     <%= form.number_field :price %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
     <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.label :activated, style: "display: block" %>
     <%= form.check_box :activated %>
-  </div>
-
-  <div>
-    <%= form.label :first_time, style: "display: block" %>
     <%= form.check_box :first_time %>
-  </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mb-3 d-grid gap-2">
+    <%= form.submit class: "btn btn-info" %>
   </div>
 <% end %>

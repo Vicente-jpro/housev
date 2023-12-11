@@ -1,10 +1,34 @@
-<p style="color: green"><%= notice %></p>
 
-<%= render @plan %>
+<div class="container py-3" >
+  <div class="col" id="plans">
+    <div class="card mb-4 rounded-3 shadow-sm">
+      <div class="card-header py-3">
+        <h4 class="my-0 fw-normal text-center"><%= @plan.name_plans %></h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title text-center"><%= @plan.price %><small class="text-muted fw-light">/mo</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li><%= @plan.description %></li>
+          <br>
+         
+        </ul>
+         <p>
+         <strong> Activated: </strong>
+          <%= @plan.activated %>
+        </p>
 
-<div>
-  <%= link_to "Edit this plan", edit_plan_path(@plan) %> |
-  <%= link_to "Back to plans", plans_path %>
-
-  <%= button_to "Destroy this plan", @plan, method: :delete %>
+        <p>
+          <strong>First time:</strong>
+          <%= @plan.first_time %>
+        </p>
+        <div>
+          <%= link_to "Edit this plan", edit_plan_path(@plan) , class:"w-100 btn btn-lg btn-outline-primary mb-2"%>
+          <%= button_to "Destroy this plan", @plan, method: :delete, class: "w-100 btn btn-lg btn-outline-danger" %>
+       </div>
+     
+      </div>
+    </div>
+  </div>
 </div>
+
+   
