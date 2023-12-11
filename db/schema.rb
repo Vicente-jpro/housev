@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_21_181049) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_11_001318) do
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -123,6 +133,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_181049) do
   create_table "locations", force: :cascade do |t|
     t.integer "longitude"
     t.integer "latitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string "name_plans"
+    t.integer "price"
+    t.text "description"
+    t.boolean "activated"
+    t.boolean "first_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

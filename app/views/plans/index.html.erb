@@ -1,0 +1,8 @@
+<div class="container py-3" >
+  <h2> Plans </h2>
+    <div class="row row-cols-1 row-cols-md-3 mb-3"  id="plans">
+        <% @plans.each do |plan| %>
+          <%= render plan %>
+        <% end %>
+    </div>
+</div>
