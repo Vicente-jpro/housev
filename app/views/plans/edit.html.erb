@@ -1,10 +1,15 @@
-<h1>Editing plan</h1>
+<div class="container col-lg-6 my-4">
+  <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+      <div class="card-body">
+        <div class="card-title">
+            <h4 class="text-center text-pink">
 
-<%= render "form", plan: @plan %>
+              Editing plan
+            
+            </h4>
+        </div>
 
-<br>
-
-<div>
-  <%= link_to "Show this plan", @plan %> |
-  <%= link_to "Back to plans", plans_path %>
+        <%= render "form", plan: @plan %>
+      </div>
+    </div>
 </div>

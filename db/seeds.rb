@@ -239,17 +239,16 @@ puts "Fim do cadastro de favorite_house."
 
 
 puts "Cadastrando planos..."
-Plans.find_or_create_by!(
+Plan.find_or_create_by!(
     name_plans: "Very Basic (Free)",
     price: 3000,
     description: "Can make only 1 post and upload 5 photo;
                   Free for 30 days then you pay;",
     activated: true,
-    first_time: false,
-    duration_day: 30
+    first_time: false
 )
 
-Plans.find_or_create_by!(
+Plan.find_or_create_by!(
     name_plans: "Very Basic (Free)",
     price: 3000,
     description: "Can make only 1 post and upload 5 photo;
