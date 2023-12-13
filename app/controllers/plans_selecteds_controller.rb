@@ -22,7 +22,7 @@ class PlansSelectedsController < ApplicationController
   # POST /plans_selecteds or /plans_selecteds.json
   def create
     @plans_selected = PlansSelected.new(plans_selected_params)
-
+    @plans_selected.user_id = current_user.id
     respond_to do |format|
       if @plans_selected.save
         format.html { redirect_to plans_selected_url(@plans_selected), notice: "Plans selected was successfully created." }
@@ -65,6 +65,6 @@ class PlansSelectedsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def plans_selected_params
-      params.require(:plans_selected).permit(:day_used, :duration, :plans_id, :user_id)
+      params.require(:plans_selected).permit(:day_used, :duration, :plans_id)
     end
 end

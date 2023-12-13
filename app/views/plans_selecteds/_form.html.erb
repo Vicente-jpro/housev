@@ -1,37 +1,34 @@
-<%= form_with(model: plans_selected) do |form| %>
-  <% if plans_selected.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(plans_selected.errors.count, "error") %> prohibited this plans_selected from being saved:</h2>
+<div class="container col-lg-6 my-4">
+    <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <div class="card-body">
+        <div class="card-title">
+            <h4 class="text-center text-pink">
+                Plans
+            </h4>
+        </div>
 
-      <ul>
-        <% plans_selected.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <%= bootstrap_form_with(model: plans_selected) do |form| %>
+          <% if plans_selected.errors.any? %>
+            <div style="color: red">
+              <h2><%= pluralize(plans_selected.errors.count, "error") %> prohibited this plans_selected from being saved:</h2>
+
+              <ul>
+                <% plans_selected.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+            <%= form.number_field :day_used %>
+            <%= form.select :duration, PlansSelected.durations %>
+                <%= form.collection_select :plans_id, Plan.order(:name_plans), :id, :name_plans, 
+                      { label: "Plans" }  %> 
+           
+           <div class="mb-3 d-grid gap-2">
+            <%= form.submit class:"btn btn-info" %>
+          </div>
         <% end %>
-      </ul>
+        </div>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :day_used, style: "display: block" %>
-    <%= form.number_field :day_used %>
-  </div>
-
-  <div>
-    <%= form.label :duration, style: "display: block" %>
-    <%= form.number_field :duration %>
-  </div>
-
-  <div>
-    <%= form.label :plans_id, style: "display: block" %>
-    <%= form.text_field :plans_id %>
-  </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

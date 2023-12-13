@@ -1,23 +1,35 @@
-<%= bootstrap_form_with(model: plan) do |form| %>
-  <% if plan.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
+<div class="container col-lg-6 my-4">
+    <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <div class="card-body">
+        <div class="card-title">
+            <h4 class="text-center text-pink">
+                Plans
+            </h4>
+        </div>
 
-      <ul>
-        <% plan.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <%= bootstrap_form_with(model: plan) do |form| %>
+          <% if plan.errors.any? %>
+            <div style="color: red">
+              <h2><%= pluralize(plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
+
+              <ul>
+                <% plan.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+            <%= form.text_field :name_plans %>
+            <%= form.number_field :price %>
+            <%= form.rich_text_area :description, size: "70x5" %>
+            <%= form.check_box :activated %>
+            <%= form.check_box :first_time %>
+
+          <div class="mb-3 d-grid gap-2">
+            <%= form.submit class: "btn btn-info" %>
+          </div>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-    <%= form.text_field :name_plans %>
-    <%= form.number_field :price %>
-    <%= form.rich_text_area :description, size: "70x5" %>
-    <%= form.check_box :activated %>
-    <%= form.check_box :first_time %>
-
-  <div class="mb-3 d-grid gap-2">
-    <%= form.submit class: "btn btn-info" %>
-  </div>
-<% end %>
+        </div>
+   </div>
+</div>
