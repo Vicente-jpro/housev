@@ -1,31 +1,40 @@
-<div id="<%= dom_id plans_selected %>">
-  <p>
-    <strong>Day used:</strong>
-    <%= plans_selected.day_used %>
-  </p>
 
-  <p>
-    <strong>Duration:</strong>
-    <%= plans_selected.duration %>
-  </p>
+  <div class="col" id="<%= dom_id plans_selected %>">
+    <div class="card mb-4 rounded-3 shadow-sm">
+      <div class="card-header py-3">
+        <h4 class="my-0 fw-normal text-center">Plans</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title text-center text-pink"><%= plans_selected.plan.name_plans%><small class="text-muted fw-light">/mo</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>
+            <strong>Day used:</strong>
+            <%= plans_selected.day_used %>
+          </li>
+          <li>
+            <strong>Duration:</strong>
+            <%= plans_selected.duration %>
+          </li>
+          <li>
+            <strong>User:</strong>
+            <%= plans_selected.user_id %>
+          </li>
+          <li>
+            Activated:
+            <%= plans_selected.activated %>
+          </li>
+          <li>
+            <strong>First time:</strong>
+            <%= plans_selected.first_time %>
+          </li>
+          <br>
+         
+        </ul>
 
-  <p>
-    <strong>Plans:</strong>
-    <%= plans_selected.plan.name_plans %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= plans_selected.user_id %>
-  </p>
-
-  <p>
-    Activated:
-    <%= plans_selected.activated %>
-  </p>
-
-  <p>
-    <strong>First time:</strong>
-    <%= plans_selected.first_time %>
-  </p>
-</div>
+        <div>
+          <%= link_to "Show this plan", plans_selected , class:"w-100 btn btn-lg btn-pink mb-2"%>
+        </div>
+     
+      </div>
+    </div>
+  </div>
