@@ -1,40 +1,26 @@
 
   <div class="col" id="<%= dom_id plans_selected %>">
-    <div class="card mb-4 rounded-3 shadow-sm">
-      <div class="card-header py-3">
-        <h4 class="my-0 fw-normal text-center">Plans</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title text-center text-pink"><%= plans_selected.plan.name_plans%><small class="text-muted fw-light">/mo</small></h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>
-            <strong>Day used:</strong>
-            <%= plans_selected.day_used %>
-          </li>
-          <li>
-            <strong>Duration:</strong>
-            <%= plans_selected.duration %>
-          </li>
-          <li>
-            <strong>User:</strong>
-            <%= plans_selected.user_id %>
-          </li>
-          <li>
-            Activated:
-            <%= plans_selected.activated %>
-          </li>
-          <li>
-            <strong>First time:</strong>
-            <%= plans_selected.first_time %>
-          </li>
-          <br>
-         
-        </ul>
 
-        <div>
-          <%= link_to "Show this plan", plans_selected , class:"w-100 btn btn-lg btn-pink mb-2"%>
-        </div>
+    <th scope="row">  <%= plans_selected.id %></th>
+      <td><%= plans_selected.user.email %></td>
+      <td><%= plans_selected.plan.name_plans%></td>
+      <td><%= plans_selected.duration %></td>
+      <td><%= plans_selected.day_used %></td>
+
+      <% if plans_selected.activated  %>
+        <td class="text-success"><%= plans_selected.activated %></td>
+      <% else %>
+        <td class="text-danger"><%= plans_selected.activated %></td>
+      <% end %>
+      
+
+      <% if plans_selected.first_time  %>
+        <td class="text-success"><%= plans_selected.first_time %></td>
+      <% else %>
+        <td class="text-danger"><%= plans_selected.first_time %></td>
+      <% end %>
+
+      <td ><%= link_to "Show this plan", plans_selected , class:"btn btn-info"%></td>
      
-      </div>
-    </div>
-  </div>
+</div>
+ 

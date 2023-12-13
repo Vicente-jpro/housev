@@ -273,6 +273,7 @@ puts "Cadastrando plano selecionado..."
 PlansSelected.find_or_create_by!(
     plan: Plan.first,
     day_used: 12,
+    duration: 30,
     activated: true,
     first_time: false,
     user: User.first
@@ -281,6 +282,7 @@ PlansSelected.find_or_create_by!(
 PlansSelected.find_or_create_by!(
     plan: Plan.last,
     day_used: 13,
+    duration: 30,
     activated: true,
     first_time: false,
     user: User.last

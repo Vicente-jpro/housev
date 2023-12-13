@@ -37,6 +37,8 @@ class PlansSelectedsController < ApplicationController
   # PATCH/PUT /plans_selecteds/1 or /plans_selecteds/1.json
   def update
     respond_to do |format|
+      plans_selected_params[:duration] = plans_selected_params[:duration].to_i
+      debugger
       if @plans_selected.update(plans_selected_params)
         format.html { redirect_to plans_selected_url(@plans_selected), notice: "Plans selected was successfully updated." }
         format.json { render :show, status: :ok, location: @plans_selected }
@@ -65,6 +67,6 @@ class PlansSelectedsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def plans_selected_params
-      params.require(:plans_selected).permit(:day_used, :duration, :plans_id)
+      params.require(:plans_selected).permit(:day_used, :duration, :plan_id)
     end
 end
