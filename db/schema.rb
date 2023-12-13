@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_11_001318) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_11_101323) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -147,6 +147,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_11_001318) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "plans_selecteds", force: :cascade do |t|
+    t.integer "day_used"
+    t.integer "duration"
+    t.integer "plans_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plans_id"], name: "index_plans_selecteds_on_plans_id"
+    t.index ["user_id"], name: "index_plans_selecteds_on_user_id"
+  end
+
   create_table "profile_houses", force: :cascade do |t|
     t.integer "profile_id", null: false
     t.integer "house_id", null: false
@@ -210,6 +221,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_11_001318) do
   add_foreign_key "houses", "locations"
   add_foreign_key "lands", "addresses"
   add_foreign_key "lands", "dimentions"
+  add_foreign_key "plans_selecteds", "plans", column: "plans_id"
+  add_foreign_key "plans_selecteds", "users"
   add_foreign_key "profile_houses", "houses"
   add_foreign_key "profile_houses", "profiles"
   add_foreign_key "profile_lands", "lands"

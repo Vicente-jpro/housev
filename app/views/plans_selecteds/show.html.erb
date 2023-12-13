@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @plans_selected %>
+
+<div>
+  <%= link_to "Edit this plans selected", edit_plans_selected_path(@plans_selected) %> |
+  <%= link_to "Back to plans selecteds", plans_selecteds_path %>
+
+  <%= button_to "Destroy this plans selected", @plans_selected, method: :delete %>
+</div>

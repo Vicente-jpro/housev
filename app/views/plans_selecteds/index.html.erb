@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Plans selecteds</h1>
+
+<div id="plans_selecteds">
+  <% @plans_selecteds.each do |plans_selected| %>
+    <%= render plans_selected %>
+    <p>
+      <%= link_to "Show this plans selected", plans_selected %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New plans selected", new_plans_selected_path %>
