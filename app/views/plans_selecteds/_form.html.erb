@@ -24,7 +24,8 @@
             <%= form.select :duration, PlansSelected.durations %>
                 <%= form.collection_select :plans_id, Plan.order(:name_plans), :id, :name_plans, 
                       { label: "Plans" }  %> 
-           
+            <%= form.check_box :activated %>
+            <%= form.check_box :first_time %>
            <div class="mb-3 d-grid gap-2">
             <%= form.submit class:"btn btn-info" %>
           </div>
