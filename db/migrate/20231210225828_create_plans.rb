@@ -4,8 +4,6 @@ class CreatePlans < ActiveRecord::Migration[7.0]
       t.string :name_plans
       t.integer :price
       t.text :description
-      t.boolean :activated
-      t.boolean :first_time
 
       t.timestamps
     end

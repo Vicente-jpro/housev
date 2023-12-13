@@ -141,8 +141,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_11_101323) do
     t.string "name_plans"
     t.integer "price"
     t.text "description"
-    t.boolean "activated"
-    t.boolean "first_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -150,11 +148,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_11_101323) do
   create_table "plans_selecteds", force: :cascade do |t|
     t.integer "day_used"
     t.integer "duration"
-    t.integer "plans_id", null: false
+    t.boolean "activated", default: false
+    t.boolean "first_time", default: false
+    t.integer "plan_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["plans_id"], name: "index_plans_selecteds_on_plans_id"
+    t.index ["plan_id"], name: "index_plans_selecteds_on_plan_id"
     t.index ["user_id"], name: "index_plans_selecteds_on_user_id"
   end
 
@@ -221,7 +221,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_11_101323) do
   add_foreign_key "houses", "locations"
   add_foreign_key "lands", "addresses"
   add_foreign_key "lands", "dimentions"
-  add_foreign_key "plans_selecteds", "plans", column: "plans_id"
+  add_foreign_key "plans_selecteds", "plans"
   add_foreign_key "plans_selecteds", "users"
   add_foreign_key "profile_houses", "houses"
   add_foreign_key "profile_houses", "profiles"

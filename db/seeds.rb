@@ -244,34 +244,45 @@ Plan.find_or_create_by!(
     price: 3000,
     description: "Can make only 1 post and upload 5 photo;
                   Free for 30 days then you pay;",
-    activated: true,
-    first_time: false
 )
 
 Plan.find_or_create_by!(
     name_plans: "Very Basic (Free)",
     price: 3000,
     description: "Can make only 1 post and upload 5 photo;
-                  Free for 30 days then you pay;",
-    activated: true,
-    first_time: false
+                  Free for 30 days then you pay;"
 )
 
 Plan.find_or_create_by!(
     name_plans: "Basic",
     price: 5000,
     description: "Can make only 2 posts and upload 5 photos for each post;
-    Notify user when a post is created;",
-    activated: false,
-    first_time: false
+    Notify user when a post is created;"
 )
 
 Plan.find_or_create_by!(
     name_plans: "Normal",
     price: 8000,
     description: "Can make only 5 posts and upload 5 photos for each post;
-    Notify user when a post is created",
-    activated: false,
-    first_time: false
+    Notify user when a post is created"
 )
 puts "Fim do cadastro de planos."
+
+puts "Cadastrando plano selecionado..."
+
+PlansSelected.find_or_create_by!(
+    plan: Plan.first,
+    day_used: 12,
+    activated: true,
+    first_time: false,
+    user: User.first
+)
+
+PlansSelected.find_or_create_by!(
+    plan: Plan.last,
+    day_used: 13,
+    activated: true,
+    first_time: false,
+    user: User.last
+)
+puts "Fim do cadastro selecionado"
