@@ -1,23 +1,23 @@
-<%= bootstrap_form_with(model: plan) do |form| %>
-  <% if plan.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
 
-      <ul>
-        <% plan.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <%= bootstrap_form_with(model: plan) do |form| %>
+          <% if plan.errors.any? %>
+            <div style="color: red">
+              <h2><%= pluralize(plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
+
+              <ul>
+                <% plan.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+            <%= form.text_field :name_plans %>
+            <%= form.number_field :price %>
+            <%= form.rich_text_area :description, size: "70x5" %>
+
+          <div class="mb-3 d-grid gap-2">
+            <%= form.submit class: "btn btn-info" %>
+          </div>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-    <%= form.text_field :name_plans %>
-    <%= form.number_field :price %>
-    <%= form.rich_text_area :description, size: "70x5" %>
-    <%= form.check_box :activated %>
-    <%= form.check_box :first_time %>
-
-  <div class="mb-3 d-grid gap-2">
-    <%= form.submit class: "btn btn-info" %>
-  </div>
-<% end %>
+    

@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   JOIN_CITIES_AND_PROVINCES = "JOIN cities ON cities.id = addresses.city_id JOIN provinces ON provinces.id = cities.province_id"
  
+  has_one :user
+
   def self.find_user_by_house(house)
     User.joins(:profile)
         .joins("join profile_houses on profile_houses.profile_id = profiles.id")

@@ -1,6 +1,7 @@
 require 'resque/server'
 
 Rails.application.routes.draw do
+  resources :plans_selecteds
   resources :plans
   
   mount Resque::Server.new, :at => "/resque"

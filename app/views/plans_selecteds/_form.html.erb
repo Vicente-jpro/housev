@@ -1,0 +1,31 @@
+<div class="container col-lg-6 my-4">
+    <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <div class="card-body">
+
+        <%= bootstrap_form_with(model: plans_selected) do |form| %>
+          <% if plans_selected.errors.any? %>
+            <div style="color: red">
+              <h2><%= pluralize(plans_selected.errors.count, "error") %> prohibited this plans_selected from being saved:</h2>
+
+              <ul>
+                <% plans_selected.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+            <%= form.number_field :day_used %>
+            <%= form.select :duration, PlansSelected.durations.keys %>
+                <%= form.collection_select :plan_id, Plan.order(:name_plans), :id, 
+                :name_plans, { label: "Plans" }  %> 
+            <%= form.check_box :activated %>
+            <%= form.check_box :first_time %>
+           <div class="mb-3 d-grid gap-2">
+            <%= form.submit class:"btn btn-info" %>
+            <%= link_to "Back to plans selecteds", plans_selecteds_path, class: "link-primary"%>
+          </div>
+        <% end %>
+        </div>
+    </div>
+</div>

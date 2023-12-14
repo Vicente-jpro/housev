@@ -1,0 +1,29 @@
+
+  <div class="col" id="<%= dom_id plans_selected %>">
+
+    <th scope="row">  <%= plans_selected.id %></th>
+      <td><%= plans_selected.user.email %></td>
+      <td><%= plans_selected.plan.name_plans%></td>
+      <td><%= plans_selected.duration %></td>
+      <td><%= plans_selected.day_used %></td>
+
+      <% if plans_selected.activated  %>
+        <td class="text-success"><%= plans_selected.activated %></td>
+      <% else %>
+        <td class="text-danger"><%= plans_selected.activated %></td>
+      <% end %>
+      
+
+      <% if plans_selected.first_time  %>
+        <td class="text-success"><%= plans_selected.first_time %></td>
+      <% else %>
+        <td class="text-danger"><%= plans_selected.first_time %></td>
+      <% end %>
+      <td><%= button_to "Destroy", plans_selected, method: :delete, 
+       data: { confirm: "Está ação irá eliminar este plano selecionado. Deseja continuar?", 
+             turbo_confirm: "Está ação irá eliminar este plano selecionado. Deseja continuar?" }, 
+             class:"btn btn-danger"%></td>
+      <td><%= link_to "Edit", edit_plans_selected_path(plans_selected), class:"btn btn-info"%></td>
+     
+</div>
+ 

@@ -1,0 +1,32 @@
+<div class="container">
+
+  <h4 class="text-center text-pink">Plans selecteds</h4>
+  <div class="text-end">
+    <%= link_to "Create new", new_plans_selected_path, class: "link-primary" %>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">User</th>
+        <th scope="col">Plan Selected</th>
+        <th scope="col">Duration</th>
+        <th scope="col">Day used</th>
+        <th scope="col">Activated</th>
+        <th scope="col">First time</th>
+      </tr>
+    </thead>
+    <tbody>
+    <div id="plans_selecteds">
+      <% @plans_selecteds.each do |plans_selected| %>
+      <tr>
+        <%= render plans_selected %>
+      </tr>
+      <% end %>
+    </div>
+  
+    </tbody>
+  </table>
+
+<div>
+
