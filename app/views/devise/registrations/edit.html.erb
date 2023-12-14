@@ -52,7 +52,8 @@
               <%= button_to t("devise.links.cancel-my-account"), registration_path(resource_name), 
                 data: { confirm: t("devise.title.actions.confirm"), 
                       turbo_confirm: t("devise.title.actions.confirm") }, 
-                method: :delete, class:"btn btn-light" %>
+                method: :delete, class:"btn btn-light"%>
+                
             </div>
 
             <%= link_to t("devise.links.back"), :back, class:"link-info" %>

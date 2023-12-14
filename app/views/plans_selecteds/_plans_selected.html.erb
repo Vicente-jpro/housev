@@ -19,8 +19,11 @@
       <% else %>
         <td class="text-danger"><%= plans_selected.first_time %></td>
       <% end %>
-
-      <td ><%= link_to "Show this plan", plans_selected , class:"btn btn-info"%></td>
+      <td><%= button_to "Destroy", plans_selected, method: :delete, 
+       data: { confirm: "Está ação irá eliminar este plano selecionado. Deseja continuar?", 
+             turbo_confirm: "Está ação irá eliminar este plano selecionado. Deseja continuar?" }, 
+             class:"btn btn-danger"%></td>
+      <td><%= link_to "Edit", edit_plans_selected_path(plans_selected), class:"btn btn-info"%></td>
      
 </div>
  

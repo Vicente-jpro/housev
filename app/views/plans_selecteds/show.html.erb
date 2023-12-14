@@ -1,10 +1,27 @@
-<p style="color: green"><%= notice %></p>
 
-<%= render @plans_selected %>
+<h1>Show</h1>
 
-<div>
-  <%= link_to "Edit this plans selected", edit_plans_selected_path(@plans_selected) %> |
-  <%= link_to "Back to plans selecteds", plans_selecteds_path %>
-
-  <%= button_to "Destroy this plans selected", @plans_selected, method: :delete %>
-</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">User</th>
+      <th scope="col">Plan Selected</th>
+      <th scope="col">Duration</th>
+      <th scope="col">Day used</th>
+      <th scope="col">Activated</th>
+      <th scope="col">First time</th>
+      <th scope="col">Ação</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+  <div id="plans_selecteds">
+     <tr>
+      <%= render @plans_selected %>
+     </tr>
+  </div>
+ 
+  </tbody>
+</table>
