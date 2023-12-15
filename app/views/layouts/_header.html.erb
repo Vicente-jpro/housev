@@ -22,6 +22,7 @@
           <li><a href="#" class="nav-link px-2 text-pink fs-5"><%= t("navbar.rent") %></a></li>
           <li><a href="#" class="nav-link px-2 text-pink fs-5 "><%= t("navbar.buy") %></a></li>
           <li> <%= link_to t("navbar.land"), lands_path, class: "nav-link px-2 text-pink fs-5 land" %> </li>
+          <li> <%= link_to "Plans", plans_path, class: "nav-link px-2 text-pink fs-5 land" %> </li>
         </ul>
 
         <%= link_to t("devise.links.sign.up"), new_user_registration_path, class: "btn btn-pink ms-1" if !user_signed_in?%> 
