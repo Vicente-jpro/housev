@@ -25,6 +25,13 @@ class PlansSelectedsController < ApplicationController
   def create
     @plans_selected = PlansSelected.new(plans_selected_params)
     @plans_selected.user_id = current_user.id
+    plan_selected = PlansSelected.find_by_user(current_user)
+
+    if plan_selected
+      @plans_selected = plan_selected
+      redirect_to @plans_selected and return
+    end
+
     respond_to do |format|
       if @plans_selected.save
         format.html { redirect_to plans_selected_url(@plans_selected), notice: "Plans selected was successfully created." }

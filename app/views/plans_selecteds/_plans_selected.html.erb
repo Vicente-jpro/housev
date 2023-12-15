@@ -1,10 +1,12 @@
 
   <div class="col" id="<%= dom_id plans_selected %>">
 
-    <th scope="row">  <%= plans_selected.id %></th>
+    <th scope="row"> <%= plans_selected.id %></th>
+      <td><%= plans_selected.user.profile.name_profile %></td>
       <td><%= plans_selected.user.email %></td>
       <td><%= plans_selected.plan.name_plans%></td>
       <td><%= plans_selected.duration %></td>
+      <td><%= plans_selected.plan.price %></td>
       <td><%= plans_selected.day_used %></td>
 
       <% if plans_selected.activated  %>
