@@ -12,9 +12,36 @@
          
         </ul>
         <div>
-          <%= link_to "Subscribe", new_plans_selected_path,  class:"w-100 btn btn-lg btn-pink mb-2"%>
 
-          <%= link_to "Show this plan", plan , class:"w-100 btn btn-lg btn-pink mb-2"%>
+          <%= bootstrap_form_with(model: @plans_selected) do |form| %>
+          <% if @plans_selected.errors.any? %>
+            <div style="color: red">
+              <h2><%= pluralize(@plans_selected.errors.count, "error") %> prohibited this plans_selected from being saved:</h2>
+
+              <ul>
+                <% @plans_selected.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <% if user_signed_in? %>
+            <%= form.select :duration, PlansSelected.durations.keys %>
+                <%= form.hidden_field :plan_id, value: plan.id %> 
+            <div class="mb-3 d-grid gap-2">
+              <%= form.submit class:"btn btn-info" %>
+              <%= link_to "Back to plans selecteds", @plans_selecteds_path, class: "link-primary"%>
+            </div>
+            
+            <%= link_to "Show this plan", plan , class:"w-100 btn btn-lg btn-pink mb-2"%>
+           <% end %>
+
+         <% end %>
+
+        <% if !user_signed_in?%>
+          <%= link_to "Subscribe", new_plans_selected_path,  class:"w-100 btn btn-lg btn-pink mb-2"%>
+        <% end %>
         </div>
      
       </div>

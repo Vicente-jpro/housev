@@ -1,5 +1,6 @@
 class PlansSelectedsController < ApplicationController
   before_action :set_plans_selected, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /plans_selecteds or /plans_selecteds.json
   def index
@@ -13,6 +14,7 @@ class PlansSelectedsController < ApplicationController
   # GET /plans_selecteds/new
   def new
     @plans_selected = PlansSelected.new
+    redirect_to plans_url
   end
 
   # GET /plans_selecteds/1/edit

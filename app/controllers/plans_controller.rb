@@ -1,9 +1,10 @@
 class PlansController < ApplicationController
   before_action :set_plan, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!, except: [ :index ]
   # GET /plans or /plans.json
   def index
     @plans = Plan.all
+    @plans_selected = PlansSelected.new
   end
 
   # GET /plans/1 or /plans/1.json

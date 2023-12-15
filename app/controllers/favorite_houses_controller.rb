@@ -1,6 +1,7 @@
 class FavoriteHousesController < ApplicationController
   before_action :set_favorite_house, only: %i[ show edit update destroy ]
   before_action :set_house_url
+  before_action :authenticate_user!
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_favorite_house
 
   include HousesConcerns
