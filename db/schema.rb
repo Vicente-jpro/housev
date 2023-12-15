@@ -146,7 +146,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_11_101323) do
   end
 
   create_table "plans_selecteds", force: :cascade do |t|
-    t.integer "day_used"
+    t.integer "day_used", default: 0
     t.integer "duration"
     t.boolean "activated", default: false
     t.boolean "first_time", default: false
