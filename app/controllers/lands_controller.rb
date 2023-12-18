@@ -70,6 +70,7 @@ class LandsController < ApplicationController
     
     @land = Land.new(land_params)
     
+    has_valid_plan = PlansSelected.find_plan_selected_by_user(current_user)
     respond_to do |format|
       if !@land.images.attached?
         format.html { render :new, status: :unprocessable_entity }
@@ -83,13 +84,18 @@ class LandsController < ApplicationController
       elsif @profile.cliente?
         format.html { redirect_to new_profile_path, info: "You are a simple client. Change your profile to create a land." }
         format.json { render json: ["You must to create a profile after create a land."], status: :unprocessable_entity }
-      elsif @land.save
-        create_profile_land(@profile, @land)
-        format.html { redirect_to land_url(@land), notice: "Land was successfully created." }
-        format.json { render :show, status: :created, location: @land }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @land.errors, status: :unprocessable_entity }
+      elsif has_valid_plan.activated
+        if @land.save
+          create_profile_land(@profile, @land)
+          format.html { redirect_to land_url(@land), notice: "Land was successfully created." }
+          format.json { render :show, status: :created, location: @land }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @land.errors, status: :unprocessable_entity }
+        end
+      else 
+        format.html { redirect_to plans_path, alert: "You have to have a valid plan to create a post. Contact support time to help you out." }
+        format.json { render json: ["You have to hava a valid plan to create a post. Contact support time to help you out."], status: :unprocessable_entity }
       end
     end
   end

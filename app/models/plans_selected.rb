@@ -9,10 +9,10 @@ class PlansSelected < ApplicationRecord
 
   scope :find_by_user, ->(user) { where(user_id: user.id).take }
 
-  def self.find_valid_plan_selected_by_user(user) 
+  def self.find_plan_selected_by_user(user) 
     PlansSelected.joins(:plan)
                  .joins(:user)
-                 .where("plans_selecteds.day_used < plans_selecteds.duration and plans_selecteds.user_id = #{user.id}  and plans_selecteds.activated = true").take
+                 .where("plans_selecteds.day_used < plans_selecteds.duration and plans_selecteds.user_id = #{user.id}").take
   end
        
 end
