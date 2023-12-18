@@ -76,6 +76,13 @@ class PlansSelectedsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def plans_selected_params
-      params.require(:plans_selected).permit(:day_used, :duration, :plan_id)
+      params.require(:plans_selected).permit(
+        :day_used, 
+        :duration, 
+        :first_time, 
+        :activated, 
+        :plan_id
+      )
     end
+
 end

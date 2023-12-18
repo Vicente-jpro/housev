@@ -27,5 +27,33 @@
              class:"btn btn-danger"%></td>
       <td><%= link_to "Edit", edit_plans_selected_path(plans_selected), class:"btn btn-info"%></td>
      
+     <% if !plans_selected.activated %>
+      <td>
+         <%= bootstrap_form_with(model: plans_selected) do |form| %>
+          <% if plans_selected.errors.any? %>
+            <div style="color: red">
+              <h2><%= pluralize(plans_selected.errors.count, "error") %> prohibited this plans_selected from being saved:</h2>
+
+              <ul>
+                <% plans_selected.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+            <%= form.hidden_field :duration, value: plans_selected.duration%>
+            <%= form.hidden_field :first_time, value: false %>
+            <%= form.hidden_field :plan_id, value: plans_selected.plan_id  %> 
+            <%= form.hidden_field :day_used, value: 0 %>
+            <%= form.hidden_field :activated, value: !plans_selected.activated %>
+           <div>
+            <%= form.submit "#{ plans_selected.activated ? "Desativate": "Activate" }", class:"btn btn-info" %>
+          </div>
+
+        <% end %>
+       </td>
+      <% end %>
+
+
 </div>
  
