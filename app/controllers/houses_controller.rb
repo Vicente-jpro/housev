@@ -90,7 +90,7 @@ class HousesController < ApplicationController
   # POST /houses or /houses.json
   def create
     @house = House.new(house_params)
-
+    has_valid_plan = PlansSelected.find_plan_selected_by_user(current_user)
     respond_to do |format|
       if !@house.house_images.attached?
         format.html { render :new, status: :unprocessable_entity }
@@ -101,16 +101,22 @@ class HousesController < ApplicationController
       elsif @profile.cliente?
         format.html { redirect_to new_profile_path, info: "You are a simple client. Change your profile to create a house." }
         format.json { render json: ["You must to create a profile after create a house."], status: :unprocessable_entity }
-      elsif @house.save
-        format.html { redirect_to house_url(@house), notice: "House was successfully created." }
-        format.json { render :show, status: :created, location: @house }
-      else
-        @house.build_address
-        @house.build_location 
-        @house.build_dimention
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @house.errors, status: :unprocessable_entity }
+      elsif has_valid_plan.activated
+        if @house.save 
+          format.html { redirect_to house_url(@house), notice: "House was successfully created." }
+          format.json { render :show, status: :created, location: @house }
+        else
+          @house.build_address
+          @house.build_location 
+          @house.build_dimention
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @house.errors, status: :unprocessable_entity }
+        end
+      else  
+        format.html { redirect_to plans_path, info: "You have to hava a valid plan to create a post. Contact support time to help you out." }
+        format.json { render json: ["You have to hava a valid plan to create a post. Contact support time to help you out."], status: :unprocessable_entity }
       end
+
     end
   end
 

@@ -10,7 +10,7 @@ class ProfileLand < ApplicationRecord
     profile = Profile.find_by_user(user)
     profile_land = ProfileLand.find_by_land(land)
 
-    if profile.administrador? or profile.super_adminstrador?
+    if profile.empresa? or profile.super_adminstrador?
       return true
     elsif !profile_land.nil?
       return profile.id == profile_land.profile_id 

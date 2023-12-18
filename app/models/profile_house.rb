@@ -9,7 +9,7 @@ class ProfileHouse < ApplicationRecord
   def self.is_creator_or_admin_house?(user, house)
     profile = Profile.find_by_user(user)
     profile_house = ProfileHouse.find_by_house(house)
-    if profile.administrador? or profile.super_adminstrador?
+    if profile.empresa? or profile.super_adminstrador?
       return true
     elsif !profile_house.nil?
       return profile.id == profile_house.profile_id
