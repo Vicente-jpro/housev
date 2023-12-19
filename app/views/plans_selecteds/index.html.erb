@@ -1,9 +1,12 @@
 <div class="container">
 
   <h4 class="text-center text-pink">Plans selecteds</h4>
+
+  <% if current_user.profile.super_adminstrador? %>
   <div class="text-end">
     <%= link_to "Create new", new_plans_selected_path, class: "link-primary" %>
   </div>
+  <% end %>
   <table class="table">
     <thead>
       <tr>

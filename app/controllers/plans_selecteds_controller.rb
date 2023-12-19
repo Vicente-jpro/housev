@@ -4,7 +4,17 @@ class PlansSelectedsController < ApplicationController
 
   # GET /plans_selecteds or /plans_selecteds.json
   def index
-    @plans_selecteds = PlansSelected.all
+    if current_user.profile.super_adminstrador?
+      @plans_selecteds = PlansSelected.includes(:plan)
+    else
+      @plans_selected = PlansSelected.find_by_user(current_user).first
+      
+      if @plans_selected
+        redirect_to plans_selected_url(@plans_selected)
+      else
+        redirect_to plans_url
+      end
+    end
   end
 
   # GET /plans_selecteds/1 or /plans_selecteds/1.json
