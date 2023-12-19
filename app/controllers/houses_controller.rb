@@ -19,19 +19,11 @@ class HousesController < ApplicationController
 
   # GET /houses/1 or /houses/1.json
   def show
-    #  begin
-     
-        @profile = Profile.find_by_house(@house)
-        user = User.new 
+    @profile = Profile.find_by_house(@house)
+    user = User.new 
     
-        user.id = @profile.user_id
-        @houses = House.find_houses_by_user(user)
-      # debugger
-    #  rescue => exception
-    #    #This house doesn't have a profile
-    #    @house.destroy
-    #    redirect_to house_url, info: "House destroyed because doesn't have a profile."
-    #  end
+    user.id = @profile.user_id
+    @houses = House.find_houses_by_user(user)
   end
   
   # GET	/houses/:house_id/show_images

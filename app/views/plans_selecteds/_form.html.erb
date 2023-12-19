@@ -16,9 +16,10 @@
           <% end %>
 
             <%= form.number_field :day_used %>
-            <%= form.select :duration, PlansSelected.durations.keys %>
-                <%= form.collection_select :plan_id, Plan.order(:name_plans), :id, 
+            <%= form.collection_select :plan_id, Plan.order(:name_plans), :id, 
                 :name_plans, { label: "Plans" }  %> 
+            <%= form.select :duration, PlansSelected.durations.keys %>
+             
             <%= form.check_box :activated %>
             <%= form.check_box :first_time %>
            <div class="mb-3 d-grid gap-2">

@@ -27,14 +27,17 @@
           <% end %>
 
           <% if user_signed_in? %>
-            <%= form.select :duration, PlansSelected.durations.keys %>
-                <%= form.hidden_field :plan_id, value: plan.id %> 
-            <div class="mb-3 d-grid gap-2">
-              <%= form.submit class:"btn btn-info" %>
-              <%= link_to "Back to plans selecteds", @plans_selecteds_path, class: "link-primary"%>
-            </div>
+            <% if current_user.profile.super_adminstrador? %>
+              <%= link_to "Show this plan", plan , class:"w-100 btn btn-lg btn-pink mb-2"%>
+            <% else %>
+              <%= form.select :duration, PlansSelected.durations.keys %>
+              <%= form.hidden_field :plan_id, value: plan.id %> 
+              <div class="mb-3 d-grid gap-2">
+                <%= form.submit class:"btn btn-info" %>
+                <%= link_to "Back to plans selecteds", @plans_selecteds_path, class: "link-primary"%>
+              </div>
+            <% end %>
             
-            <%= link_to "Show this plan", plan , class:"w-100 btn btn-lg btn-pink mb-2"%>
            <% end %>
 
          <% end %>

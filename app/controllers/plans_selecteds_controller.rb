@@ -26,8 +26,8 @@ class PlansSelectedsController < ApplicationController
     @plans_selected = PlansSelected.new(plans_selected_params)
     @plans_selected.user_id = current_user.id
     plan_selected = PlansSelected.find_by_user(current_user)
-
-    if plan_selected
+  
+    if plan_selected.id.present?
       @plans_selected = plan_selected
       redirect_to @plans_selected and return
     end
@@ -43,10 +43,14 @@ class PlansSelectedsController < ApplicationController
     end
   end
 
+
+  # PATCH/PUT /plans_selecteds/1/select
+
+
   # PATCH/PUT /plans_selecteds/1 or /plans_selecteds/1.json
   def update
+    
     respond_to do |format|
-      plans_selected_params[:duration] = plans_selected_params[:duration].to_i
       debugger
       if @plans_selected.update(plans_selected_params)
         format.html { redirect_to plans_selected_url(@plans_selected), notice: "Plans selected was successfully updated." }
@@ -60,11 +64,16 @@ class PlansSelectedsController < ApplicationController
 
   # DELETE /plans_selecteds/1 or /plans_selecteds/1.json
   def destroy
-    @plans_selected.destroy
+    plan_selected = PlansSelected.find_plan_selected_by_user(current_user)
 
     respond_to do |format|
-      format.html { redirect_to plans_selecteds_url, notice: "Plans selected was successfully destroyed." }
-      format.json { head :no_content }
+      if plan_selected.activated 
+        format.html { redirect_to plans_selected_url(plan_selected), info: "This Plan is activated. You can not delete." }
+      else  
+        @plans_selected.destroy
+        format.html { redirect_to plans_selecteds_url, notice: "Plans selected was successfully destroyed." }
+        format.json { head :no_content }
+      end
     end
   end
 
