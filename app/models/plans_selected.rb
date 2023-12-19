@@ -14,5 +14,6 @@ class PlansSelected < ApplicationRecord
                  .joins(:user)
                  .where("plans_selecteds.day_used < plans_selecteds.duration and plans_selecteds.user_id = #{user.id}").take
   end
+
        
 end

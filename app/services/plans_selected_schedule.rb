@@ -1,8 +1,13 @@
 class PlansSelectedSchedule
     
     def self.update_day_used
-        PlansSelected.where("plans_selecteds.id > 0")
-                     .update_all(day_used: Arel.sql("plans_selecteds.day_used + 1")) 
+      PlansSelected.where("plans_selecteds.id > 0")
+                   .update_all(day_used: Arel.sql("plans_selecteds.day_used + 1")) 
     end
-    #UPDATE plans_selecteds SET day_used = day_used + 1 WHERE id <> 0
+
+    def self.lock_if_expirated
+      PlansSelected.where("plans_selecteds.day_used > plans_selecteds.duration")
+                   .update_all(activated: false) 
+    end
+
 end

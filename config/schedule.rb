@@ -3,8 +3,9 @@
  env :PATH, ENV['PATH'] 
  set :output, "log/cron.log"
  
- every 1.day do
+ every 1.hours do
    runner "PlansSelectedSchedule.update_day_used"
+   runner "PlansSelectedSchedule.lock_if_expirated"
  end
 
  # Execute the cron 
