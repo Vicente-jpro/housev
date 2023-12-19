@@ -25,9 +25,9 @@ class PlansSelectedsController < ApplicationController
   def create
     @plans_selected = PlansSelected.new(plans_selected_params)
     @plans_selected.user_id = current_user.id
-    plan_selected = PlansSelected.find_by_user(current_user)
+    plan_selected = PlansSelected.find_by_user(current_user).take
   
-    if plan_selected.id.present?
+    if plan_selected
       @plans_selected = plan_selected
       redirect_to @plans_selected and return
     end

@@ -7,7 +7,7 @@ class PlansSelected < ApplicationRecord
   validates :user, uniqueness: {  message: "User can have only one plan selected." }
 
 
-  scope :find_by_user, ->(user) { where(user_id: user.id).take }
+  scope :find_by_user, ->(user) { where(user_id: user.id) }
 
   def self.find_plan_selected_by_user(user) 
     PlansSelected.joins(:plan)
