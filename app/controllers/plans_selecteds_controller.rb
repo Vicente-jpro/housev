@@ -2,6 +2,8 @@ class PlansSelectedsController < ApplicationController
   before_action :set_plans_selected, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
 
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_plan_selected
+
   # GET /plans_selecteds or /plans_selecteds.json
   def index
     if current_user.profile.super_adminstrador?
@@ -88,6 +90,12 @@ class PlansSelectedsController < ApplicationController
   end
 
   private
+  
+  def invalid_plan_selected
+    logger.error "Attemped to access invalid Plan #{params[:id]}"
+    redirect_to houses_url, info: "Invalid Plan."
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_plans_selected
       @plans_selected = PlansSelected.find(params[:id])

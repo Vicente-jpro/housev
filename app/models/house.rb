@@ -60,6 +60,12 @@ class House < ApplicationRecord
     .take
   end
 
+  
+  scope :rent, -> { where("type_negotiation <> 23") }
+
+  scope :buy, -> { where("type_negotiation = 23") }
+
+
   def self.search_by(house_params)
     House.joins(:address)
          .joins(:dimention)

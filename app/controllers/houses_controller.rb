@@ -39,6 +39,14 @@ class HousesController < ApplicationController
     @house.build_dimention
   end
 
+  def rent 
+    @houses = House.rent.page(params[:page])
+  end
+
+  def buy 
+    @houses = House.buy.page(params[:page])
+  end
+
   def publisher 
     house = House.new 
     house.id = params[:id]

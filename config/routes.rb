@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   resources :lands do 
     get 'show_images'
-
+   
     collection do 
       get 'search'
       get 'publisher'
@@ -34,6 +34,8 @@ Rails.application.routes.draw do
       get 'search'
       get 'search_advanced'
       get 'publisher'
+      get 'rent'
+      get 'buy'
     end
   
   end
