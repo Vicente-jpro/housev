@@ -1,6 +1,9 @@
 class PlansController < ApplicationController
   before_action :set_plan, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [ :index ]
+
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_plan
+
   # GET /plans or /plans.json
   def index
     @plans = Plan.all
@@ -59,6 +62,12 @@ class PlansController < ApplicationController
   end
 
   private
+
+    def invalid_plan
+      logger.error "Attemped to access invalid Plan #{params[:id]}"
+      redirect_to houses_url, info: "Invalid Plan."
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_plan
       @plan = Plan.find(params[:id])
