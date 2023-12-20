@@ -63,10 +63,14 @@
         <% end %>
 
 
-         <li><%= link_to t("navbar.house"), houses_path, class: "nav-link px-2 text-pink fs-5 house"%></li>
+          <% if user_signed_in? %>
+            <% if current_user.profile.cliente? %>
+              <li><%= link_to t("navbar.house"), houses_path, class: "nav-link px-2 text-pink fs-5 house"%></li>
+              <li> <%= link_to t("navbar.land"), lands_path, class: "nav-link px-2 text-pink fs-5 land" %> </li>
+            <% end %>
+          <% end %>
           <li><a href="#" class="nav-link px-2 text-pink fs-5"><%= t("navbar.rent") %></a></li>
           <li><a href="#" class="nav-link px-2 text-pink fs-5 "><%= t("navbar.buy") %></a></li>
-          <li> <%= link_to t("navbar.land"), lands_path, class: "nav-link px-2 text-pink fs-5 land" %> </li>
           <li> <%= link_to "Plans", plans_path, class: "nav-link px-2 text-pink fs-5 land" %> </li>
         </ul>
 
