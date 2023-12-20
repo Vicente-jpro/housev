@@ -65,13 +65,49 @@
 
           <% if user_signed_in? %>
             <% if current_user.profile.cliente? %>
-              <li><%= link_to t("navbar.house"), houses_path, class: "nav-link px-2 text-pink fs-5 house"%></li>
+
+              <!--Rent-->
+              <div class="dropdown">
+                  <button class="nav-link px-2 text-pink fs-5 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <%= t("navbar.house") %>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <%= link_to "Arrendar", rent_houses_path, class:"dropdown-item nav-link px-2 text-pink fs-5" %>
+                    </li>
+                     <li>
+                      <%= link_to "Comprar", buy_houses_path, class:"dropdown-item nav-link px-2 text-pink fs-5" %>
+                    </li>
+                     <li>
+                        <%= link_to t("navbar.properties.house.view"), houses_path, class: "nav-link px-2 text-pink fs-5 house"%>
+                    </li>
+            
+                  </ul>
+                </div>
+              <!--End Rent -->
+              
               <li> <%= link_to t("navbar.land"), lands_path, class: "nav-link px-2 text-pink fs-5 land" %> </li>
             <% end %>
           <% end %>
-          <li><a href="#" class="nav-link px-2 text-pink fs-5"><%= t("navbar.rent") %></a></li>
-          <li><a href="#" class="nav-link px-2 text-pink fs-5 "><%= t("navbar.buy") %></a></li>
-          <li> <%= link_to "Plans", plans_path, class: "nav-link px-2 text-pink fs-5 land" %> </li>
+
+           <!--Buy -->
+           <div class="dropdown">
+              <button class="nav-link px-2 text-pink fs-5 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%=  t("navbar.buy") %>
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to "House", new_land_path, class:"dropdown-item nav-link px-2 text-pink fs-5" %>
+                </li>
+                <li>
+                  <%= link_to "Land", lands_path, class:"dropdown-item nav-link px-2 text-pink fs-5" %>
+                </li>
+              </ul>
+            </div>
+          <!--End Buy -->
+
+           <li> <%= link_to "Plans", plans_path, class: "nav-link px-2 text-pink fs-5 land" %> </li>
+
         </ul>
 
         <%= link_to t("devise.links.sign.up"), new_user_registration_path, class: "btn btn-pink ms-1" if !user_signed_in?%> 

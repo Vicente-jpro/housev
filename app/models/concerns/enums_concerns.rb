@@ -3,7 +3,7 @@ module EnumsConcerns
     included do 
         enum condition: { brand_new: 10, renovated: 11, unfinished: 12, used: 13}
         enum type_negotiation: {
-            rent_monthly: 20, rent_daily: 21, rent_shared: 22
+            rent_monthly: 20, rent_daily: 21, rent_shared: 22, sell: 23
         }
 
         enum tipology: { 
