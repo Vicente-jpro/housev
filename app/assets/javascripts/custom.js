@@ -6,10 +6,10 @@ $(document).ready(function(){
   })
 
 
- $.get(
-  "https://jsonplaceholder.typicode.com/users", 
-  function(data, status){
-  console.log(data, status);
-});
+  $.get(
+    "http://localhost:3000/cities", 
+    function(data, status){
+    console.log(data, status);
+  });
 
 });

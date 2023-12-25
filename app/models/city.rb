@@ -3,4 +3,6 @@ class City < ApplicationRecord
   has_many :address
   
   validates_presence_of :province, :city_name
+
+  scope :find_cities, ->(province) { where(province_id: province.id)}
 end
