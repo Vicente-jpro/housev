@@ -1,10 +1,10 @@
 class CitiesController < ApplicationController
 
-  def index 
+  def province 
      province = Province.new 
-     province.id = params[:province_id]
-    # @cities = City.find_cities(province)
-    render json: @cities = City.all
+     province.id = params[:id]
+     @cities = City.find_cities(province)
+    render json: @cities
       
   end
   

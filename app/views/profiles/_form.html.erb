@@ -36,7 +36,7 @@
               <%= form.telephone_field :phone2, label: Profile.human_attribute_name(:phone2) %>
             
               <%= form.collection_select :province_id, Province.order(:province_name), :id, :province_name, 
-              { label: Province.model_name.human(count: 1) }, {onchange: 'hello()', class:"pais"}  %> 
+              { label: Province.model_name.human(count: 1) }, {onchange: 'hello()', class:"province"}  %> 
                 
               <%= form.fields_for :address do |address_form| %>
                 <%= address_form.collection_select :city_id, City.order(:city_name), :id, :city_name, 
@@ -44,8 +44,6 @@
                 <%= address_form.text_field :street, label: Address.human_attribute_name(:street) %>
               <% end %> 
               
-
-
       
             </div>
 

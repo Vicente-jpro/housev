@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   resources :favorite_houses, only: [:index, :create, :destroy]
   resources :profile_lands, only: [:index]
   resources :profiles
-  resources :cities, only: [:index]
+  resources :cities, only: [:province] do 
+    member do 
+      get 'province'
+    end
+  end
 
 
   devise_for :users, controllers: {registrations: "registrations"}
