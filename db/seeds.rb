@@ -9,8 +9,8 @@ puts "Fim do cadastro de provincias."
 
 puts "Cadastrando municipios/cidade..."
 City.find_or_create_by!(city_name: "Belas", province: Province.first)
-City.find_or_create_by!(city_name: "Rangel", province: Province.first)
-City.find_or_create_by!(city_name: "Cazenga", province: Province.first)
+City.find_or_create_by!(city_name: "Gabela", province: Province.last)
+City.find_or_create_by!(city_name: "Sumbe", province: Province.last)
 City.find_or_create_by!(city_name: "Viana", province: Province.first)
 puts "Fim do cadastro das municipios/cidade."
 
