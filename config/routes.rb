@@ -1,6 +1,7 @@
 require 'resque/server'
 
 Rails.application.routes.draw do
+  resources :contacts
   resources :plans_selecteds
   resources :plans
   
