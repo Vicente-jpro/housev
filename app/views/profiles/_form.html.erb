@@ -40,7 +40,7 @@
                 
               <%= form.fields_for :address do |address_form| %>
                 <%= address_form.collection_select :city_id, City.order(:city_name), :id, :city_name, 
-                { label: City.model_name.human(count: 1)}  %>
+                { label: City.model_name.human(count: 1)} %>
                 <%= address_form.text_field :street, label: Address.human_attribute_name(:street) %>
               <% end %> 
               
