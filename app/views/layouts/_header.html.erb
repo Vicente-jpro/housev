@@ -114,7 +114,7 @@
            <%= link_to t("devise.links.sign.in"), user_session_path, class: "btn btn-info ms-1" if !user_signed_in?%> 
 
         
-        <div class="dropdown text-end">
+        <div class="dropdown">
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
            <% if user_signed_in? %>
             <span class="text-pink">
@@ -132,28 +132,29 @@
 
           <% end %>
           
-          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+          <ul class="dropdown-menu text-small " aria-labelledby="dropdownUser1">
           <% if user_signed_in? %>
-             <li> <%= link_to t("navbar.profile"), new_profile_path, class: "dropdown-item"%> </li>
+             <li> <%= link_to t("navbar.profile"), new_profile_path, 
+             class: "dropdown-item nav-link px-2 text-pink fs-5"%> </li>
             <li> 
               <%= link_to t("navbar.security"), edit_user_registration_path, 
-              class: "dropdown-item"%> 
+              class: "dropdown-item nav-link px-2 text-pink fs-5"%> 
 
               <%= link_to t("navbar.favorite-lands"), favorite_lands_path, 
-              class: "dropdown-item"%> 
+              class: "dropdown-item nav-link px-2 text-pink fs-5"%> 
 
               <%= link_to t("navbar.favorite-houses"), favorite_houses_path, 
-              class: "dropdown-item"%> 
+              class: "dropdown-item nav-link px-2 text-pink fs-5"%> 
             </li>
             <li> 
               <%= link_to t("devise.links.logout"), destroy_user_session_path,  method: :delete, 
-                class: "dropdown-item" %> 
+                class: "dropdown-item nav-link px-2 text-pink fs-5" %> 
             </li>
           <% end %>
       
           <% if !user_signed_in? %>
             
-            <li> <%= link_to t("devise.links.sign.in"), user_session_path, class: "dropdown-item" %> </li>
+            <li> <%= link_to t("devise.links.sign.in"), user_session_path, class: "dropdown-item nav-link px-2 text-pink fs-5" %> </li>
          
           <% end %>
 
