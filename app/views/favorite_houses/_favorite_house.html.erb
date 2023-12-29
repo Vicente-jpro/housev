@@ -18,12 +18,15 @@
               <%= favorite_house.house.address.city.province.province_name %>
             </strong> <br>
         
+           </p>
+
             <p class="text-primary-emphasis">
               <%=  favorite_house.house.description %>
             </p>
               <span class="bg-green px-3"> <%= favorite_house.house.type_negotiation %></span> <br>
-              <%= favorite_house.house.price %>
-           </p>
+          
+              <strong class="text-pink"><%= favorite_house.house.price %> Kz</strong> 
+          
             <%= button_to "remover from favorite", favorite_house,
           method: :delete, class:"btn btn-pink my-1" %>
 

@@ -48,17 +48,17 @@
       </strong>
     </p>
     
-    <h1 class="fs-3">
+    <h1 class="fs-3 text-primary-emphasis">
         <%= @land.title_land %>
     </h1>
     <p class="fs-3 text-pink">
-       <%= @land.price %> Kz  <span class="fs-5">/mês</span>
+       <strong> <%= @land.price %></strong> Kz  <span class="fs-5">/mês</span>
     </p>
    
     
    <div class="fs-3">
 
-    <div class="d-inline">
+    <div class="d-inline text-primary-emphasis">
       Largura: <%= @land.dimention.height_d %> m², 
       Comprimento: <%= @land.dimention.width_d %> m²
     </div>
@@ -70,7 +70,7 @@
         
         <hr class="text-pink"> <br>
         <strong class="text-pink">Descrição: </strong>
-        <p class="text-description">
+        <p class="text-primary-emphasis">
           <%= @land.description %>
         </p>
 

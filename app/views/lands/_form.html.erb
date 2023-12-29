@@ -9,7 +9,7 @@
 
             </h4>
         </div>
-        <div class="row my-2">
+        <div class="row my-2 text-primary-emphasis">
          <%= bootstrap_form_with(model: land) do |form| %>
           <% if land.errors.any? %>
             <div style="color: red">
@@ -26,34 +26,38 @@
           <% end %>
 
             <div>
-              <%= form.text_field :title_land, label: Land.human_attribute_name(:title_land) %>
-              <%= form.file_field :images, multiple: true %>  
+              <%= form.text_field :title_land, label: Land.human_attribute_name(:title_land),
+              class: 'text-light-emphasis' %>
+              <%= form.file_field :images, multiple: true, class: 'text-light-emphasis' %>  
          
               <%= form.collection_select :province_id, Province.order(:province_name), :id, :province_name, 
-              { label: Province.model_name.human(count: 1) }, {class:"province province_select"}  %> 
+              { label: Province.model_name.human(count: 1) }, {class:"province province_select text-light-emphasis"}  %> 
                 
               <%= form.fields_for :address do |address_form| %>
                 <%= address_form.collection_select :city_id, City.order(:city_name), :id, :city_name, 
-                { label: City.model_name.human(count: 1)},  {class:"city_select"}   %>
-                <%= address_form.text_field :street, label: Address.human_attribute_name(:street) %>
+                { label: City.model_name.human(count: 1)},  {class:"city_select text-light-emphasis"}   %>
+                <%= address_form.text_field :street, label: Address.human_attribute_name(:street),
+                class:'text-light-emphasis' %>
               <% end %> 
               <div class="row">
-                <p class="text-center"> <%= Dimention.model_name.human(count: 1)  %> </p>
+                <p class="text-center text-primary-emphasis"> <%= Dimention.model_name.human(count: 1)  %> </p>
                 <%= form.fields_for :dimention do |dimention_form| %>
                   <div class="col">
                     <%= dimention_form.number_field :width_d, 
-                    label: Dimention.human_attribute_name(:width_d) %>
+                    label: Dimention.human_attribute_name(:width_d), class: 'text-light-emphasis' %>
                   </div>
                   <div class="col">
                     <%= dimention_form.number_field :height_d, 
-                    label: Dimention.human_attribute_name(:height_d) %>
+                    label: Dimention.human_attribute_name(:height_d), class: 'text-light-emphasis' %>
                   </div>
                 <% end %> 
               </div>
 
 
-              <%= form.number_field :price, label: Land.human_attribute_name(:price)%>
-              <%= form.text_area :description, label: Land.human_attribute_name(:description), size: "70x5" %>
+              <%= form.number_field :price, label: Land.human_attribute_name(:price), 
+              class: 'text-light-emphasis'%>
+              <%= form.text_area :description, label: Land.human_attribute_name(:description), 
+              size: "70x5", class: 'text-light-emphasis' %>
         
             </div>
 

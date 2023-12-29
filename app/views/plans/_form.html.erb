@@ -4,7 +4,7 @@
         <%= bootstrap_form_with(model: plan) do |form| %>
           <% if plan.errors.any? %>
             <div style="color: red">
-              <h2><%= pluralize(plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
+              <h5><%= pluralize(plan.errors.count, "error") %> prohibited this plan from being saved:</h5>
 
               <ul>
                 <% plan.errors.each do |error| %>
@@ -14,9 +14,9 @@
             </div>
           <% end %>
 
-            <%= form.text_field :name_plans %>
-            <%= form.number_field :price %>
-            <%= form.rich_text_area :description, size: "70x5" %>
+            <%= form.text_field :name_plans, class: 'text-light-emphasis' %>
+            <%= form.number_field :price, class: 'text-light-emphasis' %>
+            <%= form.rich_text_area :description, size: "70x5", class: 'text-light-emphasis' %>
 
           <div class="mb-3 d-grid gap-2">
             <%= form.submit class: "btn btn-info" %>

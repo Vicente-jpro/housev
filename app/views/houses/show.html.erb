@@ -50,7 +50,7 @@
       </strong>
     </p>
     
-    <h1 class="fs-3">
+    <h1 class="fs-3 text-primary-emphasis">
         <%= @house.title %>, <%= @house.tipology %>
     </h1>
     <p class="fs-3 text-pink">
@@ -60,7 +60,7 @@
     
    <div class="fs-3">
 
-    <div class="d-inline">
+    <div class="d-inline text-primary-emphasis">
       <%= Dimention.human_attribute_name(:width_d) %>: <%= @house.dimention.height_d %> m², 
       <%= Dimention.human_attribute_name(:height_d)%>: <%= @house.dimention.width_d %> m²
     </div>
@@ -72,7 +72,7 @@
         
         <hr class="text-pink"> <br>
         <strong class="text-pink"><%= House.human_attribute_name(:description) %></strong>
-        <p class="text-description">
+        <p class="text-primary-emphasis">
           <%= @house.description %>
         </p>
 
@@ -83,7 +83,7 @@
          </p>
          <div class="row">
             <div class="col">
-              <p class="text-description">
+              <p class="text-primary-emphasis">
                 
                 <i class="bi bi-check2-circle text-pink"></i> 
                  <%= @house.living_room %> <%= House.human_attribute_name(:living_room) %>  <br>
@@ -96,7 +96,7 @@
               </p>
             </div>
             <div class="col">
-              <p class="text-description">
+              <p class="text-primary-emphasis">
                 <i class="bi bi-check2-circle text-pink"></i> 
                  <%= @house.kitchen %> <%= House.human_attribute_name(:kitchen) %>  <br>
 
@@ -108,7 +108,7 @@
               </p>
             </div>
             <div class="col">
-              <p class="text-description">
+              <p class="text-primary-emphasis">
                  <i class="bi bi-check2-circle text-pink"></i>
                  <%= @house.pool %> <%= House.human_attribute_name(:pool) %>  <br>
 
@@ -132,7 +132,7 @@
               <p>
                 <strong class="text-pink"> <%= House.human_attribute_name(:type_negotiation) %> </strong>
               </p>
-              <p class="text-description">
+              <p class="text-primary-emphasis">
                 <i class="bi bi-check2-circle text-pink"></i>
                 <%= @house.type_negotiation %>  <br>
               </p>
@@ -141,7 +141,7 @@
              <p>
                 <strong class="text-pink"> <%= House.human_attribute_name(:next_by) %> </strong>
               </p>
-              <p class="text-description">
+              <p class="text-primary-emphasis">
                   <i class="bi bi-check2-circle text-pink"></i> 
                  <%= @house.next_by %> <br>
               </p>
@@ -150,7 +150,7 @@
               <p>
                 <strong class="text-pink"> <%= House.human_attribute_name(:property_type) %> </strong>
               </p>
-              <p class="text-description">
+              <p class="text-primary-emphasis">
                   <i class="bi bi-check2-circle text-pink"></i> 
                  <%= @house.property_type %> <br>
               </p>
@@ -159,7 +159,7 @@
               <p>
                 <strong class="text-pink"> <%= House.human_attribute_name(:condition)%> </strong>
               </p>
-              <p class="text-description">
+              <p class="text-primary-emphasis">
                   <i class="bi bi-check2-circle text-pink"></i> 
                  <%= @house.condition %> <br>
               </p>

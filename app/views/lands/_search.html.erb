@@ -10,21 +10,23 @@
             
             <%= bootstrap_form_tag url: "/lands/search", method: :get do |form| %>
              
-            <div class="row">
+            <div class="row text-primary-emphasis">
               <div class="col"> 
-                <%= form.text_field :title_land, label: Land.human_attribute_name(:title_land) %>
+                <%= form.text_field :title_land, label: Land.human_attribute_name(:title_land),
+                class: 'text-light-emphasis' %>
               </div>               
                <div class="col">
                 <%= form.collection_select :province_code, Province.order(:province_name), :id, :province_name, 
-                  { label: Province.model_name.human(count: 1) }  %> 
+                  { label: Province.model_name.human(count: 1) }, class: 'text-light-emphasis'  %> 
               </div>
                <div class="col">
                     <%= form.collection_select :city_code, City.order(:city_name), :id, :city_name, 
-                            { label: City.model_name.human(count: 1)}  %>
+                            { label: City.model_name.human(count: 1)}, class: 'text-light-emphasis'  %>
               </div>
 
                <div class="col">
-                  <%= form.number_field :price, label: Land.human_attribute_name(:price) %>
+                  <%= form.number_field :price, label: Land.human_attribute_name(:price), 
+                  class: 'text-light-emphasis' %>
               </div>
 
             </div>            

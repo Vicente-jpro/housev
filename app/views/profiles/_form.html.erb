@@ -14,7 +14,7 @@
           <%= bootstrap_form_with(model: profile) do |form| %>
             <% if profile.errors.any? %>
               <div style="color: red">
-                <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+                <h5><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h5>
 
                 <ul>
                   <% profile.errors.each do |error| %>
@@ -26,22 +26,27 @@
 
             <div>
               <%= form.text_field :name_profile, 
-              label: Profile.human_attribute_name(:name_profile) %>
-              <%= form.file_field :image, label: Profile.human_attribute_name(:image) %>  
-              <%= form.select :gender, Profile.genders, {label: :gender}%>
+              label: Profile.human_attribute_name(:name_profile), class: 'text-light-emphasis' %>
+              <%= form.file_field :image, label: Profile.human_attribute_name(:image),
+               class: 'text-light-emphasis'%>  
+              <%= form.select :gender, Profile.genders, {label: :gender}, class: 'text-light-emphasis'%>
 
               <%= form.select :profile_type, Profile.profile_types, 
-                {label: Profile.human_attribute_name(:profile_type)} %>
-              <%= form.telephone_field :phone1, label: Profile.human_attribute_name(:phone1) %>
-              <%= form.telephone_field :phone2, label: Profile.human_attribute_name(:phone2) %>
+                {label: Profile.human_attribute_name(:profile_type)}, class: 'text-light-emphasis' %>
+              <%= form.telephone_field :phone1, label: Profile.human_attribute_name(:phone1), 
+              class: 'text-light-emphasis' %>
+              <%= form.telephone_field :phone2, label: Profile.human_attribute_name(:phone2), 
+              class: 'text-light-emphasis' %>
             
               <%= form.collection_select :province_id, Province.order(:province_name), :id, :province_name, 
-              { label: Province.model_name.human(count: 1) }, {class:"province province_select"}  %> 
+              { label: Province.model_name.human(count: 1) }, {class:"province province_select"}
+              , class: 'text-light-emphasis'  %> 
                 
               <%= form.fields_for :address do |address_form| %>
                 <%= address_form.collection_select :city_id, City.order(:city_name), :id, :city_name, 
-                { label: City.model_name.human(count: 1)},  {class:"city_select"}  %>
-                <%= address_form.text_field :street, label: Address.human_attribute_name(:street) %>
+                { label: City.model_name.human(count: 1)},  {class:"city_select"}, class: 'text-light-emphasis'%>
+                <%= address_form.text_field :street, label: Address.human_attribute_name(:street), 
+                class: 'text-light-emphasis' %>
               <% end %> 
               
       

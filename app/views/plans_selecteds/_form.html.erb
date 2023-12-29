@@ -5,7 +5,7 @@
         <%= bootstrap_form_with(model: plans_selected) do |form| %>
           <% if plans_selected.errors.any? %>
             <div style="color: red">
-              <h2><%= pluralize(plans_selected.errors.count, "error") %> prohibited this plans_selected from being saved:</h2>
+              <h5><%= pluralize(plans_selected.errors.count, "error") %> prohibited this plans_selected from being saved:</h5>
 
               <ul>
                 <% plans_selected.errors.each do |error| %>
@@ -15,13 +15,13 @@
             </div>
           <% end %>
 
-            <%= form.number_field :day_used %>
+            <%= form.number_field :day_used, class: 'text-light-emphasis' %>
             <%= form.collection_select :plan_id, Plan.order(:name_plans), :id, 
-                :name_plans, { label: "Plans" }  %> 
-            <%= form.select :duration, PlansSelected.durations.keys %>
+                :name_plans, { label: "Plans" }, class: 'text-light-emphasis'  %> 
+            <%= form.select :duration, PlansSelected.durations.keys, class: 'text-light-emphasis' %>
              
-            <%= form.check_box :activated %>
-            <%= form.check_box :first_time %>
+            <%= form.check_box :activated, class: 'text-light-emphasis' %>
+            <%= form.check_box :first_time, class: 'text-light-emphasis' %>
            <div class="mb-3 d-grid gap-2">
             <%= form.submit class:"btn btn-info" %>
             
