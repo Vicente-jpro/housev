@@ -2,66 +2,62 @@
    <section class="container">
     <div class="card shadow-lg p-3 mb-5 bg-body-tertiary">
       <div class="card-body">
-          <div class="card-title">
-              <h4 class="text-center text-pink">Filtrar por</h4>
-                <%= t("pages.houses.title.actions.create")%>
-
-          </div>
-   
             
             <%= bootstrap_form_tag url: "/houses/search", method: :get do |form| %>
-              <div class="row">
+              <div class="row text-primary-emphasis">
                 <div class="col-sm-4">
-                    <%= form.text_field :title, label: House.human_attribute_name(:title) %>      
+                    <%= form.text_field :title, label: House.human_attribute_name(:title),
+                    class:"text-light-emphasis" %>      
                 </div>
               <div class="col">
-                 <%= form.number_field :living_room, label: House.human_attribute_name(:living_room) %> 
+                 <%= form.number_field :living_room, label: House.human_attribute_name(:living_room),
+                 class:"text-light-emphasis" %> 
               </div>
               <div class="col">
-                <%= form.number_field :room, label: House.human_attribute_name(:room)%>
+                <%= form.number_field :room, label: House.human_attribute_name(:room),
+                class: "text-light-emphasis"%>
               </div>
               <div class="col">
-                <%= form.number_field :price, label: House.human_attribute_name(:price) %>
+                <%= form.number_field :price, label: House.human_attribute_name(:price),
+                class:"text-light-emphasis" %>
               </div>
                 <div class="col"> 
-                    <%= form.number_field :kitchen, label: House.human_attribute_name(:kitchen) %>    
+                    <%= form.number_field :kitchen, label: House.human_attribute_name(:kitchen),
+                    class:"text-light-emphasis" %>    
                 </div>
             </div>
             
-            <div class="row">
+            <div class="row text-primary-emphasis">
               <div class="col"> 
                   <%= form.select :type_negotiation, House.type_negotiations, 
-                {label: House.human_attribute_name(:type_negotiation)} %>  
+                {label: House.human_attribute_name(:type_negotiation)},
+                class: "text-light-emphasis" %>  
               </div>
                
               <div class="col">
                 <%= form.select :condition, House.conditions, 
-                          {label: House.human_attribute_name(:condition)} %>
+                          {label: House.human_attribute_name(:condition)}, class:"text-light-emphasis" %>
               </div>
                <div class="col">
                   <%= form.select :tipology, House.tipologies, 
-                            {label: House.human_attribute_name(:tipology)}%>    
+                            {label: House.human_attribute_name(:tipology)}, class:"text-light-emphasis"%>    
               </div>
                <div class="col">
                 <%= form.collection_select :province_code, Province.order(:province_name), :id, :province_name, 
-                  { label: Province.model_name.human(count: 1) }  %> 
+                  { label: Province.model_name.human(count: 1) }, class:"text-light-emphasis"  %> 
               </div>
                <div class="col">
                     <%= form.collection_select :city_code, City.order(:city_name), :id, :city_name, 
-                            { label: City.model_name.human(count: 1)}  %>
+                            { label: City.model_name.human(count: 1)}, class:"text-light-emphasis"  %>
                   
               </div>
             </div>
               
-             
               <div class="mb-3 d-grid gap-2">
                 <%= form.submit "Pesquisar", class: "btn btn-pink" %>
               </div>
+          <% end %>
 
-              <% end %>
-              <div class="mb-3 d-grid gap-2">
-                <%= link_to "Pesquisar por filtros avançados", search_advanced_houses_path, class: "btn btn-pink" %>
-              </div>
       
       </div>
     </div>

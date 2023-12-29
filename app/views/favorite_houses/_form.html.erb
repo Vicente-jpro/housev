@@ -1,7 +1,7 @@
 <%= form_with(model: favorite_house) do |form| %>
   <% if favorite_house.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(favorite_house.errors.count, "error") %> prohibited this favorite_house from being saved:</h2>
+      <h5><%= pluralize(favorite_house.errors.count, "error") %> prohibited this favorite_house from being saved:</h5>
 
       <ul>
         <% favorite_house.errors.each do |error| %>
