@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_11_101323) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_27_200527) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -63,6 +63,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_11_101323) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["province_id"], name: "index_cities_on_province_id"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "cliente_name"
+    t.string "whatsapp"
+    t.string "email_cliente"
+    t.string "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "dimentions", force: :cascade do |t|

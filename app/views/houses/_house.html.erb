@@ -17,14 +17,19 @@
               <%= house.tipology %>
               <%= house.address.city.province.province_name %>
             </strong> <br>
-        
-            <p class="text-description">
-              <%=  house.description %>
-            </p>
-              <span class="bg-green px-3"> <%= house.type_negotiation %></span> <br>
-              <%= house.price %>
           </p>
 
+            <p class="text-primary-emphasis">
+              <%=  house.description %>
+            </p>
+
+            <div class="d-inline">
+              <strong class="text-primary-emphasis"><%= house.price %> Kz</strong>
+            </div>
+            <div class="d-inline px-5">
+              <strong class="text-pink"> <%= house.type_negotiation %></strong> 
+            </div>
+              
         </div>
       </div>
     </div>

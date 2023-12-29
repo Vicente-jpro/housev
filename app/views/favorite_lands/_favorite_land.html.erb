@@ -6,21 +6,24 @@
       <% if favorite_land.land.images.attached? %>
         <%= render "images_index", images: favorite_land.land.images %>
       <% end %>
-  
-      <div class="card-body">
-        <p class="card-text">
 
-            <strong class="text-pink"><%= favorite_land.land.title_land %></strong> <br>
-      
-          <p class="text-description">
-              <%= favorite_land.land.description %>
+      <div class="card-body">
+          <p class="card-text">
+              <strong class="text-pink"><%= favorite_land.land.title_land %></strong> <br>
           </p>
-            <span class="bg-green px-3">Venda</span> <br>
-            <%= favorite_land.land.price %>
-        </p>
-          <%= button_to "remover from favorite", favorite_land,
-          method: :delete, class:"btn btn-pink my-1" %>
-      </div>
+
+            <p class="text-primary-emphasis">     
+               <%= favorite_land.land.description %>
+            </p>
+
+            <div class="d-inline">
+              <strong class="text-primary-emphasis"><%= favorite_land.land.price %> Kz</strong>
+            </div>
+            
+            <%= button_to "remover from favorite", favorite_land,
+            method: :delete, class:"btn btn-pink my-1" %>  
+        </div>
+
 
     </div>
   </div>
