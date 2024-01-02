@@ -1,7 +1,7 @@
 class HousesController < ApplicationController
   before_action :set_house, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, 
-    except: [ :show, :index, :show_images, :search, :search_advanced]
+    except: [ :show, :index, :show_images, :search, :search_advanced, :rent, :buy]
   before_action :get_profile, only: [ :create ]
   before_action :is_creator?, only: [ :update, :destroy ]
 
@@ -39,7 +39,7 @@ class HousesController < ApplicationController
     @house.build_dimention
   end
 
-  def rent 
+  def rent
     @houses = House.rent.page(params[:page])
   end
 
