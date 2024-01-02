@@ -1,8 +1,3 @@
-# available at https://guides.rubyonrails.org/i18n.html.
-
-# available at https://guides.rubyonrails.org/i18n.html.
-# Translate enum in rails
-# https://stackoverflow.com/questions/22827270/rails-how-to-use-i18n-with-rails-4-enums
 en:
   welcome: Welcome
   hello: Hello
@@ -105,26 +100,27 @@ en:
       search: Search
       Search-using-advanced-filters: Search using advanced filters
 
-    navbar:
-      home: Home
-      house: Properties
-      rent: Rend
-      buy: Buy
-      land: Lands
-      profile: Perfile
-      security: Security
-      favorite-lands: Favorite land
-      favorite-houses: Ímoveis favoritos
-      properties:
-        house:
-          new: New
-          view: View
-          my-posted-properties: My posted properties
-        land:
-          new: New
-          view: View
-          my-posted-properties: My posted properties
-          
+  navbar:
+    home: Home
+    house: Properties
+    rent: Rend
+    buy: buy 
+    lotes-houses: "Lotes e Houses"
+    land: Lands
+    profile: Perfile
+    security: Security
+    favorite-lands: Favorite land
+    favorite-houses: Ímoveis favoritos
+    properties:
+      house:
+        new: New 
+        view: View 
+        my-posted-properties: My posted properties
+      land:
+        new: New
+        view: View
+        my-posted-properties: My posted properties
+        
   links:
     destroy: Delete
     edit: Edit
