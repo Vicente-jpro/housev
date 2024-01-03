@@ -47,19 +47,6 @@ class HousesController < ApplicationController
     @houses = House.buy.page(params[:page])
   end
 
-  def publisher 
-    house = House.new 
-    house.id = params[:id]
-    owner_house = User.find_user_by_house(house)
-    
-    HouseMailer.publisher(
-      params[:client_name], 
-      params[:client_email],  
-      params[:client_message], 
-      owner_house, 
-      house)
-           .deliver_later
-  end
   # GET /houses/search_advanced
   def search_advanced 
     @houses = House.search_advanced_by(params)

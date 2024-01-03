@@ -1,59 +1,53 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: %i[ show edit update destroy ]
 
-  # GET /contacts or /contacts.json
-  def index
-    @contacts = Contact.all
-  end
-
-  # GET /contacts/1 or /contacts/1.json
-  def show
-  end
-
-  # GET /contacts/new
-  def new
-    @contact = Contact.new
-  end
-
-  # GET /contacts/1/edit
-  def edit
-  end
-
   # POST /contacts or /contacts.json
+
+  def show 
+  end 
+
   def create
     @contact = Contact.new(contact_params)
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to contact_url(@contact), notice: "Contact was successfully created." }
+
+        if contact_params[:controlleer_name] == "houses"
+          house = House.new 
+          house.id = contact_params[:house_id]
+          owner_house = User.find_user_by_house(house)
+      
+          HouseMailer.publisher(
+            contact_params[:cliente_name], 
+            contact_params[:email_cliente],  
+            contact_params[:message], 
+            contact_params[:whatsapp], 
+            owner_house, 
+            house)
+                .deliver_later
+          
+        elsif contact_params[:controlleer_name] == "lands"
+
+          land = Land.new 
+          land.id = contact_params[:land_id]
+          owner_land = User.find_user_by_land(land)
+      
+          LandMailer.publisher(
+            contact_params[:cliente_name], 
+            contact_params[:email_cliente],  
+            contact_params[:message],  
+            contact_params[:whatsapp], 
+            owner_land, 
+            land)
+                .deliver_later
+        end
+
+        format.html { redirect_to contact_url(@contact), notice: "Message sent successfully." }
         format.json { render :show, status: :created, location: @contact }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PATCH/PUT /contacts/1 or /contacts/1.json
-  def update
-    respond_to do |format|
-      if @contact.update(contact_params)
-        format.html { redirect_to contact_url(@contact), notice: "Contact was successfully updated." }
-        format.json { render :show, status: :ok, location: @contact }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /contacts/1 or /contacts/1.json
-  def destroy
-    @contact.destroy
-
-    respond_to do |format|
-      format.html { redirect_to contacts_url, notice: "Contact was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 
@@ -65,6 +59,13 @@ class ContactsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def contact_params
-      params.require(:contact).permit(:cliente_name, :whatsapp, :email_cliente, :message)
+      params.require(:contact).permit(
+        :cliente_name, 
+        :whatsapp, 
+        :email_cliente, 
+        :message,
+        :house_id,
+        :land_id,
+        :controlleer_name)
     end
 end

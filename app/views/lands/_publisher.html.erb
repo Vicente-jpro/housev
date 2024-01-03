@@ -13,20 +13,10 @@
               <%= @profile.user.email %>
             </p>
             <div class="text-primary-emphasis">
-              <%= bootstrap_form_tag url: "/lands/publisher", method: :get do |form| %>
-                  
-                  <%= form.text_field :client_name, placeholder: "Seu nome", class: 'text-light-emphasis' %>
-                  <%= form.email_field :client_email, placeholder: "Ex: exemplo@dominio.com", 
-                  class: 'text-light-emphasis'%>
-                  <%= form.hidden_field :id, value: @land.id %>
-                  <%= form.text_area :client_message, value: "Olá #{@profile.name_profile if @profile.present?} estou inteçado com este imovel.",  
-                  size: "70x5", class: 'text-light-emphasis'%>
-                  <div class="d-grid gap-2">
-                      <%= form.submit  t("links.send"), class: "btn btn-pink" %>
-                  </div>
-              <% end %>
+        
+              <%= render "contacts/form", contact: Contact.new %>
+        
             </div>
-
           </div>
         </div>
       

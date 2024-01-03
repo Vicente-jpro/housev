@@ -12,18 +12,8 @@
               <%= @profile.phone1 %>, <%= @profile.phone1 %>, 
               <%= @profile.user.email %>
             </p>
-            
-            <%= bootstrap_form_tag url: "/houses/publisher", method: :get do |form| %>
-                
-                <%= form.text_field :client_name, placeholder: "Seu nome", class: "text-light-emphasis" %>
-                <%= form.email_field :client_email, placeholder: "Ex: exemplo@dominio.com"%>
-                <%= form.hidden_field :id, value: @house.id %>
-                <%= form.text_area :client_message, value: "Olá #{@profile.name_profile if @profile.present?} estou intessado com este ímovel.",  
-                size: "70x5", class:"text-light-emphasis"%>
-                <div class="d-grid gap-2">
-                    <%= form.submit  t("links.send"), class: "btn btn-pink" %>
-                </div>
-            <% end %>
+    
+            <%= render "contacts/form", contact: Contact.new %>
 
           </div>
         </div>

@@ -1,7 +1,7 @@
 require 'resque/server'
 
 Rails.application.routes.draw do
-  resources :contacts
+  resources :contacts, only: [:create, :show]
   resources :plans_selecteds
   resources :plans
   
@@ -29,7 +29,6 @@ Rails.application.routes.draw do
    
     collection do 
       get 'search'
-      get 'publisher'
     end
   end
   
@@ -39,7 +38,6 @@ Rails.application.routes.draw do
     collection do
       get 'search'
       get 'search_advanced'
-      get 'publisher'
       get 'rent'
       get 'buy'
     end

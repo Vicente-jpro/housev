@@ -11,11 +11,23 @@
     </div>
   <% end %>
 
-    <%= form.text_field :cliente_name %>
-    <%= form.text_field :whatsapp %>
-    <%= form.text_field :email_cliente %>
-    <%= form.text_field :message %>
+    <%= form.text_field :cliente_name, placeholder: "Seu nome" %>
+    <%= form.telephone_field :whatsapp, placeholder: "Ex: +244998995999" %>
+    <%= form.email_field :email_cliente, placeholder: "Ex: usuario@dominio.com" %>
 
+    <% if controller_name == "houses" %>
+     <%= form.hidden_field :house_id, value: @house.id %>
+      <%= form.text_area :message, 
+      value: "Olá #{@profile.name_profile if @profile.present?} estou intessado com este ímovel." %>
+    <% elsif controller_name == "lands" %>
+
+      <%= form.hidden_field :land_id, value: @land.id %>
+      <%= form.text_area :message, 
+      value: "Olá #{@profile.name_profile if @profile.present?} estou intessado com este terreno." %>
+    <% end %>
+
+    <%= form.hidden_field :controlleer_name, value: controller_name %>
+   
    <div class="d-grid gap-2">
      <%= form.submit  t("links.send"), class: "btn btn-pink" %>
    </div>

@@ -2,11 +2,6 @@
    <section class="container">
     <div class="card shadow-lg p-3 mb-5 bg-body-tertiary">
       <div class="card-body">
-          <div class="card-title">
-              <h4 class="text-center text-pink">Filtrar por</h4>
-                <%= t("pages.houses.title.actions.create")%>
-
-          </div>
             
             <%= bootstrap_form_tag url: "/lands/search", method: :get do |form| %>
              
@@ -17,11 +12,11 @@
               </div>               
                <div class="col">
                 <%= form.collection_select :province_code, Province.order(:province_name), :id, :province_name, 
-                  { label: Province.model_name.human(count: 1) }, class: 'text-light-emphasis'  %> 
+                  { label: Province.model_name.human(count: 1) }, class: 'province province_select text-light-emphasis'  %> 
               </div>
                <div class="col">
-                    <%= form.collection_select :city_code, City.order(:city_name), :id, :city_name, 
-                            { label: City.model_name.human(count: 1)}, class: 'text-light-emphasis'  %>
+                    <%= form.collection_select :city_code, cities_array_empty, :id, :city_name, 
+                            { label: City.model_name.human(count: 1)}, class: 'city_select text-light-emphasis'  %>
               </div>
 
                <div class="col">
