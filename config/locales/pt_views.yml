@@ -113,10 +113,10 @@ pt:
         view: Visualizar
         my-posted-properties: Meus ímoveis postados
       land:
-        new: New
-        view: View
+        new: Novo
+        view: Visualizar
         my-posted-properties: Meus terrenos postados
-
+    pricing: Preços
   links:
     destroy: Eliminar
     edit: Editar

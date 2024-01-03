@@ -120,7 +120,8 @@ en:
         new: New
         view: View
         my-posted-properties: My posted properties
-        
+    pricing: Pricing
+
   links:
     destroy: Delete
     edit: Edit
