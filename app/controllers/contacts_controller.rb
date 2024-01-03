@@ -21,6 +21,7 @@ class ContactsController < ApplicationController
             contact_params[:cliente_name], 
             contact_params[:email_cliente],  
             contact_params[:message], 
+            contact_params[:whatsapp], 
             owner_house, 
             house)
                 .deliver_later
@@ -35,6 +36,7 @@ class ContactsController < ApplicationController
             contact_params[:cliente_name], 
             contact_params[:email_cliente],  
             contact_params[:message],  
+            contact_params[:whatsapp], 
             owner_land, 
             land)
                 .deliver_later

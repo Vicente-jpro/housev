@@ -1,10 +1,11 @@
 class LandMailer < ApplicationMailer
 
 
-  def publisher(client_name, client_email, client_message, owner_land, land)
+  def publisher(client_name, client_email, client_message, whatsapp, owner_land, land)
     @client_name = client_name 
     @client_email = client_email 
     @client_message = client_message
+    @whatsapp = whatsapp
    
     @owner_land = owner_land
     @url = "http://localhost:3000/lands/#{land.id}"

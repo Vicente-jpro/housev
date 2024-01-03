@@ -17,10 +17,14 @@
     <p>
       <%= @client_message %>
     </p>
-    <br>
 
-    <h3>Email do cliente: <%= @client_email %> </h3>
-    
+    <br>
+    <h4>Contactos do cliente:<h4>
+    <ul>
+      <li>Email: <%= @client_email %></li>
+      <li>Whatsapp/Telemóvel: <%= @@whatsapp %></li>
+    <ul>
+  
     <br>
 
     <a href="<%= @url %>"> Clica aqui para ver o imóvel que cliente tem interece. </a>
