@@ -19,7 +19,8 @@ class House < ApplicationRecord
 
 
 
-  validates_presence_of :address, :dimention, :price, :title, :description
+  validates_presence_of :address, :dimention, :price, :title, :description,
+  :client_name, :client_email, :client_message
  
   JOIN_CITIES_AND_PROVINCES = "JOIN cities ON cities.id = addresses.city_id JOIN provinces ON provinces.id = cities.province_id"
  

@@ -1,4 +1,4 @@
-<%= form_with(model: contact) do |form| %>
+<%= bootstrap_form_with(model: contact) do |form| %>
   <% if contact.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
@@ -11,27 +11,12 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :cliente_name, style: "display: block" %>
     <%= form.text_field :cliente_name %>
-  </div>
-
-  <div>
-    <%= form.label :whatsapp, style: "display: block" %>
     <%= form.text_field :whatsapp %>
-  </div>
-
-  <div>
-    <%= form.label :email_cliente, style: "display: block" %>
     <%= form.text_field :email_cliente %>
-  </div>
-
-  <div>
-    <%= form.label :message, style: "display: block" %>
     <%= form.text_field :message %>
-  </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+   <div class="d-grid gap-2">
+     <%= form.submit  t("links.send"), class: "btn btn-pink" %>
+   </div>
 <% end %>
