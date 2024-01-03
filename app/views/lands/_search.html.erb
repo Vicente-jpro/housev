@@ -15,7 +15,7 @@
                   { label: Province.model_name.human(count: 1) }, class: 'province province_select text-light-emphasis'  %> 
               </div>
                <div class="col">
-                    <%= form.collection_select :city_code, City.order(:city_name), :id, :city_name, 
+                    <%= form.collection_select :city_code, cities_array_empty, :id, :city_name, 
                             { label: City.model_name.human(count: 1)}, class: 'city_select text-light-emphasis'  %>
               </div>
 

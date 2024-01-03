@@ -43,7 +43,7 @@
               {class:"province province_select text-light-emphasis"} %> 
                 
               <%= form.fields_for :address do |address_form| %>
-                <%= address_form.collection_select :city_id, City.order(:city_name), :id, :city_name, 
+                <%= address_form.collection_select :city_id, cities_array_empty, :id, :city_name, 
                 { label: City.model_name.human(count: 1)},  {class:"city_select text-light-emphasis"}%>
                 <%= address_form.text_field :street, label: Address.human_attribute_name(:street), 
                 class: 'text-light-emphasis' %>
