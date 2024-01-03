@@ -1,21 +1,11 @@
   <header class="p-3">
-    <ul class="nav justify-content-end">
-      <li class="nav-item">
-        <a class="nav-link" href="#">vicente.simao.rails@gmail.com</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">facebook</a>
-      </li>
-      <li class="nav-item">
-        <%= render 'layouts/switch_locale' %>
-      </li>
-    </ul>
     <div class="container-fluid">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
-        </a>
 
+      <div class="text-end">
+        <%= render 'layouts/switch_locale' %>
+      </div>
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
            <li> <%= link_to t("navbar.home"), root_path, class: "nav-link px-2 text-pink fs-5" %> </li>
           
@@ -63,8 +53,6 @@
         <% end %>
 
 
-          <% if user_signed_in? %>
-            <% if current_user.profile.cliente? %>
 
               <!--Rent-->
               <div class="dropdown">
@@ -73,10 +61,10 @@
                   </button>
                   <ul class="dropdown-menu">
                     <li>
-                      <%= link_to "Arrendar", rent_houses_path, class:"dropdown-item nav-link px-2 text-pink fs-5" %>
+                      <%= link_to t("navbar.rent"), rent_houses_path, class:"dropdown-item nav-link px-2 text-pink fs-5" %>
                     </li>
                      <li>
-                      <%= link_to "Comprar", buy_houses_path, class:"dropdown-item nav-link px-2 text-pink fs-5" %>
+                      <%= link_to t("navbar.buy"), buy_houses_path, class:"dropdown-item nav-link px-2 text-pink fs-5" %>
                     </li>
                      <li>
                         <%= link_to t("navbar.properties.house.view"), houses_path, class: "nav-link px-2 text-pink fs-5 house"%>
@@ -85,80 +73,82 @@
                   </ul>
                 </div>
               <!--End Rent -->
-              
-              <li> <%= link_to t("navbar.land"), lands_path, class: "nav-link px-2 text-pink fs-5 land" %> </li>
-            <% end %>
-          <% end %>
+ 
+          <% if user_signed_in? %>
+            <% if current_user.profile.cliente?%>
+            <!--Proprieties -->
+            <div class="dropdown">
+                <button class="nav-link px-2 text-pink fs-5 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <%=  t("navbar.lotes-houses") %>
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <%= link_to t("navbar.house"), houses_path, class:"dropdown-item nav-link px-2 text-pink fs-5" %>
+                  </li>
+                  <li>
+                    <%= link_to t("navbar.land"), lands_path, class:"dropdown-item nav-link px-2 text-pink fs-5" %>
+                  </li>
+                </ul>
+              </div>
+            <!--End Proprieties -->
+           <% end %>
+         <% end %>
 
-           <!--Buy -->
-           <div class="dropdown">
-              <button class="nav-link px-2 text-pink fs-5 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <%=  t("navbar.buy") %>
-              </button>
-              <ul class="dropdown-menu">
-                <li>
-                  <%= link_to "House", new_land_path, class:"dropdown-item nav-link px-2 text-pink fs-5" %>
-                </li>
-                <li>
-                  <%= link_to "Land", lands_path, class:"dropdown-item nav-link px-2 text-pink fs-5" %>
-                </li>
-              </ul>
-            </div>
-          <!--End Buy -->
-
-           <li> <%= link_to "Plans", plans_path, class: "nav-link px-2 text-pink fs-5 land" %> </li>
+           <li> <%= link_to t("navbar.pricing"), plans_path, class: "nav-link px-2 text-pink fs-5 land" %> </li>
 
         </ul>
 
-        <%= link_to t("devise.links.sign.up"), new_user_registration_path, class: "btn btn-pink ms-1" if !user_signed_in?%> 
-           <%= link_to t("devise.links.sign.in"), user_session_path, class: "btn btn-info ms-1" if !user_signed_in?%> 
 
+        <%= link_to t("devise.links.sign.up"), new_user_registration_path, class: "btn btn-pink ms-1" if !user_signed_in?%> 
+        <%= link_to t("devise.links.sign.in"), user_session_path, class: "btn btn-info ms-1" if !user_signed_in?%> 
         
-        <div class="dropdown text-end">
-          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-           <% if user_signed_in? %>
-            <span class="text-pink">
-              
-                <%= current_user.email %>
-              
+
+         <% if user_signed_in? %>
+          <div class="dropdown">
+            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            
+            <span class="text-pink">  
+              <%= current_user.email %>
             </span>
+
               <%= image_tag(current_user.profile.image, class: "rounded-circle ms-2", 
                 width:"32", height:"32") if current_user.profile.image.attached? %>
          
 
             <% if !current_user.profile.image.attached? %>
-              <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle ms-2"></a>
+              <img src="https://w7.pngwing.com/pngs/584/113/png-transparent-pink-user-icon.png" alt="mdo" width="32" height="32" class=" bd-placeholder-img rounded-circle ms-2"></a>
             <% end %>
 
           <% end %>
           
-          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+          <ul class="dropdown-menu text-small " aria-labelledby="dropdownUser1">
           <% if user_signed_in? %>
-             <li> <%= link_to t("navbar.profile"), new_profile_path, class: "dropdown-item"%> </li>
+             <li> <%= link_to t("navbar.profile"), new_profile_path, 
+             class: "dropdown-item nav-link px-2 text-pink fs-5"%> </li>
             <li> 
               <%= link_to t("navbar.security"), edit_user_registration_path, 
-              class: "dropdown-item"%> 
+              class: "dropdown-item nav-link px-2 text-pink fs-5"%> 
 
               <%= link_to t("navbar.favorite-lands"), favorite_lands_path, 
-              class: "dropdown-item"%> 
+              class: "dropdown-item nav-link px-2 text-pink fs-5"%> 
 
               <%= link_to t("navbar.favorite-houses"), favorite_houses_path, 
-              class: "dropdown-item"%> 
+              class: "dropdown-item nav-link px-2 text-pink fs-5"%> 
             </li>
             <li> 
               <%= link_to t("devise.links.logout"), destroy_user_session_path,  method: :delete, 
-                class: "dropdown-item" %> 
+                class: "dropdown-item nav-link px-2 text-pink fs-5" %> 
             </li>
           <% end %>
       
           <% if !user_signed_in? %>
             
-            <li> <%= link_to t("devise.links.sign.in"), user_session_path, class: "dropdown-item" %> </li>
+            <li> <%= link_to t("devise.links.sign.in"), user_session_path, class: "dropdown-item nav-link px-2 text-pink fs-5" %> </li>
          
           <% end %>
-
-          </ul>
-    
+          
+ 
+          </ul>    
         </div>
       </div>
 

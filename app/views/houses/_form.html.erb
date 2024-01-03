@@ -1,13 +1,7 @@
  <div class="container col-lg-6 my-4">
     <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
         <div class="card-body ">
-        <div class="card-title">
-            <h4 class="text-center text-pink">
-
-              <%= t("pages.houses.title.actions.create")%>
-            
-            </h4>
-        </div>
+        
         <div class="row my-2 text-primary-emphasis">
                   
           <%= bootstrap_form_with(model: house) do |form| %>
@@ -33,15 +27,15 @@
               
               <div class="row">
                 <div class="col"> 
-                    <%= form.select :condition, House.conditions, 
+                    <%= form.select :condition, House.conditions.keys, 
                     {label: House.human_attribute_name(:condition)}, class:"text-light-emphasis" %>
                 </div>
                 <div class="col"> 
-                  <%= form.select :tipology, House.tipologies, 
+                  <%= form.select :tipology, House.tipologies.keys, 
                   {label: House.human_attribute_name(:tipology)}, class:"text-light-emphasis"%>        
                 </div>
                 <div class="col"> 
-                    <%= form.select :type_negotiation, House.type_negotiations, 
+                    <%= form.select :type_negotiation, House.type_negotiations.keys, 
                     {label: House.human_attribute_name(:type_negotiation)}, class:"text-light-emphasis"%>      
                 </div>
               </div>
@@ -83,11 +77,11 @@
                     class:"text-light-emphasis" %>
                 </div>
               </div>
-              <%= form.select :next_by, House.next_bies, 
+              <%= form.select :next_by, House.next_bies.keys, 
               {label: House.human_attribute_name(:next_by)}%>
               <%= form.check_box :furnished, label: House.human_attribute_name(:furnished),
               class:"text-light-emphasis" %>
-              <%= form.select :property_type, House.property_types, {
+              <%= form.select :property_type, House.property_types.keys, {
                 label: House.human_attribute_name(:property_type)}, class:"text-light-emphasis" %>
 
               <%= form.collection_select :province_id, Province.order(:province_name), :id, :province_name, 

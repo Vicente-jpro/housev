@@ -1,8 +1,3 @@
-# available at https://guides.rubyonrails.org/i18n.html.
-
-# available at https://guides.rubyonrails.org/i18n.html.
-# Translate enum in rails
-# https://stackoverflow.com/questions/22827270/rails-how-to-use-i18n-with-rails-4-enums
 pt:
   publisher: Proprietário
   compartiment: "Compartimentos da casa:"
@@ -105,6 +100,7 @@ pt:
     home: Ínicio
     house: Ímoveis
     rent: Arrendar
+    lotes-houses: "Lotes e Ímoveis"
     buy: Comprar
     land: Terrenos
     profile: Perfil
@@ -117,10 +113,10 @@ pt:
         view: Visualizar
         my-posted-properties: Meus ímoveis postados
       land:
-        new: New
-        view: View
+        new: Novo
+        view: Visualizar
         my-posted-properties: Meus terrenos postados
-
+    pricing: Preços
   links:
     destroy: Eliminar
     edit: Editar

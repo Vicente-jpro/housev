@@ -12,7 +12,7 @@ class Land < ApplicationRecord
   has_many :favorite_land, dependent: :destroy
 
   has_many_attached :images
-  validates_presence_of :title_land, :description, :price, :images
+  validates_presence_of :title_land, :description, :price
 
   JOIN_CITIES_AND_PROVINCES = "JOIN cities ON cities.id = addresses.city_id JOIN provinces ON provinces.id = cities.province_id"
  
