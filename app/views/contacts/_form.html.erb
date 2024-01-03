@@ -13,8 +13,10 @@
 
     <%= form.text_field :cliente_name %>
     <%= form.text_field :whatsapp %>
-    <%= form.text_field :email_cliente %>
-    <%= form.text_field :message %>
+    <%= form.email_field :email_cliente %>
+    <%= form.hidden_field :house_id, value: @house.id if controller_name == "houses"%>
+    <%= form.hidden_field :land_id, value: @land.id if controller_name == "lands"%>
+    <%= form.text_area :message, value: "Olá #{@profile.name_profile if @profile.present?} estou intessado com este ímovel." %>
 
    <div class="d-grid gap-2">
      <%= form.submit  t("links.send"), class: "btn btn-pink" %>
