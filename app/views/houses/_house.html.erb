@@ -22,14 +22,17 @@
             <p class="text-primary-emphasis">
               <%=  house.description %>
             </p>
+        
+            <div class="row">
+              <div class="col">
+                <strong class="text-pink fs-5"><%= house.price %> Kz</strong>
+              </div>
+              <div class="col">
+                <strong class="badge text-pink bg-green fs-5"> <%= house.type_negotiation %></strong> 
+              </div>
+            </div>
 
-            <div class="d-inline">
-              <strong class="text-pink"><%= house.price %> Kz</strong>
-            </div>
-            <div class="d-inline px-5">
-              <strong class="text-pink"> <%= house.type_negotiation %></strong> 
-            </div>
-              
+
         </div>
       </div>
     </div>
