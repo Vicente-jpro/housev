@@ -21,12 +21,12 @@ class FavoriteLandsController < ApplicationController
     respond_to do |format|
       if is_land_creator?(current_user, land) 
         format.html { redirect_to lands_url, 
-          alert: "You are the land creator. It's impossible mark as favorite." }
+          alert: t('controllers.favorite.land.info.creator') }
       elsif !FavoriteLand.exist?(favorite)
         format.html { redirect_to lands_url, 
-              alert: "This land is already added as a favorite." }
+              alert: t('controllers.favorite.house.info.already-added')  }
       elsif @favorite_land.save
-        format.html { redirect_to lands_url, notice: "Favorite land was successfully created." }
+        format.html { redirect_to lands_url, notice: t('controllers.favorite.house.success.created')}
         format.json { render :show, status: :created, location: @favorite_land }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -44,7 +44,7 @@ class FavoriteLandsController < ApplicationController
     @favorite_land.destroy
 
     respond_to do |format|
-      format.html { redirect_to favorite_lands_url, notice: "Favorite land was successfully destroyed." }
+      format.html { redirect_to favorite_lands_url, notice:  t('controllers.favorite.land.success.destroyed') }
       format.json { head :no_content }
     end
   end
