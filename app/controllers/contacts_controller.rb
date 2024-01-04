@@ -42,7 +42,7 @@ class ContactsController < ApplicationController
                 .deliver_later
         end
 
-        format.html { redirect_to contact_url(@contact), notice: "Message sent successfully." }
+        format.html { redirect_to contact_url(@contact), notice:  t("controllers.contact") }
         format.json { render :show, status: :created, location: @contact }
       else
         format.html { render :new, status: :unprocessable_entity }

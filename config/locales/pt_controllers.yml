@@ -50,3 +50,4 @@ pt:
         success:
           created: O perfil foi atualizado com sucesso.
           destroy: O perfil foi destruído com sucesso.
+    contact: Messagem enviada com sucesso.

@@ -50,3 +50,4 @@ en:
         success:
           created: Profile was successfully updated.
           destroy: Profile was successfully destroyed.
+    contact: Message sent successfully

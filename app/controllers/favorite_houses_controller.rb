@@ -22,13 +22,14 @@ class FavoriteHousesController < ApplicationController
     respond_to do |format|
       if is_house_creator?(current_user, house)
         format.html { redirect_to houses_url, 
-          alert: "You are the house creator. It's impossible mark as favorite." }
+          alert:  t('controllers.favorite.house.info.creator') }
       elsif !FavoriteHouse.exist?(favorite)
         format.html { redirect_to houses_url, 
-              alert: "This house is already added as a favorite." }
+              alert: t('controllers.favorite.house.info.already-added') }
       elsif @favorite_house.save
+        
       
-        format.html { redirect_to houses_url, notice: "Favorite house was successfully created." }
+        format.html { redirect_to houses_url, notice: t('controllers.favorite.house.success.created') }
         format.json { render :show, status: :created, location: @favorite_house }
         
         @owner_house = User.find_user_by_house(house)
@@ -56,7 +57,7 @@ class FavoriteHousesController < ApplicationController
     @favorite_house.destroy
 
     respond_to do |format|
-      format.html { redirect_to favorite_houses_url, notice: "Favorite house was successfully destroyed." }
+      format.html { redirect_to favorite_houses_url, notice: t('controllers.favorite.house.success.destroyed') }
       format.json { head :no_content }
     end
   end
