@@ -34,6 +34,8 @@ pt:
         client: Você é um cliente simples. Mude seu perfil para criar uma casa.
         invalid: Tentativa de acesso à casa inválida.
         does-not-exist: Esta casa não tem saída.
+        search-result: Resultado da busca.
+        you-have-to-have-avalid-plan: Você precisa ter um plano válido para criar um post. Entre em contato com o suporte para ajudá-lo.
     land:
       success:
         created: O terreno foi criado com sucesso.
@@ -46,6 +48,7 @@ pt:
         client: Você é um cliente simples. Mude seu perfil para criar um terreno.
         invalid: Tentativa de acesso a terras inválidas.
         does-not-exist: Esta terra não existe.
+        any-propriety-found: Nenhum imóvel encontrado. Sugerimos estes ímóveis para você.
     profile:
         success:
           created: O perfil foi atualizado com sucesso.

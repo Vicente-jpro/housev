@@ -53,9 +53,9 @@ class HousesController < ApplicationController
     
     if @houses.empty?
       redirect_to houses_url, 
-        info: "Nenhum imóvel encontrado. Sugerimos estes ímóveis para você."
+        info:  t('controllers.house.info.no-properties-found')
     else
-      flash[:info] = "Resultado da busca."
+      flash[:info] = t('controllers.house.info.search-result')
     end
   end
   
@@ -64,9 +64,9 @@ class HousesController < ApplicationController
     @houses = House.search_by(params)
     if @houses.empty?
       redirect_to houses_url, 
-        info: "Nenhum imóvel encontrado. Sugerimos estes ímóveis para você."
+        info: t('controllers.house.info.no-properties-found')
     else
-      flash[:info] = "Resultado da busca."
+      flash[:info] = t('controllers.house.info.search-result')
     end
   end
 
@@ -82,15 +82,15 @@ class HousesController < ApplicationController
       if !@house.house_images.attached?
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @house.errors, status: :unprocessable_entity }
-      elsif @profile.nil?
-        format.html { redirect_to new_profile_path, info: "You must to create a profile after create a house." }
-        format.json { render json: ["You must to create a profile after create a house."], status: :unprocessable_entity }
-      elsif @profile.cliente?
-        format.html { redirect_to new_profile_path, info: "You are a simple client. Change your profile to create a house." }
-        format.json { render json: ["You must to create a profile after create a house."], status: :unprocessable_entity }
+      elsif @profile.nil? 
+        format.html { redirect_to new_profile_path, info: t('controllers.house.info.profile') }
+        format.json { render json: [t('controllers.house.info.profile')], status: :unprocessable_entity }
+      elsif @profile.cliente? 
+        format.html { redirect_to new_profile_path, info: t('controllers.house.info.client') }
+        format.json { render json: [t('controllers.house.info.client')], status: :unprocessable_entity }
       elsif has_valid_plan.activated
         if @house.save 
-          format.html { redirect_to house_url(@house), notice: "House was successfully created." }
+          format.html { redirect_to house_url(@house), notice: t('controllers.house.success.created') }
           format.json { render :show, status: :created, location: @house }
         else
           @house.build_address
@@ -100,8 +100,8 @@ class HousesController < ApplicationController
           format.json { render json: @house.errors, status: :unprocessable_entity }
         end
       else  
-        format.html { redirect_to plans_path, info: "You have to hava a valid plan to create a post. Contact support time to help you out." }
-        format.json { render json: ["You have to hava a valid plan to create a post. Contact support time to help you out."], status: :unprocessable_entity }
+        format.html { redirect_to plans_path, info:  t('controllers.house.info.you-have-to-have-avalid-plan')  }
+        format.json { render json: [t('controllers.house.info.you-have-to-have-avalid-plan')], status: :unprocessable_entity }
       end
 
     end
@@ -115,7 +115,7 @@ class HousesController < ApplicationController
     respond_to do |format|
       if @is_creator
         if@house.update(house_params) 
-          format.html { redirect_to house_url(@house), notice: "House was successfully updated." }
+          format.html { redirect_to house_url(@house), notice: t('controllers.house.success.updated') }
           format.json { render :show, status: :ok, location: @house }
         else
           format.html { render :edit, status: :unprocessable_entity }
@@ -133,7 +133,7 @@ class HousesController < ApplicationController
     respond_to do |format|
       if @is_creator
         @house.destroy
-        format.html { redirect_to houses_url, notice: "House was successfully destroyed." }
+        format.html { redirect_to houses_url, notice: t('controllers.house.success.destroy') }
         format.json { head :no_content }
       else
         belongs_another_user_message(format, @house, "House")
@@ -148,7 +148,7 @@ class HousesController < ApplicationController
     end
 
     def invalid_house 
-      logger.error "Attemped to access invalid house #{params[:id]}"
+      logger.error "#{t('controllers.house.info.invalid')} #{params[:id]}"
       redirect_to houses_url, info: "Invalid house."
     end
 

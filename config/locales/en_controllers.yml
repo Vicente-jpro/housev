@@ -34,6 +34,10 @@ en:
         client: You are a simple client. Change your profile to create a house.
         invalid: Attempt to access invalid house.
         does-not-exist: This house doesn't exit.
+        no-properties-found: No properties found. We suggest these properties for you.
+        search-result: Search result.
+        you-have-to-have-avalid-plan: You have to have a valid plan to create a post. Contact support time to help you out.
+   
     land:
       success:
         created: Land was successfully created. 
