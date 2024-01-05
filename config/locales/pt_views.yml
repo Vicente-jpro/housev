@@ -99,6 +99,8 @@ pt:
   navbar:
     home: Ínicio
     house: Ímoveis
+    house-register: Cadastrar ímoveis
+    land-register: Cadastrar terrenos
     rent: Arrendar
     lotes-houses: "Lotes e Ímoveis"
     buy: Comprar

@@ -103,6 +103,8 @@ en:
   navbar:
     home: Home
     house: Properties
+    house-register: Register Houses
+    land-register: Register land
     rent: Rend
     buy: buy 
     lotes-houses: "Lotes e Houses"
