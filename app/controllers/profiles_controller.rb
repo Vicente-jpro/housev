@@ -68,7 +68,7 @@ class ProfilesController < ApplicationController
     
 
     respond_to do |format|
-      format.html { redirect_to profiles_url, notice: "Profile was successfully destroyed." }
+      format.html { redirect_to profiles_url(locale: I18n.locale), notice: "Profile was successfully destroyed." }
       format.json { head :no_content }
     end
   end

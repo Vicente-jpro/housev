@@ -14,7 +14,7 @@ class PlansSelectedsController < ApplicationController
       if @plans_selected
         redirect_to plans_selected_url(@plans_selected)
       else
-        redirect_to plans_url
+        redirect_to plans_url(locale: I18n.locale)
       end
     end
   end
@@ -26,7 +26,7 @@ class PlansSelectedsController < ApplicationController
   # GET /plans_selecteds/new
   def new
     @plans_selected = PlansSelected.new
-    redirect_to plans_url
+    redirect_to plans_url(locale: I18n.locale)
   end
 
   # GET /plans_selecteds/1/edit
@@ -83,7 +83,7 @@ class PlansSelectedsController < ApplicationController
         format.html { redirect_to plans_selected_url(plan_selected), info: "This Plan is activated. You can not delete." }
       else  
         @plans_selected.destroy
-        format.html { redirect_to plans_selecteds_url, notice: "Plans selected was successfully destroyed." }
+        format.html { redirect_to plans_selecteds_url(locale: I18n.locale), notice: "Plans selected was successfully destroyed." }
         format.json { head :no_content }
       end
     end
@@ -93,7 +93,7 @@ class PlansSelectedsController < ApplicationController
   
   def invalid_plan_selected
     logger.error "Attemped to access invalid Plan #{params[:id]}"
-    redirect_to houses_url, info: "Invalid Plan."
+    redirect_to houses_url(locale: I18n.locale), info: "Invalid Plan."
   end
 
     # Use callbacks to share common setup or constraints between actions.

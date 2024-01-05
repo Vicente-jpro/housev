@@ -20,13 +20,13 @@ class FavoriteLandsController < ApplicationController
 
     respond_to do |format|
       if is_land_creator?(current_user, land) 
-        format.html { redirect_to lands_url, 
+        format.html { redirect_to lands_url(locale: I18n.locale), 
           alert: t('controllers.favorite.land.info.creator') }
       elsif !FavoriteLand.exist?(favorite)
-        format.html { redirect_to lands_url, 
+        format.html { redirect_to lands_url(locale: I18n.locale), 
               alert: t('controllers.favorite.house.info.already-added')  }
       elsif @favorite_land.save
-        format.html { redirect_to lands_url, notice: t('controllers.favorite.house.success.created')}
+        format.html { redirect_to lands_url(locale: I18n.locale), notice: t('controllers.favorite.house.success.created')}
         format.json { render :show, status: :created, location: @favorite_land }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -44,7 +44,7 @@ class FavoriteLandsController < ApplicationController
     @favorite_land.destroy
 
     respond_to do |format|
-      format.html { redirect_to favorite_lands_url, notice:  t('controllers.favorite.land.success.destroyed') }
+      format.html { redirect_to favorite_lands_url(locale: I18n.locale), notice:  t('controllers.favorite.land.success.destroyed') }
       format.json { head :no_content }
     end
   end
@@ -57,7 +57,7 @@ class FavoriteLandsController < ApplicationController
 
     def invalid_land 
       logger.error "Attempt to access invalid land #{params[:id]}"
-      redirect_to lands_url, info: "Invalid land."
+      redirect_to lands_url(locale: I18n.locale), info: "Invalid land."
     end
 
     # Only allow a list of trusted parameters through.

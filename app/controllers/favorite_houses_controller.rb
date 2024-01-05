@@ -1,6 +1,5 @@
 class FavoriteHousesController < ApplicationController
   before_action :set_favorite_house, only: %i[ show edit update destroy ]
-  before_action :set_house_url
   before_action :authenticate_user!
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_favorite_house
 
@@ -21,15 +20,15 @@ class FavoriteHousesController < ApplicationController
     
     respond_to do |format|
       if is_house_creator?(current_user, house)
-        format.html { redirect_to houses_url, 
+        format.html { redirect_to houses_url(locale: I18n.locale), 
           alert:  t('controllers.favorite.house.info.creator') }
       elsif !FavoriteHouse.exist?(favorite)
-        format.html { redirect_to houses_url, 
+        format.html { redirect_to houses_url(locale: I18n.locale), 
               alert: t('controllers.favorite.house.info.already-added') }
       elsif @favorite_house.save
         
       
-        format.html { redirect_to houses_url, notice: t('controllers.favorite.house.success.created') }
+        format.html { redirect_to houses_url(locale: I18n.locale), notice: t('controllers.favorite.house.success.created') }
         format.json { render :show, status: :created, location: @favorite_house }
         
         @owner_house = User.find_user_by_house(house)
@@ -53,11 +52,11 @@ class FavoriteHousesController < ApplicationController
     house.id =  @favorite_house.house_id
     
     @favorite_house = FavoriteHouse.find_favorite_by_user_and_house(current_user, house)
-    debugger
+    
     @favorite_house.destroy
 
     respond_to do |format|
-      format.html { redirect_to favorite_houses_url, notice: t('controllers.favorite.house.success.destroyed') }
+      format.html { redirect_to favorite_houses_url(locale: I18n.locale), notice: t('controllers.favorite.house.success.destroyed') }
       format.json { head :no_content }
     end
   end
@@ -68,13 +67,11 @@ class FavoriteHousesController < ApplicationController
       @favorite_house = FavoriteHouse.find(params[:id])
     end
 
-    def set_house_url
-      @url = request 
-    end
+  
 
     def invalid_house 
       logger.error "Attempt to access invalid house #{params[:id]}"
-      redirect_to houses_url, info: "Invalid house."
+      redirect_to houses_url(locale: I18n.locale), info: "Invalid house."
     end
 
     # Use callbacks to share common setup or constraints between actions.

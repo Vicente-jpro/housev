@@ -1,21 +1,19 @@
 class ApplicationController < ActionController::Base
-    add_flash_types :info, :error
-    around_action :switch_locale
+  add_flash_types :info, :error
+  
+  before_action :set_i18n_locale_from_params
 
-    def default_url_options
-        { locale: I18n.locale }
-    end
-
-    def switch_locale(&action)
-      locale = params[:locale] || I18n.default_locale
-      if params[:locale] == "pt"
-        locale = "en"
-      elsif params[:locale] == "en"
-        locale = "pt" 
+  protected
+    def set_i18n_locale_from_params
+      if params[:locale]
+        if I18n.available_locales.map(&:to_s).include?(params[:locale])
+          I18n.locale = params[:locale]
+        else
+          flash.now[:notice] =
+          "#{params[:locale]} translation not available"
+          logger.error flash.now[:notice]
+        end
       end
-        
-      I18n.with_locale(locale, &action)
     end
-
     
 end
