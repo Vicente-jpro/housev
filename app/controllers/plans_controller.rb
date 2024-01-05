@@ -56,7 +56,7 @@ class PlansController < ApplicationController
     @plan.destroy
 
     respond_to do |format|
-      format.html { redirect_to plans_url, notice: "Plan was successfully destroyed." }
+      format.html { redirect_to plans_url(locale: I18n.locale), notice: "Plan was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -65,7 +65,7 @@ class PlansController < ApplicationController
 
     def invalid_plan
       logger.error "Attemped to access invalid Plan #{params[:id]}"
-      redirect_to houses_url, info: "Invalid Plan."
+      redirect_to plans_url(locale: I18n.locale), info: "Invalid Plan."
     end
 
     # Use callbacks to share common setup or constraints between actions.

@@ -52,7 +52,7 @@ class HousesController < ApplicationController
     @houses = House.search_advanced_by(params)
     
     if @houses.empty?
-      redirect_to houses_url, 
+      redirect_to houses_url(locale: I18n.locale), 
         info: t('controllers.house.info.no-properties-found')
     else
       flash[:info] = t('controllers.house.info.search-result')
@@ -63,7 +63,7 @@ class HousesController < ApplicationController
   def search  
     @houses = House.search_by(params)
     if @houses.empty?
-      redirect_to houses_url, 
+      redirect_to houses_url(locale: I18n.locale), 
         info: t('controllers.house.info.no-properties-found')
     else
       flash[:info] = t('controllers.house.info.search-result')
@@ -136,7 +136,7 @@ class HousesController < ApplicationController
     respond_to do |format|
       if @is_creator
         @house.destroy
-        format.html { redirect_to houses_url, notice: t('controllers.house.success.destroy') }
+        format.html { redirect_to houses_url(locale: I18n.locale), notice: t('controllers.house.success.destroy') }
         format.json { head :no_content }
       else
         belongs_another_user_message(format, @house, "House")
@@ -152,7 +152,7 @@ class HousesController < ApplicationController
 
     def invalid_house 
       logger.error "#{t('controllers.house.info.invalid')} #{params[:id]}"
-      redirect_to houses_url, info: "Invalid house."
+      redirect_to houses_url(locale: I18n.locale), info: "Invalid house."
     end
 
     def get_profile

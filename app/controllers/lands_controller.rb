@@ -27,7 +27,7 @@ class LandsController < ApplicationController
     
     @lands = Land.search_by(params)
     if @lands.empty?
-      redirect_to lands_url, 
+      redirect_to lands_url(locale: I18n.locale), 
         info: t('controllers.land.info.no-properties-found')
     else
       flash[:info] = t('controllers.land.info.search-result')
@@ -127,7 +127,7 @@ class LandsController < ApplicationController
     respond_to do |format|
       if @is_creator
         @land.destroy
-          format.html { redirect_to lands_url, notice: t('controllers.house.success.destroy') }
+          format.html { redirect_to lands_url(locale: I18n.locale), notice: t('controllers.house.success.destroy') }
           format.json { head :no_content }
       else
         belongs_another_user_message(format, @land, "Land")
@@ -148,7 +148,7 @@ class LandsController < ApplicationController
 
     def invalid_land 
       logger.error "#{t('controllers.land.info.invalid')} #{params[:id]}"
-      redirect_to lands_url, info: "This land doesn't exit."
+      redirect_to lands_url(locale: I18n.locale), info: "This land doesn't exit."
     end
 
     def is_creator?
