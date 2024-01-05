@@ -37,7 +37,7 @@ en:
         no-properties-found: No properties found. We suggest these properties for you.
         search-result: Search result.
         you-have-to-have-avalid-plan: You have to have a valid plan to create a post. Contact support time to help you out.
-   
+        image-format-invalid: Image format invalid. Select image with format .jpg, jpeg, png or gif.
     land:
       success:
         created: Land was successfully created. 
@@ -50,6 +50,9 @@ en:
         client: You are a simple client. Change your profile to create a land.
         invalid: Attempt to access invalid land.
         does-not-exist: This land doesn't exit.
+        you-have-to-have-avalid-plan: You have to have a valid plan to create a post. Contact support time to help you out.
+        image-format-invalid: Image format invalid. Select image with format .jpg, jpeg, png or gif.
+    
     profile:
         success:
           created: Profile was successfully updated.

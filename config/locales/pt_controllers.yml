@@ -36,6 +36,7 @@ pt:
         does-not-exist: Esta casa não tem saída.
         search-result: Resultado da busca.
         you-have-to-have-avalid-plan: Você precisa ter um plano válido para criar um post. Entre em contato com o suporte para ajudá-lo.
+        image-format-invalid: Formato de imagem inválido. Selecione a imagem com formato .jpg, jpeg, png ou gif.
     land:
       success:
         created: O terreno foi criado com sucesso.
@@ -48,7 +49,9 @@ pt:
         client: Você é um cliente simples. Mude seu perfil para criar um terreno.
         invalid: Tentativa de acesso a terras inválidas.
         does-not-exist: Esta terra não existe.
-        any-propriety-found: Nenhum imóvel encontrado. Sugerimos estes ímóveis para você.
+        no-properties-found: Nenhum terreno encontrado. Sugerimos estes terrenos para você.
+        you-have-to-have-avalid-plan: Você precisa ter um plano válido para criar um post. Entre em contato com o suporte para ajudá-lo.
+        image-format-invalid: Formato de imagem inválido. Selecione a imagem com formato .jpg, jpeg, png ou gif.
     profile:
         success:
           created: O perfil foi atualizado com sucesso.

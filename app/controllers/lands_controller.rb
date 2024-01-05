@@ -28,9 +28,9 @@ class LandsController < ApplicationController
     @lands = Land.search_by(params)
     if @lands.empty?
       redirect_to lands_url, 
-        info: "Nenhum terreno encontrado. Sugerimos estes ímóveis para você."
+        info: t('controllers.land.info.no-properties-found')
     else
-      flash[:info] = "Resultado da busca."
+      flash[:info] = t('controllers.land.info.search-result')
     end
   end
   
@@ -76,26 +76,26 @@ class LandsController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @land.errors, status: :unprocessable_entity }
       elsif !is_valid_format?(@land.images)
-        format.html { redirect_to new_land_path(@land), alert: "Image format invalid. Select image with format .jpg, jpeg, png or gif." }
-        format.json { render json: ["Image format invalid. Select image with format .jpg, jpeg, png or gif."], status: :unprocessable_entity }
+        format.html { redirect_to new_land_path(@land), alert: t('controllers.land.info.image-format-invalid') }
+        format.json { render json: [t('controllers.land.info.image-format-invalid')], status: :unprocessable_entity }
       elsif @profile.nil?
-        format.html { redirect_to new_profile_path, info: "You must to create a profile after create a land." }
-        format.json { render json: ["You must to create a profile after create a land."], status: :unprocessable_entity }
+        format.html { redirect_to new_profile_path, info: t('controllers.land.info.profile') }
+        format.json { render json: [t('controllers.land.info.profile')], status: :unprocessable_entity }
       elsif @profile.cliente?
-        format.html { redirect_to new_profile_path, info: "You are a simple client. Change your profile to create a land." }
-        format.json { render json: ["You must to create a profile after create a land."], status: :unprocessable_entity }
+        format.html { redirect_to new_profile_path, info: t('controllers.land.info.client') }
+        format.json { render json: [t('controllers.land.info.client')], status: :unprocessable_entity }
       elsif has_valid_plan.activated
         if @land.save
           create_profile_land(@profile, @land)
-          format.html { redirect_to land_url(@land), notice: "Land was successfully created." }
+          format.html { redirect_to land_url(@land), notice: t('controllers.land.success.created') }
           format.json { render :show, status: :created, location: @land }
         else
           format.html { render :new, status: :unprocessable_entity }
           format.json { render json: @land.errors, status: :unprocessable_entity }
         end
       else 
-        format.html { redirect_to plans_path, alert: "You have to have a valid plan to create a post. Contact support time to help you out." }
-        format.json { render json: ["You have to hava a valid plan to create a post. Contact support time to help you out."], status: :unprocessable_entity }
+        format.html { redirect_to plans_path, alert:  t('controllers.land.info.you-have-to-have-avalid-plan') }
+        format.json { render json: [ t('controllers.land.info.you-have-to-have-avalid-plan')], status: :unprocessable_entity }
       end
     end
   end
@@ -109,7 +109,7 @@ class LandsController < ApplicationController
     if @is_creator
       respond_to do |format|
         if @land.update(land_params)
-          format.html { redirect_to land_url(@land), notice: "Land was successfully updated." }
+          format.html { redirect_to land_url(@land), notice: t('controllers.land.success.updated') }
           format.json { render :show, status: :ok, location: @land }
         else
           format.html { render :edit, status: :unprocessable_entity }
@@ -127,7 +127,7 @@ class LandsController < ApplicationController
     respond_to do |format|
       if @is_creator
         @land.destroy
-          format.html { redirect_to lands_url, notice: "Land was successfully destroyed." }
+          format.html { redirect_to lands_url, notice: t('controllers.house.success.destroy') }
           format.json { head :no_content }
       else
         belongs_another_user_message(format, @land, "Land")
@@ -147,7 +147,7 @@ class LandsController < ApplicationController
     end
 
     def invalid_land 
-      logger.error "Attemped to access invalid land #{params[:id]}"
+      logger.error "#{t('controllers.land.info.invalid')} #{params[:id]}"
       redirect_to lands_url, info: "This land doesn't exit."
     end
 

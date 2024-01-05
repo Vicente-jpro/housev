@@ -53,7 +53,7 @@ class HousesController < ApplicationController
     
     if @houses.empty?
       redirect_to houses_url, 
-        info:  t('controllers.house.info.no-properties-found')
+        info: t('controllers.house.info.no-properties-found')
     else
       flash[:info] = t('controllers.house.info.search-result')
     end
@@ -82,6 +82,9 @@ class HousesController < ApplicationController
       if !@house.house_images.attached?
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @house.errors, status: :unprocessable_entity }
+      elsif !is_valid_format?(@house.house_images) 
+        format.html { redirect_to new_house_path(@house), alert: t('controllers.house.info.image-format-invalid') }
+        format.json { render json: [ t('controllers.house.info.image-format-invalid') ], status: :unprocessable_entity }
       elsif @profile.nil? 
         format.html { redirect_to new_profile_path, info: t('controllers.house.info.profile') }
         format.json { render json: [t('controllers.house.info.profile')], status: :unprocessable_entity }
