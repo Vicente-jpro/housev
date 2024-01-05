@@ -1,6 +1,6 @@
 class House < ApplicationRecord
   include EnumsConcerns
-  attr_accessor :province_code, :city_code, :client_name, :client_email, :client_message
+  attr_accessor :province_code, :city_code
   
   belongs_to :location
   accepts_nested_attributes_for :location
@@ -17,10 +17,7 @@ class House < ApplicationRecord
   has_many :profiles, through: :profile_houses
   has_many :favorite_houses, dependent: :destroy
 
-
-
-  validates_presence_of :address, :dimention, :price, :title, :description,
-  :client_name, :client_email, :client_message
+  validates_presence_of :address, :dimention, :price, :title, :description
  
   JOIN_CITIES_AND_PROVINCES = "JOIN cities ON cities.id = addresses.city_id JOIN provinces ON provinces.id = cities.province_id"
  
