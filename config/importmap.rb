@@ -14,3 +14,4 @@ pin "jquery", to: "https://ga.jspm.io/npm:jquery@3.7.0/dist/jquery.js"
 
 pin "trix"
 pin "@rails/actiontext", to: "actiontext.js"
+
